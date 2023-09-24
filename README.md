@@ -1,28 +1,31 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Installation de base pour projet React + TypeScript avec vite
 
-Currently, two official plugins are available:
+## Formateur:
+- Eslint airBnB
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## CSS:
+- Tailwindcss
+- postcss
 
-## Expanding the ESLint configuration
+## Rooter
+- React rooter dom
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Redux
+- Redux toolkit & react-redux
+- Redux-logger
 
-- Configure the top-level `parserOptions` property like this:
+## Tests:
+- Vitest
+- testing-library/react
+- ...
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Icones:
+- lucide
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+## Animations:
+- aos
 
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## id
+- uuid
