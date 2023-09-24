@@ -29,3 +29,12 @@ Installation de base pour projet React + TypeScript avec vite
 
 ## id
 - uuid
+
+# Installation
+
+Supprimer le remote
+
+```js
+git remote -v
+git remote rm origin
+```
