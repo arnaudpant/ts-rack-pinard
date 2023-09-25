@@ -1,11 +1,14 @@
+import Connexion from "./components/Connexion"
+import Header from "./layouts/Header"
 
 
 function App() {
 
 
   return (
-    <div className="text-6xl">
-      <h1>Hello world</h1>
+    <div className="bg-fond min-h-screen">
+      <Header />
+      <Connexion />
     </div>
 
   )

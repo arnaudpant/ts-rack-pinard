@@ -3,7 +3,14 @@ import type { Config } from 'tailwindcss'
 export default {
 	content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
 	theme: {
-	extend: {},
+		colors: {
+			vin:'#914159',
+			fond:'#F5EEE6',
+			vin_blanc: '#e9e37c',
+			vin_rose: '#F8C3CD',
+			vin_champagne: '#FDEE00',
+		},
+		extend: {},
 	},
 	plugins: [],
 } satisfies Config
