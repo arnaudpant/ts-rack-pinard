@@ -13,7 +13,7 @@ dist-ssr
 *.local
 src/assets/audios
 src/assets/pdf
-firebase
+src/firebase
 
 # Editor directories and files
 .vscode/*
