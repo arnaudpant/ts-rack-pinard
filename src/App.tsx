@@ -1,5 +1,6 @@
-import Connexion from "./components/Connexion"
-import Header from "./layouts/Header"
+import Header from "./layouts/Header";
+import BoxConnexion from "./ui/components/formulaire/BoxConnexion";
+
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
   return (
     <div className="bg-fond min-h-screen">
       <Header />
-      <Connexion />
+      <BoxConnexion />
     </div>
 
   )
