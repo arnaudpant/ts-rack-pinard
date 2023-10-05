@@ -5,7 +5,7 @@ interface Props {
 }
 
 const FormRegister = ({form }: Props) => {
-    const {errors, control, register, handleSubmit, onSubmit, isLoading} = form
+    const {register, handleSubmit, onSubmit, isLoading, errors, control} = form
 
     return (
         <>
@@ -23,9 +23,9 @@ const FormRegister = ({form }: Props) => {
                     autoComplete="off"
                 />
 
-                <label htmlFor="password" className='pb-1' >Code a 3 chiffres</label>
+                <label htmlFor="password" className='pb-1' >Mot de passe</label>
                 <input
-                    type="text"
+                    type="password"
                     id="password"
                     required
                     placeholder="Entrez un mot de passe"
@@ -33,7 +33,7 @@ const FormRegister = ({form }: Props) => {
                     disabled={isLoading}
                     {...register("code", {required: {value: true, message: "Ce champ est requis"}})}
                 />
-                // 28min
+                //TODO: Installer clsx pour isLoading = cursor-wait
                 <input type="submit" className="h-10 bg-vin text-fond font-bold text-lg rounded-lg shadow-sm" />
 
             </form>

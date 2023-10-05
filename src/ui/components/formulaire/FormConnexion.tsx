@@ -4,7 +4,8 @@ interface Props {
     form: FormsType
 }
 
-const FormConnexion = ({form }: Props) => {
+const FormConnexion = ({ form }: Props) => {
+
     return (
         <>
             <h2 className="text-center text-2xl">Connexion</h2>
