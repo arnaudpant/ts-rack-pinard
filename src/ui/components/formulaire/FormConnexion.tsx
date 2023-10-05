@@ -5,6 +5,7 @@ interface Props {
 }
 
 const FormConnexion = ({ form }: Props) => {
+    const {register, handleSubmit, onSubmit, isLoading, errors, control} = form
 
     return (
         <>

@@ -6,9 +6,8 @@ import FormRegister from "./FormRegister";
 const BoxConnexion: React.FC = () => {
     const isLoading: boolean = false
 
-    const {
-        handleSubmit, control, formState: { errors }, register, setError, reset
-    } = useForm<RegisterFormType>()
+    // React Hook Form
+    const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
     const onSubmit: SubmitHandler<RegisterFormType> = async (formData) => {
         console.log(formData)
