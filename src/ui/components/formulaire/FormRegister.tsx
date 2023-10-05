@@ -32,7 +32,6 @@ const FormRegister = ({ form }: Props) => {
                     register={register}
                     errors={errors}
                     />
-
                 {/* //TODO: Installer clsx pour isLoading = cursor-wait */}
                 <input type="submit" className="h-10 bg-vin text-fond font-bold text-lg rounded-lg shadow-sm" />
 
