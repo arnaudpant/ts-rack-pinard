@@ -1,3 +1,5 @@
+import clsx from "clsx"
+
 interface Props {
     type?: "text" | "email" | "password",
     id: string,
@@ -12,15 +14,20 @@ interface Props {
 
 const Input = ({ type = "text", id, isLoading, placeholder, register, errors, errorMsg = "Ce champs est obligatoire", required = true, isAutoCompleted = false }: Props) => {
     return (
-        <input
-            type={type}
-            id={id}
-            placeholder={placeholder}
-            className="mb-6 h-8 rounded pl-2 focus:outline-none focus:ring-1 focus:ring-vin"
-            disabled={isLoading}
-            autoComplete={isAutoCompleted ? "on" : "off"}
-            {...register(id, { required: { value: required, message: errorMsg } })}
-        />
+        <>
+            <input
+                type={type}
+                id={id}
+                placeholder={placeholder}
+                className={clsx(errors[id] ? "placeholder-vin text-vin mb-0" : "mb-6",isLoading && "cursor-not-allowed" ,"h-8 rounded pl-2 focus:outline-none focus:ring-1 focus:ring-vin")}
+                disabled={isLoading}
+                autoComplete={isAutoCompleted ? "on" : "off"}
+                {...register(id, { required: { value: required, message: errorMsg } })}
+            />
+            {errors[id] && (
+                <p className="text-xs text-vin mb-2">{errors[id]?.message}</p>
+            ) }
+        </>
     );
 };
 

@@ -11,3 +11,8 @@ export interface RegisterFormType {
     email: string,
     password: string
 }
+
+export interface LoginFormType {
+    email: string,
+    password: string
+}
