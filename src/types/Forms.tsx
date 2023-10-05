@@ -11,8 +11,11 @@ export interface RegisterFormType {
     email: string,
     password: string
 }
-
-export interface LoginFormType {
+export interface ConnexionFormType {
     email: string,
     password: string
+}
+
+export interface ForgetFormType {
+    email: string,
 }

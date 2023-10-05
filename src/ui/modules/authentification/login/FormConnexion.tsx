@@ -1,19 +1,19 @@
 import { FormsType } from "@/types/Forms";
-import Input from "../../design-syst/formulaire/Input";
-import ButtonForm from "./ButtonForm";
+import Input from "../../../design-syst/formulaire/Input";
+import ButtonForm from "../../../design-syst/formulaire/ButtonForm";
 
 
 interface Props {
     form: FormsType
 }
 
-const FormRegister = ({ form }: Props) => {
-    const { register, handleSubmit, onSubmit, isLoading, errors, control } = form
+const FormConnexion = ({ form }: Props) => {
+    const { register, handleSubmit, onSubmit, isLoading, errors } = form
     
     
     return (
         <>
-            <h2 className="text-center text-2xl">Inscription</h2>
+            <h2 className="text-center text-2xl">Connexion</h2>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} >
 
                 <label htmlFor="email" className='pb-1' >E-mail</label>
@@ -21,7 +21,7 @@ const FormRegister = ({ form }: Props) => {
                     type="email"
                     id="email"
                     isLoading={isLoading}
-                    placeholder="Entrez un email valide"
+                    placeholder="Entrez votre email"
                     register={register}
                     errors={errors}
                 />
@@ -31,17 +31,17 @@ const FormRegister = ({ form }: Props) => {
                     type="password"
                     id="password"
                     isLoading={isLoading}
-                    placeholder="Entrez un mot de passe"
+                    placeholder="Entrez votre mot de passe"
                     register={register}
                     errors={errors}
                     />
                 
                 <ButtonForm isLoading={isLoading}>
-                    S'inscrire
+                    Se connecter
                 </ButtonForm>
             </form>
         </>
     );
 };
 
-export default FormRegister;
+export default FormConnexion;
