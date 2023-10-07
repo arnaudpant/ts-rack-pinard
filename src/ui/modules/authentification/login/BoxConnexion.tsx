@@ -2,13 +2,15 @@ import { ConnexionFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormConnexion from "./FormConnexion";
 import { useState } from "react";
+// FIREBASE
+
 
 const BoxConnexion: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // React Hook Form
-    const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<ConnexionFormType>()
-
+    const { handleSubmit, control, formState: { errors }, register} = useForm<ConnexionFormType>()
+    // , setError, reset 
     const onSubmit: SubmitHandler<ConnexionFormType> = async (formData) => {
         setIsLoading(true)
         console.log(formData)

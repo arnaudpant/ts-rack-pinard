@@ -7,8 +7,8 @@ const BoxForget = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // React Hook Form
-    const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<ForgetFormType>()
-
+    const { handleSubmit, control, formState: { errors }, register} = useForm<ForgetFormType>()
+    // , setError, reset 
     const onSubmit: SubmitHandler<ForgetFormType> = async (formData) => {
         setIsLoading(true)
         console.log(formData)
