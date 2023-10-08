@@ -6,6 +6,7 @@ export default {
 		colors: {
 			vin:'#914159',
 			fond:'#F5EEE6',
+			fond_vert: '#4AB8A1',
 			vin_blanc: '#e9e37c',
 			vin_rose: '#F8C3CD',
 			vin_champagne: '#FDEE00',
