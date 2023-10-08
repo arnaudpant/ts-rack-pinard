@@ -2,7 +2,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { RegisterFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
-import FormRegister from "./FormRegister";
+import FormRegister from "./FormRegister.tsx";
 import { useState } from "react";
 import { auth } from "../../../../firebase/firebase.config.ts";
 
