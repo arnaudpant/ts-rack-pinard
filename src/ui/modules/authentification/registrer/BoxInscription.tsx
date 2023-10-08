@@ -4,6 +4,7 @@ import { RegisterFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormRegister from "./FormRegister";
 import { useState } from "react";
+import { auth } from "../../../../firebase/firebase-config.js"
 
 const BoxInscription: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -19,7 +20,7 @@ const BoxInscription: React.FC = () => {
 
         const { email, password } = formData
 
-        const auth = getAuth();
+        // const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed up 
