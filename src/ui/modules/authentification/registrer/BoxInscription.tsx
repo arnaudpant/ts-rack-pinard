@@ -1,5 +1,4 @@
 // FIREBASE
-
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { RegisterFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -10,11 +9,11 @@ const BoxInscription: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // React Hook Form
-    const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
+    const { handleSubmit, control, formState: { errors }, register } = useForm<RegisterFormType>()
+    // const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
 
     const onSubmit: SubmitHandler<RegisterFormType> = async (formData) => {
-        await Firebase.initinitializeApp()
         setIsLoading(true)
         console.log(formData)
 
@@ -26,12 +25,15 @@ const BoxInscription: React.FC = () => {
                 // Signed up 
                 const user = userCredential.user;
                 setIsLoading(false)
-                console.log(user)
+                console.log("user", user)
                 // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                setIsLoading(false)
+                console.log("errorCode", errorCode)
+                console.log("errorMessage",errorMessage)
                 // ..
             });
 
