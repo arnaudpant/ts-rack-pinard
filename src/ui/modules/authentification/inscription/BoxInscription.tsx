@@ -1,10 +1,8 @@
 // FIREBASE
-// import { createUserWithEmailAndPassword } from "firebase/auth";
 import { RegisterFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormRegister from "./FormRegister.tsx";
 import { useState } from "react";
-// import { auth } from "../../../../firebase/firebase.config.ts";
 import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
 
 const BoxInscription: React.FC = () => {
@@ -25,11 +23,10 @@ const BoxInscription: React.FC = () => {
         if (error) {
             setIsLoading(false)
             console.log(error)
-        } else {
-            console.log(data)
-            setIsLoading(false)
-
-        }
+            return
+        } 
+        console.log(data)
+        setIsLoading(false)
     }
 
     /** Etape 1 
@@ -42,7 +39,7 @@ const BoxInscription: React.FC = () => {
         setIsLoading(true)
         const { password } = formData;
 
-        if (password.length <= 5) {
+        if (password.length < 6) {
             setError("password", {
                 type: "manuel",
                 message: "Le mot de passe doit comporter 6 caractères minimum"
