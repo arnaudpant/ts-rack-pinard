@@ -4,13 +4,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import FormRegister from "./FormRegister.tsx";
 import { useState } from "react";
 import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
+import { toast } from 'react-toastify';
 
 const BoxInscription: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // React Hook Form
-    const { handleSubmit, control, formState: { errors }, register, setError } = useForm<RegisterFormType>()
-    // , reset
+    const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
     /** Etape 2
      * On lance en async handleCreateUserAuth avec en param email et password
@@ -22,11 +22,13 @@ const BoxInscription: React.FC = () => {
         const { error, data } = await firebaseCreateUser(email, password)
         if (error) {
             setIsLoading(false)
-            console.log(error)
+            toast.error(error.message)
             return
         } 
+        toast.success('Bienvenu dans votre cave à pimard')
         console.log(data)
         setIsLoading(false)
+        reset
     }
 
     /** Etape 1 
@@ -44,6 +46,7 @@ const BoxInscription: React.FC = () => {
                 type: "manuel",
                 message: "Le mot de passe doit comporter 6 caractères minimum"
             })
+            setIsLoading(false)
             return
         }
         handleCreateUserAuth(formData)
@@ -51,7 +54,7 @@ const BoxInscription: React.FC = () => {
 
     return (
         <>
-            <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-lg">
+            <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-card">
                 <FormRegister form={
                     { errors, control, register, handleSubmit, onSubmit, isLoading }
                 } />

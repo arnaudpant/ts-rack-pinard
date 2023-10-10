@@ -1,6 +1,7 @@
 import { FormsType } from "@/types/Forms";
 import Input from "../../../design-syst/formulaire/Input";
 import ButtonForm from "../../../design-syst/formulaire/ButtonForm";
+import { Link } from "react-router-dom";
 
 
 interface Props {
@@ -13,7 +14,8 @@ const FormConnexion = ({ form }: Props) => {
     
     return (
         <>
-            <h2 className="text-center text-2xl">Connexion</h2>
+            <h2 className="text-center text-2xl font-bold pb-1">Connexion</h2>
+            <p className="text-sm pb-3">Pas encore de compte ? <Link to="/inscription" className="text-vin">Inscription</Link></p>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} >
 
                 <label htmlFor="email" className='pb-1' >E-mail</label>

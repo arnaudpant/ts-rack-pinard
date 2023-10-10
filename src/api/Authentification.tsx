@@ -10,6 +10,7 @@ export const firebaseCreateUser = async (email: string, password: string) => {
         }
     } catch (error) {
         const firebaseError = error as FirebaseError
+        //TODO: Formater les erreurs
         return {
             error: {
                 code: firebaseError.code,

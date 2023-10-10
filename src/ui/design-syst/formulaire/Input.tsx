@@ -19,7 +19,7 @@ const Input = ({ type = "text", id, isLoading, placeholder, register, errors, er
                 type={type}
                 id={id}
                 placeholder={placeholder}
-                className={clsx(errors[id] ? "placeholder-vin text-vin mb-0" : "mb-6",isLoading && "cursor-not-allowed" ,"h-8 rounded pl-2 focus:outline-none focus:ring-1 focus:ring-vin shadow-xs")}
+                className={clsx(errors[id] ? "placeholder-vin text-vin mb-0" : "mb-6",isLoading && "cursor-not-allowed" ,"h-8 rounded pl-2 ring-1 ring-gris outline-none focus:outline-none focus:ring-1 focus:ring-vin shadow-xs")}
                 disabled={isLoading}
                 autoComplete={isAutoCompleted ? "on" : "off"}
                 {...register(id, { required: { value: required, message: errorMsg } })}
