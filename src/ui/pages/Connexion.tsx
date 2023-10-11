@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BoxConnexion from "../modules/authentification/connexion/BoxConnexion";
 
 const Connexion = () => {
@@ -8,6 +9,7 @@ const Connexion = () => {
                 <img src="/wine-bottle.svg" alt="bouteille de vin" className="h-20 w-20" />
             </div>
             <BoxConnexion />
+            <Link to="/forget-password" className="text-sm text-center text-vin pb-4">Mot de passe perdu ?</Link>
         </div>
     );
 };

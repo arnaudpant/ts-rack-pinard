@@ -16,7 +16,7 @@ const BoxForget = () => {
 
     return (
         <>
-            <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-lg">
+            <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-card">
                 <FormForget form={
                     { errors, control, register, handleSubmit, onSubmit, isLoading }
                 } />

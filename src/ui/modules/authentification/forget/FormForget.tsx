@@ -12,7 +12,7 @@ const FormForget = ({ form }: Props) => {
     
     return (
         <>
-            <h2 className="text-center text-2xl">Connexion</h2>
+            <h2 className="text-center text-2xl">Obtenir votre mot de passe</h2>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} >
 
                 <label htmlFor="email" className='pb-1' >E-mail</label>
