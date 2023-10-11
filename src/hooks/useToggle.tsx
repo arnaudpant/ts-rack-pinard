@@ -11,6 +11,7 @@ export const useToggle = ({initial = false}: Props = {}) => {
 
     return {
         value,
+        setValue,
         toggle,
         initial
     }

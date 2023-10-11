@@ -1,13 +1,12 @@
-// FIREBASE
 import { RegisterFormType } from "@/types/Forms";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormRegister from "./FormRegister.tsx";
-import { useState } from "react";
 import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
 import { toast } from 'react-toastify';
+import { useToggle } from "../../../../hooks/useToggle.tsx";
 
 const BoxInscription: React.FC = () => {
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const {value: isLoading, setValue: setIsLoading} = useToggle()
 
     // React Hook Form
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
@@ -26,8 +25,8 @@ const BoxInscription: React.FC = () => {
             return
         } 
         toast.success('Bienvenu dans votre cave à pimard')
-        console.log(data)
         setIsLoading(false)
+        console.log(data)
         reset
     }
 
