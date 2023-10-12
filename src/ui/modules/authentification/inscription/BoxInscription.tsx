@@ -4,9 +4,12 @@ import FormRegister from "./FormRegister.tsx";
 import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
 import { toast } from 'react-toastify';
 import { useToggle } from "../../../../hooks/useToggle.tsx";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const BoxInscription: React.FC = () => {
-    const {value: isLoading, setValue: setIsLoading} = useToggle()
+    const { value: isLoading, setValue: setIsLoading } = useToggle()
+    const [rooter, setRooter] = useState(false)
 
     // React Hook Form
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
@@ -18,15 +21,15 @@ const BoxInscription: React.FC = () => {
      * Si return error on arrete le loading
     */
     const handleCreateUserAuth = async ({ email, password }: RegisterFormType) => {
-        const { error, data } = await firebaseCreateUser(email, password)
+        const { error } = await firebaseCreateUser(email, password)
         if (error) {
             setIsLoading(false)
             toast.error(error.message)
             return
-        } 
+        }
         toast.success('Bienvenu dans votre cave à pimard')
         setIsLoading(false)
-        console.log(data)
+        setRooter(true)
         reset
     }
 
@@ -54,9 +57,9 @@ const BoxInscription: React.FC = () => {
     return (
         <>
             <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-card">
-                <FormRegister form={
-                    { errors, control, register, handleSubmit, onSubmit, isLoading }
-                } />
+                {
+                    rooter ? (<Navigate to="/container-racks" replace={true} />) : (<FormRegister form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />)
+                }
             </div>
         </>
     );
