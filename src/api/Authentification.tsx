@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth"
 import { auth } from "../firebase/firebase.config"
 import { FirebaseError } from "firebase/app"
 
@@ -50,6 +50,27 @@ export const firebaseSignInUser = async (email: string, password: string) => {
 export const firebaseSignOutUser = async () => {
     try {
         await signOut(auth)
+        return {
+            data: true
+        }
+    } catch (error) {
+        const firebaseError = error as FirebaseError
+        //TODO: Formater les erreurs
+        return {
+            error: {
+                code: firebaseError.code,
+                message: firebaseError.message
+            }
+        }
+    }
+}
+
+/**
+ * RECUPERATION D'UN EMAIL
+ */
+export const sendEmailToResetPassword = async (email: string) => {
+    try {
+        await sendPasswordResetEmail(auth, email)
         return {
             data: true
         }

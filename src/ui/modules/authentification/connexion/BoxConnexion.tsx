@@ -10,6 +10,7 @@ import { Navigate } from "react-router-dom";
 
 const BoxConnexion: React.FC = () => {
     const [userConnected, setUserConnected] = useState<boolean>(false)
+    
     const {value: isLoading, setValue: setIsLoading} = useToggle()
 
     const handleSignInUser = async ({email, password}: ConnexionFormType) => {
