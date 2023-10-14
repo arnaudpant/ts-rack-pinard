@@ -1,10 +1,15 @@
-import { RegisterFormType } from "@/types/Forms";
-import { SubmitHandler, useForm } from "react-hook-form";
-import FormRegister from "./FormRegister.tsx";
-import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
-import { toast } from 'react-toastify';
+/** HOOKS */
 import { useToggle } from "../../../../hooks/useToggle.tsx";
 import { useState } from "react";
+/** COMPONENTS */
+import { RegisterFormType } from "@/types/Forms";
+import FormRegister from "./FormRegister.tsx";
+/** FIREBASE */
+import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
+import { FirestoreUpdateDocument } from "../../../../api/Firestore.tsx";
+/** LIBRARY */
+import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import { Navigate } from "react-router-dom";
 
 const BoxInscription: React.FC = () => {
@@ -14,14 +19,12 @@ const BoxInscription: React.FC = () => {
     // React Hook Form
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
-    /** Etape 2
-     * On lance en async handleCreateUserAuth avec en param email et password
-     * On await le return de firebaseCreateUser
-     * firebaseCreateUser return soit une error soit les data de l'user si la creation dans firebase a reussi
-     * Si return error on arrete le loading
-    */
-    const handleCreateUserAuth = async ({ email, password }: RegisterFormType) => {
-        const { error } = await firebaseCreateUser(email, password)
+    /** Etape 3 - Creation du user dans la collection users
+     * Lancement de FirestoreUpdateDocument
+     * Si pas d'erreur création du user dans la collection users avec ses données
+     */
+    const handleCreateUserAuthentification = async (collectionName: string, documentId: string, document: object ) => {
+        const {error} = await FirestoreUpdateDocument(collectionName, documentId, document)
         if (error) {
             setIsLoading(false)
             toast.error(error.message)
@@ -31,6 +34,28 @@ const BoxInscription: React.FC = () => {
         setIsLoading(false)
         setRooter(true)
         reset
+    }
+
+    /** Etape 2
+     * On lance en async handleCreateUserAuth avec en param email et password
+     * On await le return de firebaseCreateUser
+     * firebaseCreateUser return soit une error soit les data de l'user si la creation dans firebase a reussi
+     * Si return error on arrete le loading
+    */
+    const handleCreateUserAuth = async ({ login, email, password }: RegisterFormType) => {
+        const { error, data } = await firebaseCreateUser(email, password)
+        if (error) {
+            setIsLoading(false)
+            toast.error(error.message)
+            return
+        }
+        const userDocumentData ={
+            login: login,
+            email: email,
+            uid: data.uid,
+            inscription: new Date()
+        }
+        handleCreateUserAuthentification("users", data.uid, userDocumentData)
     }
 
     /** Etape 1 

@@ -1,9 +1,9 @@
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase/firebase.config";
+import { db } from "../firebase/firebase.config";
 import { FirebaseError } from "firebase/app";
 
 
-export const FirestoreUpdateDocument = async (collectionName: string, documentId: string, data: any) => {
+export const FirestoreUpdateDocument = async (collectionName: string, documentId: string, data: object) => {
     try {
         const documentRef = doc(db, collectionName, documentId);
         await updateDoc(documentRef, data);
