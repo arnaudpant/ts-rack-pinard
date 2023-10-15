@@ -1,9 +1,10 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, sendEmailVerification } from "firebase/auth"
 import { auth } from "../firebase/firebase.config"
 import { FirebaseError } from "firebase/app"
 
 /**
- * CREATION D'UN COMPTE
+ * CREATION D'UN NOUVEAU COMPTE
+ * Creation du user
  */
 export const firebaseCreateUser = async (email: string, password: string) => {
     try {
@@ -18,6 +19,34 @@ export const firebaseCreateUser = async (email: string, password: string) => {
             error: {
                 code: firebaseError.code,
                 message: firebaseError.message
+            }
+        }
+    }
+}
+
+/** Envoi d'un mail de validation */
+export const sendEmailConfirmation = async () => {
+    if (auth.currentUser) {
+        try {
+            await sendEmailVerification(auth.currentUser)
+            return {
+                data: true
+            }
+        } catch (error) {
+            const firebaseError = error as FirebaseError
+            //TODO: Formater les erreurs
+            return {
+                error: {
+                    code: firebaseError.code,
+                    message: firebaseError.message
+                }
+            }
+        }
+    } else {
+        return {
+            error: {
+                code: "umknow",
+                message: "User non connecté"
             }
         }
     }

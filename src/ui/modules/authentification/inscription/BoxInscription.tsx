@@ -5,26 +5,26 @@ import { useState } from "react";
 import { RegisterFormType } from "@/types/Forms";
 import FormRegister from "./FormRegister.tsx";
 /** FIREBASE */
-import { firebaseCreateUser } from "../../../../api/Authentification.tsx";
-import { FirestoreUpdateDocument } from "../../../../api/Firestore.tsx";
+import { firebaseCreateUser, sendEmailConfirmation } from "../../../../api/Authentification.tsx";
+import { FirestoreCreateDocument } from "../../../../api/Firestore.tsx";
 /** LIBRARY */
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import { Navigate } from "react-router-dom";
 
 const BoxInscription: React.FC = () => {
+    /** HOOKS */
     const { value: isLoading, setValue: setIsLoading } = useToggle()
     const [rooter, setRooter] = useState(false)
-
-    // React Hook Form
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
     /** Etape 3 - Creation du user dans la collection users
      * Lancement de FirestoreUpdateDocument
      * Si pas d'erreur création du user dans la collection users avec ses données
+     * Envoi d'un email de confirmation de connexion
      */
     const handleCreateUserAuthentification = async (collectionName: string, documentId: string, document: object ) => {
-        const {error} = await FirestoreUpdateDocument(collectionName, documentId, document)
+        const {error} = await FirestoreCreateDocument(collectionName, documentId, document)
         if (error) {
             setIsLoading(false)
             toast.error(error.message)
@@ -33,7 +33,8 @@ const BoxInscription: React.FC = () => {
         toast.success('Bienvenu dans votre cave à pimard')
         setIsLoading(false)
         setRooter(true)
-        reset
+        reset()
+        sendEmailConfirmation()
     }
 
     /** Etape 2
