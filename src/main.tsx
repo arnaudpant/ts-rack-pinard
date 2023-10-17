@@ -1,16 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { AuthUserProvider } from './context/AuthUserContext.tsx';
+import { Flip, ToastContainer } from 'react-toastify';
 import App from './App.tsx'
-import { Flip, ToastContainer} from 'react-toastify';
-import './index.scss'
+import ReactDOM from 'react-dom/client'
 import 'react-toastify/dist/ReactToastify.css';
+import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ToastContainer 
-      position="top-center"
-      transition={Flip}
-    />
-    <App />
-  </React.StrictMode>,
+    <AuthUserProvider>
+      <ToastContainer
+        position="top-center"
+        transition={Flip}
+      />
+      <App />
+    </AuthUserProvider>
 )

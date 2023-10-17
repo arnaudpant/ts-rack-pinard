@@ -1,6 +1,5 @@
 /** HOOKS */
 import { useToggle } from "../../../../hooks/useToggle";
-import { useState } from "react";
 /** COMPONENTS */
 import { ConnexionFormType } from "@/types/Forms";
 import FormConnexion from "./FormConnexion";
@@ -9,12 +8,11 @@ import { firebaseSignInUser } from "../../../../api/Authentification.tsx";
 /** LIBRARY */
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { Navigate } from "react-router-dom";
+
 
 
 const BoxConnexion: React.FC = () => {
     // HOOKS
-    const [userConnected, setUserConnected] = useState<boolean>(false)
     const { value: isLoading, setValue: setIsLoading } = useToggle()
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<ConnexionFormType>()
 
@@ -34,7 +32,6 @@ const BoxConnexion: React.FC = () => {
         toast.success('Bienvenu dans votre cave à pimard')
         setIsLoading(false)
         reset()
-        setUserConnected(true)
     }
 
     /** Etape 1 
@@ -60,9 +57,7 @@ const BoxConnexion: React.FC = () => {
     return (
         <>
             <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-card">
-                {
-                    userConnected ? (<Navigate to="/container-racks" replace={true} />) : (<FormConnexion form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />)
-                }
+                <FormConnexion form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
             </div>
         </>
     );

@@ -1,6 +1,5 @@
 /** HOOKS */
 import { useToggle } from "../../../../hooks/useToggle.tsx";
-import { useState } from "react";
 /** COMPONENTS */
 import { RegisterFormType } from "@/types/Forms";
 import FormRegister from "./FormRegister.tsx";
@@ -10,12 +9,10 @@ import { FirestoreCreateDocument } from "../../../../api/Firestore.tsx";
 /** LIBRARY */
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { Navigate } from "react-router-dom";
 
 const BoxInscription: React.FC = () => {
     /** HOOKS */
     const { value: isLoading, setValue: setIsLoading } = useToggle()
-    const [rooter, setRooter] = useState(false)
     const { handleSubmit, control, formState: { errors }, register, setError, reset } = useForm<RegisterFormType>()
 
     /** Etape 3 - Creation du user dans la collection users
@@ -23,8 +20,8 @@ const BoxInscription: React.FC = () => {
      * Si pas d'erreur création du user dans la collection users avec ses données
      * Envoi d'un email de confirmation de connexion
      */
-    const handleCreateUserAuthentification = async (collectionName: string, documentId: string, document: object ) => {
-        const {error} = await FirestoreCreateDocument(collectionName, documentId, document)
+    const handleCreateUserAuthentification = async (collectionName: string, documentId: string, document: object) => {
+        const { error } = await FirestoreCreateDocument(collectionName, documentId, document)
         if (error) {
             setIsLoading(false)
             toast.error(error.message)
@@ -32,7 +29,6 @@ const BoxInscription: React.FC = () => {
         }
         toast.success('Bienvenu dans votre cave à pimard')
         setIsLoading(false)
-        setRooter(true)
         reset()
         sendEmailConfirmation()
     }
@@ -50,7 +46,7 @@ const BoxInscription: React.FC = () => {
             toast.error(error.message)
             return
         }
-        const userDocumentData ={
+        const userDocumentData = {
             login: login,
             email: email,
             uid: data.uid,
@@ -83,9 +79,7 @@ const BoxInscription: React.FC = () => {
     return (
         <>
             <div className="w-72 mx-auto my-6 p-6 rounded-2xl shadow-card">
-                {
-                    rooter ? (<Navigate to="/container-racks" replace={true} />) : (<FormRegister form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />)
-                }
+                <FormRegister form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
             </div>
         </>
     );

@@ -1,9 +1,9 @@
 /** HOOKS */
 import { useEffect, useState } from "react";
 /** TYPE */
-import { UserInterface } from "@/types/User";
+import { UserDocument, UserInterface } from "@/types/User";
 /** FIREBASE */
-import { auth, db } from "@/firebase/firebase.config";
+import { auth, db } from "../firebase/firebase.config";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
 
@@ -23,15 +23,23 @@ const useFirebaseAuth = () => {
     const getUserDocument = async (user: UserInterface) => {
         if (auth.currentUser) {
             const documentRef = doc(db, "users", auth.currentUser.uid)
-            onSnapshot(documentRef, async (doc) => {
+            const compactUser = user
 
+            onSnapshot(documentRef, async (doc) => {
+                if (doc.exists()) {
+                    compactUser.userDocument = doc.data() as UserDocument
+                }
+                setAuthUser((prevAuthUser) => (
+                    {...prevAuthUser, ...compactUser}
+                ))
+                setAuthUserIsLoading(false)
             })
         }
     }
 
     const authSateChanged = async (authState: UserInterface | User | null) => {
         // user non connecté
-        if (!authState){
+        if (!authState) {
             setAuthUser(null)
             setAuthUserIsLoading(false)
             return
@@ -43,7 +51,7 @@ const useFirebaseAuth = () => {
         await getUserDocument(formatedUser)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, authSateChanged)
         return () => unsubscribe()
     }, [])
