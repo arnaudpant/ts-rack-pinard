@@ -1,4 +1,3 @@
-import React from 'react'
 import { AuthUserProvider } from './context/AuthUserContext.tsx';
 import { Flip, ToastContainer } from 'react-toastify';
 import App from './App.tsx'

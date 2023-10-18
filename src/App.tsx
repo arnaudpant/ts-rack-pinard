@@ -4,8 +4,11 @@ import Home from "./ui/pages/Home";
 import Connexion from "./ui/pages/Connexion";
 import Inscription from "./ui/pages/Inscription";
 import ForgetPassword from "./ui/pages/ForgetPassword";
+// import { useAuth } from "./context/AuthUserContext";
 
 function App() {
+  // const {authUser, authUserIsLoading} = useAuth()
+
   return (
     <BrowserRouter>
       <Routes>
