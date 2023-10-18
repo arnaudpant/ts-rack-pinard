@@ -4,10 +4,10 @@ import Home from "./ui/pages/Home";
 import Connexion from "./ui/pages/Connexion";
 import Inscription from "./ui/pages/Inscription";
 import ForgetPassword from "./ui/pages/ForgetPassword";
+import ContainerRacks from "./ui/pages/ContainerRacks";
 // import { useAuth } from "./context/AuthUserContext";
 
 function App() {
-  // const {authUser, authUserIsLoading} = useAuth()
 
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ function App() {
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Inscription />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/container-racks" element={<ContainerRacks />} />
           <Route path="/*" element={<Home />} />
         </Route>
       </Routes>

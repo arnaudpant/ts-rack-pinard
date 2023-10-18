@@ -18,9 +18,6 @@ const useFirebaseAuth = () => {
     const [authUser, setAuthUser] = useState<UserInterface | null>(null)
     const [authUserIsLoading, setAuthUserIsLoading] = useState<boolean>(true)
 
-    console.log("1 authUser", authUser)
-    console.log("1 authUserIsLoading", authUserIsLoading)
-
 
 
     /** 4

@@ -1,13 +1,17 @@
-
-import Accueil from "../components/layouts/Accueil";
-
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthUserContext";
+import Accueil from "../modules/accueil/Accueil";
 
 const Home = () => {
 
+    const { authUser, authUserIsLoading } = useAuth()
+    console.log(authUserIsLoading)
 
     return (
         <>
-            <Accueil />
+            {
+                authUserIsLoading === false ? (<Navigate to="/container-racks" />) : (<Accueil /> )
+            }
         </>
     );
 };
