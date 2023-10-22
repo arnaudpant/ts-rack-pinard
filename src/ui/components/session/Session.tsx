@@ -1,8 +1,12 @@
 import { useAuth } from "../../../context/AuthUserContext";
 import Spinner from "../spinner/Spinner";
 import { SessionStatus } from "../../../types/SessionStatus";
-import { GUEST, REGISTERED } from "../../../lib/session-status";
+import Header from "../layouts/Header";
+import Home from "../../../ui/pages/Home";
 import ContainerRacks from "../../../ui/pages/ContainerRacks";
+import { Navigate } from "react-router-dom";
+
+// import { REGISTERED } from "../../../lib/session-status";
 
 
 interface Props {
@@ -11,28 +15,39 @@ interface Props {
 }
 
 const Session = ({ children, sessionStatus }: Props) => {
+
     const { authUserIsLoading, authUser } = useAuth()
 
-    // if (sessionStatus === GUEST && !authUserIsLoading) {
-    //     if (!authUser) {
-    //         return (<>{children}</>)
-    //     }
-    // }
+    if (sessionStatus === "guest" && !authUserIsLoading) {
+        if (!authUser) {
+            return (<>{children}</>)
+        }
+    }
 
     /** SECURITE AUTHENTIFICATION
      * status authentifié + pas en chargement
      * Si user => Affichage Application
      * Si pas de user => Redirection connexion
      */
-    // if (sessionStatus === REGISTERED && !authUserIsLoading) {
-    //     if (authUser) {
-    //         return (<>{children}</>)
-    //     } else {
-    //         return (
-    //             <ContainerRacks />
-    //         )
-    //     }
-    // }
+    if (sessionStatus === "registered" && !authUserIsLoading) {
+        if (authUser) {
+            return (
+                <>
+                    <Header />
+                    <ContainerRacks />
+                    <Navigate to="/container-racks" />
+                </>)
+        }
+        else {
+            return (
+                <>
+                    <Header />
+                    <Home />
+                    <Navigate to="/" />
+                </>
+            )
+        }
+    }
 
     /** AFFICHAGE SPINNER - CAS 1:
      * Pas en chargement => Affichage Application
