@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             {
-                authUser !== null ? (<Navigate to="/container-racks" />) : (<Accueil /> )
+                authUser !== null ? (<Navigate to="/container-racks" replace={true} />) : (<Accueil /> )
             }
         </>
     );

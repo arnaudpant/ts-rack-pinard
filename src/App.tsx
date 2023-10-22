@@ -5,14 +5,14 @@ import Connexion from "./ui/pages/Connexion";
 import Inscription from "./ui/pages/Inscription";
 import ForgetPassword from "./ui/pages/ForgetPassword";
 import ContainerRacks from "./ui/pages/ContainerRacks";
-// import { useAuth } from "./context/AuthUserContext";
+import { REGISTERED } from "./lib/session-status";
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout sessionStatus="registered" />}>
+        <Route element={<Layout sessionStatus={REGISTERED} />}>
           <Route path="/" element={<Home />} />
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Inscription />} />
