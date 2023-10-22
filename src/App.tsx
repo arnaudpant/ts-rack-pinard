@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout sessionStatus="guest" />}>
+        <Route element={<Layout sessionStatus="registered" />}>
           <Route path="/" element={<Home />} />
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Inscription />} />

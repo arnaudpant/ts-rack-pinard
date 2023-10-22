@@ -2,7 +2,7 @@ import { useAuth } from "../../../context/AuthUserContext";
 import Spinner from "../spinner/Spinner";
 import { SessionStatus } from "../../../types/SessionStatus";
 import Header from "../layouts/Header";
-import Home from "../../../ui/pages/Home";
+//import Home from "../../../ui/pages/Home";
 import ContainerRacks from "../../../ui/pages/ContainerRacks";
 import { Navigate } from "react-router-dom";
 
@@ -26,11 +26,12 @@ const Session = ({ children, sessionStatus }: Props) => {
 
     /** SECURITE AUTHENTIFICATION
      * status authentifié + pas en chargement
-     * Si user => Affichage Application
-     * Si pas de user => Redirection connexion
+     * Si user => Affichage des racks
+     * Si pas de user => Redirection page accueil
      */
     if (sessionStatus === "registered" && !authUserIsLoading) {
         if (authUser) {
+
             return (
                 <>
                     <Header />
@@ -41,8 +42,9 @@ const Session = ({ children, sessionStatus }: Props) => {
         else {
             return (
                 <>
-                    <Header />
-                    <Home />
+                    {/* <Header />
+                    <Home /> */}
+                    {children}
                     <Navigate to="/" />
                 </>
             )
