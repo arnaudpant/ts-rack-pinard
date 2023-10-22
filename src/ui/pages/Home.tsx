@@ -4,13 +4,12 @@ import Accueil from "../modules/accueil/Accueil";
 
 const Home = () => {
 
-    const { authUser, authUserIsLoading } = useAuth()
-    console.log(authUserIsLoading)
+    const { authUser } = useAuth()
 
     return (
         <>
             {
-                authUserIsLoading === false ? (<Navigate to="/container-racks" />) : (<Accueil /> )
+                authUser !== null ? (<Navigate to="/container-racks" replace={true} />) : (<Accueil /> )
             }
         </>
     );
