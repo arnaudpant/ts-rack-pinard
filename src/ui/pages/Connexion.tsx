@@ -7,9 +7,12 @@ const Connexion = () => {
 
 
     const onBoardingisCompleted = authUser?.userDocument.onBoardingisCompleted
+    console.log("onBoardingisCompleted", onBoardingisCompleted) // false
+
     const shouldRedirectOnboarding = () => {
+
         return (
-            !authUserIsLoading && authUser && !onBoardingisCompleted
+            !authUserIsLoading && onBoardingisCompleted
         )
     }
 

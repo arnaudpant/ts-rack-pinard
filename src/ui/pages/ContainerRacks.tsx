@@ -8,6 +8,9 @@ const ContainerRacks = () => {
 
     const { authUser } = useAuth()
 
+    const onBoardingisCompleted: boolean = authUser?.userDocument.onBoardingisCompleted
+
+
     const handleDisconnect = async () => {
         const { error } = await firebaseSignOutUser()
         if (error) {
@@ -22,7 +25,7 @@ const ContainerRacks = () => {
             {
                 authUser !== null ?
                     (
-                        <>
+                        onBoardingisCompleted ? (<>
                             <div className='absolute top-4 right-4 cursor-pointer' onClick={handleDisconnect}>
                                 <Unplug className='text-fond hover:scale-125' />
                             </div>
@@ -34,7 +37,7 @@ const ContainerRacks = () => {
                                     <h3 className="text-xl text-vin text-center mt-8">See you soon</h3>
                                 </div>
                             </div>
-                        </>
+                        </>) : (<Navigate to="/boarding" replace={true} />)
                     )
                     :
                     (<Navigate to="/" replace={true} />)
