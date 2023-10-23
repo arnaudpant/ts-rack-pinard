@@ -1,3 +1,4 @@
+/** FIREBASE */
 import { doc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase.config";
 import { FirebaseError } from "firebase/app";

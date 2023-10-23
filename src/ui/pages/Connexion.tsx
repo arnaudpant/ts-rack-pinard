@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import BoxConnexion from "../modules/authentification/connexion/BoxConnexion";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthUserContext";
-import { Navigate } from "react-router-dom";
+import BoxConnexion from "../modules/authentification/connexion/BoxConnexion";
 
 const Connexion = () => {
     const { authUser, authUserIsLoading } = useAuth()

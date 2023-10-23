@@ -1,3 +1,4 @@
+/** FIREBASE */
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, sendEmailVerification } from "firebase/auth"
 import { auth } from "../firebase/firebase.config"
 import { FirebaseError } from "firebase/app"

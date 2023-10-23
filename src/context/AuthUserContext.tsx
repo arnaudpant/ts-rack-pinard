@@ -1,5 +1,8 @@
+/** HOOKS */
 import useFirebaseAuth from "../hooks/useFirebaseAuth"
+/** TYPES */
 import { UserDocument } from "../types/User"
+/** CONTEXT */
 import { createContext, useContext } from "react"
 
 /**

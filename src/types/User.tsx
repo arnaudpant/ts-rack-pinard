@@ -1,3 +1,4 @@
+/** FIREBASE */
 import { Timestamp } from "firebase/firestore"
 
 // Données primaires de Firebase
