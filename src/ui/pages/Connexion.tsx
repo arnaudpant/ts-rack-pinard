@@ -9,7 +9,6 @@ const Connexion = () => {
 
     const onBoardingisCompleted = authUser?.userDocument.onBoardingisCompleted
     const shouldRedirectOnboarding = () => {
-        console.log(!authUserIsLoading && authUser && !onBoardingisCompleted)
         return (
             !authUserIsLoading && authUser && !onBoardingisCompleted
         )

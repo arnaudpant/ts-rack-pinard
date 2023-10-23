@@ -10,9 +10,8 @@ interface Props {
 const Session = ({ children }: Props) => {
 
     const { authUserIsLoading } = useAuth()
-   
 
-    /** AFFICHAGE SPINNER - CAS 1:
+    /** AFFICHAGE SPINNER
      * Pas en chargement => Affichage Application
      * En chargement => Affichage SPINNER
      */
