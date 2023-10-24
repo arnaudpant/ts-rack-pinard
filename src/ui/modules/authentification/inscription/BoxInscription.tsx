@@ -39,7 +39,7 @@ const BoxInscription: React.FC = () => {
      * firebaseCreateUser return soit une error soit les data de l'user si la creation dans firebase a reussi
      * Si return error on arrete le loading
     */
-    const handleCreateUserAuth = async ({ login, email, password }: RegisterFormType) => {
+    const handleCreateUserAuth = async ({ email, password }: RegisterFormType) => {
         const { error, data } = await firebaseCreateUser(email, password)
         if (error) {
             setIsLoading(false)
@@ -47,7 +47,6 @@ const BoxInscription: React.FC = () => {
             return
         }
         const userDocumentData = {
-            login: login,
             email: email,
             uid: data.uid,
             inscription: new Date(),

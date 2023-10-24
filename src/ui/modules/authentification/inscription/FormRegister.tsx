@@ -18,16 +18,6 @@ const FormRegister = ({ form }: Props) => {
             <p className="text-sm pb-3">Déjà un compte ? <Link to="/connexion" className="text-vin">Connexion</Link></p>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} >
 
-            <label htmlFor="login" className='pb-1' >Login</label>
-                <Input
-                    type="text"
-                    id="login"
-                    isLoading={isLoading}
-                    placeholder="Entrez un login"
-                    register={register}
-                    errors={errors}
-                />
-
                 <label htmlFor="email" className='pb-1' >E-mail</label>
                 <Input
                     type="email"

@@ -8,7 +8,6 @@ export interface FormsType {
 }
 
 export interface RegisterFormType {
-    login: string,
     email: string,
     password: string
 }

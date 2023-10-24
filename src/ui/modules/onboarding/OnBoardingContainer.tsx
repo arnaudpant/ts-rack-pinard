@@ -1,8 +1,71 @@
 import OnBoardingView from "./OnBoardingView";
 
+import { useState } from "react";
+import WelcomeStep from "./components/WelcomeStep";
+import { OnboardingStep } from "@/types/OnboardingStep";
+
 const OnBoardingContainer = () => {
+
+    const [currentStep, setCurrentStep] = useState<number>(1)
+    const stepList: OnboardingStep[] = [
+        {
+            id: 1,
+            label: "Bienvenue",
+            component: { step: WelcomeStep }
+        },
+        {
+            id: 2,
+            label: "Login",
+            component: { step: WelcomeStep }
+        },
+        {
+            id: 3,
+            label: "Avatar",
+            component: { step: WelcomeStep }
+        },
+    ]
+
+    const getCurrentStep = () => {
+        return stepList.find((elt) => elt.id === currentStep)
+    }
+
+    const nextStep = () => {
+        if (currentStep < stepList.length){
+            setCurrentStep(currentStep + 1)
+        }
+    }
+    const prevStep = () => {
+        if (currentStep > 1){
+            setCurrentStep(currentStep - 1)
+        }
+    }
+
+    const isFirstStep = () => {
+        if (currentStep === 1) {
+            return true
+        }
+        return false
+    }
+
+    const isFinalStep = () => {
+        if (currentStep === stepList.length) {
+            return true
+        }
+        return false
+    }
+
     return (
-        <OnBoardingView />
+        <>
+            <OnBoardingView
+                getCurrentStep={getCurrentStep}
+                nextStep={nextStep}
+                prevStep={prevStep}
+                isFirstStep={isFirstStep}
+                isFinalStep={isFinalStep}
+                stepList={stepList}
+            />
+        </>
+
     );
 };
 
