@@ -7,7 +7,6 @@ import ProfileStep from "./components/ProfileStep";
 const OnBoardingContainer = () => {
 
     const [currentStep, setCurrentStep] = useState<number>(1)
-    console.log("currentStep", currentStep)
     const stepList: OnboardingStep[] = [
         {
             id: 1,

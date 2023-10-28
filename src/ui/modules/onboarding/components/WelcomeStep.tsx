@@ -1,20 +1,33 @@
 import { BaseCoomponentProps } from "@/types/OnboardingStep";
 import OnBoardingFooter from "./OnBoardingFooter";
+import OnBoardingTabs from "./OnBoardingTabs";
 
-const WelcomeStep = ({ nextStep, isFirstStep, isFinalStep }: BaseCoomponentProps) => {
+const WelcomeStep = ({ nextStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
     return (
-        <div className="flex flex-col md:container mx-auto md:py-20">
-            <div className="flex flex-col md:flex-row">
+
+        <div className="h-[calc(100vh-64px)] md:container mx-auto md:py-20">
+
+            <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
+
+            <div className="relative h-full flex flex-col items-start md:flex-row">
+
                 <div className="md:w-2/3">
-                    <h1 className="text-3xl text-center md:text-5xl p-6">Bienvenue sur l'appli "Racks à pinard" !</h1>
-                    <p className="px-6">Marre d'acheter du vin et de perdre ton temps dans ta cave pour retrouver LA bouteille que tu veux boire ? Gère tes bouteilles et
+                    <h1 className="text-3xl text-center md:text-5xl md:text-left pt-6 px-6">Bienvenue sur l'appli "Racks à Pinard" !</h1>
+                    <p className="px-6 pt-6">Marre d'acheter du vin et de perdre ton temps dans ta cave pour retrouver LA bouteille que tu veux boire ? Gère tes bouteilles et
                         ta cave à vin depuis cette application facilement et sans prise de tête !</p>
                 </div>
-                <div className="md:w-1/3 mx-auto">
-                    <img src="/vine.svg" alt="" className="h-60 w-60" />
+
+                <div className=" relative -top-10 md:w-1/3 mx-auto">
+                    <img src="/vine.svg" alt="bouteille et verre de vin sur un plateau avec du raisin" className="h-56 w-56 md:h-80 md:w-80" />
                 </div>
+
+                <OnBoardingFooter nextStep={nextStep} isFirstStep={isFirstStep} isFinalStep={isFinalStep} />
+
             </div>
-            <OnBoardingFooter nextStep={nextStep} isFirstStep={isFirstStep} isFinalStep={isFinalStep} />
+
+
+
+
         </div>
     );
 };
