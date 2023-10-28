@@ -1,12 +1,13 @@
-import OnBoardingView from "./OnBoardingView";
-
 import { useState } from "react";
-import WelcomeStep from "./components/WelcomeStep";
+import OnBoardingView from "./OnBoardingView";
 import { OnboardingStep } from "@/types/OnboardingStep";
+import WelcomeStep from "./components/WelcomeStep";
+import ProfileStep from "./components/ProfileStep";
 
 const OnBoardingContainer = () => {
 
     const [currentStep, setCurrentStep] = useState<number>(1)
+    console.log("currentStep", currentStep)
     const stepList: OnboardingStep[] = [
         {
             id: 1,
@@ -16,7 +17,7 @@ const OnBoardingContainer = () => {
         {
             id: 2,
             label: "Login",
-            component: { step: WelcomeStep }
+            component: { step: ProfileStep }
         },
         {
             id: 3,
@@ -31,6 +32,7 @@ const OnBoardingContainer = () => {
 
     const nextStep = () => {
         if (currentStep < stepList.length){
+            console.log("currentStep fct", currentStep)
             setCurrentStep(currentStep + 1)
         }
     }
