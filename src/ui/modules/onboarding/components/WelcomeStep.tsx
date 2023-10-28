@@ -1,7 +1,7 @@
 import { BaseCoomponentProps } from "@/types/OnboardingStep";
 import OnBoardingFooter from "./OnBoardingFooter";
 
-const WelcomeStep = ({ nextStep, isFirstStep }: BaseCoomponentProps) => {
+const WelcomeStep = ({ nextStep, isFirstStep, isFinalStep }: BaseCoomponentProps) => {
     return (
         <div className="flex flex-col md:container mx-auto md:py-20">
             <div className="flex flex-col md:flex-row">
@@ -14,7 +14,7 @@ const WelcomeStep = ({ nextStep, isFirstStep }: BaseCoomponentProps) => {
                     <img src="/vine.svg" alt="" className="h-60 w-60" />
                 </div>
             </div>
-            <OnBoardingFooter nextStep={nextStep} isFirstStep={isFirstStep} />
+            <OnBoardingFooter nextStep={nextStep} isFirstStep={isFirstStep} isFinalStep={isFinalStep} />
         </div>
     );
 };

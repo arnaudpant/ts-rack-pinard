@@ -23,7 +23,7 @@ const OnBoardingFooter = ({ nextStep, prevStep, isFirstStep, isFinalStep, isLoad
 
     return (
         <div className="absolute bottom-6 right-6 w-full">
-            <div className="flex items-center justify-end gap-5">
+            <div className={clsx("flex items-center gap-5", prevStep ? ('justify-between'): ('justify-end'))}>
                 {
                     prevStep && (<button className={clsx(isLoading && "cursor-not-allowed")} onClick={prevStep}>Retour</button>)
                 }
