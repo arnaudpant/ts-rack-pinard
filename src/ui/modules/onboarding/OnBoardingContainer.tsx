@@ -18,6 +18,11 @@ const OnBoardingContainer = () => {
             label: "Profil",
             component: { step: ProfileStep }
         },
+        {
+            id: 3,
+            label: "Validation",
+            component: { step: ProfileStep }
+        },
     ]
 
     const getCurrentStep = () => {

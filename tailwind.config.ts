@@ -10,7 +10,7 @@ export default {
 			vin_blanc: '#e9e37c',
 			vin_rose: '#F8C3CD',
 			vin_champagne: '#FDEE00',
-			gris: '#dfe6e9'
+			gris: '#b2bec3'
 		},
 		extend: {
 			boxShadow: {
