@@ -1,4 +1,5 @@
 import { OnboardingStep } from "@/types/OnboardingStep";
+import clsx from "clsx";
 
 interface Props {
     tabs: OnboardingStep[],
@@ -11,7 +12,10 @@ const OnBoardingTabs = ({tabs, getCurrentStep} : Props) => {
             <div className="flex items-center space-x-6">
                 {
                     tabs && tabs.map((tab) => (
-                        <div className="text-sm opacity-40">{tab.label}</div>
+                        <div 
+                            className={clsx(getCurrentStep && getCurrentStep()?.id === tab.id ? "border-vin opacity-70" : "text-gris", "text-sm mt-3 md:my-5 pb-1 border-b-2 z-10")}
+                            key={tab.id}>{tab.label}
+                        </div>
                     ))
                 }
             </div>

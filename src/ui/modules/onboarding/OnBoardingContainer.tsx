@@ -15,13 +15,8 @@ const OnBoardingContainer = () => {
         },
         {
             id: 2,
-            label: "Login",
+            label: "Profil",
             component: { step: ProfileStep }
-        },
-        {
-            id: 3,
-            label: "Avatar",
-            component: { step: WelcomeStep }
         },
     ]
 
