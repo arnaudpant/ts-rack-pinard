@@ -1,8 +1,8 @@
 export interface FormsType {
-    errors: any, 
-    control : any, 
-    register : any, 
-    handleSubmit: any, 
+    errors: any,
+    control?: any,
+    register: any,
+    handleSubmit: any,
     onSubmit: any,
     isLoading: boolean
 }
@@ -18,4 +18,9 @@ export interface ConnexionFormType {
 
 export interface ForgetFormType {
     email: string,
+}
+
+export interface OnboardingProfileFormType {
+    displayName: string,
+    login: string
 }

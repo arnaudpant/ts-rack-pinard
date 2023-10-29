@@ -8,9 +8,9 @@ interface Props {
     placeholder: string,
     register: any,
     errors: any,
-    errorMsg?: string
-    required?: boolean
-    isAutoCompleted?: boolean
+    errorMsg?: string,
+    required?: boolean,
+    isAutoCompleted?: boolean,
 }
 
 const Input = ({ type = "text", id, isLoading, placeholder, register, errors, errorMsg = "Ce champs est obligatoire", required = true, isAutoCompleted = false }: Props) => {
