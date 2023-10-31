@@ -1,8 +1,9 @@
 import { useState } from "react";
 import OnBoardingView from "./OnBoardingView";
 import { OnboardingStep } from "@/types/OnboardingStep";
-import WelcomeStep from "./components/WelcomeStep";
-import ProfileStep from "./components/ProfileStep";
+import WelcomeStep from "./step-bienvenu/WelcomeStep";
+import ProfileStep from "./step-profile/ProfileStep";
+import ValidationStep from "./step-validation/ValidationStep";
 
 const OnBoardingContainer = () => {
 
@@ -21,7 +22,7 @@ const OnBoardingContainer = () => {
         {
             id: 3,
             label: "Validation",
-            component: { step: ProfileStep }
+            component: { step: ValidationStep }
         },
     ]
 

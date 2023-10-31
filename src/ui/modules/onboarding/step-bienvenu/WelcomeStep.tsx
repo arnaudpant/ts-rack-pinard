@@ -1,6 +1,6 @@
 import { BaseCoomponentProps } from "@/types/OnboardingStep";
-import OnBoardingFooter from "./OnBoardingFooter";
-import OnBoardingTabs from "./OnBoardingTabs";
+import OnBoardingFooter from "../components/OnBoardingFooter";
+import OnBoardingTabs from "../components/OnBoardingTabs";
 
 const WelcomeStep = ({ nextStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
     return (
