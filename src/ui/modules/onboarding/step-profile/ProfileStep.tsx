@@ -15,7 +15,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
 
     const { authUser } = useAuth()
     const { value: isLoading, setValue: setLoading } = useToggle()
-    const [selectedImage, setSelectedImage] = useState<File | null>(null)
+    // const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null)
 
     const {
@@ -72,7 +72,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
     const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (file) {
-            setSelectedImage(file)
+            // setSelectedImage(file)
             const reader = new FileReader()
             reader.onload = (e) => {
                 let imgDataUrl: string | ArrayBuffer | null = null
