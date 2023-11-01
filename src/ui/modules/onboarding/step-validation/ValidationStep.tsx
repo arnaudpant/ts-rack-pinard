@@ -6,7 +6,7 @@ const ValidationStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurre
     return (
         <div>
             Validation
-            <OnBoardingFooter prevStep={prevStep} nextStep={nextStep} isFirstStep={isFirstStep} isFinalStep={isFinalStep} isLoading={isLoading} />
+            <OnBoardingFooter prevStep={prevStep} nextStep={nextStep} isFirstStep={isFirstStep} isFinalStep={isFinalStep} />
         </div>
     );
 };

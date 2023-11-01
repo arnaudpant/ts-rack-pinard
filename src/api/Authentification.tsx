@@ -2,6 +2,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, sendEmailVerification } from "firebase/auth"
 import { auth } from "../firebase/firebase.config"
 import { FirebaseError } from "firebase/app"
+import { getFirebaseErrorMessage } from "../utils/getFirebaseErrorMessage"
 
 /**
  * CREATION D'UN NOUVEAU COMPTE
@@ -15,11 +16,11 @@ export const firebaseCreateUser = async (email: string, password: string) => {
         }
     } catch (error) {
         const firebaseError = error as FirebaseError
-        //TODO: Formater les erreurs
+        const errorMessage = getFirebaseErrorMessage("createUserWithEmailAndPassword", firebaseError.code)
         return {
             error: {
                 code: firebaseError.code,
-                message: firebaseError.message
+                message: errorMessage
             }
         }
     }
@@ -64,11 +65,12 @@ export const firebaseSignInUser = async (email: string, password: string) => {
         }
     } catch (error) {
         const firebaseError = error as FirebaseError
-        //TODO: Formater les erreurs
+        const errorMessage = getFirebaseErrorMessage("signInWithEmailAndPassword", firebaseError.code)
+
         return {
             error: {
                 code: firebaseError.code,
-                message: firebaseError.message
+                message: errorMessage
             }
         }
     }
@@ -85,11 +87,11 @@ export const firebaseSignOutUser = async () => {
         }
     } catch (error) {
         const firebaseError = error as FirebaseError
-        //TODO: Formater les erreurs
+        const errorMessage = getFirebaseErrorMessage("signOut", firebaseError.code)
         return {
             error: {
                 code: firebaseError.code,
-                message: firebaseError.message
+                message: errorMessage
             }
         }
     }
@@ -106,11 +108,11 @@ export const sendEmailToResetPassword = async (email: string) => {
         }
     } catch (error) {
         const firebaseError = error as FirebaseError
-        //TODO: Formater les erreurs
+        const errorMessage = getFirebaseErrorMessage("sendPasswordResetEmail", firebaseError.code)
         return {
             error: {
                 code: firebaseError.code,
-                message: firebaseError.message
+                message: errorMessage
             }
         }
     }

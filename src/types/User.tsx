@@ -18,5 +18,6 @@ export interface UserDocument {
     email: string,
     creation_date: Timestamp,
     onBoardingisCompleted: boolean,
+    login: string
     // Champs Ajouter un champ ds Firestore
 }

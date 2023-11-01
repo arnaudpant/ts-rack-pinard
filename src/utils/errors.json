@@ -1,0 +1,28 @@
+{
+    "an_unknown_error_has_occurred": "Une erreur inconnue est survenue, veuillez réessayer ou contactez le webmaster.",
+
+    "firestore": {
+        "permission-denied": "Permissions manquantes ou insuffisantes."
+    },
+    "createUserWithEmailAndPassword": {
+        "auth/email-already-in-use": "Cette adresse email est déja utilisée.",
+        "auth/invalid-email": "Cette adresse email n'est pas valide."
+    },
+    "signInWithEmailAndPassword": {
+        "auth/invalid-email": "Cette adresse email n'est pas valide.",
+        "auth/user-disabled": "Connexion impossible, votre compte a été désactivé.",
+        "auth/user-not-find": "Connexion impossible, cette adresse email n'existe pas.",
+        "auth/wrong-password": "Connexion impossible, mot de passe non valide."
+    },
+    "signOut": {
+        "auth/invalid-user-token" : "Une erreur est survenue code: signOut invalid-user-token.",
+        "auth/user-token-expired" : "Une erreur est survenue code: signOut user-token-expired.",
+        "auth/null-user" : "Une erreur est survenue code: signOut null-user."
+    },
+    "sendPasswordResetEmail": {
+        "auth/expired-action-code": "Erreur, action expiré.",
+        "auth/invalid-action-code": "Erreur, action non valide.",
+        "auth/user-disabled": "Erreur, compte désactivé.",
+        "auth/user-not-found": "Erreur, compte non repertorié."
+    }
+}
