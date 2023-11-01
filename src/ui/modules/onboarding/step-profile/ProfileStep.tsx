@@ -1,22 +1,33 @@
-import { BaseCoomponentProps } from "../../../../types/OnboardingStep";
+/** COMPONENTS */
 import OnBoardingFooter from "../components/OnBoardingFooter";
 import OnBoardingTabs from "../components/OnBoardingTabs";
 import ProfileStepForm from "./ProfileStepForm";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { OnboardingProfileFormType } from "../../../../types/Forms";
-import { useToggle } from "../../../../hooks/useToggle";
-import { FirestoreUpdateDocument } from "../../../../api/Firestore";
-import { useAuth } from "../../../../context/AuthUserContext";
-import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
 import UploadAvatar from "../components/UploadAvatar";
+/** HOOKS */
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useToggle } from "../../../../hooks/useToggle";
+/** CONTEXT */
+import { useAuth } from "../../../../context/AuthUserContext";
+/** TYPES */
+import { BaseCoomponentProps } from "../../../../types/OnboardingStep";
+import { OnboardingProfileFormType } from "../../../../types/Forms";
+/** FIREBASE */
+import { FirestoreUpdateDocument } from "../../../../api/Firestore";
+import { StorageReference, UploadTask, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../../../firebase/firebase.config";
+/** API */
+import { toast } from "react-toastify";
+
+
 
 const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
 
     const { authUser } = useAuth()
-    const { value: isLoading, setValue: setLoading } = useToggle()
-    // const [selectedImage, setSelectedImage] = useState<File | null>(null)
+    const { value: isLoading, setValue: setLoading, toggle } = useToggle()
+    const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null)
+    const [uploadProgress, setUploadProgress] = useState<number>(0)
 
     const {
         handleSubmit,
@@ -66,13 +77,14 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
 
         setLoading(false)
         nextStep()
+        handleImageUpload()
     }
 
-    /** 4 Avatar */
+    /** 4 Avatar en local */
     const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (file) {
-            // setSelectedImage(file)
+            setSelectedImage(file)
             const reader = new FileReader()
             reader.onload = (e) => {
                 let imgDataUrl: string | ArrayBuffer | null = null
@@ -82,6 +94,38 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                 setImagePreview(imgDataUrl)
             }
             reader.readAsDataURL(file)
+        }
+    }
+
+    /** 5 Avatar en ligne */
+    const handleImageUpload = () => {
+        let storageRef: StorageReference
+        let uploadTask: UploadTask
+
+        if (selectedImage !== null) {
+            toggle()
+            storageRef = ref(
+                storage, `users-medias/${authUser.uid}/avatar/avatar-${authUser.uid}`
+            )
+            uploadTask = uploadBytesResumable(storageRef, selectedImage)
+            uploadTask.on(
+                "state_changed", (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    setUploadProgress(progress)
+                },
+                (error) => {
+                    console.log('Erreur upload avatar', error)
+                    toggle()
+                    toast.error("Erreur au download de votre avatar")
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (dowloadURL) => {
+                            console.log(dowloadURL)
+                        }
+                    )
+                }
+            )
         }
     }
 
