@@ -8,13 +8,15 @@ import { useToggle } from "../../../../hooks/useToggle";
 import { FirestoreUpdateDocument } from "../../../../api/Firestore";
 import { useAuth } from "../../../../context/AuthUserContext";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import UploadAvatar from "../components/UploadAvatar";
 
 const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
 
     const { authUser } = useAuth()
     const { value: isLoading, setValue: setLoading } = useToggle()
+    const [selectedImage, setSelectedImage] = useState<File | null>(null)
+    const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null)
 
     const {
         handleSubmit,
@@ -66,6 +68,27 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
         nextStep()
     }
 
+    /** 4 Avatar */
+    const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (file) {
+            setSelectedImage(file)
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                let imgDataUrl: string | ArrayBuffer | null = null
+                if (e.target) {
+                    imgDataUrl = e.target.result
+                }
+                setImagePreview(imgDataUrl)
+            }
+            reader.readAsDataURL(file)
+        }
+    }
+
+
+
+
+
     return (
         <div className="h-[calc(100vh-64px)]">
 
@@ -83,7 +106,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                     <div className="md:w-[300px]">
                         <ProfileStepForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
                     </div>
-                    <UploadAvatar />
+                    <UploadAvatar handleImageSelect={handleImageSelect} imagePreview={imagePreview} />
                 </div>
 
                 <OnBoardingFooter prevStep={prevStep} nextStep={handleSubmit(onSubmit)} isFirstStep={isFirstStep} isFinalStep={isFinalStep} isLoading={isLoading} />
