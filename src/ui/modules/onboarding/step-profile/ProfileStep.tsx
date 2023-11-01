@@ -9,6 +9,7 @@ import { FirestoreUpdateDocument } from "../../../../api/Firestore";
 import { useAuth } from "../../../../context/AuthUserContext";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import UploadAvatar from "../components/UploadAvatar";
 
 const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
 
@@ -69,6 +70,8 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
         <div className="h-[calc(100vh-64px)]">
 
             <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
+
+
             <div className="relative h-[calc(100vh-102px)] md:h-[calc(100vh-130px)] pt-10 flex flex-col md:items-start items-center md:flex-row gap-y-4">
 
                 <div className="w-full lg:w-1/2">
@@ -76,8 +79,11 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                     <p className="px-6 pt-6 text-center md:text-left">Entre un login et change ton avatar !</p>
                 </div>
 
-                <div className="flex flex-col pt-3 pl-6 mr-6 md:w-[300px] ">
-                    <ProfileStepForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
+                <div className="flex flex-col pt-3 pl-6 mr-6">
+                    <div className="md:w-[300px]">
+                        <ProfileStepForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
+                    </div>
+                    <UploadAvatar />
                 </div>
 
                 <OnBoardingFooter prevStep={prevStep} nextStep={handleSubmit(onSubmit)} isFirstStep={isFirstStep} isFinalStep={isFinalStep} isLoading={isLoading} />
