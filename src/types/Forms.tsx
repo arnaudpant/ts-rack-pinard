@@ -22,5 +22,5 @@ export interface ForgetFormType {
 
 export interface OnboardingProfileFormType {
     // displayName: string,
-    login: string
+    login: string,
 }
