@@ -32,7 +32,6 @@ const OnBoardingContainer = () => {
 
     const nextStep = () => {
         if (currentStep < stepList.length){
-            console.log("currentStep fct", currentStep)
             setCurrentStep(currentStep + 1)
         }
     }

@@ -1,20 +1,31 @@
+import clsx from 'clsx';
 import Avatar from '../../../../ui/design-syst/avatar/Avatar';
 import { Image } from 'lucide-react'
 
 interface Props {
     handleImageSelect: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    imagePreview: string | ArrayBuffer | null
+    imagePreview: string | ArrayBuffer | null,
+    uploadProgress: number,
+    isLoading: boolean
 }
 
-const UploadAvatar = ({ handleImageSelect, imagePreview }: Props) => {
+
+const UploadAvatar = ({ handleImageSelect, imagePreview, uploadProgress, isLoading }: Props) => {
+    const progressBarStyle = `fixed top-36 left-0 w-full h-1 bg-vin ${uploadProgress > 0 ? "" : "hidden"}`
+    
+    
     return (
         <div className="flex items-center gap-5 mt-4">
-            <label className='inline-block bg-vin text-fond text-lg px-4 py-2 rounded-md cursor-pointer'>
+            <div className={progressBarStyle} style={{width: `${uploadProgress}%`}}></div>
+            <label className={clsx(
+                isLoading ? "cursor-not-allowed" : "cursor-pointer",
+                'inline-block bg-vin text-fond text-lg px-4 py-2 rounded-md '
+            )}>
                 <div className="flex items-center gap-2">
                     <Image />
                     <span>Choisir un fichier</span>
                 </div>
-                <input type="file" className='hidden' onChange={handleImageSelect} />
+                <input type="file" className='hidden' onChange={handleImageSelect} disabled={isLoading} />
             </label>
             <Avatar size='20' alt='avatar' src={
                 imagePreview ? typeof imagePreview === "string" ? imagePreview : String(imagePreview) : '/camera.svg'

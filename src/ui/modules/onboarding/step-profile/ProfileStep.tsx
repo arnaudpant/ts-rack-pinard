@@ -24,7 +24,7 @@ import { toast } from "react-toastify";
 const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
 
     const { authUser } = useAuth()
-    const { value: isLoading, setValue: setLoading, toggle } = useToggle()
+    const { value: isLoading, toggle } = useToggle()
     const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null)
     const [uploadProgress, setUploadProgress] = useState<number>(0)
@@ -55,11 +55,11 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
             "users", authUser.uid, FormData
         )
         if (error) {
-            setLoading(false)
+            toggle()
             toast.error(error.message)
             return
         }
-        setLoading(false)
+        toggle()
         reset()
         nextStep()
     }
@@ -69,13 +69,13 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
      * Si changées => handleUpdateUserDocument
     */
     const onSubmit: SubmitHandler<OnboardingProfileFormType> = async (FormData) => {
-        setLoading(true)
+        toggle()
 
         if (login !== FormData.login) {
             handleUpdateUserDocument(FormData)
         }
 
-        setLoading(false)
+        toggle()
         nextStep()
         handleImageUpload()
     }
@@ -97,7 +97,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
         }
     }
 
-    /** 5 Avatar en ligne */
+    /** 5 Avatar en local */
     const handleImageUpload = () => {
         let storageRef: StorageReference
         let uploadTask: UploadTask
@@ -120,17 +120,35 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(
-                        (dowloadURL) => {
-                            console.log(dowloadURL)
+                        (downloadURL) => {
+                            updateUserDocument(downloadURL)
                         }
                     )
                 }
             )
+        } else {
+            nextStep()
         }
     }
 
-
-
+     /** 6 transfert Avatar en ligne */
+    const updateUserDocument =async (photoURL: string) => {
+        const body = {
+            photoURL: photoURL
+        }
+        const {error} = await FirestoreUpdateDocument(
+            "users",
+            authUser.uid,
+            body
+        )
+        if (error) {
+            toggle()
+            toast.error(error.message)
+            return
+        }
+        toggle()
+        nextStep()
+    }
 
 
     return (
@@ -150,7 +168,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                     <div className="md:w-[300px]">
                         <ProfileStepForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
                     </div>
-                    <UploadAvatar handleImageSelect={handleImageSelect} imagePreview={imagePreview} />
+                    <UploadAvatar handleImageSelect={handleImageSelect} imagePreview={imagePreview} uploadProgress={uploadProgress} isLoading={isLoading} />
                 </div>
 
                 <OnBoardingFooter prevStep={prevStep} nextStep={handleSubmit(onSubmit)} isFirstStep={isFirstStep} isFinalStep={isFinalStep} isLoading={isLoading} />
