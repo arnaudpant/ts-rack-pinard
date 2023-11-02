@@ -14,7 +14,6 @@ interface Props {
 const UploadAvatar = ({ handleImageSelect, imagePreview, uploadProgress, isLoading }: Props) => {
     const progressBarStyle = `fixed top-36 left-0 w-full h-1 bg-vin ${uploadProgress > 0 ? "" : "hidden"}`
     const { authUser } = useAuth()
-    console.log(authUser.userDocument.photoURL)
 
     return (
         <div className="flex items-center gap-5 mt-4">

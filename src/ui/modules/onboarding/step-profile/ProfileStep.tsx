@@ -152,6 +152,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
 
 
     return (
+        
         <div className="h-[calc(100vh-64px)]">
 
             <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
