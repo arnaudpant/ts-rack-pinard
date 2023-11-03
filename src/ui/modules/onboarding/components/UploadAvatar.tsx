@@ -30,7 +30,7 @@ const UploadAvatar = ({ handleImageSelect, imagePreview, uploadProgress, isLoadi
             </label>
             <Avatar size='20' alt='avatar' src={
                 imagePreview ? typeof imagePreview === "string" ? imagePreview : String(imagePreview) : authUser.userDocument.photoURL ? authUser.userDocument.photoURL : '/camera.svg'
-            } width="80" height="80" />
+            } width="20" height="20" />
         </div>
     );
 };
