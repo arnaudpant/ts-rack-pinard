@@ -21,6 +21,14 @@ export interface ForgetFormType {
 }
 
 export interface OnboardingProfileFormType {
-    // displayName: string,
     login: string,
+}
+
+export interface userProfilFormtype {
+    errors: any,
+    control?: any,
+    register: any,
+    handleSubmit: any,
+    onSubmit: any,
+    isLoading: boolean
 }

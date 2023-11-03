@@ -5,6 +5,7 @@ import { Unplug } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { firebaseSignOutUser } from "../../../api/Authentification";
 import { Menu } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
 
@@ -40,7 +41,7 @@ const Header: React.FC = () => {
             <div className="hidden sm:block absolute right-4">
                 <div className={clsx(!authUser?.userDocument.onBoardingisCompleted && `hidden`, 'cursor-pointer w-14 h-14')}>
                     {
-                        scrAvatar == "" ? (<Avatar src="/avatar-default.png" width="14" height="14" />) : (<Avatar src={scrAvatar} width="14" height="14" />)
+                        scrAvatar == "" ? (<Link to="/user-infos"><Avatar src="/avatar-default.png" width="14" height="14" /></Link>) : (<Link to="/user-infos"><Avatar src={scrAvatar} width="14" height="14" /></Link>)
                     }
                 </div>
             </div>

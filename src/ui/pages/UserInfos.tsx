@@ -1,40 +1,35 @@
 /** COMPONENTS */
-import OnBoardingFooter from "../components/OnBoardingFooter";
-import OnBoardingTabs from "../components/OnBoardingTabs";
-import ProfileStepForm from "./ProfileStepForm";
-import UploadAvatar from "../components/UploadAvatar";
+import UploadAvatar from "../modules/onboarding/components/UploadAvatar";
 /** HOOKS */
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useToggle } from "../../../../hooks/useToggle";
 /** CONTEXT */
-import { useAuth } from "../../../../context/AuthUserContext";
+import { useAuth } from "../../context/AuthUserContext";
 /** TYPES */
-import { BaseCoomponentProps } from "../../../../types/OnboardingStep";
-import { OnboardingProfileFormType } from "../../../../types/Forms";
+import { OnboardingProfileFormType } from "../../types/Forms";
 /** FIREBASE */
-import { FirestoreUpdateDocument } from "../../../../api/Firestore";
+import { FirestoreUpdateDocument } from "../../api/Firestore";
 import { StorageReference, UploadTask, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../../../firebase/firebase.config";
+import { storage } from "../../firebase/firebase.config";
 /** API */
 import { toast } from "react-toastify";
+import ProfileUserInfosForm from "../modules/user-infos/ProfileUserInfosForm";
+import { Link } from "react-router-dom";
+//import { Navigate } from "react-router-dom";
 
 
-
-const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
-
+const UserInfos = () => {
     const { authUser } = useAuth()
-    const { value: isLoading, toggle } = useToggle()
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null)
-    const [uploadProgress, setUploadProgress] = useState<number>(0)
 
     const {
         handleSubmit,
         control,
         formState: { errors },
         register,
-        reset,
         setValue,
     } = useForm<OnboardingProfileFormType>()
 
@@ -55,13 +50,11 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
             "users", authUser.uid, FormData
         )
         if (error) {
-            toggle()
+            setIsLoading(false)
             toast.error(error.message)
             return
         }
-        toggle()
-        reset()
-        nextStep()
+        setIsLoading(false)
     }
 
     /** 2 Submit du formulaire 
@@ -69,18 +62,16 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
      * Si changées => handleUpdateUserDocument
     */
     const onSubmit: SubmitHandler<OnboardingProfileFormType> = async (FormData) => {
-        toggle()
-
+        setIsLoading(true)
         if (login !== FormData.login) {
             handleUpdateUserDocument(FormData)
         }
+        setIsLoading(false)
 
-        toggle()
-        nextStep()
         handleImageUpload()
     }
 
-    /** 4 Avatar en local */
+    /** 4 Avatar dans component */
     const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (file) {
@@ -103,19 +94,18 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
         let uploadTask: UploadTask
 
         if (selectedImage !== null) {
-            toggle()
+            setIsLoading(true)
             storageRef = ref(
                 storage, `users-medias/${authUser.uid}/avatar/avatar-${authUser.uid}`
             )
             uploadTask = uploadBytesResumable(storageRef, selectedImage)
             uploadTask.on(
-                "state_changed", (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    setUploadProgress(progress)
+                "state_changed", () => {
+
                 },
                 (error) => {
                     console.log('Erreur upload avatar', error)
-                    toggle()
+                    setIsLoading(false)
                     toast.error("Erreur au download de votre avatar")
                 },
                 () => {
@@ -127,57 +117,58 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
                 }
             )
         } else {
-            nextStep()
+            setIsLoading(false)
+            toast.success("Mise a jour du profil réussie")
         }
     }
 
-     /** 6 transfert Avatar en ligne */
-    const updateUserDocument =async (photoURL: string) => {
+    /** 6 transfert Avatar en ligne */
+    const updateUserDocument = async (photoURL: string) => {
         const body = {
             photoURL: photoURL
         }
-        const {error} = await FirestoreUpdateDocument(
+        const { error } = await FirestoreUpdateDocument(
             "users",
             authUser.uid,
             body
         )
         if (error) {
-            toggle()
             toast.error(error.message)
             return
         }
-        toggle()
-        nextStep()
+        toast.success("Mise a jour de l'avatar réussi")
+        setIsLoading(false)
     }
 
-
     return (
-        
-        <div className="h-[calc(100vh-64px)]">
+        <div className="flex flex-col justify-start">
 
-            <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
-
-            <div className="relative h-[calc(100vh-102px)] md:h-[calc(100vh-130px)] pt-10 flex flex-col md:items-start items-center md:flex-row gap-y-4">
-
-                <div className="w-full lg:w-1/2">
-                    <h1 className="text-3xl text-center pt-3 px-6 md:text-5xl md:text-left">Finalise ton compte</h1>
-                    <p className="px-6 pt-6 text-center md:text-left">Entre un login et change ton avatar !</p>
-                </div>
-
-                <div className="flex flex-col pt-3 pl-6 mr-6">
-                    <div className="md:w-[300px]">
-                        <ProfileStepForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
-                    </div>
-                    <UploadAvatar handleImageSelect={handleImageSelect} imagePreview={imagePreview} uploadProgress={uploadProgress} isLoading={isLoading} />
-                </div>
-
-                <OnBoardingFooter prevStep={prevStep} nextStep={handleSubmit(onSubmit)} isFirstStep={isFirstStep} isFinalStep={isFinalStep} isLoading={isLoading} />
-
+            <div className="my-5">
+                <h2 className="text-3xl text-center">
+                    Compte utilisateur
+                </h2>
             </div>
 
+            <div className="flex flex-col">
+                <div className="w-[280px] pl-5">
+                    <ProfileUserInfosForm form={{ errors, control, register, handleSubmit, onSubmit, isLoading }} />
+                </div>
+
+                <div className="pt-1 pl-5">
+                    <UploadAvatar handleImageSelect={handleImageSelect} imagePreview={imagePreview} isLoading={isLoading} />
+                </div>
+
+                <div className="flex justify-start mt-8 ml-5">
+                    <button className="px-5 py-3 bg-vin text-fond rounded-lg shadow-sm" onClick={handleSubmit(onSubmit)} >VALIDER</button>
+                </div>
+            </div>
+
+            <div className="mt-20 mx-auto">
+                <Link to='/container-racks' className="px-5 py-3 bg-vin text-fond rounded-lg shadow-sm" >MES RACKS</Link>
+            </div>
 
         </div>
     );
 };
 
-export default ProfileStep;
+export default UserInfos;

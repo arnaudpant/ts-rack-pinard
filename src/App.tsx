@@ -9,6 +9,7 @@ import ContainerRacks from "./ui/pages/ContainerRacks";
 import Boarding from "./ui/pages/Boarding";
 /** COMPONENTS */
 import Layout from "./ui/components/layouts/Layout";
+import UserInfos from "./ui/pages/UserInfos";
 
 
 function App() {
@@ -21,8 +22,9 @@ function App() {
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Inscription />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/container-racks" element={<ContainerRacks />} />
           <Route path="/boarding" element={<Boarding />} />
+          <Route path="/container-racks" element={<ContainerRacks />} />
+          <Route path="/user-infos" element={<UserInfos />} />
           <Route path="/*" element={<Home />} />
         </Route>
       </Routes>
