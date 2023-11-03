@@ -26,7 +26,7 @@ const ContainerRacks = () => {
                 authUser !== null ?
                     (
                         onBoardingisCompleted ? (<>
-                            <div className='absolute top-4 left-4 cursor-pointer' onClick={handleDisconnect}>
+                            <div className='absolute top-4 right-4 cursor-pointer' onClick={handleDisconnect}>
                                 <Unplug className='text-fond hover:scale-125' />
                             </div>
                             <div className="container mx-auto flex-col items-center">
