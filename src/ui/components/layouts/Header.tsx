@@ -8,9 +8,9 @@ const Header: React.FC = () => {
 
     let scrAvatar: string = ""
 
-    // if(authUser !== null) {
-    //     scrAvatar = authUser?.userDocument.photoURL
-    // }
+    if(authUser !== null) {
+        scrAvatar = authUser?.userDocument.photoURL
+    }
 
     return (
         <header className="relative flex items-center justify-center h-16 bg-vin text-fond ">
