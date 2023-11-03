@@ -52,4 +52,3 @@ export function AuthUserProvider({ children }: Props) {
 }
 
 export const useAuth = () => useContext(authUserContext)
- // const {authUser, authUserIsLoading} = useAuth()
