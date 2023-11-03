@@ -7,8 +7,8 @@ const Header: React.FC = () => {
 
     let scrAvatar: string = ""
 
-    if(authUser.userDocument.photoURL) {
-        scrAvatar = authUser.userDocument.photoURL
+    if(authUser?.userDocument.photoURL) {
+        scrAvatar = authUser?.userDocument.photoURL
     }
 
     return (
@@ -18,7 +18,6 @@ const Header: React.FC = () => {
                 {
                     authUser !== null  && (<Avatar src={scrAvatar} width="14" height="14"/>)                   
                 }
-
             </div>
             
             

@@ -1,10 +1,15 @@
 import OnBoardingContainer from "../modules/onboarding/OnBoardingContainer";
+import { useAuth } from "../../context/AuthUserContext";
+import { Navigate } from 'react-router-dom';
 
 const Boarding = () => {
+    const { authUser } = useAuth()
 
     return (
         <>
-            <OnBoardingContainer />
+            {
+                authUser !== null ? (<OnBoardingContainer />) : (<Navigate to="/" replace={true} />)
+            }
         </>
     );
 };
