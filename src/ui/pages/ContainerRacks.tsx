@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 const ContainerRacks = () => {
 
     const { authUser } = useAuth()
+    console.log("authUser", authUser)
 
     const onBoardingisCompleted: boolean = authUser?.userDocument.onBoardingisCompleted
 
