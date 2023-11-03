@@ -50,7 +50,8 @@ const BoxInscription: React.FC = () => {
             email: email,
             uid: data.uid,
             inscription: new Date(),
-            onBoardingisCompleted: false
+            onBoardingisCompleted: false,
+            photoURL: ""
         }
         handleCreateUserAuthentification("users", data.uid, userDocumentData)
     }
