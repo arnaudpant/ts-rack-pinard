@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useAuth } from "../../../context/AuthUserContext";
 import Avatar from "../../../ui/design-syst/avatar/Avatar";
 
@@ -5,7 +6,7 @@ const Header: React.FC = () => {
 
     const {authUser} = useAuth()
 
-    let scrAvatar: string = ""
+    let scrAvatar: string | undefined = undefined
 
     if(authUser?.userDocument.photoURL) {
         scrAvatar = authUser?.userDocument.photoURL
@@ -14,9 +15,9 @@ const Header: React.FC = () => {
     return (
         <header className="relative flex items-center justify-center h-16 bg-vin text-fond ">
             <h1 className="text-2xl md:text-4xl py-2">🍾   RACKS A PINARD   🍷</h1>
-            <div className="absolute right-4 cursor-pointer w-14 h-14">
+            <div className={clsx(scrAvatar === undefined && `hidden`, 'absolute right-4 cursor-pointer w-14 h-14')}>
                 {
-                    authUser !== null  && (<Avatar src={scrAvatar} width="14" height="14"/>)                   
+                    scrAvatar !== undefined  && (<Avatar src={scrAvatar} width="14" height="14"/>)                   
                 }
             </div>
             

@@ -5,7 +5,7 @@ interface Props {
     width: string,
     height: string
     alt?  : string,
-    src: string,
+    src: string | undefined,
 }
 
 const Avatar = ({size, alt, src, width, height}: Props) => {
