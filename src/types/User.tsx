@@ -14,7 +14,7 @@ export interface UserInterface {
 }
 
 export interface UserDocument {
-    photoURL?: string
+    photoURL: string
     uid: string,
     email: string,
     creation_date: Timestamp,
