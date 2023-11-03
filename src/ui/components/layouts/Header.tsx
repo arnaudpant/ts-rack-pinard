@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 
     let scrAvatar: string = ""
 
-    if(authUser.userDocument.photoURL) {
+    if(authUser?.userDocument.photoURL) {
         scrAvatar = authUser.userDocument.photoURL
     }
 
