@@ -32,8 +32,10 @@ const UserInfos = () => {
         setValue,
     } = useForm<OnboardingProfileFormType>()
 
-    /** 1 Si données du formulaire deja dans firestore => affichage dans input
-     * Mise en place pour possibilité d'ajouter des inputs plus tard
+
+    /** FORMULAIRE LOGIN **
+     * 
+     * 1: Recuperation données login de firestore => affichage dans input
      */
     const { login } = authUser.userDocument
     useEffect(() => {
@@ -43,6 +45,18 @@ const UserInfos = () => {
         }
     }, [])
 
+    /** 2: Envoi du login dans Firestore 
+     * Si données sont inchangées => Etape Avatar
+     * Si changées => Envoi dans Firestore => 3
+     * Etape Avatar
+    */
+    const onSubmit: SubmitHandler<OnboardingProfileFormType> = async (FormData) => {
+        setIsLoading(true)
+        if (login !== FormData.login) {
+            handleUpdateUserDocument(FormData)
+        }
+        handleImageUpload()
+    }
     /** 3 envoi des donnees dans firestore */
     const handleUpdateUserDocument = async (FormData: OnboardingProfileFormType) => {
         const { error } = await FirestoreUpdateDocument(
@@ -54,23 +68,12 @@ const UserInfos = () => {
             return
         }
         setIsLoading(false)
+        toast.success("Mise a jour du login réussi")
     }
 
-    /** 2 Submit du formulaire 
-     * Si données sont inchangées => Next
-     * Si changées => handleUpdateUserDocument
-    */
-    const onSubmit: SubmitHandler<OnboardingProfileFormType> = async (FormData) => {
-        setIsLoading(true)
-        if (login !== FormData.login) {
-            handleUpdateUserDocument(FormData)
-        }
-        setIsLoading(false)
-
-        handleImageUpload()
-    }
-
-    /** 4 Avatar dans component */
+    /** AVATAR **
+     * Recuperation avatar de firestore => affichage dans <UploadAvatar />
+     */
     const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (file) {
@@ -87,7 +90,7 @@ const UserInfos = () => {
         }
     }
 
-    /** 5 Avatar en local */
+    /** 5 Envoi Avatar */
     const handleImageUpload = () => {
         let storageRef: StorageReference
         let uploadTask: UploadTask
@@ -115,13 +118,10 @@ const UserInfos = () => {
                     )
                 }
             )
-        } else {
-            setIsLoading(false)
-            toast.success("Mise a jour du profil réussie")
         }
     }
 
-    /** 6 transfert Avatar en ligne */
+    /** 6 Mise a jour photoURL */
     const updateUserDocument = async (photoURL: string) => {
         const body = {
             photoURL: photoURL
