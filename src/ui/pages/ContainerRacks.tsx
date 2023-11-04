@@ -1,9 +1,11 @@
 import { useAuth } from "../../context/AuthUserContext";
 import { Navigate } from 'react-router-dom';
+import RacksContainer from "../modules/racks/RacksContainer";
 
 const ContainerRacks = () => {
 
     const { authUser } = useAuth()
+    console.log("racks", authUser.userDocument.racks)
 
     const onBoardingisCompleted: boolean = authUser?.userDocument.onBoardingisCompleted
 
@@ -19,7 +21,7 @@ const ContainerRacks = () => {
                                     <h1 className="text-3xl text-center">
                                         Liste de vos racks
                                     </h1>
-                                    <h3 className="text-xl text-vin text-center mt-8">See you soon</h3>
+                                    <RacksContainer />
                                 </div>
                             </div>
                         </>) : (<Navigate to="/boarding" replace={true} />)

@@ -1,6 +1,6 @@
 /** FIREBASE */
 import { Timestamp } from "firebase/firestore"
-import { Rack } from "./Racks"
+import { Rack } from "./RacksTypes"
 
 // Données primaires de Firebase
 export interface UserInterface {

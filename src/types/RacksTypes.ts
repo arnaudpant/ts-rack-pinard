@@ -13,5 +13,7 @@ export interface Bottle {
 
 export interface Rack {
     name: string,
+    column: number,
+    rows: number,
     bottles: Bottle[]
 }

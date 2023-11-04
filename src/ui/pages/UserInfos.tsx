@@ -15,7 +15,6 @@ import { storage } from "../../firebase/firebase.config";
 import { toast } from "react-toastify";
 import ProfileUserInfosForm from "../modules/user-infos/ProfileUserInfosForm";
 import { Link } from "react-router-dom";
-//import { Navigate } from "react-router-dom";
 
 
 const UserInfos = () => {
