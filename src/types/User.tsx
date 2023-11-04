@@ -1,5 +1,6 @@
 /** FIREBASE */
 import { Timestamp } from "firebase/firestore"
+import { Rack } from "./Racks"
 
 // Données primaires de Firebase
 export interface UserInterface {
@@ -19,6 +20,7 @@ export interface UserDocument {
     email: string,
     creation_date: Timestamp,
     onBoardingisCompleted: boolean,
-    login: string
+    login: string,
+    racks: Rack[]
     // Champs Ajouter un champ ds Firestore
 }
