@@ -8,11 +8,11 @@ const ErrorBoundaryComponent: React.ComponentType<FallbackProps> = ({ error, res
                 <h1 className="text-4xl text-white font-bold">Oups une erreur est survenue !</h1>
                 <p className="text-white text-sm">Désolé, nous n'avons pas trouvé cette page.</p>
                 <div>
-                    <button className="bg-white text-black px-4 py-2" onClick={resetErrorBoundary}>Accueil Racks à pinard</button>
+                    <button className="bg-vin text-fond px-4 py-2" onClick={resetErrorBoundary}>Accueil Racks à pinard</button>
                 </div>
             </div>
             <div className="absolute bottom-8">
-                <p className="text-white ">Code d'erreur : ${error.message}</p>
+                <p className="text-vin ">Code d'erreur : ${error.message}</p>
             </div>
         </div>
     );
