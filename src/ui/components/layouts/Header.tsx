@@ -5,7 +5,7 @@ import { Unplug } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { firebaseSignOutUser } from "../../../api/Authentification";
 import { Menu } from 'lucide-react';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Header: React.FC = () => {
 
@@ -24,6 +24,7 @@ const Header: React.FC = () => {
             return
         }
         toast.success("A bientôt dans vos racks à pinard")
+        return (<Navigate to="/" replace={true}  />)
     }
 
     return (

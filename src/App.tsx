@@ -10,24 +10,28 @@ import Boarding from "./ui/pages/Boarding";
 /** COMPONENTS */
 import Layout from "./ui/components/layouts/Layout";
 import UserInfos from "./ui/pages/UserInfos";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
 
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/connexion" element={<Connexion />} />
-          <Route path="/inscription" element={<Inscription />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/boarding" element={<Boarding />} />
-          <Route path="/container-racks" element={<ContainerRacks />} />
-          <Route path="/user-infos" element={<UserInfos />} />
-          <Route path="/*" element={<Home />} />
-        </Route>
-      </Routes>
+      <ErrorBoundary FallbackComponent={ErrorBoundaryComponent} onReset={() => { }}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/connexion" element={<Connexion />} />
+            <Route path="/inscription" element={<Inscription />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/boarding" element={<Boarding />} />
+            <Route path="/container-racks" element={<ContainerRacks />} />
+            <Route path="/user-infos" element={<UserInfos />} />
+            <Route path="/*" element={<Home />} />
+          </Route>
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   )
 }

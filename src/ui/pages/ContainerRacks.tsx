@@ -5,7 +5,7 @@ import RacksContainer from "../modules/racks/RacksContainer";
 const ContainerRacks = () => {
 
     const { authUser } = useAuth()
-    console.log("racks", authUser.userDocument.racks)
+    //console.log("racks", authUser.userDocument.racks)
 
     const onBoardingisCompleted: boolean = authUser?.userDocument.onBoardingisCompleted
 
