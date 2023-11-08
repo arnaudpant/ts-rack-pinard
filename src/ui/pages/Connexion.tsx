@@ -4,19 +4,15 @@ import BoxConnexion from "../modules/authentification/connexion/BoxConnexion";
 
 const Connexion = () => {
     const { authUser, authUserIsLoading } = useAuth()
-
-
     const onBoardingisCompleted = authUser?.userDocument.onBoardingisCompleted
-
+    
     const shouldRedirectOnboarding = () => {
-
         return (
             !authUserIsLoading && onBoardingisCompleted
         )
     }
 
     return (
-
         <>
             {
                 authUser !== null ?
@@ -36,8 +32,6 @@ const Connexion = () => {
                     )
             }
         </>
-
-
     );
 };
 
