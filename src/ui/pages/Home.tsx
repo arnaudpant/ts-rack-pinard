@@ -13,8 +13,8 @@ const Home = () => {
         <>
             <div className="flex flex-col">
                 <h2 className="text-center text-xl italic py-4 px-1">Visualisez et gèrez vos casiers à bouteilles !</h2>
-                <div className="h-80 md:h-96 w-full flex justify-center">
-                    <img src="/vine.svg" alt="" className="h-80 w-80 md:h-full" />
+                <div className="h-72 md:h-90 mb-5 w-full flex justify-center">
+                    <img src="/home-logo.png" alt="" className="h-72" />
                 </div>
 
                 {
