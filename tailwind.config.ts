@@ -7,10 +7,16 @@ export default {
 			vin: '#914159',
 			fond: '#F5EEE6',
 			fond_vert: '#4AB8A1',
-			vin_blanc: '#e9e37c',
+			vin_rouge: '#d63031',
+			vin_blanc: '#d4d408',
 			vin_rose: '#F8C3CD',
-			vin_champagne: '#FDEE00',
-			gris: '#b2bec3'
+			vin_champagne: '#ffff00',
+			bouteille: '#3a3a3a',
+			bouteille_blanc: '#fefee2',
+			bouteille_rose: '#fee7f0',
+			bouteille_champagne: '#0f4d0f',
+			gris: '#b2bec3',
+			gris_fonce: '#2d3436',
 		},
 		extend: {
 			boxShadow: {

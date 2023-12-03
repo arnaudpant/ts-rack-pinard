@@ -12,7 +12,7 @@ type Racks = {
 
 export type Bottle = {
     id: string,
-    type: "rouge" | "blanc" | "rose" | "petillant" | "champagne" | "autre",
+    type: "rouge" | "blanc" | "rose" | "petillant" | "champagne" | "autre" | null,
     domaine: string,
     aoc: string,
     millesime: number,
@@ -37,30 +37,32 @@ const Demo = () => {
             }
         }
         callAPIDemo()
-
     }, []);
 
 
 
     return (
-        <div>
+        <>
             {
                 dataRacks ? (<h1 className="text-3xl text-center py-4">Bienvenue sur le rack de {`${dataRacks.rackName}`}</h1>) :
                     (<h1 className="text-3xl text-center py-4">Ceci est le rack de test</h1>)
             }
-            {
-                dataRacks && (
-                    <div className={clsx(" m-4",`grid grid-cols-${dataRacks?.columns} gap-2 bg-vin p-2`)}>
-                        {
-                            dataRacks && dataRacks.bottles.map((bottle, index) => (
-                                <BottlePinard bottle={bottle} key={index} />
-                            ))
-                        }
-                    </div>
+            <div className="container mx-auto flex justify-center">
+                {
+                    dataRacks?.columns && (
+                        <div className={clsx("m-4 bg-gris_fonce p-2", `grid grid-cols-4 gap-2`)}>
+                            {
+                                dataRacks?.columns && dataRacks.bottles.map((bottle, index) => (
+                                    <BottlePinard bottle={bottle} key={index} />
+                                ))
+                            }
+                        </div>
 
-                )
-            }
-        </div>
+                    )
+                }
+
+            </div>
+        </>
     );
 };
 

@@ -71,7 +71,7 @@
                 },
                 {
                     "id": "08",
-                    "type": "",
+                    "type": null,
                     "domaine": "",
                     "aoc": "",
                     "millesime": null,
