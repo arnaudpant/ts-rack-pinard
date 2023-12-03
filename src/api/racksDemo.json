@@ -1,0 +1,156 @@
+{
+    "racks": [
+        {
+            "rackName": "demonstration",
+            "rackId": "ae45",
+            "columns": 4,
+            "rows": 4,
+            "bottles": [
+                {
+                    "id": "01",
+                    "type": "rouge",
+                    "domaine": "Cuvée JB Rivot",
+                    "aoc": "bourgogne",
+                    "millesime": 2021,
+                    "achat": 2022,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "02",
+                    "type": "rouge",
+                    "domaine": "Cuvée JB Rivot",
+                    "aoc": "bourgogne",
+                    "millesime": 2021,
+                    "achat": 2022,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "03",
+                    "type": "rouge",
+                    "domaine": "Cuvée JB Rivot",
+                    "aoc": "bourgogne",
+                    "millesime": 2021,
+                    "achat": 2022,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "04",
+                    "type": "rouge",
+                    "domaine": "Cuvée JB Rivot",
+                    "aoc": "bourgogne",
+                    "millesime": 2021,
+                    "achat": 2022,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "05",
+                    "type": "rouge",
+                    "domaine": "Duc de Castelnau",
+                    "aoc": "Landes",
+                    "millesime": 2021,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "06",
+                    "type": "rouge",
+                    "domaine": "Duc de Castelnau",
+                    "aoc": "Landes",
+                    "millesime": 2021,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "07",
+                    "type": "rouge",
+                    "domaine": "Duc de Castelnau",
+                    "aoc": "Landes",
+                    "millesime": 2021,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "08",
+                    "type": "",
+                    "domaine": "",
+                    "aoc": "",
+                    "millesime": null,
+                    "achat": null,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "09",
+                    "type": "blanc",
+                    "domaine": "Montlouis Moelleux",
+                    "aoc": "Montlouis",
+                    "millesime": 2014,
+                    "achat": 2019,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "10",
+                    "type": "blanc",
+                    "domaine": "Montlouis Moelleux",
+                    "aoc": "Montlouis",
+                    "millesime": 2014,
+                    "achat": 2019,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "11",
+                    "type": "blanc",
+                    "domaine": "Montlouis Moelleux",
+                    "aoc": "Montlouis",
+                    "millesime": 2014,
+                    "achat": 2019,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "12",
+                    "type": "blanc",
+                    "domaine": "Montlouis Moelleux",
+                    "aoc": "Montlouis",
+                    "millesime": 2014,
+                    "achat": 2019,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "13",
+                    "type": "rose",
+                    "domaine": "Piquette",
+                    "aoc": "Cote du Rhone",
+                    "millesime": 2022,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "14",
+                    "type": "rose",
+                    "domaine": "Piquette",
+                    "aoc": "Cote du Rhone",
+                    "millesime": 2022,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "15",
+                    "type": "petillant",
+                    "domaine": "vouvray",
+                    "aoc": "vouvray",
+                    "millesime": 2022,
+                    "achat": 2023,
+                    "commentaire" : ""
+                },
+                {
+                    "id": "16",
+                    "type": "petillant",
+                    "domaine": "vouvray",
+                    "aoc": "vouvray",
+                    "millesime": 2022,
+                    "achat": 2023,
+                    "commentaire" : ""
+                }
+            ]
+        }
+    ]
+}

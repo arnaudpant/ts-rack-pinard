@@ -29,6 +29,9 @@ const Home = () => {
                         </div>
                     )
                 }
+                <div className="flex justify-center mt-20">
+                    <Link to='/demonstration' className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm" >DEMONSTRATION</Link>
+                </div>
             </div>
         </>
     );
