@@ -4,7 +4,15 @@ export default {
 	content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
 	theme: {
 		colors: {
+			vin50: '#DBAFBC',
+			vin100: '#D5A1B0',
+			vin200: '#C88499',
+			vin300: '#BB6881',
+			vin400: '#AD4E6A',
 			vin: '#914159',
+			vin600: '#6A3041',
+			vin700: '#441E29',
+			vin800: '#1D0D12',
 			fond: '#F5EEE6',
 			fond_vert: '#4AB8A1',
 			vin_rouge: '#d63031',
