@@ -1,43 +1,48 @@
-import clsx from "clsx";
+// import clsx from "clsx";
 import { useEffect, useState } from "react";
-import BottlePinard from "../components/rack/BottlePinard";
-import { Rack, Bottle } from "@/types/RacksTypes";
-import { getDemoRack } from "@/hooks/useFirebaseDemo";
+import { Rack } from "../../types/RacksTypes";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase.config";
+import Spinner from "../components/spinner/Spinner";
+import DemoView from "../components/rack/DemoView";
 
 
 const Demo = () => {
 
     const [dataDemoRacks, setDataDemoRacks] = useState<Rack | null>(null);
-    const [loadingRacks, setLoadingRacks] = useState<boolean>(true);
+    //const [loadingRacks, setLoadingRacks] = useState<boolean>(true);
+
 
 
     useEffect(() => {
-        setLoadingRacks(true)
+
+        const getDemoRack = async () => {
+            const docRef = doc(db, "demo", "4dyJMgMiFSHBJW5YoiA4");
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setDataDemoRacks(docSnap.data().racks[0])
+            } else {
+                console.log("Error Rack demonstration");
+            }
+        }
+
         getDemoRack()
-        setLoadingRacks(false)
+
+
     }, []);
 
+    console.log(dataDemoRacks)
 
 
     return (
         <>
             {
-                dataDemoRacks ? (<h1 className="text-3xl text-center py-4">Bienvenue sur le rack de {`${dataDemoRacks.name}`}</h1>) :
-                    (<h1 className="text-3xl text-center py-4">Ceci est le rack de test</h1>)
+                dataDemoRacks ? (
+                    <DemoView dataDemoRacks={dataDemoRacks} />
+                ) :
+                    (<Spinner />)
             }
-            <div className="container mx-auto flex justify-center">
-                {
-                    dataDemoRacks?.column && (
-                        <div className={clsx("m-4 bg-gris_fonce p-2", `grid grid-cols-4 gap-2`)}>
-                            {
-                                dataDemoRacks?.column && dataDemoRacks.bottles.map((bottle: Bottle, index) => (
-                                    <BottlePinard bottle={bottle} key={index} />
-                                ))
-                            }
-                        </div>
-                    )
-                }
-            </div>
         </>
     );
 };

@@ -1,23 +1,16 @@
 /** FIREBASE */
 import { db } from "../firebase/firebase.config";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
-export const getDemoRack= async () => {
+export const getDemoRack = async () => {
 
-        // Recuperation des données de Firestore
-        const documentRef = doc(db, "demo", "rackDemo")
-        console.log(documentRef)
+    const docRef = doc(db, "demo", "4dyJMgMiFSHBJW5YoiA4");
+    const docSnap = await getDoc(docRef);
 
-        // Ecouteur onSnapshot pour recuperer en temps reel les modifs dans db firestore
-        onSnapshot(documentRef, async (doc) => {
-            if (doc.exists()) {
-                //compactUser.userDocument = doc.data() as UserDocument
-            }
-            // setAuthUser((prevAuthUser) => (
-            //     { ...prevAuthUser, ...compactUser }
-            //))
-            // Fin du chargement
-            // setAuthUserIsLoading(false)
-        })
-    
+    if (docSnap.exists()) {
+        return docSnap.data().racks[0]
+    } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+    }
 }
