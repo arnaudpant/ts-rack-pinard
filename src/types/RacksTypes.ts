@@ -9,11 +9,12 @@ export interface Bottle {
     marque: string,
     alliance: string,
     prix: number,
-    achat: Date
+    achat: Date,
+    rack: string
 } 
 
 export interface Rack {
-    id: string,
+    idrack: string,
     name: string,
     column: number,
     rows: number,
