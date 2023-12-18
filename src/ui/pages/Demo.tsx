@@ -32,8 +32,6 @@ const Demo = () => {
 
     }, []);
 
-    console.log(dataDemoRacks)
-
 
     return (
         <>
