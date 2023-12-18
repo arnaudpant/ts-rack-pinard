@@ -1,6 +1,6 @@
 /** FIREBASE */
 import { Timestamp } from "firebase/firestore"
-import { Rack } from "./RacksTypes"
+import { Bottle, Rack } from "./RacksTypes"
 
 // Données primaires de Firebase
 export interface UserInterface {
@@ -21,6 +21,8 @@ export interface UserDocument {
     creation_date: Timestamp,
     onBoardingisCompleted: boolean,
     login: string,
-    racks: Rack[]
+    racks: Rack[],
+    bottlesFavoris: Bottle[],
+    bottlesDrink: Bottle[]
     // Champs Ajouter un champ ds Firestore
 }

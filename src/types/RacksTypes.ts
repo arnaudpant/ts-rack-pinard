@@ -1,7 +1,7 @@
 export interface Bottle {
     millesime: number,
     type: "vin" | "champagne" | "cidre" | "spiritueux" | "biere" ,
-    couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | "autre",
+    couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | "autre" | "doux" | "brut",
     pays: string,
     region: string,
     appellation: string,
