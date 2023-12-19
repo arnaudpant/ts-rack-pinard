@@ -14,16 +14,16 @@ const ContainerRacks = () => {
             {
                 authUser !== null ?
                     (
-                        onBoardingisCompleted ? (<>
-                            <div className="container mx-auto flex-col items-center">
-                                <div className="mt-10">
-                                    <h1 className="text-3xl text-center">
-                                        Liste de vos racks
-                                    </h1>
-                                    <RacksContainer />
+                        onBoardingisCompleted ?
+                            (<>
+                                <div className="container mx-auto flex-col items-center">
+                                    <div className="mt-10">
+                                        <RacksContainer />
+                                    </div>
                                 </div>
-                            </div>
-                        </>) : (<Navigate to="/boarding" replace={true} />)
+                            </>)
+                            :
+                            (<Navigate to="/boarding" replace={true} />)
                     )
                     :
                     (<Navigate to="/" replace={true} />)

@@ -36,7 +36,6 @@ export const sendEmailConfirmation = async () => {
             }
         } catch (error) {
             const firebaseError = error as FirebaseError
-            //TODO: Formater les erreurs
             return {
                 error: {
                     code: firebaseError.code,
