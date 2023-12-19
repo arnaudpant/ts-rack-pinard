@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/ui/components/rack/DemoView.tsx
-import { Bottle, Rack } from "../../../types/RacksTypes";
-import BottlePinard from "./BottlePinard";
-=======
 import { Bottle, Rack } from "../../../../types/RacksTypes";
 import BottlePinard from "../bottles/BottlePinard";
->>>>>>> develop:src/ui/components/rack/demonstration/DemoView.tsx
 
 
 type Props = {
