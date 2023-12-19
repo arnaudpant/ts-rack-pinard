@@ -1,5 +1,10 @@
+<<<<<<< HEAD:src/ui/components/rack/DemoView.tsx
 import { Bottle, Rack } from "../../../types/RacksTypes";
 import BottlePinard from "./BottlePinard";
+=======
+import { Bottle, Rack } from "../../../../types/RacksTypes";
+import BottlePinard from "../bottles/BottlePinard";
+>>>>>>> develop:src/ui/components/rack/demonstration/DemoView.tsx
 
 
 type Props = {
@@ -50,14 +55,11 @@ const DemoView = ({ dataDemoRacks }: Props) => {
                     dataDemoRacks.columns === 3 &&
                         <div className={`${donnees}`}>
                             {
-                                dataDemoRacks.bottles.map((bottle: Bottle, index) => (
-                                    <BottlePinard bottle={bottle} key={index} /> 
+                                dataDemoRacks.bottles.map((bottle: Bottle) => (
+                                    <BottlePinard bottle={bottle} key={bottle.id} /> 
                                 ))
                             }
                         </div> 
-
-
-
                 }
 
             </div>
