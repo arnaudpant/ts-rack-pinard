@@ -11,7 +11,7 @@ const ModalBottle = ({ bottle }: Props) => {
             <div className="w-72 bg-fond text-center shadow-md">
                 <div className="mb-1">
                     <h2 className="text-3xl font-bold pt-4">{bottle.appellation.toUpperCase()}</h2>
-                    <p className="text-xs pb-4">{bottle.couleur}</p>
+                    <p className="text-xs pb-4">{bottle.couleur} {bottle.gout}</p>
                     <h3 className="text-xl font-semibold pb-2">{bottle.exploitation}</h3>
                     <p>{bottle.millesime}</p>
                 </div>
