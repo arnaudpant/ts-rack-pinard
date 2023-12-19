@@ -48,7 +48,6 @@ const ModalBottle = ({ bottle }: Props) => {
                 </div>
                 <div className="mx-auto">
                     <button className="p-3 bg-vin600 text-vin50 rounded-full"><Heart className="h-8 w-8" /></button>
-
                 </div>
             </div>
         </div>, document.body

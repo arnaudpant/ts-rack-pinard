@@ -5,8 +5,6 @@ const RacksView = () => {
 
     const { authUser } = useAuth()
 
-    console.log(authUser)
-
     return (
         <div className="flex justify-center items-center">
             {
