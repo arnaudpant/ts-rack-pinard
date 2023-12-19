@@ -4,7 +4,7 @@ import { Rack } from "../../types/RacksTypes";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import Spinner from "../components/spinner/Spinner";
-import DemoView from "../components/rack/DemoView";
+import DemoView from "../components/rack/demonstration/DemoView";
 
 
 const Demo = () => {
@@ -15,7 +15,6 @@ const Demo = () => {
 
 
     useEffect(() => {
-
         const getDemoRack = async () => {
             const docRef = doc(db, "demo", "4dyJMgMiFSHBJW5YoiA4");
             const docSnap = await getDoc(docRef);
@@ -26,7 +25,6 @@ const Demo = () => {
                 console.log("Error Rack demonstration");
             }
         }
-        
         getDemoRack()
 
 

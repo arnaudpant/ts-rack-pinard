@@ -9,7 +9,7 @@ export interface Bottle {
     cuvee?: string,
     accords?: string[],
     prix?: number | 0,
-    achat?: Date,
+    achat?: string,
     rack: string
 } 
 
