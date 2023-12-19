@@ -1,5 +1,3 @@
-
-import clsx from "clsx";
 import { Bottle, Rack } from "../../../types/RacksTypes";
 import BottlePinard from "./BottlePinard";
 
