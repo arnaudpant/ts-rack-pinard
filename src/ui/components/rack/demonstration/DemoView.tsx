@@ -1,5 +1,6 @@
 import { Bottle, Rack } from "../../../../types/RacksTypes";
 import BottlePinard from "../bottles/BottlePinard";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 }
 
 const DemoView = ({ dataDemoRacks }: Props) => {
+    const navigate = useNavigate();
     let donnees: string | null = null
 
     switch (dataDemoRacks.columns) {
@@ -43,7 +45,7 @@ const DemoView = ({ dataDemoRacks }: Props) => {
     }
 
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <h1 className="text-3xl text-center py-4">Bienvenue sur le rack de {`${dataDemoRacks.rackName}`}</h1>
             <div className="container mx-auto flex justify-center">
                 {
@@ -56,6 +58,9 @@ const DemoView = ({ dataDemoRacks }: Props) => {
                         }
                     </div>
                 }
+            </div>
+            <div>
+                <button className="px-4 py-2 bg-vin text-fond rounded-full" onClick={()=>navigate("/")}>Accueil</button>
             </div>
         </div>
     );
