@@ -44,11 +44,7 @@ const ModalBottle = ({ bottle }: Props) => {
             <div className="flex gap-4 my-4">
                 <button className="px-4 py-2 bg-vin600 text-vin50 rounded-full">Editer</button>
                 <button className="px-4 py-2 bg-vin600 text-vin50 rounded-full">Consommer</button>
-                <div>
                 <button className="p-4 bg-vin600 text-vin50 rounded-full"><Heart /></button>
-
-                </div>
-
             </div>
         </div>, document.body
 
