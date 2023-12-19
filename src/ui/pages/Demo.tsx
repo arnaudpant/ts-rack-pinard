@@ -26,7 +26,7 @@ const Demo = () => {
                 console.log("Error Rack demonstration");
             }
         }
-
+        
         getDemoRack()
 
 
