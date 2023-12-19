@@ -51,7 +51,10 @@ const BoxInscription: React.FC = () => {
             uid: data.uid,
             inscription: new Date(),
             onBoardingisCompleted: false,
-            photoURL: ""
+            photoURL: "",
+            racks: [],
+            bottlesFavoris: [],
+            bottlesDrink: []
         }
         handleCreateUserAuthentification("users", data.uid, userDocumentData)
     }

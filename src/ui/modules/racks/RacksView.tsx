@@ -1,9 +1,21 @@
+import { useAuth } from "../../../context/AuthUserContext";
 
 
 const RacksView = () => {
+
+    const { authUser } = useAuth()
+
     return (
         <div className="flex justify-center items-center">
-            <h1>See you soon ...</h1>
+            {
+                authUser.userDocument.racks.length > 0 &&
+                (
+                    <div className="">
+                        <h2>RackView</h2>
+                    </div>
+                )
+            }
+
         </div>
     );
 };
