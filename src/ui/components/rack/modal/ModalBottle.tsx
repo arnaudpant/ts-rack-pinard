@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
+import { Heart } from 'lucide-react';
 
 type Props = {
     bottle: Bottle,
@@ -7,7 +8,7 @@ type Props = {
 
 const ModalBottle = ({ bottle }: Props) => {
     return createPortal(
-        <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex items-center justify-center">
+        <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex flex-col items-center justify-center">
             <div className="w-72 bg-fond text-center shadow-md">
                 <div className="mb-1">
                     <h2 className="text-3xl font-bold pt-4">{bottle.appellation.toUpperCase()}</h2>
@@ -26,7 +27,7 @@ const ModalBottle = ({ bottle }: Props) => {
                         bottle.achat && <p>Date achat: {bottle.achat}</p>
                     }
                     <p>Prix: {bottle.prix}€</p>
-                    
+
                 </div>
 
                 <div className="mb-4">
@@ -39,6 +40,15 @@ const ModalBottle = ({ bottle }: Props) => {
                         }
                     </div>
                 </div>
+            </div>
+            <div className="flex gap-4 my-4">
+                <button className="px-4 py-2 bg-vin600 text-vin50 rounded-full">Editer</button>
+                <button className="px-4 py-2 bg-vin600 text-vin50 rounded-full">Consommer</button>
+                <div>
+                <button className="p-4 bg-vin600 text-vin50 rounded-full"><Heart /></button>
+
+                </div>
+
             </div>
         </div>, document.body
 
