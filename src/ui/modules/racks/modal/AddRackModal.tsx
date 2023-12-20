@@ -1,12 +1,14 @@
 // import { Rack } from "../../../../types/RacksTypes";
 // import { useAuth } from "../../../../context/AuthUserContext";
 import { createPortal } from "react-dom";
+import { useForm } from "react-hook-form"
 
 
 
 const AddRackModal = () => {
 
     // const { authUser } = useAuth()
+    const { register } = useForm()
 
     // const newRack: Rack = {
     //     idrack: '',
@@ -25,11 +27,14 @@ const AddRackModal = () => {
             <h2 className="text-xl my-4">Ajouter un rack</h2>
             <form className="flex flex-col gap-1">
                 <label htmlFor="rackName">Entrez un nom</label>
-                <input type="text" id="rackName" placeholder="Donnez un nom au rack" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+                <input type="text" id="rackName" {...register("rackName", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Donnez un nom au rack" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+
                 <label htmlFor="colonnes">Entrez le nombre de colonnes</label>
-                <input type="number" id="colonnes" placeholder="Nombre de colonnes" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+                <input type="number" id="colonnes" {...register("colonnes", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Nombre de colonnes" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+
                 <label htmlFor="rangees">Entrez le nombre de rangées</label>
-                <input type="number" id="rangees" placeholder="Nombre de rangées" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+                <input type="number" id="rangees" {...register("rangees", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Nombre de rangées" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+
                 <button type="submit" className="px-4 py-1 bg-fond rounded-full my-4 text-vin hover:bg-vin600 hover:text-fond">AJOUTER</button>
             </form>
         </div>,
