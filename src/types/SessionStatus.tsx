@@ -1,1 +1,0 @@
-export type SessionStatus = "guest" | "registered"

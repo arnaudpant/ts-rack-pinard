@@ -42,6 +42,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
      * Mise en place pour possibilité d'ajouter des inputs plus tard
      */
     const { login } = authUser.userDocument
+    
     useEffect(() => {
         const inputUpdateFromFirestore: ("login")[] = ["login"]
         for (const inputFirestore of inputUpdateFromFirestore) {
