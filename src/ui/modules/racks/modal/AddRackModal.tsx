@@ -1,8 +1,10 @@
 import { Bottle, Rack } from "../../../../types/RacksTypes";
-// import { useAuth } from "../../../../context/AuthUserContext";
+import { useAuth } from "../../../../context/AuthUserContext";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form"
 import { v4 as uuidv4 } from 'uuid';
+import { FirestoreUpdateDocument } from "../../../../api/Firestore";
+import { toast } from "react-toastify";
 
 type FormValues = {
     rackName: string,
@@ -18,7 +20,8 @@ type Props = {
 
 const AddRackModal = ({handleClick}: Props) => {
 
-    // const { authUser } = useAuth()
+    const { authUser } = useAuth()
+    //console.log(authUser.userDocument)
     const { register, handleSubmit, formState:{errors} } = useForm<FormValues>()
 
     const newRack: Rack = {
@@ -45,22 +48,46 @@ const AddRackModal = ({handleClick}: Props) => {
         rack: ""
     }
 
+    const addNewRackUserDocument = async (racks: Rack[]) => {
+        const {error} = await FirestoreUpdateDocument(
+            "users", authUser.uid, {...authUser.userDocument, racks: racks}
+        )
+        if (error) {
+            toast.error(error.message)
+            handleClick()
+            return
+        }
+        toast.success('Rack vide ajouté')
+    }
+
+
+
     const onSubmit = (data: FormValues) => {
         const calculNumberOfBottle: number = data.columns * data.rows
-
+        // AJOUT X BOUTEILLES VIDES
         let arrBottlesVide = []
         for (let i = 0; i < calculNumberOfBottle; i++) {
             arrBottlesVide.push(bottleEmpty)
         }
 
-
-        const rackDemo = {...newRack, 
+        // AJOUT RACKS AVEC BOUTEILLES VIDE + INFOS
+        const rackWithBottlesEmpty = {...newRack, 
             rackName: data.rackName,
             columns: data.columns,
             rows: data.rows,
             bottles: arrBottlesVide
         }
-        console.log('rackDemo', rackDemo)
+
+        if(authUser.userDocument.racks.length === 0) {
+            addNewRackUserDocument([rackWithBottlesEmpty])
+        } else {
+            const oldAndNewRacks = authUser.userDocument.racks
+            const racks = [...oldAndNewRacks, rackWithBottlesEmpty]
+            addNewRackUserDocument(racks)
+        }
+
+
+        // FERMETURE DU MODAL
         handleClick()
     }
 
