@@ -1,4 +1,4 @@
-import { Rack } from "../../../../types/RacksTypes";
+import { Bottle, Rack } from "../../../../types/RacksTypes";
 // import { useAuth } from "../../../../context/AuthUserContext";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form"
@@ -10,12 +10,16 @@ type FormValues = {
     rows: number
 }
 
+type Props = {
+    handleClick: () => void
+}
 
 
-const AddRackModal = () => {
+
+const AddRackModal = ({handleClick}: Props) => {
 
     // const { authUser } = useAuth()
-    const { register, handleSubmit } = useForm<FormValues>()
+    const { register, handleSubmit, formState:{errors} } = useForm<FormValues>()
 
     const newRack: Rack = {
         idrack: uuidv4(),
@@ -25,10 +29,39 @@ const AddRackModal = () => {
         bottles: []
     }
 
+    const bottleEmpty: Bottle = {
+        id: "",
+        millesime: null,
+        type: "vide" ,
+        couleur: "",
+        gout: null,
+        pays: null,
+        appellation: null,
+        exploitation: null,
+        cuvee: null,
+        accords: [],
+        prix: null,
+        achat: null,
+        rack: ""
+    }
+
     const onSubmit = (data: FormValues) => {
-        console.log(data)
-        const rackDemo = {...newRack, data}
+        const calculNumberOfBottle: number = data.columns * data.rows
+
+        let arrBottlesVide = []
+        for (let i = 0; i < calculNumberOfBottle; i++) {
+            arrBottlesVide.push(bottleEmpty)
+        }
+
+
+        const rackDemo = {...newRack, 
+            rackName: data.rackName,
+            columns: data.columns,
+            rows: data.rows,
+            bottles: arrBottlesVide
+        }
         console.log('rackDemo', rackDemo)
+        handleClick()
     }
 
     return createPortal(
@@ -39,11 +72,17 @@ const AddRackModal = () => {
                 <label htmlFor="rackName">Entrez un nom</label>
                 <input type="text" id="rackName" {...register("rackName", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Donnez un nom au rack" className="p-2 rounded-md mb-2 bg-fond text-sm" />
 
-                <label htmlFor="colonnes">Entrez le nombre de colonnes</label>
+                <label htmlFor="colonnes">Entrez le nombre de colonnes (&gt;11)</label>
                 <input type="number" id="columns" {...register("columns", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Nombre de colonnes" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+                {
+                    errors.columns && <p className="text-xs text-vin_rouge text-center">{errors.columns.message}</p>
+                }
 
                 <label htmlFor="rangees">Entrez le nombre de rangées</label>
                 <input type="number" id="rows" {...register("rows", { required: { value: true, message: "Ce champ est requis" } })} placeholder="Nombre de rangées" className="p-2 rounded-md mb-2 bg-fond text-sm" />
+                {
+                    errors.rows && <p className="text-xs text-vin_rouge text-center">{errors.rows.message}</p>
+                }
 
                 <button type="submit" className="px-4 py-1 bg-fond rounded-full my-4 text-vin hover:bg-vin600 hover:text-fond">AJOUTER</button>
             </form>
