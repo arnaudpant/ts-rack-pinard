@@ -21,7 +21,6 @@ type Props = {
 const AddRackModal = ({handleClick}: Props) => {
 
     const { authUser } = useAuth()
-    //console.log(authUser.userDocument)
     const { register, handleSubmit, formState:{errors} } = useForm<FormValues>()
 
     const newRack: Rack = {
@@ -65,9 +64,10 @@ const AddRackModal = ({handleClick}: Props) => {
     const onSubmit = (data: FormValues) => {
         const calculNumberOfBottle: number = data.columns * data.rows
         // AJOUT X BOUTEILLES VIDES
-        let arrBottlesVide = []
+        let arrBottlesVide: typeof bottleEmpty[] | [] = []
         for (let i = 0; i < calculNumberOfBottle; i++) {
-            arrBottlesVide.push(bottleEmpty)
+            const bottleEmptyWithNewId = {...bottleEmpty, id: uuidv4()}
+            arrBottlesVide = [...arrBottlesVide, bottleEmptyWithNewId]
         }
 
         // AJOUT RACKS AVEC BOUTEILLES VIDE + INFOS
