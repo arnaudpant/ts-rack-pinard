@@ -15,6 +15,7 @@ const BottlePinard = ({ bottle }: Props) => {
     const handleClick = () => {
         setModalShow(v => !v)
     }
+    console.log(bottle.couleur )
 
     let colorBouchon = "bg-bouteille"
     bottle.couleur === "rouge" ? colorBouchon = 'bg-vin_rouge' :
@@ -44,7 +45,7 @@ const BottlePinard = ({ bottle }: Props) => {
             }
             <p className="text-xs text-center md:pt-1">{bottle.appellation}</p>
             {
-                modalShow && <ModalBottle bottle={bottle} />
+                modalShow && bottle.type !== 'vide' && <ModalBottle bottle={bottle} />
             }
         </div>
     );
