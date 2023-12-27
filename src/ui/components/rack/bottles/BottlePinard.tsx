@@ -20,14 +20,14 @@ const BottlePinard = ({ bottle }: Props) => {
     let colorBouchon = "bg-bouteille"
     bottle.couleur === "rouge" ? colorBouchon = 'bg-vin_rouge' :
     bottle.couleur === "blanc" ? colorBouchon = 'bg-vin_blanc' :
-    bottle.type === "petillant" ? colorBouchon = 'bg-vin_champagne' :
+    bottle.type === "mousseux" ? colorBouchon = 'bg-vin_champagne' :
     bottle.type === "champagne" ? colorBouchon = 'bg-vin_champagne' :
     bottle.couleur === "rose" ? colorBouchon = 'bg-vin_rose' :
     "bg-bouteille"
 
     let couleurBouteille = "bg-bouteille"
     bottle.couleur === "blanc" ? couleurBouteille = 'bg-bouteille_blanc' :
-    bottle.type === "petillant" ? couleurBouteille = 'bg-bouteille_champagne' :
+    bottle.type === "mousseux" ? couleurBouteille = 'bg-bouteille_champagne' :
     bottle.type === "champagne" ? couleurBouteille = 'bg-bouteille_champagne' :
     bottle.couleur === "rose" ? couleurBouteille = 'bg-bouteille_rose' :
     "bg-bouteille"

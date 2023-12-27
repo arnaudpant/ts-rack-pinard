@@ -1,5 +1,6 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Bottle } from "../../../../types/RacksTypes";
+import { X } from "lucide-react";
 
 type Props = {
     bottle: Bottle;
@@ -9,23 +10,37 @@ type Props = {
 const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
     const {
         handleSubmit,
-        control,
         formState: { errors },
         register,
-        reset,
-        setValue,
     } = useForm<Bottle>();
 
     const onSubmit = (data: Bottle) => {
-        console.log(data);
+        const newBootle = {
+            ...bottle,
+            type: data.type,
+            couleur: data.couleur,
+            gout: data.gout,
+            millesime: data.millesime,
+            appellation: data.appellation,
+            exploitation: data.exploitation,
+            cuvee: data.cuvee,
+            prix: data.prix,
+            achat: data.achat,
+        };
+        console.log("newBootle", newBootle);
         setModalShow(false);
     };
 
+    const HandleXClic = () => setModalShow(false);
+
     return (
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex flex-col items-center justify-center">
-            <div className="w-72 bg-fond text-center shadow-md rounded-xl py-4">
+            <div className="relative w-72 bg-fond text-center shadow-md rounded-xl py-4">
+                <div className="absolute top-2 right-2 h-6 w-6 z-10" onClick={()=> HandleXClic()}>
+                    <X />
+                </div>
                 <form
-                    className="flex flex-col gap-4 px-4"
+                    className="flex flex-col gap-4 px-4 mt-3"
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full text-left">
@@ -36,9 +51,10 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                             {...register("type", { required: true })}
                             className="w-full p-1 rounded"
                         >
+                            <option value=""></option>
                             <option value="vin">Vin</option>
                             <option value="champagne">Champagne</option>
-                            <option value="petillant">Pétillant</option>
+                            <option value="mousseux">Mousseux</option>
                             <option value="cidre">Pétillant</option>
                             <option value="biere">Bière</option>
                             <option value="spiritueux">spiritueux</option>
@@ -54,6 +70,7 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                             {...register("couleur", { required: true })}
                             className="w-full p-1 rounded"
                         >
+                            <option value=""></option>
                             <option value="rouge">Rouge</option>
                             <option value="blanc">Blanc</option>
                             <option value="rose">Rosé</option>
@@ -61,7 +78,7 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                             <option value="brune">Brune</option>
                             <option value="ambree">Ambrée</option>
                             <option value="blanche">Blanche</option>
-                            <option value=""></option>
+                            <option value="petillant">Pétillant</option>
                         </select>
                         {errors.couleur && <span>Ce champ est requis</span>}
                     </div>
@@ -74,12 +91,12 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                             {...register("gout")}
                             className="w-full p-1 rounded"
                         >
+                            <option value=""></option>
                             <option value="sec">Sec</option>
                             <option value="demi-sec">Demi sec</option>
                             <option value="sucre">Sucré</option>
                             <option value="doux">Doux</option>
                             <option value="brut">Brut</option>
-                            <option value=""></option>
                         </select>
                     </div>
 
@@ -120,7 +137,7 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                         />
                     </div>
 
-                    <div className="w-full text-left">
+                    {/* <div className="w-full text-left">
                         <p className="text-vin200 pb-1 text-sm">
                             A consommer avec ?{" "}
                             <span className="text-xs">
@@ -131,7 +148,7 @@ const ModalAddBottle = ({ bottle, setModalShow }: Props) => {
                             {...register("accords")}
                             className="w-full p-1 rounded"
                         />
-                    </div>
+                    </div> */}
 
                     <div className="w-full text-left">
                         <p className="text-vin200 pb-1 text-sm">Prix d'achat</p>

@@ -1,8 +1,8 @@
 export interface Bottle {
     id: string,
     millesime: number | null,
-    type: "vin" | "champagne" | "petillant" | "cidre" | "spiritueux" | "biere" | "vide" ,
-    couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | "",
+    type: "vin" | "champagne" | "mousseux" | "cidre" | "spiritueux" | "biere" | "vide" ,
+    couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | "petillant" | "",
     gout: "sec" | "demi-sec" | "sucre" | "doux" | "brut" | "",
     pays: string | null,
     appellation: string | null,
@@ -22,7 +22,3 @@ export interface Rack {
     bottles: Bottle[]
 }
 
-
-// millesime: annee
-// exploitation: Domaine ... chateau ...
-// 
