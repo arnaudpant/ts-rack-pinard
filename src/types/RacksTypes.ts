@@ -3,7 +3,7 @@ export interface Bottle {
     millesime: number | null,
     type: "vin" | "champagne" | "petillant" | "cidre" | "spiritueux" | "biere" | "vide" ,
     couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | "",
-    gout: "sec" | "demi-sec" | "sucré" | "doux" | "brut" | null,
+    gout: "sec" | "demi-sec" | "sucre" | "doux" | "brut" | "",
     pays: string | null,
     appellation: string | null,
     exploitation: string | null,
