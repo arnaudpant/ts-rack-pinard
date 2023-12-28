@@ -1,18 +1,28 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
-import { Heart } from "lucide-react";
+import { Heart, X } from "lucide-react";
 
 type Props = {
     bottle: Bottle;
+    handleClick: () => void;
 };
 
-const ModalBottle = ({ bottle }: Props) => {
+const ModalBottle = ({ bottle, handleClick }: Props) => {
     return createPortal(
-        <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex flex-col items-center justify-center">
-            <div className="w-72 bg-fond text-center shadow-md">
+        <>
+            {/* FOND */}
+            <div
+                className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 opacity-50"
+                onClick={() => handleClick()}
+            ></div>
+            {/* MODAL */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-72 bg-fond text-center shadow-md z-20">
+                <div className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer" onClick={()=> handleClick()}>
+                    <X />
+                </div>
                 <div className="mb-1">
                     {bottle.appellation && (
-                        <h2 className="text-3xl font-bold pt-4">
+                        <h2 className="text-3xl font-bold pt-8">
                             {bottle.appellation.toUpperCase()}
                         </h2>
                     )}
@@ -46,23 +56,23 @@ const ModalBottle = ({ bottle }: Props) => {
                         ))}
                     </div>
                 </div>
-            </div>
-            <div className="flex flex-col gap-4 my-4">
-                <div className="flex gap-4">
-                    <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
-                        Editer
-                    </button>
-                    <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
-                        Consommer
-                    </button>
+                <div className="flex flex-col gap-4 my-4">
+                    <div className="flex gap-4">
+                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
+                            Editer
+                        </button>
+                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
+                            Consommer
+                        </button>
+                    </div>
+                    <div className="mx-auto">
+                        <button className="p-3 bg-vin600 text-vin50 rounded-full">
+                            <Heart className="h-8 w-8" />
+                        </button>
+                    </div>
                 </div>
-                <div className="mx-auto">
-                    <button className="p-3 bg-vin600 text-vin50 rounded-full">
-                        <Heart className="h-8 w-8" />
-                    </button>
-                </div>
             </div>
-        </div>,
+        </>,
         document.body
     );
 };
