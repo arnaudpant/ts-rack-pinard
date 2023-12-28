@@ -12,7 +12,6 @@ const RacksView = () => {
             setListOfRacks(authUser.userDocument.racks);
     }, []);
 
-    console.log(listOfRacks);
     return (
         <div className="flex justify-center items-center">
             {authUser.userDocument.racks.length > 0 && (

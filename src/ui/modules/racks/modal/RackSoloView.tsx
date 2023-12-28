@@ -8,7 +8,6 @@ type Props = {
 
 const RackSoloView = ({ rack }: Props) => {
     const [classGrid, setClassGrid] = useState<string>("")
-    console.log('rack', typeof rack.columns)
 
     useEffect(()=>{
 

@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
-import { Bottle } from "../../../../types/RacksTypes";
+import { Bottle, Rack } from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
+import { useAuth } from "../../../../context/AuthUserContext";
+import { addNewRackUserDocument } from "../../../../hooks/useFirestoreRacks";
 
 type Props = {
     bottle: Bottle;
@@ -8,6 +10,8 @@ type Props = {
 };
 
 const ModalAddBottle = ({ bottle, handleClick }: Props) => {
+    const { authUser } = useAuth()
+
     const {
         handleSubmit,
         formState: { errors },
@@ -15,7 +19,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
     } = useForm<Bottle>();
 
     const onSubmit = (data: Bottle) => {
-        const newBootle = {
+        const newBootle: Bottle = {
             ...bottle,
             type: data.type,
             couleur: data.couleur,
@@ -27,10 +31,28 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
             prix: data.prix,
             achat: data.achat,
         };
-        console.log("newBootle", newBootle);
         handleClick();
+        updateRacks(newBootle)
     };
 
+    const updateRacks = (newBootle: Bottle) => {
+        const rackModified = authUser.userDocument.racks.filter(rack => rack.idrack === newBootle.rackId)
+        console.log('rackModified',rackModified[0])
+        const bottleUpdate = rackModified[0].bottles.filter(bottle => bottle.id === newBootle.id)
+        console.log('bottleUpdate',bottleUpdate)
+
+
+        /** 3. */
+        
+
+        /** 2.  */
+        const rackWithNewBottle: Rack = {...rackModified[0], bottlesUpdate}
+
+        /** 1. Rack[] */
+        const oldRacks: Rack[] = authUser.userDocument.racks
+        const racksUpdate: Rack[] = [...oldRacks, rackWithNewBottle]
+        addNewRackUserDocument(racksUpdate)
+    }
 
 
     return (
