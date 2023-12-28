@@ -12,12 +12,11 @@ type Props = {
 const BottlePinard = ({ bottle }: Props) => {
     const [modalShow, setModalShow] = useState(false);
 
+
     const handleClick = () => {
-         window.scrollTo({
-            top: 0
-         })
         setModalShow((v) => !v);
     };
+
 
     let colorBouchon = "bg-bouteille";
     bottle.couleur === "rouge"
@@ -73,9 +72,9 @@ const BottlePinard = ({ bottle }: Props) => {
                 </p>
             </div>
             {modalShow && bottle.type !== "vide" ? (
-                <ModalBottle bottle={bottle} handleClick={handleClick} />
+                <ModalBottle bottle={bottle} handleClick={()=> handleClick()} />
             ) : modalShow && bottle.type === "vide" ? (
-                <ModalAddBottle bottle={bottle} handleClick={handleClick} />
+                <ModalAddBottle bottle={bottle} handleClick={()=> handleClick()} />
             ) : null}
         </>
     );
