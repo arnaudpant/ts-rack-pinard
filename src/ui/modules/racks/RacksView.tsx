@@ -10,7 +10,7 @@ const RacksView = () => {
     useEffect(() => {
         authUser.userDocument.racks.length > 0 &&
             setListOfRacks(authUser.userDocument.racks);
-    }, []);
+    }, [authUser]);
 
     return (
         <div className="flex justify-center items-center">

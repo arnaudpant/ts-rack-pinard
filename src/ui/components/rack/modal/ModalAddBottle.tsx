@@ -32,8 +32,8 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
             prix: data.prix,
             achat: data.achat,
         };
-        handleClick();
         updateRacks(newBootle);
+        handleClick();
     };
 
     const updateRacks = (newBootle: Bottle) => {
