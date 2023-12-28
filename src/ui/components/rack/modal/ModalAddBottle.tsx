@@ -152,11 +152,12 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">Appellation</p>
+                        <p className="text-vin200 pb-1 text-sm">Appellation (Bordeaux ...)</p>
                         <input
-                            {...register("appellation")}
+                            {...register("appellation", { required: true })}
                             className="w-full p-1 rounded"
                         />
+                        {errors.couleur && <span>Ce champ est requis</span>}
                     </div>
 
                     <div className="w-full text-left">
