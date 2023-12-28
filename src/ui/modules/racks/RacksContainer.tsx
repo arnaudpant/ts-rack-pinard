@@ -7,9 +7,12 @@ import AddRackModal from "./modal/AddRackModal";
 const RacksContainer = () => {
     const { authUser } = useAuth()
     const [modalShow, setModalShow] = useState(false)
+    
     const handleClick = () => {
+
         setModalShow(v => !v)
     }
+
 
     return (
         <>

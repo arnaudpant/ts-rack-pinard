@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Bottle} from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
+import { useEffect } from "react";
 
 type Props = {
     bottle: Bottle;
@@ -11,6 +12,11 @@ type Props = {
 const ModalAddBottle = ({ bottle, handleClick }: Props) => {
     const {updateRacks} = useUpdateRacks()
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0
+        });
+    }, []);
 
     const {
         handleSubmit,
@@ -37,8 +43,9 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
 
 
     return (
-        <div className="absolute w-full h-full top-0 left-0 bg-vin100 flex flex-col items-center justify-center">
-            <div className="relative w-72 bg-fond text-center shadow-md rounded-xl py-4">
+        <>
+        
+            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-72 bg-vin200 text-center shadow-md rounded-xl py-4">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                     onClick={() => handleClick()}
@@ -50,7 +57,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             Type de vin *
                         </p>
                         <select
@@ -69,7 +76,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             Couleur du vin ou bière *
                         </p>
                         <select
@@ -90,7 +97,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             Goût du vin ou cidre
                         </p>
                         <select
@@ -107,7 +114,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">Millesime</p>
+                        <p className="text-fond pb-1 text-sm">Millesime</p>
                         <input
                             type="number"
                             {...register("millesime")}
@@ -116,7 +123,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">Appellation (Bordeaux ...)</p>
+                        <p className="text-fond pb-1 text-sm">Appellation (Bordeaux ...)</p>
                         <input
                             {...register("appellation", { required: true })}
                             className="w-full p-1 rounded"
@@ -125,7 +132,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             Nom exploitation
                         </p>
                         <input
@@ -135,7 +142,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             Cuvée spéciale ?
                         </p>
                         <input
@@ -145,7 +152,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     {/* <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">
+                        <p className="text-fond pb-1 text-sm">
                             A consommer avec ?{" "}
                             <span className="text-xs">
                                 (séparer par une , )
@@ -158,7 +165,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div> */}
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">Prix d'achat</p>
+                        <p className="text-fond pb-1 text-sm">Prix d'achat</p>
                         <input
                             type="number"
                             {...register("prix")}
@@ -167,7 +174,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-vin200 pb-1 text-sm">Date d'achat</p>
+                        <p className="text-fond pb-1 text-sm">Date d'achat</p>
                         <input
                             type="date"
                             {...register("achat")}
@@ -181,10 +188,10 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     >
                         Ajouter la bouteille
                     </button>
-                    <p className="text-vin100 text-xs">* Champs obligatoire</p>
+                    <p className="text-fond text-xs">* Champs obligatoire</p>
                 </form>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -1,7 +1,8 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
-import { Heart, X } from "lucide-react";
+import { X } from "lucide-react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
+import { useEffect } from "react";
 
 type Props = {
     bottle: Bottle;
@@ -9,23 +10,22 @@ type Props = {
 };
 
 const ModalBottle = ({ bottle, handleClick }: Props) => {
-
-    const {deleteBottle} = useUpdateRacks()
-
+    const { deleteBottle } = useUpdateRacks();
     const handleDeleteBottle = (bottle: Bottle) => {
-        deleteBottle(bottle)
-        handleClick()
-    }
+        deleteBottle(bottle);
+        handleClick();
+    };
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0
+        });
+    }, []);
 
     return createPortal(
         <>
-            {/* FOND */}
-            <div
-                className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 opacity-50"
-                onClick={() => handleClick()}
-            ></div>
             {/* MODAL */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-72 bg-fond text-center shadow-md z-20">
+            <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-72 bg-vin300 text-fond text-center shadow-lg z-20">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                     onClick={() => handleClick()}
@@ -72,8 +72,9 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                     {/* DATE ACHAT */}
                     {bottle.achat && <p>Date achat: {bottle.achat}</p>}
                     {/* PRIX */}
-                    {bottle.prix && <p className="pt-4 text-lg">Prix: {bottle.prix} €</p>}
-                    
+                    {bottle.prix && (
+                        <p className="pt-4 text-lg">Prix: {bottle.prix} €</p>
+                    )}
                 </div>
 
                 {/* <div className="mb-4">
@@ -88,11 +89,14 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                 </div> */}
 
                 <div className="flex flex-col gap-4 my-4">
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 mb-6">
                         {/* <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
                             Editer
                         </button> */}
-                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full" onClick={()=> handleDeleteBottle(bottle)}>
+                        <button
+                            className="w-32 px-4 py-2 bg-vin50 text-vin800 rounded-full shadow-md"
+                            onClick={() => handleDeleteBottle(bottle)}
+                        >
                             Consommer
                         </button>
                     </div>

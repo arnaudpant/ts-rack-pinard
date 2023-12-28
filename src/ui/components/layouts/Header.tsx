@@ -5,11 +5,12 @@ import { Unplug } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { firebaseSignOutUser } from "../../../api/Authentification";
 import { Menu } from 'lucide-react';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
 
     const { authUser } = useAuth()
+    const navigate = useNavigate();
 
     let scrAvatar: string = ""
 
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
                 </div>
             </div>
             <div className="absolute right-4 sm:hidden">
-                    <Menu className="h-10 w-10 cursor-pointer"/>
+                    <Menu className="h-10 w-10 cursor-pointer" onClick={()=>navigate("/user-infos")}/>
             </div>
 
         </header>
