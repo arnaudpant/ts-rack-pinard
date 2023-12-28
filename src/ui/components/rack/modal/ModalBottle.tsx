@@ -63,7 +63,8 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                     {/* DATE ACHAT */}
                     {bottle.achat && <p>Date achat: {bottle.achat}</p>}
                     {/* PRIX */}
-                    <p className="pt-4 text-lg">Prix: {bottle.prix} €</p>
+                    {bottle.prix && <p className="pt-4 text-lg">Prix: {bottle.prix} €</p>}
+                    
                 </div>
 
                 {/* <div className="mb-4">
@@ -79,18 +80,18 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
 
                 <div className="flex flex-col gap-4 my-4">
                     <div className="flex gap-4">
-                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
+                        {/* <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
                             Editer
-                        </button>
+                        </button> */}
                         <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
                             Consommer
                         </button>
                     </div>
-                    <div className="mx-auto">
+                    {/* <div className="mx-auto">
                         <button className="p-3 bg-vin600 text-vin50 rounded-full">
                             <Heart className="h-8 w-8" />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>,
