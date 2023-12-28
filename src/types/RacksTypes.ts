@@ -11,7 +11,7 @@ export interface Bottle {
     accords: string[],
     prix: number | null,
     achat: string | null,
-    rack: string
+    rackId: string
 } 
 
 export interface Rack {

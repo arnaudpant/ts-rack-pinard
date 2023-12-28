@@ -36,7 +36,7 @@ const AddRackModal = ({handleClick}: Props) => {
         millesime: null,
         type: "vide" ,
         couleur: "",
-        gout: null,
+        gout: "",
         pays: null,
         appellation: null,
         exploitation: null,
@@ -44,7 +44,7 @@ const AddRackModal = ({handleClick}: Props) => {
         accords: [],
         prix: null,
         achat: null,
-        rack: ""
+        rackId: newRack.idrack
     }
 
     const addNewRackUserDocument = async (racks: Rack[]) => {
@@ -73,8 +73,8 @@ const AddRackModal = ({handleClick}: Props) => {
         // AJOUT RACKS AVEC BOUTEILLES VIDE + INFOS
         const rackWithBottlesEmpty = {...newRack, 
             rackName: data.rackName,
-            columns: data.columns,
-            rows: data.rows,
+            columns: Number(data.columns),
+            rows: Number(data.rows),
             bottles: arrBottlesVide
         }
 
