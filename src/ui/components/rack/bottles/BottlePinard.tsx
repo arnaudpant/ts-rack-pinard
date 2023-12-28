@@ -13,6 +13,9 @@ const BottlePinard = ({ bottle }: Props) => {
     const [modalShow, setModalShow] = useState(false);
 
     const handleClick = () => {
+         window.scrollTo({
+            top: 0
+         })
         setModalShow((v) => !v);
     };
 

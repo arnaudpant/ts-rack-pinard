@@ -37,7 +37,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
 
 
     return (
-        <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex flex-col items-center justify-center">
+        <div className="absolute w-full h-full top-0 left-0 bg-vin100 flex flex-col items-center justify-center">
             <div className="relative w-72 bg-fond text-center shadow-md rounded-xl py-4">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
