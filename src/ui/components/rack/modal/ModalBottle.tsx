@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
 import { Heart, X } from "lucide-react";
+import useUpdateRacks from "../../../../hooks/useUpdateRacks";
 
 type Props = {
     bottle: Bottle;
@@ -8,6 +9,14 @@ type Props = {
 };
 
 const ModalBottle = ({ bottle, handleClick }: Props) => {
+
+    const {deleteBottle} = useUpdateRacks()
+
+    const handleDeleteBottle = (bottle: Bottle) => {
+        deleteBottle(bottle)
+        handleClick()
+    }
+
     return createPortal(
         <>
             {/* FOND */}
@@ -83,7 +92,7 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                         {/* <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
                             Editer
                         </button> */}
-                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
+                        <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full" onClick={()=> handleDeleteBottle(bottle)}>
                             Consommer
                         </button>
                     </div>
