@@ -11,10 +11,12 @@ export interface Bottle {
     accords: string[],
     prix: number | null,
     achat: string | null,
-    rackId: string
+    rackId: string,
+    index: number
 } 
 
 export interface Rack {
+    [x: string]: any
     idrack: string,
     rackName: string,
     columns: number,

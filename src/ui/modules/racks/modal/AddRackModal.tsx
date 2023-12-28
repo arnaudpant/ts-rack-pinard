@@ -44,7 +44,8 @@ const AddRackModal = ({handleClick}: Props) => {
         accords: [],
         prix: null,
         achat: null,
-        rackId: newRack.idrack
+        rackId: newRack.idrack,
+        index: 0
     }
 
     const addNewRackUserDocument = async (racks: Rack[]) => {
@@ -66,7 +67,7 @@ const AddRackModal = ({handleClick}: Props) => {
         // AJOUT X BOUTEILLES VIDES
         let arrBottlesVide: typeof bottleEmpty[] | [] = []
         for (let i = 0; i < calculNumberOfBottle; i++) {
-            const bottleEmptyWithNewId = {...bottleEmpty, id: uuidv4()}
+            const bottleEmptyWithNewId = {...bottleEmpty, id: uuidv4(), index: i}
             arrBottlesVide = [...arrBottlesVide, bottleEmptyWithNewId]
         }
 

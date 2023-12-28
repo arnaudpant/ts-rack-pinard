@@ -2,15 +2,16 @@ import { useForm } from "react-hook-form";
 import { Bottle, Rack } from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
 import { useAuth } from "../../../../context/AuthUserContext";
-import { addNewRackUserDocument } from "../../../../hooks/useFirestoreRacks";
+import { FirestoreUpdateDocument } from "../../../../api/Firestore";
+import { toast } from "react-toastify";
 
 type Props = {
     bottle: Bottle;
-    handleClick: () => void
+    handleClick: () => void;
 };
 
 const ModalAddBottle = ({ bottle, handleClick }: Props) => {
-    const { authUser } = useAuth()
+    const { authUser } = useAuth();
 
     const {
         handleSubmit,
@@ -32,33 +33,52 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
             achat: data.achat,
         };
         handleClick();
-        updateRacks(newBootle)
+        updateRacks(newBootle);
     };
 
     const updateRacks = (newBootle: Bottle) => {
-        const rackModified = authUser.userDocument.racks.filter(rack => rack.idrack === newBootle.rackId)
-        console.log('rackModified',rackModified[0])
-        const bottleUpdate = rackModified[0].bottles.filter(bottle => bottle.id === newBootle.id)
-        console.log('bottleUpdate',bottleUpdate)
+        /** 1. Filtre rack modifié */
+        const rackTarget = authUser.userDocument.racks.filter(
+            (rack) => rack.idrack === newBootle.rackId
+        )[0];
 
+        /** 2. Recuperation index de la nouvelle bouteille */
+        const bottlesIndex = rackTarget.bottles.filter(
+            (bottle) => bottle.id == newBootle.id
+        )[0].index;
 
-        /** 3. */
-        
+        /** 3. Mise a jour de la case avec nouvelle bouteille */
+        rackTarget.bottles[bottlesIndex] = newBootle;
 
-        /** 2.  */
-        const rackWithNewBottle: Rack = {...rackModified[0], bottlesUpdate}
+        /** 4. Mise a jour liste des racks */
+        const listOldRacks = authUser.userDocument.racks.filter(
+            (rack) => rack.idrack !== newBootle.rackId
+        );
+        const listNewracks = [...listOldRacks, rackTarget];
 
-        /** 1. Rack[] */
-        const oldRacks: Rack[] = authUser.userDocument.racks
-        const racksUpdate: Rack[] = [...oldRacks, rackWithNewBottle]
-        addNewRackUserDocument(racksUpdate)
-    }
+        /** Envoi dans Firestore */
+        addNewBottleInrack(listNewracks);
+    };
 
+    const addNewBottleInrack = async (racks: Rack[]) => {
+        const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
+            ...authUser.userDocument,
+            racks,
+        });
+        if (error) {
+            toast.error(error.message);
+            return;
+        }
+        toast.success("Bouteille ajoutée");
+    };
 
     return (
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-vin100 flex flex-col items-center justify-center">
             <div className="relative w-72 bg-fond text-center shadow-md rounded-xl py-4">
-                <div className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer" onClick={()=> handleClick()}>
+                <div
+                    className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
+                    onClick={() => handleClick()}
+                >
                     <X />
                 </div>
                 <form
