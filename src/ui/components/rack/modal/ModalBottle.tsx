@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
-import { Heart, X } from "lucide-react";
+import { X } from "lucide-react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
 
 type Props = {
