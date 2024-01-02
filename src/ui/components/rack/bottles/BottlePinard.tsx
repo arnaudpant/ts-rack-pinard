@@ -64,7 +64,8 @@ const BottlePinard = ({ bottle }: Props) => {
                     </div>
                 )}
                 <p className="hidden md:block text-[10px] xl:text-sm text-center xl:pt-1">
-                    {bottle.appellation}
+                    { bottle.appellation && 
+                    bottle.appellation}
                 </p>
             </div>
             {modalShow && bottle.type !== "vide" ? (

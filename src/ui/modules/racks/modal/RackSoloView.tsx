@@ -14,7 +14,7 @@ const RackSoloView = ({ rack }: Props) => {
         switch (rack.columns) {
             case 1:
                 setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-1 gap-1 w-full md:w-auto"
+                    "bg-gris_fonce p-2 grid grid-cols-1 gap-1 w-full max-w-screen-md"
                 );
                 break;
     
@@ -68,7 +68,7 @@ const RackSoloView = ({ rack }: Props) => {
     
             case 10:
                 setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-10 gap-1 w-full md:w-auto max-w-screen-2xl"
+                    "bg-gris_fonce p-2 grid grid-cols-10 gap-1 w-full max-w-screen-2xl"
                 );
                 break;
         }
