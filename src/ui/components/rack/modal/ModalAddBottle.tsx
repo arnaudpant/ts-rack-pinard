@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Bottle} from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
-import { useEffect } from "react";
 
 type Props = {
     bottle: Bottle;
@@ -12,11 +11,6 @@ type Props = {
 const ModalAddBottle = ({ bottle, handleClick }: Props) => {
     const {updateRacks} = useUpdateRacks()
 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0
-        });
-    }, []);
 
     const {
         handleSubmit,
@@ -45,7 +39,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
     return (
         <>
         
-            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-72 bg-vin200 text-center shadow-md rounded-xl py-4">
+            <div className="fixed top-20 left-1/2 -translate-x-1/2 w-72 bg-vin200 text-center shadow-md rounded-xl py-4">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                     onClick={() => handleClick()}

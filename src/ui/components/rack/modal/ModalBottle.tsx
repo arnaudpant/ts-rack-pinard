@@ -2,7 +2,6 @@ import { createPortal } from "react-dom";
 import { Bottle } from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
-import { useEffect } from "react";
 
 type Props = {
     bottle: Bottle;
@@ -16,16 +15,11 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
         handleClick();
     };
 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0
-        });
-    }, []);
 
     return createPortal(
         <>
             {/* MODAL */}
-            <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-72 bg-vin300 text-fond text-center shadow-lg z-20">
+            <div className=" fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-72 bg-vin300 text-fond text-center shadow-lg z-20">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                     onClick={() => handleClick()}

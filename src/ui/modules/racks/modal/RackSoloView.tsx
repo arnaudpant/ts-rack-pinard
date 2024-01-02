@@ -77,7 +77,7 @@ const RackSoloView = ({ rack }: Props) => {
     },[rack])
 
     return (
-        <div className="flex flex-col items-center w-full px-2">
+        <div className="flex flex-col items-center w-full px-2 pt-4 mb-10">
             {/* Rack complet */}
             <div className="flex justify-center w-full">
                 {rack && classGrid !== "" && (
