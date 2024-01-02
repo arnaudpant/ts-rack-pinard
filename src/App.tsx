@@ -28,6 +28,7 @@ function App() {
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/boarding" element={<Boarding />} />
             <Route path="/container-racks" element={<ContainerRacks />} />
+            <Route path="/rack/:id" element={<ContainerRacks />} />
             <Route path="/user-infos" element={<UserInfos />} />
             <Route path="/demonstration" element={<Demo />} />
             <Route path="/*" element={<Home />} />
