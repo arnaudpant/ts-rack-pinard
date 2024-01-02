@@ -23,6 +23,7 @@ export default {
 			bouteille_blanc: '#fefee2',
 			bouteille_rose: '#fee7f0',
 			bouteille_champagne: '#0f4d0f',
+			bouteille_biere: '#58B19F',
 			gris: '#b2bec3',
 			gris_fonce: '#2d3436',
 		},

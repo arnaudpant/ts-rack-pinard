@@ -20,8 +20,10 @@ import { storage } from "../../firebase/firebase.config";
 /** API */
 import { toast } from "react-toastify";
 import ProfileUserInfosForm from "../modules/user-infos/ProfileUserInfosForm";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import AddRackModal from "../modules/racks/modal/AddRackModal";
+import { firebaseSignOutUser } from "../../api/Authentification";
+import { Unplug } from "lucide-react";
 
 const UserInfos = () => {
     const { authUser } = useAuth();
@@ -31,11 +33,21 @@ const UserInfos = () => {
     const [imagePreview, setImagePreview] = useState<
         string | ArrayBuffer | null
     >(null);
-    const [modalShow, setModalShow] = useState(false)
+    const [modalShow, setModalShow] = useState(false);
 
     const handleClick = () => {
-        setModalShow(v => !v)
-    }
+        setModalShow((v) => !v);
+    };
+
+    const handleDisconnect = async () => {
+        const { error } = await firebaseSignOutUser();
+        if (error) {
+            toast.error(error.message);
+            return;
+        }
+        toast.success("A bientôt dans vos racks à pinard");
+        return <Navigate to="/" replace={true} />;
+    };
 
     const {
         handleSubmit,
@@ -163,7 +175,7 @@ const UserInfos = () => {
                 <h2 className="text-3xl text-center">Compte utilisateur</h2>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-start gap-8">
+            <div className="container mx-auto flex flex-col md:flex-row justify-start gap-8">
                 {/* PARTIE HAUTE OU GAUCHE */}
                 <div className="flex flex-col">
                     <div className="w-[280px] pl-5">
@@ -202,7 +214,7 @@ const UserInfos = () => {
                     <div className="mt-4">
                         <Link
                             to="/container-racks"
-                            className="block w-48 px-5 py-3 bg-vin text-fond text-center rounded-lg shadow-sm"
+                            className="block w-56 px-5 py-3 bg-vin text-fond text-center rounded-lg shadow-sm"
                         >
                             MES RACKS
                         </Link>
@@ -210,17 +222,25 @@ const UserInfos = () => {
 
                     <div className="mt-4">
                         <button
-                            className="block w-48 px-5 py-3 bg-fond text-vin border border-vin rounded-lg shadow-sm"
-                            onClick={()=> handleClick()}
+                            className="block w-56 px-5 py-3 bg-fond text-vin border border-vin rounded-lg shadow-sm"
+                            onClick={() => handleClick()}
                         >
                             AJOUTER UN RACK
                         </button>
                     </div>
+
+                    <div className="mt-4">
+                        <button
+                            className="block w-56 px-5 py-3 bg-vin50 text-fond hover:bg-vin300 rounded-lg shadow-sm"
+                            onClick={handleDisconnect}
+                        >
+                            SE DECONNECTER{" "}
+                            <Unplug className="text-fond inline ml-2" />
+                        </button>
+                    </div>
                 </div>
             </div>
-            {
-                            modalShow && <AddRackModal handleClick={handleClick} /> 
-                        }
+            {modalShow && <AddRackModal handleClick={handleClick} />}
         </>
     );
 };

@@ -17,7 +17,7 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
         setModalShow((v) => !v);
     };
 
-    let colorBouchon = "bg-bouteille";
+    let colorBouchon = "#3a3a3a";
     bottle.couleur === "rouge"
         ? (colorBouchon = "#d63031")
         : bottle.couleur === "blanc"
@@ -28,7 +28,9 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
         ? (colorBouchon = "#ffff00")
         : bottle.couleur === "rose"
         ? (colorBouchon = "#F8C3CD")
-        : "bg-bouteille";
+        : bottle.couleur === "blonde" || "brune" || "ambree" || "blanche"
+        ? (colorBouchon = "#3c40c6")
+        : "#3a3a3a";
 
     let couleurBouteille = "text-bouteille";
     bottle.couleur === "blanc"
@@ -39,6 +41,14 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
         ? (couleurBouteille = "text-bouteille_champagne")
         : bottle.couleur === "rose"
         ? (couleurBouteille = "text-bouteille_rose")
+        : bottle.couleur === "blonde"
+        ? (couleurBouteille = "text-bouteille_biere")
+        : bottle.couleur === "brune"
+        ? (couleurBouteille = "text-bouteille_biere")
+        : bottle.couleur === "ambree"
+        ? (couleurBouteille = "text-bouteille_biere")
+        : bottle.couleur === "blanche"
+        ? (couleurBouteille = "text-bouteille_biere")
         : "bg-bouteille";
 
     return (

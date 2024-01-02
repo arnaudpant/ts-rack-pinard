@@ -22,7 +22,7 @@ const ListOfRacks = ({state}: Props) => {
                     <h2 className="text-xl text-vin800 text-center mb-2 pt-10">
                         Liste de vos racks à pinard
                     </h2>
-                    <div className="container mx-auto py-2 flex flex-wrap gap-2">
+                    <div className="container mx-auto py-2 flex justify-center flex-wrap gap-2">
                         {listOfRacks.map((rack) => (
                             <ButtonRackSelected rack={rack} key={rack.idrack} state={state} />
                         ))}
