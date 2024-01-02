@@ -13,8 +13,8 @@ const ButtonRackSelected = ({ rack, state }: Props) => {
         <button
             className={clsx(
                 state && state === rack.idrack
-                    ? "bg-vin hover:bg-vin300 text-fond hover:text-vin"
-                    : "text-vin600 hover:bg-vin hover:text-fond",
+                    ? "bg-vin text-fond"
+                    : "text-vin600 hover:bg-vin300 hover:text-fond",
                 "px-4 py-1 border-2 border-vin rounded-full"
             )}
         >

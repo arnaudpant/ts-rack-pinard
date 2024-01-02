@@ -6,9 +6,9 @@ import AddRackModal from "./modal/AddRackModal";
 const RacksView = () => {
     const [modalShow, setModalShow] = useState(false);
 
-     const handleClick = () => {
-         setModalShow((v) => !v);
-     };
+    const handleClick = () => {
+        setModalShow((v) => !v);
+    };
 
     return (
         <div className="flex flex-col justify-between items-center h-[calc(100vh-64px)]">
