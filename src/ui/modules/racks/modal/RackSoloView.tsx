@@ -57,7 +57,7 @@ const RackSoloView = ({ rack }: Props) => {
 
     return (
         <div className="flex flex-col items-center">
-            <h1 className="text-3xl text-center py-4">
+            <h1 className="text-3xl text-vin800 text-center py-4">
                 Rack: {`${rack.rackName}`}
             </h1>
             <div className="container mx-auto flex justify-center">

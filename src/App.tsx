@@ -13,6 +13,7 @@ import UserInfos from "./ui/pages/UserInfos";
 import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
+import RackId from "./ui/pages/RackId";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/boarding" element={<Boarding />} />
             <Route path="/container-racks" element={<ContainerRacks />} />
-            <Route path="/rack/:id" element={<ContainerRacks />} />
+            <Route path="/rack/:id" element={<RackId />} />
             <Route path="/user-infos" element={<UserInfos />} />
             <Route path="/demonstration" element={<Demo />} />
             <Route path="/*" element={<Home />} />

@@ -1,27 +1,14 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../../../context/AuthUserContext";
-import { Rack } from "@/types/RacksTypes";
-import RackSoloView from "./modal/RackSoloView";
+import sommelier from "/src/assets/sommelier.png";
+import ListOfRacks from "../../../ui/components/bandeauRack/ListOfRacks";
 
 const RacksView = () => {
-    const { authUser } = useAuth();
-    const [listOfRacks, setListOfRacks] = useState<Rack[] | []>([]);
-
-
-    useEffect(() => {
-        authUser.userDocument.racks.length > 0 &&
-            setListOfRacks(authUser.userDocument.racks);
-    }, [authUser]);
 
     return (
-        <div className="flex justify-center items-center">
-            {authUser.userDocument.racks.length > 0 && (
-                <div className="">
-                    {listOfRacks.map((rack) => (
-                        <RackSoloView rack={rack} key={rack.idrack} />
-                    ))}
-                </div>
-            )}
+        <div className="flex flex-col justify-between items-center h-[calc(100vh-64px)]">
+            <ListOfRacks />
+            <div>
+                <img src={sommelier} alt="" />
+            </div>
         </div>
     );
 };

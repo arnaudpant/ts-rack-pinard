@@ -4,13 +4,11 @@ import Avatar from "../../../ui/design-syst/avatar/Avatar";
 import { Unplug } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { firebaseSignOutUser } from "../../../api/Authentification";
-import { Menu } from 'lucide-react';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Header: React.FC = () => {
 
     const { authUser } = useAuth()
-    const navigate = useNavigate();
 
     let scrAvatar: string = ""
 
@@ -40,15 +38,12 @@ const Header: React.FC = () => {
             </div>
 
             {/* AVATAR */}
-            <div className="hidden sm:block absolute right-4">
-                <div className={clsx(!authUser?.userDocument.onBoardingisCompleted && `hidden`, 'cursor-pointer w-14 h-14')}>
+            <div className="absolute right-4">
+                <div className={clsx(!authUser?.userDocument.onBoardingisCompleted && `hidden`, 'cursor-pointer w-10 h-10')}>
                     {
-                        scrAvatar == "" ? (<Link to="/user-infos"><Avatar src="/avatar-default.png" width="14" height="14" /></Link>) : (<Link to="/user-infos"><Avatar src={scrAvatar} width="14" height="14" /></Link>)
+                        scrAvatar == "" ? (<Link to="/user-infos"><Avatar src="/avatar-default.png" width="10" height="10" /></Link>) : (<Link to="/user-infos"><Avatar src={scrAvatar} width="10" height="10" /></Link>)
                     }
                 </div>
-            </div>
-            <div className="absolute right-4 sm:hidden">
-                    <Menu className="h-10 w-10 cursor-pointer" onClick={()=>navigate("/user-infos")}/>
             </div>
 
         </header>
