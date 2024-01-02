@@ -45,36 +45,42 @@ const BottlePinard = ({ bottle }: Props) => {
     return (
         <>
             <div
-                className="h-16 w-16 md:h-28 md:w-28 bg-gris flex flex-col justify-center items-center rounded-lg cursor-pointer"
+                className="flex flex-col justify-center items-center  rounded-lg bg-gris cursor-pointer"
                 onClick={handleClick}
             >
                 {bottle.type === "vide" ? (
-                    <div className="h-10 w-10 md:h-20 md:w-20 bg-gris rounded-full flex justify-center items-center">
-                        <PlusCircle className="w-16 h-16 text-bouteille" />
+                    <div className=" bg-gris w-full rounded-full flex justify-center items-center">
+                        <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
                     </div>
                 ) : (
                     <div
                         className={clsx(
-                            "h-10 w-10 md:h-20 md:w-20 rounded-full flex justify-center items-center",
+                            "h-6 w-6 sm:h-10 sm:w-10 lg:h-16 lg:w-16 xl:h-20 xl:w-20 m-1 sm:mt-2 sm:ml-2 sm:mr-2 rounded-full flex justify-center items-center",
                             `${couleurBouteille}`
                         )}
                     >
                         <div
                             className={clsx(
                                 `${colorBouchon}`,
-                                "h-5 w-5 md:h-10 md:w-10 rounded-full bg-fond"
+                                "h-3 w-3 sm:h-5 sm:w-5 lg:h-8 lg:w-8 xl:h-10 xl:w-10 rounded-full bg-fond"
                             )}
                         ></div>
                     </div>
                 )}
-                <p className="text-xs text-center md:pt-1">
+                <p className="hidden md:block text-[10px] xl:text-sm text-center xl:pt-1">
                     {bottle.appellation}
                 </p>
             </div>
             {modalShow && bottle.type !== "vide" ? (
-                <ModalBottle bottle={bottle} handleClick={()=> handleClick()} />
+                <ModalBottle
+                    bottle={bottle}
+                    handleClick={() => handleClick()}
+                />
             ) : modalShow && bottle.type === "vide" ? (
-                <ModalAddBottle bottle={bottle} handleClick={()=> handleClick()} />
+                <ModalAddBottle
+                    bottle={bottle}
+                    handleClick={() => handleClick()}
+                />
             ) : null}
         </>
     );

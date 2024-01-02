@@ -17,7 +17,7 @@ const RackId = () => {
             (rackFilter: Rack) => rackFilter.idrack === state
         );
         rackToShow && setRack(rackToShow[0]);
-    }, [state]);
+    }, [state, authUser]);
 
     return (
         <div className="flex flex-col justify-start items-center">

@@ -49,19 +49,23 @@ const RackSoloView = ({ rack }: Props) => {
                 break;
     
             case 10:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-10 gap-1")
+                setClassGrid(
+                    "m-4 bg-gris_fonce p-2 grid grid-cols-10 gap-1"
+                );
                 break;
         }
 
     },[rack])
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
             <h1 className="text-3xl text-vin800 text-center py-4">
                 Rack: {`${rack.rackName}`}
             </h1>
-            <div className="container mx-auto flex justify-center">
+            {/* Rack complet */}
+            <div className="flex justify-center">
                 {rack && classGrid !== "" && (
+                    // Cases
                     <div className={`${classGrid}`}>
                         {rack.bottles.map((bottle: Bottle) => (
                             <BottlePinard bottle={bottle} key={bottle.id} />

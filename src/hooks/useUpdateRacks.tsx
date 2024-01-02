@@ -31,6 +31,7 @@ const useUpdateRacks = () => {
     };
 
     const deleteBottle = (bottleEmpty: Bottle) => {
+        const deleted: boolean = true
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
             millesime: null,
@@ -67,10 +68,10 @@ const useUpdateRacks = () => {
         const listNewracks = [...listOldRacks, rackTarget];
 
         /** Envoi dans Firestore */
-        addNewBottleInrack(listNewracks);
+        addNewBottleInrack(listNewracks, deleted);
     };
 
-    const addNewBottleInrack = async (racks: Rack[]) => {
+    const addNewBottleInrack = async (racks: Rack[], deleted?: boolean) => {
         const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
             ...authUser.userDocument,
             racks,
@@ -79,7 +80,8 @@ const useUpdateRacks = () => {
             toast.error(error.message);
             return;
         }
-        toast.success("Bouteille supprimée de votre rack");
+        deleted === true ? toast.success("Bouteille supprimée de votre rack") :
+        toast.success("Bouteille ajoutée à votre rack")
     };
 
     return {
