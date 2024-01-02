@@ -13,57 +13,73 @@ const RackSoloView = ({ rack }: Props) => {
 
         switch (rack.columns) {
             case 1:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-1 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-1 gap-1 w-full md:w-auto"
+                );
                 break;
     
             case 2:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-2 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-2 gap-1 w-full max-w-screen-md"
+                );
                 break;
     
             case 3:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-3 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-3 gap-1 w-full max-w-screen-md"
+                );
                 break;
     
             case 4:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-4 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-4 gap-1 w-full max-w-screen-md"
+                );
                 break;
     
             case 5:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-5 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-5 gap-1 w-full max-w-screen-lg"
+                );
                 break;
     
             case 6:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-6 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-6 gap-1 w-full max-w-screen-lg"
+                );
                 break;
     
             case 7:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-7 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-7 gap-1 w-full max-w-screen-lg"
+                );
                 break;
     
             case 8:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-8 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-8 gap-1 w-full max-w-screen-xl"
+                );
                 break;
     
             case 9:
-                setClassGrid("m-4 bg-gris_fonce p-2 grid grid-cols-9 gap-1")
+                setClassGrid(
+                    "bg-gris_fonce p-2 grid grid-cols-9 gap-1 w-full max-w-screen-xl"
+                );
                 break;
     
             case 10:
                 setClassGrid(
-                    "m-4 bg-gris_fonce p-2 grid grid-cols-10 gap-1"
+                    "bg-gris_fonce p-2 grid grid-cols-10 gap-1 w-full md:w-auto max-w-screen-2xl"
                 );
                 break;
         }
+        
 
     },[rack])
 
     return (
-        <div className="flex flex-col items-center w-full">
-            <h1 className="text-3xl text-vin800 text-center py-4">
-                Rack: {`${rack.rackName}`}
-            </h1>
+        <div className="flex flex-col items-center w-full px-2">
             {/* Rack complet */}
-            <div className="flex justify-center">
+            <div className="flex justify-center w-full">
                 {rack && classGrid !== "" && (
                     // Cases
                     <div className={`${classGrid}`}>

@@ -1,5 +1,5 @@
 import { Bottle } from "../../../../types/RacksTypes";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Circle } from "lucide-react";
 import clsx from "clsx";
 import ModalBottle from "../modal/ModalBottle";
 import ModalAddBottle from "../modal/ModalAddBottle";
@@ -20,32 +20,32 @@ const BottlePinard = ({ bottle }: Props) => {
 
     let colorBouchon = "bg-bouteille";
     bottle.couleur === "rouge"
-        ? (colorBouchon = "bg-vin_rouge")
+        ? (colorBouchon = "#d63031")
         : bottle.couleur === "blanc"
-        ? (colorBouchon = "bg-vin_blanc")
+        ? (colorBouchon = "#d4d408")
         : bottle.type === "mousseux"
-        ? (colorBouchon = "bg-vin_champagne")
+        ? (colorBouchon = "#ffff00")
         : bottle.type === "champagne"
-        ? (colorBouchon = "bg-vin_champagne")
+        ? (colorBouchon = "#ffff00")
         : bottle.couleur === "rose"
-        ? (colorBouchon = "bg-vin_rose")
+        ? (colorBouchon = "#F8C3CD")
         : "bg-bouteille";
 
-    let couleurBouteille = "bg-bouteille";
+    let couleurBouteille = "text-bouteille";
     bottle.couleur === "blanc"
-        ? (couleurBouteille = "bg-bouteille_blanc")
+        ? (couleurBouteille = "text-bouteille_blanc")
         : bottle.type === "mousseux"
-        ? (couleurBouteille = "bg-bouteille_champagne")
+        ? (couleurBouteille = "text-bouteille_champagne")
         : bottle.type === "champagne"
-        ? (couleurBouteille = "bg-bouteille_champagne")
+        ? (couleurBouteille = "text-bouteille_champagne")
         : bottle.couleur === "rose"
-        ? (couleurBouteille = "bg-bouteille_rose")
+        ? (couleurBouteille = "text-bouteille_rose")
         : "bg-bouteille";
 
     return (
         <>
             <div
-                className="flex flex-col justify-center items-center  rounded-lg bg-gris cursor-pointer"
+                className="flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris cursor-pointer"
                 onClick={handleClick}
             >
                 {bottle.type === "vide" ? (
@@ -53,18 +53,14 @@ const BottlePinard = ({ bottle }: Props) => {
                         <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
                     </div>
                 ) : (
-                    <div
-                        className={clsx(
-                            "h-6 w-6 sm:h-10 sm:w-10 lg:h-16 lg:w-16 xl:h-20 xl:w-20 m-1 sm:mt-2 sm:ml-2 sm:mr-2 rounded-full flex justify-center items-center",
-                            `${couleurBouteille}`
-                        )}
-                    >
-                        <div
-                            className={clsx(
-                                `${colorBouchon}`,
-                                "h-3 w-3 sm:h-5 sm:w-5 lg:h-8 lg:w-8 xl:h-10 xl:w-10 rounded-full bg-fond"
-                            )}
-                        ></div>
+                    <div className=" bg-gris w-full rounded-full flex justify-center items-center">
+                        <Circle
+                            className={clsx(`w-3/4 h-3/4 ${couleurBouteille}`)}
+                            width={36}
+                            height={36}
+                            strokeWidth={4}
+                            fill={`${colorBouchon}`}
+                        />
                     </div>
                 )}
                 <p className="hidden md:block text-[10px] xl:text-sm text-center xl:pt-1">
@@ -87,3 +83,4 @@ const BottlePinard = ({ bottle }: Props) => {
 };
 
 export default BottlePinard;
+
