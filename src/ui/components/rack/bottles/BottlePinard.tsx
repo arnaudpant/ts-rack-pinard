@@ -7,16 +7,15 @@ import { useState } from "react";
 
 type Props = {
     bottle: Bottle;
+    nbrColums: number
 };
 
-const BottlePinard = ({ bottle }: Props) => {
+const BottlePinard = ({ bottle, nbrColums }: Props) => {
     const [modalShow, setModalShow] = useState(false);
-
 
     const handleClick = () => {
         setModalShow((v) => !v);
     };
-
 
     let colorBouchon = "bg-bouteille";
     bottle.couleur === "rouge"
@@ -63,9 +62,15 @@ const BottlePinard = ({ bottle }: Props) => {
                         />
                     </div>
                 )}
-                <p className="hidden md:block text-[10px] xl:text-sm text-center xl:pt-1">
-                    { bottle.appellation && 
-                    bottle.appellation}
+                <p
+                    className={clsx(
+                        nbrColums < 6
+                            ? "text-[10px] md:text-sm"
+                            : "hidden sm:block text-[10px] md:text-sm",
+                        "text-center xl:pt-1"
+                    )}
+                >
+                    {bottle.appellation}
                 </p>
             </div>
             {modalShow && bottle.type !== "vide" ? (

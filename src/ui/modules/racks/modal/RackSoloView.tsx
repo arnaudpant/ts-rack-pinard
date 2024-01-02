@@ -84,7 +84,7 @@ const RackSoloView = ({ rack }: Props) => {
                     // Cases
                     <div className={`${classGrid}`}>
                         {rack.bottles.map((bottle: Bottle) => (
-                            <BottlePinard bottle={bottle} key={bottle.id} />
+                            <BottlePinard bottle={bottle} key={bottle.id} nbrColums={rack.columns} />
                         ))}
                     </div>
                 )}
