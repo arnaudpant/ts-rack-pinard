@@ -7,13 +7,13 @@ import Inscription from "./ui/pages/Inscription";
 import ForgetPassword from "./ui/pages/ForgetPassword";
 import ContainerRacks from "./ui/pages/ContainerRacks";
 import Boarding from "./ui/pages/Boarding";
-import Demo from "./ui/pages/Demo";
+import Demonstration from "./ui/pages/Demonstration";
 import UserInfos from "./ui/pages/UserInfos";
+import RackId from "./ui/pages/RackId";
 /** COMPONENTS */
 import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
-import RackId from "./ui/pages/RackId";
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
             <Route path="/container-racks" element={<ContainerRacks />} />
             <Route path="/rack/:id" element={<RackId />} />
             <Route path="/user-infos" element={<UserInfos />} />
-            <Route path="/demonstration" element={<Demo />} />
+            <Route path="/demonstration" element={<Demonstration />} />
             <Route path="/*" element={<Home />} />
           </Route>
         </Routes>

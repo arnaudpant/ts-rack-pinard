@@ -12,11 +12,12 @@ const Home = () => {
     return (
         <>
             <div className="flex flex-col">
-                <h2 className="text-center text-xl italic pb-4 px-1 pt-10">
+                <h2 className="text-center text-xl italic pb-4 px-1 pt-6">
                     Gèrez votre cave facilement !
                 </h2>
-                <h3 className="text-center text-xl italic py-4 px-1">
-                    Retrouvez rapidement vos bouteilles depuis cette application.
+                <h3 className="text-center text-xl italic py-3 px-1">
+                    Retrouvez rapidement vos bouteilles depuis cette
+                    application.
                 </h3>
                 <div className="h-72 md:h-90 mb-5 w-full flex justify-center">
                     <img src="/home-logo.png" alt="" className="h-72" />
@@ -32,7 +33,7 @@ const Home = () => {
                         </Link>
                     </div>
                 ) : (
-                    <div className="flex justify-center gap-4">
+                    <div className="flex justify-center gap-4 flex-wrap">
                         <Link
                             to="/inscription"
                             className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm"
@@ -45,12 +46,20 @@ const Home = () => {
                         >
                             CONNEXION
                         </Link>
+                        <Link
+                            to="/demonstration"
+                            className="px-3 py-1 bg-vin50 text-vin rounded-lg shadow-sm"
+                        >
+                            DEMONSTRATION
+                        </Link>
                     </div>
                 )}
                 {/* <div className="flex justify-center mt-10">
                     <Link to='/demonstration' className="px-3 py-1 bg-vin50 hover:bg-vin100 text-vin rounded-lg shadow-sm" >DEMONSTRATION</Link>
                 </div> */}
-                <div className="absolute bottom-2 right-2 text-xs text-vin200">Version 1.0</div>
+                <div className="absolute bottom-2 right-2 text-xs text-vin200">
+                    Version 1.0
+                </div>
             </div>
         </>
     );
