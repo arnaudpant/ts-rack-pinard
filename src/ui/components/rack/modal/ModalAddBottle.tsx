@@ -38,8 +38,8 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
 
     return (
         <>
-        
-            <div className="fixed top-20 left-1/2 -translate-x-1/2 w-72 bg-vin200 text-center shadow-md rounded-xl py-4">
+            <div className="fixed top-0 bottom-0 left-0 right-0 bg-vin50 opacity-30"></div>
+            <div className="absolute top-10 left-1/2 overflow-auto -translate-x-1/2 w-72 bg-vin200 text-center shadow-md rounded-xl py-4">
                 <div
                     className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                     onClick={() => handleClick()}
@@ -51,9 +51,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full text-left">
-                        <p className="text-fond pb-1 text-sm">
-                            Type de vin *
-                        </p>
+                        <p className="text-fond pb-1 text-sm">Type de vin *</p>
                         <select
                             {...register("type", { required: true })}
                             className="w-full p-1 rounded"
@@ -117,7 +115,9 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     </div>
 
                     <div className="w-full text-left">
-                        <p className="text-fond pb-1 text-sm">Appellation (Bordeaux ...)</p>
+                        <p className="text-fond pb-1 text-sm">
+                            Appellation (Bordeaux ...)
+                        </p>
                         <input
                             {...register("appellation", { required: true })}
                             className="w-full p-1 rounded"

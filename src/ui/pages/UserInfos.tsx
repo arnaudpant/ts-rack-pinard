@@ -227,7 +227,7 @@ const UserInfos = () => {
                                 </Link>
                             </div>
 
-                            <div className="mt-4">
+                            <div className="mt-2">
                                 <button
                                     className="block w-56 px-5 py-3 bg-fond text-vin border border-vin rounded-lg shadow-sm"
                                     onClick={() => handleClick()}
@@ -236,7 +236,7 @@ const UserInfos = () => {
                                 </button>
                             </div>
 
-                            <div className="mt-4">
+                            <div className="mb-6 mt-2">
                                 <button
                                     className="block w-56 px-5 py-3 bg-vin50 text-fond hover:bg-vin300 rounded-lg shadow-sm"
                                     onClick={handleDisconnect}

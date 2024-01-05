@@ -61,7 +61,7 @@ const DemoView = ({ dataDemoRacks }: Props) => {
                 {dataDemoRacks && donnees && (
                     <div className={`${donnees}`}>
                         {dataDemoRacks.bottles.map((bottle: Bottle) => (
-                            <BottlePinard bottle={bottle} key={bottle.id} />
+                            <BottlePinard bottle={bottle} key={bottle.id} nbrColums={3} />
                         ))}
                     </div>
                 )}
