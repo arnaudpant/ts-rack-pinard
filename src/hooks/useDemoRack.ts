@@ -3,7 +3,7 @@ import { Bottle, Rack } from "@/types/RacksTypes";
 import { useState } from "react";
 
 const useDemoRack = (newBootle: Bottle) => {
-
+    console.log(newBootle)
     const [locaStorageDemoRacks, setLocaStorageDemoRacks] = useState<Rack | null>(null);
 
     localStorage.setItem("rackDemo", JSON.stringify(fakeRack.racks));
