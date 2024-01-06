@@ -13,6 +13,7 @@ import UserInfos from "./ui/pages/UserInfos";
 import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
+import Politique from "./ui/pages/Politique";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/container-racks" element={<ContainerRacks />} />
             <Route path="/user-infos" element={<UserInfos />} />
             <Route path="/demonstration" element={<Demo />} />
+            <Route path="/politique" element={<Politique />} />
             <Route path="/*" element={<Home />} />
           </Route>
         </Routes>
