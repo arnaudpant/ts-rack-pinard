@@ -3,20 +3,16 @@ import { fakeRack } from "../../api/fakeRack";
 import DemoView from "../components/rack/demonstration/DemoView";
 import { Rack } from "@/types/RacksTypes";
 
-
 const Demonstration = () => {
-
     const [dataDemoRacks, setDataDemoRacks] = useState<Rack | null>(null);
 
-    useEffect(() =>  {
-        
+    useEffect(() => {
         localStorage.setItem("rackDemo", JSON.stringify(fakeRack.racks));
         const storedData = localStorage.getItem("rackDemo");
 
         storedData && setDataDemoRacks(JSON.parse(storedData));
-
     }, []);
-    
+
     return (
         <div className="flex flex-col justify-start items-center h-[calc(100vh-64px)]">
             <h2 className="text-xl text-vin800 text-center mb-2 pt-6">
@@ -27,10 +23,7 @@ const Demonstration = () => {
                     Rack demo
                 </button>
             </div>
-            {dataDemoRacks &&
-            <DemoView dataDemoRacks={dataDemoRacks[0]} />
-            
-            }
+            {dataDemoRacks && <DemoView dataDemoRacks={dataDemoRacks[0]} />}
         </div>
     );
 };

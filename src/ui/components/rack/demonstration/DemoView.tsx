@@ -1,6 +1,6 @@
 import { Bottle, Rack } from "../../../../types/RacksTypes";
-import BottlePinard from "../bottles/BottlePinard";
 import { useNavigate } from "react-router-dom";
+import BottlePinardDemo from "./BottlePinardDemo";
 
 type Props = {
     dataDemoRacks: Rack;
@@ -15,7 +15,7 @@ const DemoView = ({ dataDemoRacks }: Props) => {
                 {dataDemoRacks && (
                     <div className="bg-gris_fonce p-2 grid grid-cols-4 gap-1 w-full max-w-screen-md">
                         {dataDemoRacks.bottles.map((bottle: Bottle) => (
-                            <BottlePinard
+                            <BottlePinardDemo
                                 bottle={bottle}
                                 key={bottle.id}
                                 nbrColums={3}

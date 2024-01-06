@@ -46,12 +46,12 @@ const Home = () => {
                         >
                             CONNEXION
                         </Link>
-                        <Link
+                        {/* <Link
                             to="/demonstration"
                             className="px-3 py-1 bg-vin50 text-vin rounded-lg shadow-sm"
                         >
                             DEMONSTRATION
-                        </Link>
+                        </Link> */}
                     </div>
                 )}
                 {/* <div className="flex justify-center mt-10">
