@@ -3,7 +3,7 @@ const CGU = () => {
         <div>
             <h2>
                 Conditions générales d'utilisation du site web de gestion de
-                bouteilles de vin "Racks à Pinard"
+                bouteilles de vin: "Racks à Pinard"
             </h2>
             <p>
                 Les présentes conditions générales d'utilisation (CGU) ont pour

@@ -1,46 +1,29 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../../../context/AuthUserContext";
+import sommelier from "/src/assets/sommelier.png";
+import ListOfRacks from "../../../ui/components/bandeauRack/ListOfRacks";
+import { useState } from "react";
 import AddRackModal from "./modal/AddRackModal";
-import { Rack } from "@/types/RacksTypes";
-import { ShieldPlus } from "lucide-react";
-import RackSoloView from "./modal/RackSoloView";
 
 const RacksView = () => {
-    const { authUser } = useAuth();
     const [modalShow, setModalShow] = useState(false);
-    const [listOfRacks, setListOfRacks] = useState<Rack[] | []>([]);
+
     const handleClick = () => {
         setModalShow((v) => !v);
     };
 
-    useEffect(() => {
-        authUser.userDocument.racks.length > 0 &&
-            setListOfRacks(authUser.userDocument.racks);
-    }, []);
-
-    //console.log(listOfRacks);
     return (
-        <div className="flex justify-center items-center">
-            {authUser.userDocument.racks.length > 0 && (
-                <div className="">
-
-                    {
-                        listOfRacks.map((rack) => (
-                            <RackSoloView rack={rack} key={rack.idrack} />
-                        ))
-                    }
-
-                    <div className="absolute bottom-4">
-                        <button
-                            className="flex justify-center items-center h-20 w-20 rounded-full bg-vin text-3xl text-fond text-center shadow-sm"
-                            onClick={handleClick}
-                        >
-                            <ShieldPlus className="h-10 w-10" />
-                        </button>
-                    </div>
-                </div>
-            )}
-
+        <div className="flex flex-col justify-between items-center h-[calc(100vh-64px)]">
+            <ListOfRacks />
+            <div className="mx-auto">
+                <button
+                    className="bg-vin50 text-vin hover:bg-vin600  hover:text-fond px-4 py-1 border-2 border-vin rounded-full"
+                    onClick={() => handleClick()}
+                >
+                    Ajouter un rack
+                </button>
+            </div>
+            <div>
+                <img src={sommelier} alt="" />
+            </div>
             {modalShow && <AddRackModal handleClick={handleClick} />}
         </div>
     );

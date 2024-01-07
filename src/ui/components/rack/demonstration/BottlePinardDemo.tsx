@@ -2,15 +2,15 @@ import { Bottle } from "../../../../types/RacksTypes";
 import { PlusCircle, Circle } from "lucide-react";
 import clsx from "clsx";
 import ModalBottle from "../modal/ModalBottle";
-import ModalAddBottle from "../modal/ModalAddBottle";
 import { useState } from "react";
+import ModalAddBottleDemo from "./ModalAddBottleDemo";
 
 type Props = {
     bottle: Bottle;
     nbrColums: number
 };
 
-const BottlePinard = ({ bottle, nbrColums }: Props) => {
+const BottlePinardDemo = ({ bottle, nbrColums }: Props) => {
     const [modalShow, setModalShow] = useState(false);
 
     const handleClick = () => {
@@ -89,7 +89,7 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
                     handleClick={() => handleClick()}
                 />
             ) : modalShow && bottle.type === "vide" ? (
-                <ModalAddBottle
+                <ModalAddBottleDemo
                     bottle={bottle}
                     handleClick={() => handleClick()}
                 />
@@ -98,5 +98,5 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
     );
 };
 
-export default BottlePinard;
+export default BottlePinardDemo;
 

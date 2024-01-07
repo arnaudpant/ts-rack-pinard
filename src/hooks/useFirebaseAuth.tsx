@@ -108,7 +108,8 @@ const useFirebaseAuth = () => {
     /** RETURN DONNEES ENVOYEES ET UTILISEES PAR LE CONTEXT */
     return {
         authUser,
-        authUserIsLoading
+        authUserIsLoading,
+        getUserDocument
     }
 };
 

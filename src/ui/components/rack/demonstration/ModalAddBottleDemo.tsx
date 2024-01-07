@@ -1,15 +1,16 @@
 import { useForm } from "react-hook-form";
 import { Bottle} from "../../../../types/RacksTypes";
 import { X } from "lucide-react";
-import useUpdateRacks from "../../../../hooks/useUpdateRacks";
+
+
 
 type Props = {
     bottle: Bottle;
     handleClick: () => void;
 };
 
-const ModalAddBottle = ({ bottle, handleClick }: Props) => {
-    const {updateRacks} = useUpdateRacks()
+const ModalAddBottleDemo = ({ bottle, handleClick }: Props) => {
+
 
 
     const {
@@ -31,7 +32,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
             prix: data.prix,
             achat: data.achat,
         };
-        updateRacks(newBootle);
+        console.log(newBootle)
         handleClick();
     };
 
@@ -51,7 +52,7 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full text-left">
-                        <p className="text-fond pb-1 text-sm">Type de vin *</p>
+                        <p className="text-fond pb-1 text-sm">Type de vin</p>
                         <select
                             {...register("type", { required: true })}
                             className="w-full p-1 rounded"
@@ -189,4 +190,4 @@ const ModalAddBottle = ({ bottle, handleClick }: Props) => {
     );
 };
 
-export default ModalAddBottle;
+export default ModalAddBottleDemo;
