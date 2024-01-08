@@ -4,15 +4,20 @@ import { Image } from 'lucide-react'
 import { useAuth } from '../../../../context/AuthUserContext';
 
 interface Props {
-    handleImageSelect: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    imagePreview: string | ArrayBuffer | null,
-    isLoading: boolean
+    handleImageSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    imagePreview: string | ArrayBuffer | null;
+    isLoading: boolean;
+    uploadProgress?: number
 }
 
 
-const UploadAvatar = ({ handleImageSelect, imagePreview, isLoading }: Props) => {
-
-    const { authUser } = useAuth()
+const UploadAvatar = ({
+    handleImageSelect,
+    imagePreview,
+    isLoading,
+    
+}: Props) => {
+    const { authUser } = useAuth();
 
     return (
         <div className="flex items-center mt-4">

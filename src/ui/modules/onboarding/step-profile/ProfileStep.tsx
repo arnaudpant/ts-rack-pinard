@@ -156,7 +156,7 @@ const ProfileStep = ({ nextStep, prevStep, isFirstStep, isFinalStep, getCurrentS
         <div className="min-h-[calc(100vh-120px)]">
             <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
 
-            <div className="relative h-[calc(100vh-160px)] md:h-[calc(100vh-220px)] pt-10 flex flex-col md:items-start items-center md:flex-row gap-y-4">
+            <div className="relative h-[calc(100vh-160px)] md:h-[calc(100vh-200px)] pt-10 flex flex-col md:items-start items-center md:flex-row gap-y-4">
                 <div className="w-full lg:w-1/2">
                     <h1 className="text-3xl text-center pt-3 px-6 md:text-5xl md:text-left">
                         Finalise ton compte
