@@ -16,10 +16,10 @@ const ListOfRacks = ({state}: Props) => {
             setListOfRacks(authUser.userDocument.racks);
     }, [authUser]);
     return (
-        <>
+        <div className="pt-10">
             {authUser.userDocument.racks.length > 0 && (
-                <div className="">
-                    <h2 className="text-xl text-vin800 text-center mb-2 pt-10">
+                <div className="border border-vin50 rounded-xl py-2 px-4">
+                    <h2 className="text-xl text-vin800 text-center pb-2">
                         Liste de vos racks à pinard
                     </h2>
                     <div className="container mx-auto py-2 flex justify-center flex-wrap gap-2">
@@ -29,7 +29,7 @@ const ListOfRacks = ({state}: Props) => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

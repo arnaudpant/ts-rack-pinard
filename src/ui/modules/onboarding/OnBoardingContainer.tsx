@@ -56,7 +56,6 @@ const OnBoardingContainer = () => {
     }
 
     return (
-        <>
             <OnBoardingView
                 getCurrentStep={getCurrentStep}
                 nextStep={nextStep}
@@ -65,7 +64,6 @@ const OnBoardingContainer = () => {
                 isFinalStep={isFinalStep}
                 stepList={stepList}
             />
-        </>
 
     );
 };

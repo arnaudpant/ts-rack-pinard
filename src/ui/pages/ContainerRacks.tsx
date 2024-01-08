@@ -12,9 +12,9 @@ const ContainerRacks = () => {
         <>
             {authUser !== null ? (
                 onBoardingisCompleted ? (
-                        <div className="container mx-auto flex-col items-center">
-                            <RacksContainer />
-                        </div>
+                    <div className="container mx-auto flex-col items-center min-h-[calc(100vh-120px)]">
+                        <RacksContainer />
+                    </div>
                 ) : (
                     <Navigate to="/boarding" replace={true} />
                 )

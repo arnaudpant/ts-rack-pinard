@@ -175,17 +175,17 @@ const UserInfos = () => {
     return (
         <>
             {authUser !== null ? (
-                <>
-                    <div className="my-5">
+                <div className="min-h-[calc(100vh-120px)]">
+                    <div className="py-5 ">
                         <h2 className="text-3xl text-center">
                             Compte utilisateur
                         </h2>
                     </div>
 
-                    <div className="container mx-auto flex flex-col md:flex-row justify-start gap-8">
+                    <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center gap-8">
                         {/* PARTIE HAUTE OU GAUCHE */}
-                        <div className="flex flex-col">
-                            <div className="w-[280px] pl-5">
+                        <div className="flex flex-col border border-vin50 rounded-2xl px-2 py-4">
+                            <div className="w-[240px] pl-5">
                                 <ProfileUserInfosForm
                                     form={{
                                         errors,
@@ -217,7 +217,7 @@ const UserInfos = () => {
                         </div>
 
                         {/* PARTIE BASSE OU DROITE */}
-                        <div className="flex flex-col  items-center grow gap-8">
+                        <div className="flex flex-col max-w-60 px-4 border border-vin50 rounded-2xl items-center gap-8 mb-4">
                             <div className="mt-4">
                                 <Link
                                     to="/container-racks"
@@ -248,7 +248,7 @@ const UserInfos = () => {
                         </div>
                     </div>
                     {modalShow && <AddRackModal handleClick={handleClick} />}
-                </>
+                </div>
             ) : (
                 <Navigate to="/" replace={true} />
             )}
