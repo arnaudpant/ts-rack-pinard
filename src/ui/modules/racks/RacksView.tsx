@@ -11,18 +11,21 @@ const RacksView = () => {
     };
 
     return (
-        <div className="flex flex-col justify-between items-center h-[calc(100vh-64px)]">
+        <div className="flex flex-col justify-between items-center min-h-[calc(100vh-120px)]">
             <ListOfRacks />
-            <div className="mx-auto">
+            <div className="mx-auto py-4">
                 <button
-                    className="bg-vin50 text-vin hover:bg-vin600  hover:text-fond px-4 py-1 border-2 border-vin rounded-full"
+                    className="bg-vin600 text-fond px-4 py-1  hover:bg-vin50  hover:text-vin700  rounded-full"
                     onClick={() => handleClick()}
                 >
                     Ajouter un rack
                 </button>
             </div>
             <div>
-                <img src={sommelier} alt="" />
+                <img
+                    src={sommelier}
+                    alt="sommelier avec un verre et une bouteille dans chaque main"
+                />
             </div>
             {modalShow && <AddRackModal handleClick={handleClick} />}
         </div>

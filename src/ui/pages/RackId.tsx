@@ -20,11 +20,9 @@ const RackId = () => {
     }, [state, authUser]);
 
     return (
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-start items-center min-h-[calc(100vh-120px)]">
             <ListOfRacks state={state} />
-            {
-                rack && <RackSoloView rack={rack} key={rack.idrack} />
-            }
+            {rack && <RackSoloView rack={rack} key={rack.idrack} />}
         </div>
     );
 };

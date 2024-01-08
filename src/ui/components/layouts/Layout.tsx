@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 /** COMPONENTS */
 import Header from "./Header";
 import Session from "../session/Session";
+import Footer from "./Footer";
 
 
 const Layout = () => {
@@ -10,6 +11,7 @@ const Layout = () => {
         <Session>
             <Header />
             <Outlet />
+            <Footer />
         </Session>
     );
 };

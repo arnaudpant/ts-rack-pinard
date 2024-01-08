@@ -10,6 +10,8 @@ import Boarding from "./ui/pages/Boarding";
 import Demonstration from "./ui/pages/Demonstration";
 import UserInfos from "./ui/pages/UserInfos";
 import RackId from "./ui/pages/RackId";
+import Politique from "./ui/pages/Politique";
+import Cgu from "./ui/pages/Cgu";
 /** COMPONENTS */
 import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
@@ -31,6 +33,8 @@ function App() {
             <Route path="/container-racks" element={<ContainerRacks />} />
             <Route path="/rack/:id" element={<RackId />} />
             <Route path="/user-infos" element={<UserInfos />} />
+            <Route path="/politique" element={<Politique />} />
+            <Route path="/cgu" element={<Cgu />} />
             <Route path="/demonstration" element={<Demonstration />} />
             <Route path="/*" element={<Home />} />
           </Route>
