@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="flex justify-around p-2 bg-vin text-fond ">
+        <footer className="flex justify-around w-full p-2 bg-vin text-fond ">
             <div className="flex flex-col text-sm">
                 <Link to="/CGU">CGU</Link>
                 <Link to="/politique">Politique de confidentialité</Link>

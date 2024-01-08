@@ -1,4 +1,4 @@
-const CGU = () => {
+const Cgu = () => {
     return (
         <div>
             <h2>
@@ -226,4 +226,4 @@ const CGU = () => {
     );
 };
 
-export default CGU;
+export default Cgu;
