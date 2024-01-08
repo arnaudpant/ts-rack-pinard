@@ -15,6 +15,7 @@ import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
 import Politique from "./ui/pages/Politique";
+import CGU from "./ui/pages/CGU";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/rack/:id" element={<RackId />} />
             <Route path="/user-infos" element={<UserInfos />} />
             <Route path="/politique" element={<Politique />} />
+            <Route path="/cgu" element={<CGU />} />
             <Route path="/demonstration" element={<Demonstration />} />
             <Route path="/*" element={<Home />} />
           </Route>

@@ -10,8 +10,8 @@ const Home = () => {
     const { authUser } = useAuth()
 
     return (
-        <>
-            <div className="flex flex-col">
+
+            <div className="flex flex-col justify-around items-center mb-4">
                 <h2 className="text-center text-xl italic pb-4 px-1 pt-6">
                     Gèrez votre cave facilement !
                 </h2>
@@ -57,11 +57,7 @@ const Home = () => {
                 {/* <div className="flex justify-center mt-10">
                     <Link to='/demonstration' className="px-3 py-1 bg-vin50 hover:bg-vin100 text-vin rounded-lg shadow-sm" >DEMONSTRATION</Link>
                 </div> */}
-                <div className="absolute bottom-2 right-2 text-xs text-vin200">
-                    Version 1.0
-                </div>
             </div>
-        </>
     );
 };
 

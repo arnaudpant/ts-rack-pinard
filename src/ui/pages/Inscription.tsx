@@ -21,7 +21,7 @@ const Inscription = () => {
                                 <img src="/logo-cave.png" alt="bouteille de vin" className="h-20 w-20" />
                             </div>
                             <BoxInscription />
-                            <p className="text-sm text-center pb-4">En t'inscrivant, tu acceptes les <Link to="/#" className="text-vin">conditions d'utilisation</Link>  et la <Link to="/#" className="text-vin">politique de confidentialité</Link></p>
+                            <p className="text-sm text-center pb-4">En t'inscrivant, tu acceptes les <Link to="/cgu" className="text-vin">conditions d'utilisation</Link>  et la <Link to="/politique" className="text-vin">politique de confidentialité</Link></p>
                         </div>
                     )
             }
