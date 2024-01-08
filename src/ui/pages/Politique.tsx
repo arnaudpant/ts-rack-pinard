@@ -1,14 +1,16 @@
 
 const Politique = () => {
     return (
-        <section>
-            <h2>Politique de confidentialité du site web "Racks à pinard"</h2>
-            <p>
+        <section className="container mx-auto px-2 py-4">
+            <h1 className="text-2xl font-bold text-vin600 text-center py-4">
+                Politique de confidentialité du site web "Racks à pinard"
+            </h1>
+            <p className="pb-2">
                 Le but de cette politique de confidentialité est d'informer les
                 utilisateurs de notre site web des données personnelles que nous
                 collectons et traitons, ainsi que des informations suivantes :
             </p>
-            <ul>
+            <ul className="pb-2">
                 <li>- Les finalités du traitement des données personnelles</li>
                 <li>- Les destinataires des données personnelles</li>
                 <li>
@@ -16,22 +18,24 @@ const Politique = () => {
                 </li>
                 <li>- La politique de cookies du site web</li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Cette politique de confidentialité s'applique en complément des
                 conditions générales d'utilisation de notre site web.
             </p>
-            <h3>Lois applicables</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">Lois applicables</h2>
+            <p className="pb-2">
                 Notre site web respecte le Règlement général sur la protection
                 des données (RGPD) et la loi n° 78-17 du 6 janvier 1978 relative
                 à l'informatique, aux fichiers et aux libertés, modifiée par la
                 loi n° 2018-493 du 20 juin 2018.
             </p>
-            <h3>Données personnelles collectées</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Données personnelles collectées
+            </h2>
+            <p className="pb-2">
                 Nous collectons et traitons les données personnelles suivantes :
             </p>
-            <ul>
+            <ul className="pb-2">
                 <li>
                     - Login, adresse e-mail, mot de passe : ces données sont
                     nécessaires pour créer et gérer votre compte utilisateur sur
@@ -46,34 +50,38 @@ const Politique = () => {
                     l'utilisation de notre site web.
                 </li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Nous collectons ces données avec votre consentement, que vous
                 pouvez retirer à tout moment en nous contactant ou en modifiant
                 les paramètres de votre compte.
             </p>
-            <h3>Utilisation des données personnelles</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Utilisation des données personnelles
+            </h2>
+            <p className="pb-1">
                 Nous utilisons vos données personnelles pour les finalités
                 suivantes :
             </p>
-            <ul>
+            <ul className="pb-2">
                 <li>- Fournir et améliorer nos services</li>
                 <li>- Communiquer avec vous</li>
                 <li>- Respecter nos obligations légales et réglementaires</li>
                 <li>- Prévenir et détecter les fraudes et les abus</li>
                 <li>- Protéger nos droits et ceux de nos utilisateurs</li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Nous ne conservons vos données personnelles que le temps
                 nécessaire à la réalisation de ces finalités, dans la limite des
                 durées de conservation prévues par la loi.
             </p>
-            <h3>Destinataires des données personnelles</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Destinataires des données personnelles
+            </h2>
+            <p className="pb-1">
                 Nous ne partageons pas vos données personnelles avec des tiers,
                 sauf dans les cas suivants :
             </p>
-            <ul>
+            <ul className="pb-2">
                 <li>- Avec votre consentement préalable</li>
                 <li>
                     - Avec nos prestataires de services qui traitent vos données
@@ -88,15 +96,17 @@ const Politique = () => {
                     judiciaire ou administrative.
                 </li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Nous ne transférons pas vos données personnelles en dehors de
                 l'Union européenne.
             </p>
-            <h3>Droits des utilisateurs sur leurs données personnelles</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Droits des utilisateurs sur leurs données personnelles
+            </h2>
+            <p className="pb-1">
                 Vous disposez des droits suivants sur vos données personnelles :
             </p>
-            <ul>
+            <ul className="pb-2">
                 <li>
                     - Droit d'accès : vous pouvez demander à accéder aux données
                     personnelles que nous détenons sur vous.
@@ -127,19 +137,21 @@ const Politique = () => {
                     significative.
                 </li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Pour exercer ces droits, vous pouvez nous contacter à l'adresse
                 e-mail suivante : akallavero@gmail.com
             </p>
-            <p>
+            <p className="pb-2">
                 Vous disposez également du droit d'introduire une réclamation
                 auprès de la Commission nationale de l'informatique et des
                 libertés (CNIL), si vous estimez que le traitement de vos
                 données personnelles constitue une violation de la
                 réglementation applicable.
             </p>
-            <h3>Politique de cookies</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Politique de cookies
+            </h2>
+            <p className="pb-2">
                 Un cookie est un petit fichier texte qui est stocké sur votre
                 ordinateur ou votre appareil mobile lorsque vous visitez notre
                 site web. Les cookies nous permettent de reconnaître votre
@@ -147,8 +159,10 @@ const Politique = () => {
                 de notre site web, et de vous offrir une meilleure expérience
                 utilisateur.
             </p>
-            <p>Nous utilisons les types de cookies suivants :</p>
-            <ul>
+            <p className="pb-1">
+                Nous utilisons les types de cookies suivants :
+            </p>
+            <ul className="pb-2">
                 <li>
                     - Cookies strictement nécessaires : ces cookies sont
                     indispensables au fonctionnement de notre site web et ne
@@ -166,18 +180,20 @@ const Politique = () => {
                     fonction de vos choix et de vos préférences.
                 </li>
             </ul>
-            <p>
+            <p className="pb-2">
                 Vous pouvez accepter ou refuser les cookies de performance, de
                 fonctionnalité et de ciblage, en cliquant sur le bouton "Gérer
                 les cookies" situé en bas de chaque page de notre site web.
             </p>
-            <p>
+            <p className="pb-2">
                 Vous pouvez également modifier les paramètres de votre
                 navigateur pour bloquer ou supprimer les cookies, mais cela peut
                 affecter le bon fonctionnement de notre site web.
             </p>
-            <h3>Modifications de la politique de confidentialité</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">
+                Modifications de la politique de confidentialité
+            </h2>
+            <p className="pb-2">
                 Nous nous réservons le droit de modifier cette politique de
                 confidentialité à tout moment, en fonction de l'évolution de nos
                 pratiques et de la réglementation applicable. Toute modification
@@ -186,8 +202,8 @@ const Politique = () => {
                 confidentialité pour vous informer de ses éventuelles
                 modifications.
             </p>
-            <h3>Contact</h3>
-            <p>
+            <h2 className="text-xl text-vin600 pt-4 pb-2">Contact</h2>
+            <p className="pb-2">
                 Si vous avez des questions ou des commentaires sur cette
                 politique de confidentialité, vous pouvez nous contacter à
                 l'adresse e-mail suivante : akallavero@gmail.com
