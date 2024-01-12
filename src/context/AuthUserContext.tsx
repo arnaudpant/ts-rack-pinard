@@ -31,7 +31,7 @@ interface Props {
     children: React.ReactNode
 }
 
-export function AuthUserProvider({ children }: Props) {
+export function AuthUserProvider({ children }: Readonly<Props>) {
     const auth = useFirebaseAuth()
 
     return (

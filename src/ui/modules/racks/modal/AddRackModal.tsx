@@ -59,7 +59,7 @@ const AddRackModal = ({ handleClick }: Props) => {
             handleClick();
             return;
         }
-        toast.success("Rack vide ajouté");
+        toast.success("Rack vide ajouté", { autoClose: 3000 });
     };
 
     const onSubmit = (data: FormValues) => {

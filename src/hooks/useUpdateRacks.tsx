@@ -31,7 +31,7 @@ const useUpdateRacks = () => {
     };
 
     const deleteBottle = (bottleEmpty: Bottle) => {
-        const deleted: boolean = true
+        const deleted: boolean = true;
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
             millesime: null,
@@ -77,11 +77,16 @@ const useUpdateRacks = () => {
             racks,
         });
         if (error) {
-            toast.error(error.message);
+            toast.error(error.message, { autoClose: 3000 });
             return;
         }
-        deleted === true ? toast.success("Bouteille supprimée de votre rack") :
-        toast.success("Bouteille ajoutée à votre rack")
+        deleted === true
+            ? toast.success("Bouteille supprimée de votre rack", {
+                  autoClose: 3000,
+              })
+            : toast.success("Bouteille ajoutée à votre rack", {
+                  autoClose: 3000,
+              });
     };
 
     return {
