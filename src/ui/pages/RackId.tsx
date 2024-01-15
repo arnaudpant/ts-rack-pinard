@@ -3,14 +3,13 @@ import { useLocation } from "react-router-dom";
 import ListOfRacks from "../components/bandeauRack/ListOfRacks";
 import { useEffect, useState } from "react";
 import { Rack } from "@/types/RacksTypes";
-import RackSoloView from "../modules/racks/modal/RackSoloView";
-
+import RackSoloView from "../modules/racks/RackSoloView";
 
 const RackId = () => {
     const location = useLocation();
     const { authUser } = useAuth();
     const { state } = location;
-    const [rack, setRack] = useState<Rack>()
+    const [rack, setRack] = useState<Rack>();
 
     useEffect(() => {
         const rackToShow = authUser.userDocument.racks.filter(

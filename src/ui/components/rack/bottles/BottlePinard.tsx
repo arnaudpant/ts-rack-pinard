@@ -2,7 +2,7 @@ import { Bottle } from "../../../../types/RacksTypes";
 import { PlusCircle, Circle } from "lucide-react";
 import clsx from "clsx";
 import ModalBottle from "../modal/ModalBottle";
-import ModalAddBottle from "../modal/ModalAddBottle";
+import ModalAddBottle from "../../../modules/racks/modal/ModalAddBottle";
 import { useState } from "react";
 
 type Props = {
