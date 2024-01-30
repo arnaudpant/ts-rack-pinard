@@ -82,11 +82,11 @@ const useUpdateRacks = () => {
         }
         deleted === true
             ? toast.success("Bouteille supprimée de votre rack", {
-                  autoClose: 3000,
-              })
+                autoClose: 3000,
+            })
             : toast.success("Bouteille ajoutée à votre rack", {
-                  autoClose: 3000,
-              });
+                autoClose: 3000,
+            });
     };
 
     return {
