@@ -17,7 +17,7 @@ const init = {
     userDocument: {} as UserDocument
 }
 
-const authUserContext = createContext({
+export const authUserContext = createContext({
     authUser: init,
     authUserIsLoading: true,
 })
