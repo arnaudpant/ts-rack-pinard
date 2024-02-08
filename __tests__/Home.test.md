@@ -2,10 +2,12 @@ import React from "react";
 import { expect, test, vi } from "vitest";
 import { act, render, renderHook, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Home from "../src/ui/pages/Home";
+import Home from "../src/ui/pages/home/Home";
 import useAuth from "../src/hooks/useFirebaseAuth";
 import { AuthUserProvider } from "../src/context/AuthUserContext";
-import { BrowserRouter } from "react-router-dom";
+
+vi.mock("react-router-dom");
+vi.mock("../../../context/AuthUserContext");
 
 
 const wrapperAuthUserContext = ({ children }) => {
@@ -24,17 +26,28 @@ const fakeUser = {
     emailVerified: true,
     photoURL: null,
 };
-const fakeUserNull = null
 
-test("Initialisation de Home avec le context ", async () => {
+
+test("authUser null ", async () => {
     const { result } = renderHook(() => useAuth(), {
         wrapper: wrapperAuthUserContext, 
     });
+     act(() => {
+         render(<Home />);
+     });
     expect(result.current.authUser).toBeNull();
-    act(()=> {
-        result.current.authUser = fakeUser
-        render(<BrowserRouter><Home /></BrowserRouter>);
-    })
-    expect(result.current.authUser).not.toBeNull()
+});
+
+test("authUser not null ", async () => {
+    const { result } = renderHook(() => useAuth(), {
+        wrapper: wrapperAuthUserContext,
+    });
+    act(() => {
+        result.current.authUser = fakeUser;
+    });
+    render(<Home />);
+    expect(result.current.authUser).not.toBeNull();
+
     screen.debug()
 });
+
