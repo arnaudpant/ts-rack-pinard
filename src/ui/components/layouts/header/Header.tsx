@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     const { authUser } = useAuth();
     const navigate = useNavigate();
     let scrAvatar: string = "";
-    let onBoardingisCompleted = false
+    let onBoardingisCompleted = false;
 
     if (authUser) {
         scrAvatar = authUser.userDocument.photoURL;
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     }
 
     const handleHome = () => {
-        navigate("/container-racks");
+        navigate("/home-racks");
     };
 
     return (

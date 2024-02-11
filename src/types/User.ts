@@ -18,7 +18,7 @@ export interface UserDocument {
     photoURL: string
     uid: string,
     email: string,
-    creation_date: Timestamp,
+    creation_date?: Timestamp,
     onBoardingisCompleted: boolean,
     login: string,
     racks: Rack[],

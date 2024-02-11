@@ -1,13 +1,17 @@
-export const fakeRack = {
-    "racks": [
-        {
-            bottles: [
+import { Rack } from "@/types/RacksTypes";
+
+export const fakeRack: Rack = {
+    columns: 4,
+    rows: 3,
+    rackName: "Démonstration",
+    idrack: "314",        
+    bottles: [
                 {
                     "accords": [],
                     "achat": "01-01-2022",
                     "appellation": "Bordeaux",
                     "couleur": "rouge",
-                    "cuvee": "",
+                    "cuvee": "Prestige",
                     "exploitation": "Chateau Lapompe",
                     "gout": "",
                     "id": "jfdjdhdhjj",
@@ -84,45 +88,45 @@ export const fakeRack = {
                 },
                 {
                     "accords": [],
-                    "achat": "",
-                    "appellation": "",
-                    "couleur": "",
-                    "cuvee": "",
-                    "exploitation": "",
-                    "gout": "",
+                    "achat": "01-01-2022",
+                    "appellation": "Champagne",
+                    "couleur": "petillant",
+                    "cuvee": "An 2000",
+                    "exploitation": "Chateau Margot",
+                    "gout": "demi-sec",
                     "id": "poiuyter",
                     "index": 5,
-                    "millesime": 0,
-                    "pays": "",
-                    "prix": 0,
+                    "millesime": 2000,
+                    "pays": "France",
+                    "prix": 50,
                     "rackId": "314",
-                    "type": "vide"
+                    "type": "champagne"
                 },
                 {
                     "accords": [],
-                    "achat": "",
-                    "appellation": "",
-                    "couleur": "",
+                    "achat": "01-01-2022",
+                    "appellation": "Chouffe",
+                    "couleur": "blonde",
                     "cuvee": "",
                     "exploitation": "",
                     "gout": "",
-                    "id": "poiuyter",
+                    "id": "poiuytererre",
                     "index": 6,
-                    "millesime": 0,
-                    "pays": "",
-                    "prix": 0,
+                    "millesime": 2024,
+                    "pays": "Belgique",
+                    "prix": 5,
                     "rackId": "314",
-                    "type": "vide"
+                    "type": "biere"
                 },
                 {
                     "accords": [],
-                    "achat": "",
+                    "achat": "01-01-2022",
                     "appellation": "",
                     "couleur": "",
                     "cuvee": "",
                     "exploitation": "",
                     "gout": "",
-                    "id": "poiuyter",
+                    "id": "poiuytereze",
                     "index": 7,
                     "millesime": 0,
                     "pays": "",
@@ -144,7 +148,7 @@ export const fakeRack = {
                     "pays": "France",
                     "prix": 28,
                     "rackId": "314",
-                    "type": "petillant"
+                    "type": "champagne"
                 },
                 {
                     "accords": [],
@@ -194,11 +198,5 @@ export const fakeRack = {
                     "rackId": "314",
                     "type": "vide"
                 }
-            ],
-            colums: 4,
-            rows: 3,
-            rackName: "Demonstration",
-            rackId: "314"
-        }
-    ]
+            ]
 }

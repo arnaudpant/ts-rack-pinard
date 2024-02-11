@@ -1,8 +1,8 @@
 import { expect, test, vi, describe } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import HeaderView from "../src/ui/components/layouts/header/HeaderView";
 import React from "react";
+import HeaderView from "../src/ui/components/layouts/header/HeaderView";
 
 vi.mock("react-router-dom");
 

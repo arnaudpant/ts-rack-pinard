@@ -16,7 +16,6 @@ export interface Bottle {
 } 
 
 export interface Rack {
-    [x: string]: any
     idrack: string,
     rackName: string,
     columns: number,
