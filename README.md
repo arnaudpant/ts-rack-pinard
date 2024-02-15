@@ -1,8 +1,8 @@
 # Application de gestion de cave à vin construite avec React, TypeScript et Firebase.
 
-Version actuelle: V1.1
+Version actuelle: V2 (15 février 2024)
 
-https://rack-a-pinard.web.app/
+https://rack-a-pinard.web.app
 
 ## Aperçu du Projet :
 Application web pour gérer votre cave à vin. 
@@ -17,11 +17,9 @@ Cette application répond à ces problèmes.
 - Aperçu visuel de vos racks ou cave à vin, avec un code couleur selon le type de bouteille.
 - Visualisation des information de vos bouteilles: Type de vin, millesime, date d'achat, prix, etc...
 - Ajout, suppression, modification de bouteilles.
-- Mise en favoris des bouteilles que vous souhaitez racheter. (V2)
-- Historique des bouteilles consommées. (V2)
-
-- Visualisation des stocks par catégories.
-- Cave virtuelle pour garder en mémoire les bouteilles que vous avez bu chez un ami par exemple et que vous voudrez acheter plus tard. (V2)
+- Historique des bouteilles consommées dans un container à verre.
+- Visualisation des stocks.
+- Cave virtuelle pour garder en mémoire les bouteilles que vous avez bu chez un ami par exemple et que vous voudrez acheter plus tard.
 
 ## Technologies Utilisées 
 - React et typescript pour le front
@@ -32,7 +30,7 @@ Cette application répond à ces problèmes.
 - Vitestjs, React Testing library, jest-dom, cypress (V3) pour les tests
 
 ## Déploiment continu
-Netlify
+Firebase
 
 ## Installation
 ````
