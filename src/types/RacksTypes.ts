@@ -13,7 +13,7 @@ export interface Bottle {
     achat: string | null,
     rackId: string,
     index: number,
-    drink: string | number
+    drink: string | number | null
 } 
 
 export interface Rack {
