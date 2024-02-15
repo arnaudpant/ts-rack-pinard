@@ -15,7 +15,7 @@ const RacksTrue = ({ handleClick }: Props) => {
                     Ajouter un rack
                 </button>
             </div>
-            <div className="h-[calc(100vh-282px)] w-full bg-sommelier bg-no-repeat bg-bottom bg-contain"></div>
+            <div className="h-[calc(100vh-304px)] w-full bg-sommelier bg-no-repeat bg-bottom bg-contain"></div>
         </div>
     );
 };

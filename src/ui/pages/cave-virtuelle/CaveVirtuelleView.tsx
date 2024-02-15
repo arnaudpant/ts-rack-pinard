@@ -23,7 +23,7 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
         setModalShow((v) => !v);
     };
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-218px)]">
+        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-234px)]">
             <div className="py-4">
                 <button
                     className="text-fond bg-vin hover:bg-fond hover:text-vin px-4 py-1 border-2 border-vin hover:border-vin rounded-full"

@@ -158,7 +158,7 @@ const UserInfos = () => {
     return (
         <>
             {authUser !== null ? (
-                <div className="min-h-[calc(100vh-218px)]">
+                <div className="min-h-[calc(100vh-234px)]">
                     <div className="py-5 ">
                         <h2 className="text-3xl text-center">
                             Compte utilisateur

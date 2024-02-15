@@ -22,7 +22,7 @@ const HomeRacksView = ({ numberRacks }: Props) => {
                     <RacksFalse handleClick={handleClick} />
                 </div>
             ) : (
-                <div className="flex-col items-center min-h-[calc(100vh-218px)]">
+                <div className="flex-col items-center min-h-[calc(100vh-234px)]">
                     <RacksTrue handleClick={handleClick} />
                 </div>
             )}

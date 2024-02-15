@@ -37,7 +37,7 @@ const UserDataView = ({ fullBottles }: Props) => {
      ).length;
 
     return (
-        <div className="min-h-[calc(100vh-218px)]">
+        <div className="min-h-[calc(100vh-234px)]">
             <h2 className="text-3xl text-center pt-5">Mon espace</h2>
             <div className="container mx-auto p-4">
                 <h3 className="text-vin pl-4 text-xl">Vos stocks</h3>

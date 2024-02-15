@@ -18,7 +18,7 @@ type Props = {
 const BottlesDrinkView = ({ bottlesDrink, handleDelete }: Props) => {
 
     return (
-        <div className="container mx-auto p-4 min-h-[calc(100vh-218px)]">
+        <div className="container mx-auto p-4 min-h-[calc(100vh-234px)]">
             <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                 Liste des bouteilles consommées
             </h2>
