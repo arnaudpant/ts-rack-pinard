@@ -21,7 +21,7 @@ const ListOfRacks = () => {
                     <h2 className="text-xl text-vin800 text-center pb-2">
                         Liste de vos racks:
                     </h2>
-                    <div className="border border-vin50 rounded-xl py-2 px-4">
+                    <div className="flex border border-vin50 rounded-xl py-2 px-4">
                         <div className="container mx-auto flex justify-center flex-wrap gap-2">
                             {listOfRacks.map((rack) => (
                                 <ButtonRackSelected

@@ -8,7 +8,7 @@ type Props = {
 const ButtonRackSelected = ({ rack }: Props) => {
 
     return (
-        <button>
+        <button className="py-2">
             <NavLink
                 to={`/rack/${rack.idrack}`}
                 state={rack.idrack}
