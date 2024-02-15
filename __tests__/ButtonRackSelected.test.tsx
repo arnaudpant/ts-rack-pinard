@@ -5,6 +5,8 @@ import "@testing-library/jest-dom";
 import ButtonRackSelected from '../src/ui/components/layouts/bandeauRack/ButtonRackSelected'
 import { BrowserRouter } from "react-router-dom";
 
+// vi.mock("react-router-dom");
+
 const rackTest = {
     idrack: "testA",
     rackName: "Test A",
@@ -13,23 +15,14 @@ const rackTest = {
     bottles: [],
 };
 
-const stateA = "testA"
-const stateB = "testB"
 
 test('Test couleur button rackId different', ()=>{
-    render(<BrowserRouter><ButtonRackSelected rack={rackTest} state={stateB} /></BrowserRouter>);
+    render(<BrowserRouter><ButtonRackSelected rack={rackTest} /></BrowserRouter>);
     const buttonRack = screen.getByRole('button')
+    const linkA = screen.getByRole('link', {name: 'Test A'})
     expect(buttonRack).toBeInTheDocument()
-    expect(buttonRack).toHaveClass("text-vin600");
+    expect(linkA).toBeInTheDocument();
+    expect(buttonRack).not.toHaveClass("text-vin600");
+    expect(linkA).toHaveAttribute("href", "/rack/testA");
+    screen.debug()
 })
-
-test("Test couleur button rackId egal", () => {
-    render(
-        <BrowserRouter>
-            <ButtonRackSelected rack={rackTest} state={stateA} />
-        </BrowserRouter>
-    );
-    const buttonRack = screen.getByRole("button");
-    expect(buttonRack).toBeInTheDocument();
-    expect(buttonRack).toHaveClass("text-fond");
-});

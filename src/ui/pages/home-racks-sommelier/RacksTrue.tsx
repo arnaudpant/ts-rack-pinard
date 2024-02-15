@@ -1,4 +1,4 @@
-import sommelier from "/src/assets/sommelier.png";
+
 
 type Props = {
     handleClick: () => void;
@@ -6,21 +6,16 @@ type Props = {
 
 const RacksTrue = ({ handleClick }: Props) => {
     return (
-        <div className="flex flex-col justify-between items-center min-h-[calc(100vh-218px)]">
-            <div className="mx-auto py-4">
+        <div className="container mx-auto flex flex-col justify-between items-center">
+            <div className="py-4">
                 <button
-                    className="bg-vin600 text-fond px-4 py-1  hover:bg-vin50  hover:text-vin700  rounded-full"
+                    className="text-vin600 hover:bg-vin hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin rounded-full"
                     onClick={() => handleClick()}
                 >
                     Ajouter un rack
                 </button>
             </div>
-            <div>
-                <img
-                    src={sommelier}
-                    alt="sommelier avec un verre et une bouteille dans chaque main"
-                />
-            </div>
+            <div className="h-[calc(100vh-282px)] w-full bg-sommelier bg-no-repeat bg-bottom bg-contain"></div>
         </div>
     );
 };

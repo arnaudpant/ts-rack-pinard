@@ -5,7 +5,7 @@ type Props = {
 
 const RacksFalse = ({ handleClick }: Props) => {
     return (
-        <div className="flex flex-col items-center gap-4 px-2">
+        <div className="flex flex-col items-center gap-4 px-2 py-4">
             <h2 className="text-2xl md:text-3xl text-center">
                 Bienvenu dans votre cave à vin !
             </h2>

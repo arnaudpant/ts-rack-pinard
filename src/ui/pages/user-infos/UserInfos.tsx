@@ -20,35 +20,17 @@ import { storage } from "../../../firebase/firebase.config";
 /** API */
 import { toast } from "react-toastify";
 import ProfileUserInfosForm from "../../modules/user-infos/ProfileUserInfosForm";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import AddRackModal from "../../modules/modal/AddRackModal";
-import { firebaseSignOutUser } from "../../../api/Authentification";
-import { Unplug } from "lucide-react";
+import { Navigate } from "react-router-dom";
 
 const UserInfos = () => {
     const { authUser } = useAuth();
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<
         string | ArrayBuffer | null
     >(null);
-    const [modalShow, setModalShow] = useState(false);
 
-    const handleClick = () => {
-        setModalShow((v) => !v);
-    };
-
-    const handleDisconnect = async () => {
-        navigate("/");
-        const { error } = await firebaseSignOutUser();
-        if (error) {
-            toast.error(error.message);
-            return;
-        }
-        toast.success("A bientôt dans vos racks à pinard");
-    };
 
     const {
         handleSubmit,
@@ -176,15 +158,14 @@ const UserInfos = () => {
     return (
         <>
             {authUser !== null ? (
-                <div className="min-h-[calc(100vh-120px)]">
+                <div className="min-h-[calc(100vh-218px)]">
                     <div className="py-5 ">
                         <h2 className="text-3xl text-center">
                             Compte utilisateur
                         </h2>
                     </div>
 
-                    <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center gap-8">
-                        {/* PARTIE HAUTE OU GAUCHE */}
+                    <div className="container mx-auto px-4 flex flex-col justify-center items-center gap-8">
                         <div className="flex flex-col border border-vin50 rounded-2xl px-2 py-4">
                             <div className="w-[240px] pl-5">
                                 <ProfileUserInfosForm
@@ -207,7 +188,7 @@ const UserInfos = () => {
                                 />
                             </div>
 
-                            <div className="flex justify-start mt-8 ml-5">
+                            <div className="flex justify-center mt-8">
                                 <button
                                     className="px-5 py-3 bg-vin text-fond rounded-lg shadow-sm"
                                     onClick={handleSubmit(onSubmit)}
@@ -216,39 +197,7 @@ const UserInfos = () => {
                                 </button>
                             </div>
                         </div>
-
-                        {/* PARTIE BASSE OU DROITE */}
-                        <div className="flex flex-col max-w-60 px-4 border border-vin50 rounded-2xl items-center gap-8 mb-4">
-                            <div className="mt-4">
-                                <Link
-                                    to="/home-racks"
-                                    className="block w-56 px-5 py-3 bg-vin text-fond text-center rounded-lg shadow-sm"
-                                >
-                                    MES RACKS
-                                </Link>
-                            </div>
-
-                            <div className="mt-2">
-                                <button
-                                    className="block w-56 px-5 py-3 bg-fond text-vin border border-vin rounded-lg shadow-sm"
-                                    onClick={() => handleClick()}
-                                >
-                                    AJOUTER UN RACK
-                                </button>
-                            </div>
-
-                            <div className="mb-6 mt-2">
-                                <button
-                                    className="block w-56 px-5 py-3 bg-vin50 text-fond hover:bg-vin300 rounded-lg shadow-sm"
-                                    onClick={handleDisconnect}
-                                >
-                                    SE DECONNECTER{" "}
-                                    <Unplug className="text-fond inline ml-2" />
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                    {modalShow && <AddRackModal handleClick={handleClick} />}
                 </div>
             ) : (
                 <Navigate to="/" replace={true} />

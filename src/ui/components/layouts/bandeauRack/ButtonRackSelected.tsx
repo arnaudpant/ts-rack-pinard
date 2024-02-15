@@ -14,10 +14,10 @@ const ButtonRackSelected = ({ rack }: Props) => {
                 state={rack.idrack}
                 className={({ isActive, isPending }) =>
                     isPending
-                        ? "text-vin600 hover:bg-vin300 hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full"
+                        ? "text-vin600 hover:bg-vin hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full"
                         : isActive
                         ? "bg-vin text-fond px-4 py-1 border-2 border-vin rounded-full"
-                        : "px-4 py-1 border-2 border-vin hover:bg-vin300 hover:text-fond hover:border-vin300 rounded-full"
+                        : "px-4 py-1 border-2 border-vin hover:bg-vin hover:text-fond hover:border-vin rounded-full"
                 }
             >
                 {rack.rackName}

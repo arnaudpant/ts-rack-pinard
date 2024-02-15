@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { Bottle } from "../../../../../types/RacksTypes";
-import { X } from "lucide-react";
+import {  X } from "lucide-react";
 import useUpdateRacks from "../../../../../hooks/useUpdateRacks";
 import clsx from "clsx";
 
@@ -10,8 +10,15 @@ type Props = {
 };
 
 const ModalBottle = ({ bottle, handleClick }: Props) => {
-    const { deleteBottle } = useUpdateRacks();
+    const { deleteBottle, consommeBottle } = useUpdateRacks();
+
     const handleDeleteBottle = (bottle: Bottle) => {
+        deleteBottle(bottle);
+        handleClick();
+    };
+
+    const handleConsommeBottle = (bottle: Bottle) => {
+        consommeBottle(bottle);
         deleteBottle(bottle);
         handleClick();
     };
@@ -83,9 +90,26 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                 </div> */}
 
                 <div className="flex flex-col gap-4 my-4">
-                    <div className="flex gap-4 mb-6">
-                        {/* <button className="w-32 px-4 py-2 bg-vin600 text-vin50 rounded-full">
-                            Editer
+                    <div className="flex flex-col gap-4 mb-6 justify-center items-center px-2">
+                        <button
+                            className={clsx(
+                                bottle.rackId === "314" && "cursor-not-allowed",
+                                "w-32 px-4 py-2 bg-vin50 text-vin800 rounded-full shadow-md"
+                            )}
+                            onClick={() => handleConsommeBottle(bottle)}
+                            disabled={bottle.rackId === "314"}
+                        >
+                            Consommer
+                        </button>
+                        {/* <button
+                            className={clsx(
+                                bottle.rackId === "314" && "cursor-not-allowed",
+                                "w-32 px-4 py-2 bg-vin50 text-vin800 rounded-full shadow-md"
+                            )}
+                            onClick={() => {}}
+                            disabled={bottle.rackId === "314"}
+                        >
+                            Modifier
                         </button> */}
                         <button
                             className={clsx(
@@ -95,8 +119,9 @@ const ModalBottle = ({ bottle, handleClick }: Props) => {
                             onClick={() => handleDeleteBottle(bottle)}
                             disabled={bottle.rackId === "314"}
                         >
-                            Consommer
+                            Supprimer
                         </button>
+
                     </div>
                     {/* <div className="mx-auto">
                         <button className="p-3 bg-vin600 text-vin50 rounded-full">

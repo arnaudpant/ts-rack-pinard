@@ -13,7 +13,8 @@ const HomeRacks = () => {
     const [listOfRacks, setListOfRacks] = useState<Rack[] | []>([]);
 
     useEffect(() => {
-        authUser.userDocument.racks.length > 0 &&
+        authUser &&
+            authUser.userDocument.racks.length > 0 &&
             setListOfRacks(authUser.userDocument.racks);
     }, [authUser]);
 

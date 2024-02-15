@@ -13,8 +13,7 @@ type Props = {
 const BottlePinard = ({ bottle, nbrColums }: Props) => {
     const [modalShow, setModalShow] = useState(false);
 
-    const handleClick = () => {
-        
+    const handleClick = () => {      
         setModalShow((v) => !v);
     };
 
@@ -24,13 +23,17 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
         : bottle.couleur === "blanc"
         ? (colorBouchon = "#d4d408")
         : bottle.type === "mousseux"
-        ? (colorBouchon = "#ffff00")
+        ? (colorBouchon = "#d4d408")
         : bottle.type === "champagne"
         ? (colorBouchon = "#ffff00")
         : bottle.couleur === "rose"
         ? (colorBouchon = "#F8C3CD")
-        : bottle.couleur === "blonde" || "brune" || "ambree" || "blanche"
+        : bottle.type === "biere"
         ? (colorBouchon = "#3c40c6")
+        : bottle.type === "cidre"
+        ? (colorBouchon = "#3c40c6")
+        : bottle.type === "spiritueux"
+        ? (colorBouchon = "bg-bouteille")
         : "#3a3a3a";
 
     let couleurBouteille = "text-bouteille";
@@ -42,13 +45,11 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
         ? (couleurBouteille = "text-bouteille_champagne")
         : bottle.couleur === "rose"
         ? (couleurBouteille = "text-bouteille_rose")
-        : bottle.couleur === "blonde"
+        : bottle.type === "biere"
         ? (couleurBouteille = "text-bouteille_biere")
-        : bottle.couleur === "brune"
-        ? (couleurBouteille = "text-bouteille_biere")
-        : bottle.couleur === "ambree"
-        ? (couleurBouteille = "text-bouteille_biere")
-        : bottle.couleur === "blanche"
+        : bottle.type === "cidre"
+        ? (couleurBouteille = "text-bouteille")
+        : bottle.type === "spiritueux"
         ? (couleurBouteille = "text-bouteille_biere")
         : "bg-bouteille";
 
@@ -59,7 +60,7 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
                 onClick={handleClick}
             >
                 {bottle.type === "vide" ? (
-                    <div className=" bg-gris w-full rounded-full flex justify-center items-center">
+                    <div className=" bg-gris w-full rounded-full flex justify-center items-center" data-testid="case-empty">
                         <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
                     </div>
                 ) : (
@@ -79,7 +80,8 @@ const BottlePinard = ({ bottle, nbrColums }: Props) => {
                             ? "text-[10px] md:text-sm"
                             : "hidden sm:block text-[10px] md:text-sm",
                         "text-center xl:pt-1"
-                    )}
+                        )}
+                        data-testid="bottle"
                 >
                     {bottle.appellation}
                 </p>

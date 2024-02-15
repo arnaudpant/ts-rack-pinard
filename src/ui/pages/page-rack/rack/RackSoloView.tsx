@@ -1,6 +1,15 @@
 import { Bottle, Rack } from "@/types/RacksTypes";
 import BottlePinard from "./bottles/BottlePinard";
 import { useEffect, useState } from "react";
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "../../../../components/ui/table";
 
 type Props = {
     rack: Rack;
@@ -30,9 +39,6 @@ const RackSoloView = ({ rack }: Props) => {
     ).length;
     const nbrBouteillesRose = rack.bottles.filter(
         (bottle) => bottle.couleur === "rose"
-    ).length;
-    const nbrBouteillesPetillant = rack.bottles.filter(
-        (bottle) => bottle.couleur === "petillant"
     ).length;
 
     useEffect(() => {
@@ -123,92 +129,72 @@ const RackSoloView = ({ rack }: Props) => {
                         <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                             Informations
                         </h2>
-                        <table>
-                            <thead>
-                                <tr className="border ">
-                                    <th scope="col" className="border px-2">
+
+                        <Table>
+                            <TableCaption>
+                                Les informations concernant votre rack à pinard
+                            </TableCaption>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="w-[200px]">
                                         Bouteilles
-                                    </th>
-                                    <th scope="col" className="border px-2 ">
-                                        Totaux
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="border px-2">
+                                    </TableHead>
+                                    <TableHead>Nombre</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell className="font-medium">
                                         Nombre de cases
-                                    </td>
-                                    <td className="border px-2 text-center">
-                                        {nbrCases}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">
+                                    </TableCell>
+                                    <TableCell>{nbrCases}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className="font-medium">
                                         Nombre de cases vides
-                                    </td>
-                                    <td className="border px-2 text-center">
+                                    </TableCell>
+                                    <TableCell>
                                         {nbrCases - nbrBouteilles}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2 text-vin text-lg font-semibold">
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className="font-bold text-vin600">
                                         Nombre de bouteilles
-                                    </td>
-                                    <td className="border px-2 text-center text-vin text-lg font-semibold">
+                                    </TableCell>
+                                    <TableCell className="font-bold text-vin600">
                                         {nbrBouteilles}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">
-                                        Bouteilles de vin
-                                    </td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesVin}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Bouteilles de vin</TableCell>
+                                    <TableCell>{nbrBouteillesVin}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
                                         Bouteilles de champagne
-                                    </td>
-                                    <td className="border px-2 text-center">
+                                    </TableCell>
+                                    <TableCell>
                                         {nbrBouteillesChampagne}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">Rouge</td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesRouge}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">Blanc</td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesBlanc}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">Rosé</td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesRose}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">Pétillant</td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesPetillant}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="border px-2">
-                                        Bouteilles de bière
-                                    </td>
-                                    <td className="border px-2 text-center">
-                                        {nbrBouteillesBiere}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Rouge</TableCell>
+                                    <TableCell>{nbrBouteillesRouge}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Blanc</TableCell>
+                                    <TableCell>{nbrBouteillesBlanc}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Rosé</TableCell>
+                                    <TableCell>{nbrBouteillesRose}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Bière</TableCell>
+                                    <TableCell>{nbrBouteillesBiere}</TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
                     </>
                 )}
             </div>

@@ -5,6 +5,7 @@ import React from "react";
 import HeaderView from "../src/ui/components/layouts/header/HeaderView";
 
 vi.mock("react-router-dom");
+vi.mock("../../../../components/ui/dropdown-menu");
 
 describe("Header", () => {
     test("Affichage du titre + pas de bouton retour Accueil + pas d avatar", () => {

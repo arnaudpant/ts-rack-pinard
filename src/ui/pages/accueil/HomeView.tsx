@@ -1,51 +1,42 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useAuth } from "../../../context/AuthUserContext";
+import { Link, useNavigate } from "react-router-dom";
 
-type Props = {
-    isConnected: boolean;
-};
+const HomeView = () => {
+    const navigate = useNavigate();
+    const { authUser } = useAuth();
 
-const HomeView = ({ isConnected }: Props) => {
+    useEffect(() => {
+        authUser && navigate("/home-racks");
+    }, [authUser]);
+
     return (
         <>
-            {isConnected ? (
-                <div
-                    className="flex justify-center gap-4"
-                    data-testid="is-connected"
-                >
+            <div
+                className="flex flex-col justify-center gap-4 pb-6"
+                data-testid="is-not-connected"
+            >
+                <div className="flex justify-center gap-4 flex-wrap pb-2">
                     <Link
-                        to="/home-racks"
-                        className="px-5 py-3 bg-vin text-fond rounded-lg shadow-sm"
+                        to="/inscription"
+                        className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm hover:bg-vin100 hover:text-vin800"
                     >
-                        MES RACKS
+                        INSCRIPTION
+                    </Link>
+                    <Link
+                        to="/connexion"
+                        className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm hover:bg-vin100 hover:text-vin800"
+                    >
+                        CONNEXION
                     </Link>
                 </div>
-            ) : (
-                <div
-                    className="flex flex-col justify-center gap-4 pb-6"
-                    data-testid="is-not-connected"
+                <Link
+                    to="/demonstration"
+                    className="mb-4 px-3 py-1 bg-vin50 text-vin700 rounded-lg shadow-sm text-center"
                 >
-                    <div className="flex justify-center gap-4 flex-wrap pb-2">
-                        <Link
-                            to="/inscription"
-                            className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm"
-                        >
-                            INSCRIPTION
-                        </Link>
-                        <Link
-                            to="/connexion"
-                            className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm"
-                        >
-                            CONNEXION
-                        </Link>
-                    </div>
-                    <Link
-                        to="/demonstration"
-                        className="mb-4 px-3 py-1 bg-vin50 text-vin rounded-lg shadow-sm text-center"
-                    >
-                        DEMONSTRATION
-                    </Link>
-                </div>
-            )}
+                    DEMONSTRATION
+                </Link>
+            </div>
         </>
     );
 };

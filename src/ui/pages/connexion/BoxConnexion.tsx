@@ -34,7 +34,9 @@ const BoxConnexion: React.FC = () => {
             toast.error(error.message);
             return;
         }
-        toast.success("Bienvenu dans votre cave à pimard");
+        toast.success("Bienvenu dans votre cave à pimard", {
+            autoClose: 2000,
+        });
         setIsLoading(false);
         reset();
     };

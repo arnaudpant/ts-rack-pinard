@@ -15,16 +15,18 @@ const HomeRacksView = ({ numberRacks }: Props) => {
     };
 
     return (
-        <div className="container mx-auto flex-col items-center min-h-[calc(100vh-218px)]">
+        <>
             {modalShow && <AddRackModal handleClick={handleClick} />}
             {numberRacks === 0 ? (
-                <RacksFalse handleClick={handleClick} />
+                <div className="flex-col items-center min-h-[calc(100vh-118px)]">
+                    <RacksFalse handleClick={handleClick} />
+                </div>
             ) : (
-                <>
+                <div className="flex-col items-center min-h-[calc(100vh-218px)]">
                     <RacksTrue handleClick={handleClick} />
-                </>
+                </div>
             )}
-        </div>
+        </>
     );
 };
 
