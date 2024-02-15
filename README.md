@@ -7,7 +7,7 @@ https://rack-a-pinard.web.app
 ## Aperçu du Projet :
 Application web pour gérer votre cave à vin. 
 
-Marre de chercher une bouteille dans votre cave ?
+- Marre de chercher une bouteille dans votre cave ?
 - Vous voulez garder cette bouteille en mêmoire pour en racheter plus tard ?
 - Vous voulez connaitre l'état de vos stocks de vin rouge, blanc, champagne ?
 
