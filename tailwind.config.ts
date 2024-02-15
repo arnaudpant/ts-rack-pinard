@@ -8,7 +8,7 @@ export default {
 		'./src/**/*.{ts,tsx}',],
 	theme: {
 		backgroundImage: {
-			'sommelier': "url('sommelier.png')",
+			'sommelier': "url('/sommelier.png')",
 		},
 		container: {
 			center: true,
