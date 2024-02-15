@@ -8,8 +8,8 @@ https://rack-a-pinard.web.app
 Application web pour gérer votre cave à vin. 
 
 Marre de chercher une bouteille dans votre cave ?
-  Vous voulez garder cette bouteille en mêmoire pour en racheter plus tard ?
-  Vous voulez connaitre l'état de vos stocks de vin rouge, blanc, champagne ?
+- Vous voulez garder cette bouteille en mêmoire pour en racheter plus tard ?
+- Vous voulez connaitre l'état de vos stocks de vin rouge, blanc, champagne ?
 
 Cette application répond à ces problèmes.
 
@@ -17,7 +17,7 @@ Cette application répond à ces problèmes.
 - Transformez vos casiers à bouteille, cave à vin, rack en racks visuel avec le même nombre de colonnes et de rangés que le vrai
 - Aperçu visuel de vos racks ou cave à vin, avec un code couleur selon le type de bouteille.
 - Visualisation des information de vos bouteilles: Type de vin, millesime, date d'achat, prix, etc...
-- Ajout, suppression, modification de bouteilles.
+- Ajout, suppression, modification (V3) de bouteilles.
 - Historique des bouteilles consommées dans un container à verre.
 - Visualisation des stocks.
 - Cave virtuelle pour garder en mémoire les bouteilles que vous avez bu chez un ami par exemple et que vous voudrez acheter plus tard.
@@ -29,6 +29,14 @@ Cette application répond à ces problèmes.
 - React-hook-form pour les formulaires
 - Lucides pour les icones
 - Vitestjs, React Testing library, jest-dom, cypress (V3) pour les tests
+- react-error-boundary
+
+## Autres API
+- clsx
+- react-canvas-confetti
+- react-toastify
+- uuid
+
 
 ## Déploiment continu
 Firebase
