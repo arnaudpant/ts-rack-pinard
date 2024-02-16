@@ -42,6 +42,5 @@ Cette application répond à ces problèmes.
 Firebase
 
 ## Installation
-````
-npm run dev
-```
+```` npm run dev
+
