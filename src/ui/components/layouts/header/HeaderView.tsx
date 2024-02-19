@@ -1,7 +1,7 @@
 import Avatar from "../../../design-syst/avatar/Avatar";
 import clsx from "clsx";
 import { Home, Menu } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -24,8 +24,10 @@ const HeaderView = ({
     onBoardingisCompleted,
     scrAvatar,
 }: Props) => {
+    const navigate = useNavigate()
     const handleDisconnect = () => {
         firebaseSignOutUser();
+        navigate('/')
         toast.success("A bientôt dans vos racks à pinard");
     };
 

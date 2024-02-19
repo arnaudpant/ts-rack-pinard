@@ -24,5 +24,4 @@ test('Test couleur button rackId different', ()=>{
     expect(linkA).toBeInTheDocument();
     expect(buttonRack).not.toHaveClass("text-vin600");
     expect(linkA).toHaveAttribute("href", "/rack/testA");
-    screen.debug()
 })
