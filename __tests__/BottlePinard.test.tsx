@@ -1,6 +1,6 @@
 import React from "react";
-import { expect, test, vi } from "vitest";
-import { act, render, renderHook, screen } from "@testing-library/react";
+import { expect, test} from "vitest";
+import { render,  screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BottlePinard from "../src/ui/pages/page-rack/rack/bottles/BottlePinard";
 import { Bottle } from "../src/types/RacksTypes";
@@ -21,6 +21,7 @@ const fakeBottle: Bottle = {
     achat: null,
     rackId: "314",
     index: 3,
+    drink: ""
 };
 const fakeCaseEmpty: Bottle = {
     id: "fake-empty",
@@ -37,6 +38,7 @@ const fakeCaseEmpty: Bottle = {
     achat: null,
     rackId: "314",
     index: 2,
+    drink: ""
 };
 
 test("Rendu case vide", () => {

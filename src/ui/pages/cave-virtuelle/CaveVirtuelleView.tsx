@@ -59,6 +59,7 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
                             <TableCell
                                 className="cursor-pointer"
                                 onClick={() => handleDelete(bottle.id)}
+                                data-testid="supprimer"
                             >
                                 <Trash2 className="text-vin" />
                             </TableCell>

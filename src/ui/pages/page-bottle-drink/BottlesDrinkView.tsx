@@ -22,6 +22,7 @@ const BottlesDrinkView = ({ bottlesDrink, handleDelete }: Props) => {
             <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                 Liste des bouteilles consommées
             </h2>
+                {bottlesDrink.length > 0 ? (
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -34,7 +35,6 @@ const BottlesDrinkView = ({ bottlesDrink, handleDelete }: Props) => {
                         <TableHead>Supprimer</TableHead>
                     </TableRow>
                 </TableHeader>
-                {bottlesDrink.length > 0 ? (
                     <TableBody>
                         {bottlesDrink.map((bottle: Bottle) => (
                                 <TableRow key={bottle.id}>
@@ -51,16 +51,17 @@ const BottlesDrinkView = ({ bottlesDrink, handleDelete }: Props) => {
                                     <TableCell
                                         className="cursor-pointer"
                                         onClick={() => handleDelete(bottle.id)}
+                                        data-testid="supprimer"
                                     >
                                         <Trash2 className="text-vin" />
                                     </TableCell>
                                 </TableRow>
                         ))}
                     </TableBody>
-                ) : (
-                    <div>Données non disponnibles</div>
-                )}
             </Table>
+                ) : (
+                    <div className="text-center text-xl pt-10">Aucunes bouteilles consommées pour le moment</div>
+                )}
         </div>
     );
 };
