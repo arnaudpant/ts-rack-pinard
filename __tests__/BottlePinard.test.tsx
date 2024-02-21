@@ -3,43 +3,9 @@ import { expect, test} from "vitest";
 import { render,  screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BottlePinard from "../src/ui/pages/page-rack/rack/bottles/BottlePinard";
-import { Bottle } from "../src/types/RacksTypes";
 import { BrowserRouter } from "react-router-dom";
+import { fakeBottles, fakeCaseEmpty, fakeBottle } from "./types";
 
-const fakeBottle: Bottle = {
-    id: "fake-bottle",
-    millesime: 2024,
-    type: "vin",
-    couleur: "rouge",
-    gout: "",
-    pays: "France",
-    appellation: "Bordeaux",
-    exploitation: "Chateau Piquette",
-    cuvee: "medaille argent",
-    accords: [],
-    prix: 25,
-    achat: null,
-    rackId: "314",
-    index: 3,
-    drink: ""
-};
-const fakeCaseEmpty: Bottle = {
-    id: "fake-empty",
-    millesime: null,
-    type: "vide",
-    couleur: "",
-    gout: "",
-    pays: null,
-    appellation: null,
-    exploitation: null,
-    cuvee: null,
-    accords: [],
-    prix: null,
-    achat: null,
-    rackId: "314",
-    index: 2,
-    drink: ""
-};
 
 test("Rendu case vide", () => {
     render(

@@ -1,10 +1,8 @@
 import React from "react";
 import { expect, test, vi } from "vitest";
 import {
-    act,
     fireEvent,
     render,
-    renderHook,
     screen,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";

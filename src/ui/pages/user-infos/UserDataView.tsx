@@ -26,15 +26,15 @@ const UserDataView = ({ fullBottles }: Props) => {
     const bottlesBiere = fullBottles.filter(
         (bottle) => bottle.type === "biere"
     ).length;
-     const bottlesRouge = fullBottles.filter(
-         (bottle) => bottle.couleur === "rouge"
-     ).length;
-     const bottlesBlanc = fullBottles.filter(
-         (bottle) => bottle.couleur === "blanc"
-     ).length;
-     const bottlesRose = fullBottles.filter(
-         (bottle) => bottle.couleur === "rose"
-     ).length;
+    const bottlesRouge = fullBottles.filter(
+        (bottle) => bottle.couleur === "rouge"
+    ).length;
+    const bottlesBlanc = fullBottles.filter(
+        (bottle) => bottle.couleur === "blanc"
+    ).length;
+    const bottlesRose = fullBottles.filter(
+        (bottle) => bottle.couleur === "rose"
+    ).length;
 
     return (
         <div className="min-h-[calc(100vh-234px)]">
@@ -57,7 +57,7 @@ const UserDataView = ({ fullBottles }: Props) => {
                                 <TableCell className="font-medium">
                                     Nombre de cases à bouteilles
                                 </TableCell>
-                                <TableCell>{fullBottles.length}</TableCell>
+                                <TableCell data-testid='nbr-bottles'>{fullBottles.length}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell className="font-bold text-vin600">

@@ -2,45 +2,8 @@ import React from "react";
 import { expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Bottle } from "../src/types/RacksTypes";
 import BottlesDrinkView from "../src/ui/pages/page-bottle-drink/BottlesDrinkView";
-
-const fakeBottles: Bottle[] = [
-    {
-        id: "fake-bottle-a",
-        millesime: 2024,
-        type: "vin",
-        couleur: "rouge",
-        gout: "",
-        pays: "France",
-        appellation: "Bordeaux",
-        exploitation: "Chateau Piquette",
-        cuvee: "medaille argent",
-        accords: [],
-        prix: 25,
-        achat: "2022-02-17",
-        rackId: "314",
-        index: 3,
-        drink: "",
-    },
-    {
-        id: "fake-bottle-b",
-        millesime: 2012,
-        type: "vin",
-        couleur: "blanc",
-        gout: "sec",
-        pays: "France",
-        appellation: "Montlouis",
-        exploitation: "Benoit",
-        cuvee: "",
-        accords: [],
-        prix: 12,
-        achat: "2024-01-03",
-        rackId: "314",
-        index: 4,
-        drink: "22/02/2024",
-    },
-];
+import { fakeBottles } from "./types";
 
 test("Affichage de 0 bouteille consommée", () => {
     render(<BottlesDrinkView bottlesDrink={[]} handleDelete={() => {}} />);
@@ -83,8 +46,6 @@ test("Clic sur supprimer", () => {
     expect(clicSuppr).toHaveBeenCalledOnce();
     fireEvent.click(btnSuppr[1]);
     expect(clicSuppr).toHaveBeenCalledTimes(2);
-
-    screen.debug();
 });
 test("Affichage de la date formatée", () => {
     render(
