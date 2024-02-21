@@ -33,7 +33,9 @@ const BoxForget = () => {
             return;
         }
 
-        toast.success("Un mail de réinitialisation a été envoyé");
+        toast.success("Un mail de réinitialisation a été envoyé", {
+            autoClose: 2000,
+        });
         setIsLoading(false);
         reset();
         setRooter(true);

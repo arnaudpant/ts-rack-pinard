@@ -28,7 +28,9 @@ const HeaderView = ({
     const handleDisconnect = () => {
         firebaseSignOutUser();
         navigate('/')
-        toast.success("A bientôt dans vos racks à pinard");
+        toast.success("A bientôt dans vos racks à pinard", {
+            autoClose: 2000,
+        });
     };
 
     return (

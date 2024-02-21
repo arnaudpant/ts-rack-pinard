@@ -84,7 +84,9 @@ const UserInfos = () => {
             return;
         }
         setIsLoading(false);
-        toast.success("Mise a jour du login réussi");
+        toast.success("Mise a jour du login réussi", {
+            autoClose: 2000,
+        });
     };
 
     /** AVATAR **
@@ -151,7 +153,9 @@ const UserInfos = () => {
             toast.error(error.message);
             return;
         }
-        toast.success("Mise a jour de l'avatar réussi");
+        toast.success("Mise a jour de l'avatar réussi", {
+            autoClose: 2000,
+        });
         setIsLoading(false);
     };
 
