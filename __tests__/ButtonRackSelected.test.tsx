@@ -1,6 +1,6 @@
 import React from "react";
-import { expect, test, vi } from "vitest";
-import { act, render, renderHook, screen } from "@testing-library/react";
+import { expect, test } from "vitest";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ButtonRackSelected from "../src/ui/components/layouts/bandeauRack/ButtonRackSelected";
 import { BrowserRouter } from "react-router-dom";

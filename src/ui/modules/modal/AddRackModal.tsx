@@ -102,7 +102,7 @@ const AddRackModal = ({ handleClick }: Props) => {
     };
 
     return createPortal(
-        <div className="absolute w-72 bg-vin100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl flex flex-col items-center shadow-xl">
+        <div className="absolute w-72 bg-vin100 top-11 left-1/2 -translate-x-1/2  rounded-2xl flex flex-col items-center shadow-xl p-4">
             <div
                 className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
                 onClick={() => handleClick()}
@@ -110,9 +110,10 @@ const AddRackModal = ({ handleClick }: Props) => {
                 <X />
             </div>
             <h2 className="text-xl my-4">Ajouter un rack</h2>
+            <p className="text-sm text-center p-2 text-fond">Reproduisez votre cave, casiers, rack ou autre</p>
 
             <form
-                className="flex flex-col gap-1"
+                className="flex flex-col gap-2"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <label htmlFor="rackName">Entrez un nom</label>
@@ -168,6 +169,10 @@ const AddRackModal = ({ handleClick }: Props) => {
                         {errors.rows.message}
                     </p>
                 )}
+
+                <div>
+                    <img src="/info-rack.png" alt="informations racks" />
+                </div>
 
                 <button
                     type="submit"
