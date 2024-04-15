@@ -11,7 +11,7 @@ const Footer = () => {
                     Politique de confidentialité
                 </Link>
             </div>
-            <div className="text-xs text-vin100">Version 2</div>
+            <div className="text-xs text-vin100">Version 2.1</div>
         </footer>
     );
 };
