@@ -1,15 +1,7 @@
 import { Bottle, Rack } from "@/types/RacksTypes";
 import BottlePinard from "./bottles/BottlePinard";
 import { useEffect, useState } from "react";
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "../../../../components/ui/table";
+import RackSoloInfos from "./RackSoloInfos";
 
 type Props = {
     rack: Rack;
@@ -17,29 +9,6 @@ type Props = {
 
 const RackSoloView = ({ rack }: Props) => {
     const [classGrid, setClassGrid] = useState<string>("");
-
-    const nbrCases = rack.bottles.length
-    const nbrBouteilles = rack.bottles.filter(
-        (bottle) => bottle.type !== "vide"
-    ).length;
-    const nbrBouteillesVin = rack.bottles.filter(
-        (bottle) => bottle.type === "vin"
-    ).length;
-    const nbrBouteillesChampagne = rack.bottles.filter(
-        (bottle) => bottle.type === "champagne"
-    ).length;
-    const nbrBouteillesBiere = rack.bottles.filter(
-        (bottle) => bottle.type === "biere"
-    ).length;
-    const nbrBouteillesRouge = rack.bottles.filter(
-        (bottle) => bottle.couleur === "rouge"
-    ).length;
-    const nbrBouteillesBlanc = rack.bottles.filter(
-        (bottle) => bottle.couleur === "blanc"
-    ).length;
-    const nbrBouteillesRose = rack.bottles.filter(
-        (bottle) => bottle.couleur === "rose"
-    ).length;
 
     useEffect(() => {
         switch (rack.columns) {
@@ -125,77 +94,7 @@ const RackSoloView = ({ rack }: Props) => {
             {/* INFOS RACK */}
             <div>
                 {rack.bottles.length > 0 && (
-                    <>
-                        <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
-                            Informations
-                        </h2>
-
-                        <Table>
-                            <TableCaption>
-                                Les informations concernant votre rack à pinard
-                            </TableCaption>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead className="w-[200px]">
-                                        Bouteilles
-                                    </TableHead>
-                                    <TableHead>Nombre</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell className="font-medium">
-                                        Nombre de cases
-                                    </TableCell>
-                                    <TableCell>{nbrCases}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell className="font-medium">
-                                        Nombre de cases vides
-                                    </TableCell>
-                                    <TableCell>
-                                        {nbrCases - nbrBouteilles}
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell className="font-bold text-vin600">
-                                        Nombre de bouteilles
-                                    </TableCell>
-                                    <TableCell className="font-bold text-vin600">
-                                        {nbrBouteilles}
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Bouteilles de vin</TableCell>
-                                    <TableCell>{nbrBouteillesVin}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>
-                                        Bouteilles de champagne
-                                    </TableCell>
-                                    <TableCell>
-                                        {nbrBouteillesChampagne}
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Rouge</TableCell>
-                                    <TableCell>{nbrBouteillesRouge}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Blanc</TableCell>
-                                    <TableCell>{nbrBouteillesBlanc}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Rosé</TableCell>
-                                    <TableCell>{nbrBouteillesRose}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Bière</TableCell>
-                                    <TableCell>{nbrBouteillesBiere}</TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </>
+                    <RackSoloInfos bottles={rack.bottles} />
                 )}
             </div>
         </div>

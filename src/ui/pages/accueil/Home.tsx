@@ -2,7 +2,6 @@
 import HomeView from "./HomeView";
 
 const Home = () => {
-
     return (
         <div className="flex flex-col justify-around items-center gap-2 min-h-[calc(100vh-120px)]">
             <div className="text-center text-xl italic pt-4">
