@@ -2,6 +2,7 @@ import { Bottle, Rack } from "@/types/RacksTypes";
 import BottlePinard from "./bottles/BottlePinard";
 import { useEffect, useState } from "react";
 import RackSoloInfos from "./RackSoloInfos";
+import useUpdateRacks from "@/hooks/useUpdateRacks";
 
 type Props = {
     rack: Rack;
@@ -9,6 +10,7 @@ type Props = {
 
 const RackSoloView = ({ rack }: Props) => {
     const [classGrid, setClassGrid] = useState<string>("");
+    const {deletedRack} = useUpdateRacks()
 
     useEffect(() => {
         switch (rack.columns) {
@@ -76,7 +78,7 @@ const RackSoloView = ({ rack }: Props) => {
 
     return (
         <div className="flex flex-col items-center w-full px-2 pt-4 mb-10">
-            {/* Rack complet */}
+            {/* AFFICHAGE RACK */}
             <div className="flex justify-center w-full">
                 {rack && classGrid !== "" && (
                     // Cases
@@ -97,6 +99,8 @@ const RackSoloView = ({ rack }: Props) => {
                     <RackSoloInfos bottles={rack.bottles} />
                 )}
             </div>
+            {/* SUPPRESSION DU RACK */}
+            <button className="text-vin600 hover:bg-vin hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full" onClick={() => deletedRack(rack.idrack)}>Suppression du rack</button>
         </div>
     );
 };

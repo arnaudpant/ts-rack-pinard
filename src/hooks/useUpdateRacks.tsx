@@ -61,7 +61,8 @@ const useUpdateRacks = () => {
      */
     const addFavorisBottle = (favBootle: Bottle) => {
         /** 1. Filtre rack bouteilles cosnommées */
-        const bottlesFavoriList: Bottle[] = authUser.userDocument.bottlesFavoris;
+        const bottlesFavoriList: Bottle[] =
+            authUser.userDocument.bottlesFavoris;
 
         /** 2. Recuperation de la taille de array = dernier index */
         const bottlesIndex = bottlesFavoriList.length;
@@ -70,7 +71,7 @@ const useUpdateRacks = () => {
         bottlesFavoriList[bottlesIndex] = favBootle;
 
         /** Envoi dans Firestore */
-        const deleted: boolean = false
+        const deleted: boolean = false;
         sendBottleInPageFavori(bottlesFavoriList, deleted);
     };
 
@@ -79,7 +80,7 @@ const useUpdateRacks = () => {
             authUser.userDocument.bottlesFavoris.filter(
                 (bottlesFavoris) => bottlesFavoris.id !== idBottleFavoris
             );
-            const deleted: boolean = true
+        const deleted: boolean = true;
         sendBottleInPageFavori(listBottlesInFavoris, deleted);
     };
 
@@ -144,6 +145,28 @@ const useUpdateRacks = () => {
               });
     };
 
+    const deletedRack = async (rackId: string) => {
+        const racks = authUser.userDocument.racks.filter(
+            (rack) => rack.idrack !== rackId
+        );
+
+        const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
+            ...authUser.userDocument,
+            racks,
+        });
+        if (error) {
+            toast.error(
+                "Une erreur est survenue a la suppression de votre rack",
+                { autoClose: 3000 }
+            );
+            return;
+        }
+
+        toast.success("Rack supprimé de votre liste", {
+            autoClose: 2000,
+        });
+    };
+
     const sendBottleDrinkInFirebase = async (bottlesDrink: Bottle[]) => {
         const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
             ...authUser.userDocument,
@@ -158,7 +181,10 @@ const useUpdateRacks = () => {
         });
     };
 
-    const sendBottleInPageFavori = async (bottlesFavoris: Bottle[], deleted: boolean) => {
+    const sendBottleInPageFavori = async (
+        bottlesFavoris: Bottle[],
+        deleted: boolean
+    ) => {
         const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
             ...authUser.userDocument,
             bottlesFavoris,
@@ -190,6 +216,7 @@ const useUpdateRacks = () => {
     return {
         updateRacks,
         addNewBottleInrack,
+        deletedRack,
         deleteBottle,
         deletedBottleDrink,
         deletedBottleFavoris,
