@@ -24,8 +24,17 @@ const RackSoloInfos = ({ bottles }: Props) => {
     const nbrBouteillesChampagne = bottles.filter(
         (bottle) => bottle.type === "champagne"
     ).length;
+    const nbrBouteillesMousseux = bottles.filter(
+        (bottle) => bottle.type === "mousseux"
+    ).length;
     const nbrBouteillesBiere = bottles.filter(
         (bottle) => bottle.type === "biere"
+    ).length;
+    const nbrBouteillesCidre = bottles.filter(
+        (bottle) => bottle.type === "cidre"
+    ).length;
+    const nbrBouteillesDivers = bottles.filter(
+        (bottle) => bottle.type === "spiritueux"
     ).length;
     const nbrBouteillesRouge = bottles.filter(
         (bottle) => bottle.couleur === "rouge"
@@ -55,18 +64,6 @@ const RackSoloInfos = ({ bottles }: Props) => {
                 </TableHeader>
                 <TableBody>
                     <TableRow>
-                        <TableCell className="font-medium">
-                            Nombre de cases
-                        </TableCell>
-                        <TableCell>{nbrCases}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">
-                            Nombre de cases vides
-                        </TableCell>
-                        <TableCell>{nbrCases - nbrBouteilles}</TableCell>
-                    </TableRow>
-                    <TableRow>
                         <TableCell className="font-bold text-vin600">
                             Nombre de bouteilles
                         </TableCell>
@@ -77,10 +74,6 @@ const RackSoloInfos = ({ bottles }: Props) => {
                     <TableRow>
                         <TableCell>Bouteilles de vin</TableCell>
                         <TableCell>{nbrBouteillesVin}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Bouteilles de champagne</TableCell>
-                        <TableCell>{nbrBouteillesChampagne}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>Rouge</TableCell>
@@ -95,8 +88,36 @@ const RackSoloInfos = ({ bottles }: Props) => {
                         <TableCell>{nbrBouteillesRose}</TableCell>
                     </TableRow>
                     <TableRow>
+                        <TableCell>Bouteilles de champagne</TableCell>
+                        <TableCell>{nbrBouteillesChampagne}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Bouteilles de mousseux</TableCell>
+                        <TableCell>{nbrBouteillesMousseux}</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell>Bière</TableCell>
                         <TableCell>{nbrBouteillesBiere}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Cidre</TableCell>
+                        <TableCell>{nbrBouteillesCidre}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Autres</TableCell>
+                        <TableCell>{nbrBouteillesDivers}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell className="font-medium">
+                            Nombre de cases
+                        </TableCell>
+                        <TableCell>{nbrCases}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell className="font-medium">
+                            Nombre de cases vides
+                        </TableCell>
+                        <TableCell>{nbrCases - nbrBouteilles}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
