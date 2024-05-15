@@ -34,7 +34,7 @@ const RackSoloInfos = ({ bottles }: Props) => {
         (bottle) => bottle.couleur === "blanc"
     ).length;
     const nbrBouteillesRose = bottles.filter(
-        (bottle) => bottle.couleur === "rose"
+        (bottle) => bottle.couleur === "rose" && bottle.type === "vin"
     ).length;
 
     return (
