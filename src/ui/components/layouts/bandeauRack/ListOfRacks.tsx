@@ -10,7 +10,9 @@ const ListOfRacks = () => {
     useEffect(() => {
         authUser?.userDocument.racks.length > 0 &&
             setListOfRacks(authUser.userDocument.racks);
+       
     }, [authUser]);
+    console.log("render");
 
     return (
         <>

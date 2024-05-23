@@ -2,7 +2,8 @@ import { Bottle, Rack } from "@/types/RacksTypes";
 import BottlePinard from "./bottles/BottlePinard";
 import { useEffect, useState } from "react";
 import RackSoloInfos from "./RackSoloInfos";
-import useUpdateRacks from "@/hooks/useUpdateRacks";
+import useUpdateRacks from "../../../../hooks/useUpdateRacks";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     rack: Rack;
@@ -11,6 +12,13 @@ type Props = {
 const RackSoloView = ({ rack }: Props) => {
     const [classGrid, setClassGrid] = useState<string>("");
     const {deletedRack} = useUpdateRacks()
+
+    const navigate = useNavigate()
+
+    const deletedThisRack = (id: string) => {
+        deletedRack(id)
+        navigate("/home-racks");
+    }
 
     useEffect(() => {
         switch (rack.columns) {
@@ -100,7 +108,12 @@ const RackSoloView = ({ rack }: Props) => {
                 )}
             </div>
             {/* SUPPRESSION DU RACK */}
-            <button className="text-vin600 hover:bg-vin hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full" onClick={() => deletedRack(rack.idrack)}>Suppression du rack</button>
+            <button
+                className="text-vin600 hover:bg-vin mt-10 hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full"
+                onClick={() => deletedThisRack(rack.idrack)}
+            >
+                Suppression du rack
+            </button>
         </div>
     );
 };

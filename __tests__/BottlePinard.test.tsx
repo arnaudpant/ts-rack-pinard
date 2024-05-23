@@ -4,7 +4,7 @@ import { render,  screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BottlePinard from "../src/ui/pages/page-rack/rack/bottles/BottlePinard";
 import { BrowserRouter } from "react-router-dom";
-import { fakeBottles, fakeCaseEmpty, fakeBottle } from "./types";
+import { fakeCaseEmpty, fakeBottle } from "./types";
 
 
 test("Rendu case vide", () => {

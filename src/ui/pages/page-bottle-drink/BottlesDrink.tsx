@@ -4,20 +4,22 @@ import { useEffect, useState } from "react";
 import BottlesDrinkView from "./BottlesDrinkView";
 import useUpdateRacks from "../../../hooks/useUpdateRacks";
 
-
 const BottlesDrink = () => {
-    const {authUser} = useAuth()
+    const { authUser } = useAuth();
     const { deletedBottleDrink } = useUpdateRacks();
 
-    const [bottlesDrink, setBottlesDrink] = useState<Bottle[] | []>([])
+    const [bottlesDrink, setBottlesDrink] = useState<Bottle[] | []>([]);
 
     const handleDelete = (id: string) => deletedBottleDrink(id);
 
-     useEffect(() => {
+    useEffect(() => {
         authUser && setBottlesDrink(authUser.userDocument.bottlesDrink);
-     }, [authUser]);
+    }, [authUser]);
     return (
-        <BottlesDrinkView bottlesDrink={bottlesDrink} handleDelete={handleDelete} />
+        <BottlesDrinkView
+            bottlesDrink={bottlesDrink}
+            handleDelete={handleDelete}
+        />
     );
 };
 
