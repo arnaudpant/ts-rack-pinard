@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RacksTrue from "./RacksTrue";
-import AddRackModal from "../../modules/modal/AddRackModal";
 import RacksFalse from "./RacksFalse";
+import AddRackModal from "../../modules/modal/AddRackModal";
 
 type Props = {
     numberRacks: number;

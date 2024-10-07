@@ -1,8 +1,8 @@
 import { useAuth } from "../../../context/AuthUserContext";
 import { Navigate } from "react-router-dom";
-import HomeRacksView from "./HomeRacksView";
 import { useEffect, useState } from "react";
 import { Rack } from "@/types/RacksTypes";
+import HomeRacksView from "./HomeRacksView";
 
 const HomeRacks = () => {
     const { authUser } = useAuth();

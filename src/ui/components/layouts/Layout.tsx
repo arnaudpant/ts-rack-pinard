@@ -1,10 +1,10 @@
 /** ROOTER */
 import { Outlet } from "react-router-dom";
 /** COMPONENTS */
-import Header from "./header/Header";
 import Session from "../session/Session";
-import Footer from "./footer/Footer";
+import Header from "./header/Header";
 import ListOfRacks from "./bandeauRack/ListOfRacks";
+import Footer from "./footer/Footer";
 
 const Layout = () => {
     return (

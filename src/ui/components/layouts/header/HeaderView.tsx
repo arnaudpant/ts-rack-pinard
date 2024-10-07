@@ -14,17 +14,16 @@ import { firebaseSignOutUser } from "../../../../api/Authentification";
 import { toast } from "react-toastify";
 
 type Props = {
-    handleHome: () => void;
     onBoardingisCompleted: boolean;
     scrAvatar: string;
 };
 
 const HeaderView = ({
-    handleHome,
     onBoardingisCompleted,
     scrAvatar,
 }: Props) => {
     const navigate = useNavigate()
+
     const handleDisconnect = () => {
         firebaseSignOutUser();
         navigate('/')
@@ -40,7 +39,7 @@ const HeaderView = ({
             <div className="absolute top-4 left-4">
                 <div
                     data-testid="btn-back-home"
-                    onClick={handleHome}
+                    onClick={()=>navigate("/home-racks")}
                     className={clsx(
                         !onBoardingisCompleted && `hidden`,
                         "cursor-pointer"

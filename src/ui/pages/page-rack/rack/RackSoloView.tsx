@@ -1,9 +1,9 @@
-import { Bottle, Rack } from "@/types/RacksTypes";
-import BottlePinard from "./bottles/BottlePinard";
 import { useEffect, useState } from "react";
-import RackSoloInfos from "./RackSoloInfos";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
 import { useNavigate } from "react-router-dom";
+import { Bottle, Rack } from "@/types/RacksTypes";
+import BottlePinard from "./bottles/BottlePinard";
+import RackSoloInfos from "./RackSoloInfos";
 
 type Props = {
     rack: Rack;
