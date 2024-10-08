@@ -19,10 +19,10 @@ const ListOfRacks = () => {
                     <h2 className="text-xl text-vin800 text-center pb-2">
                         Liste de vos racks:
                     </h2>
-                    <div className="flex border justify-center items-center flex-wrap gap-2 border-vin50 rounded-xl py-2 px-4">
+                    <div className="flex justify-center items-center flex-wrap gap-2 py-2 px-4">
                         {listOfRacks.map((rack) => (
                             <ButtonRackSelected rack={rack} key={rack.idrack} />
-                        ))}
+                        )).sort()}
                     </div>
                 </div>
             )}
