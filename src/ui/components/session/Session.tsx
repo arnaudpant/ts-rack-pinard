@@ -3,28 +3,17 @@ import { useAuth } from "../../../context/AuthUserContext";
 /** COMPONENTS */
 import Spinner from "../spinner/Spinner";
 
-
-
 interface Props {
-    children: React.ReactNode,
+    children: React.ReactNode;
 }
 
 const Session = ({ children }: Props) => {
+    const { authUserIsLoading } = useAuth();
 
-    const { authUserIsLoading } = useAuth()
-
-    /** AFFICHAGE SPINNER
-     * Pas en chargement => Affichage Application
-     * En chargement => Affichage SPINNER
-     */
     if (!authUserIsLoading) {
-        return <>{children}</>
+        return <>{children}</>;
     }
-    return (
-        <>
-            <Spinner />
-        </>
-    );
+    return <Spinner />;
 };
 
 export default Session;

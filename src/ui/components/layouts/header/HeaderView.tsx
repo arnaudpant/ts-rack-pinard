@@ -1,17 +1,9 @@
 import Avatar from "../../../design-syst/avatar/Avatar";
 import clsx from "clsx";
-import { Home, Menu } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "../../../../components/ui/dropdown-menu";
-import { firebaseSignOutUser } from "../../../../api/Authentification";
-import { toast } from "react-toastify";
+import { Home } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import HeaderMenu from "./HeaderMenu";
+
 
 type Props = {
     onBoardingisCompleted: boolean;
@@ -24,22 +16,16 @@ const HeaderView = ({
 }: Props) => {
     const navigate = useNavigate()
 
-    const handleDisconnect = () => {
-        firebaseSignOutUser();
-        navigate('/')
-        toast.success("A bientôt dans vos racks à pinard", {
-            autoClose: 2000,
-        });
-    };
+    
 
     return (
         <header className="relative flex items-center justify-center h-16 bg-vin text-fond ">
-            <h1 className="text-2xl md:text-3xl py-2">RACKS A PINARD 🍾</h1>
+            <h1 className="text-2xl md:text-3xl py-2">RACKS A VIN 🍾</h1>
             {/* BTN HOME */}
             <div className="absolute top-4 left-4">
                 <div
                     data-testid="btn-back-home"
-                    onClick={()=>navigate("/home-racks")}
+                    onClick={() => navigate("/home-racks")}
                     className={clsx(
                         !onBoardingisCompleted && `hidden`,
                         "cursor-pointer"
@@ -76,46 +62,7 @@ const HeaderView = ({
                         "cursor-pointer w-10 h-10 flex justify-center"
                     )}
                 >
-                    <DropdownMenu>
-                        <DropdownMenuTrigger>
-                            <Menu className="h-10 w-10" />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <Link to="/">
-                                <DropdownMenuItem className="cursor-pointer">
-                                    Accueil
-                                </DropdownMenuItem>
-                            </Link>
-                            <Link to="/user-infos">
-                                <DropdownMenuItem className="cursor-pointer">
-                                    Mon compte
-                                </DropdownMenuItem>
-                            </Link>
-                            <Link to="/user-data">
-                                <DropdownMenuItem className="cursor-pointer">
-                                    Toutes mes bouteilles
-                                </DropdownMenuItem>
-                            </Link>
-                            <Link to="/bottles-drink">
-                                <DropdownMenuItem className="cursor-pointer">
-                                    Container à verre
-                                </DropdownMenuItem>
-                            </Link>
-                            <Link to="/cave-virtuelle">
-                                <DropdownMenuItem className="cursor-pointer">
-                                    Cave virtuelle
-                                </DropdownMenuItem>
-                            </Link>
-                            <DropdownMenuItem
-                                onClick={handleDisconnect}
-                                className="text-vin cursor-pointer"
-                            >
-                                Déconnexion
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
+                    <HeaderMenu />
                 </div>
             </div>
         </header>
