@@ -1,14 +1,12 @@
-import { useEffect } from "react";
 import { useAuth } from "../../../context/AuthUserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const HomeView = () => {
-    const navigate = useNavigate();
     const { authUser } = useAuth();
 
-    useEffect(() => {
-        authUser && navigate("/home-racks");
-    }, [authUser]);
+    if (authUser) {
+        return <Navigate to="/home-racks" replace />;
+    }
 
     return (
         <div
