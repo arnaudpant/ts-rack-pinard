@@ -17,6 +17,8 @@ type Props = {
     handleClick: () => void;
 };
 
+const MAX_COLUMNS = 10;
+
 const AddRackModal = ({ handleClick }: Props) => {
     const { authUser } = useAuth();
     const {
@@ -65,8 +67,8 @@ const AddRackModal = ({ handleClick }: Props) => {
     };
 
     const onSubmit = (data: FormValues) => {
-        if(data.columns > 10) {
-            return
+        if (data.columns > MAX_COLUMNS) {
+            return;
         }
         const calculNumberOfBottle: number = data.columns * data.rows;
         // AJOUT X BOUTEILLES VIDES

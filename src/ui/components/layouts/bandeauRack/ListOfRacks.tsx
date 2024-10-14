@@ -9,10 +9,6 @@ const ListOfRacks = () => {
         return null; 
     }
 
-    if (listOfRacks.length === 0) {
-        return <p>Vous n'avez pas encore de racks.</p>;
-    }
-
     return (
         <div className="flex flex-col items-center pt-5">
             <h2 className="text-xl text-vin800 text-center pb-2">

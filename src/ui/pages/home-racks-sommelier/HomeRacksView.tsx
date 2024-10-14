@@ -14,7 +14,7 @@ const HomeRacksView = ({ numberRacks }: Props) => {
         setIsModalOpen((prev) => !prev);
     };
 
-     const RackComponent = numberRacks === 0 ? RacksFalse : RacksTrue;
+    const RackComponent = numberRacks === 0 ? RacksFalse : RacksTrue;
 
     return (
         <>
