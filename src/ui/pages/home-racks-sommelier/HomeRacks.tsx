@@ -1,36 +1,22 @@
 import { useAuth } from "../../../context/AuthUserContext";
 import { Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Rack } from "@/types/RacksTypes";
 import HomeRacksView from "./HomeRacksView";
 
 const HomeRacks = () => {
     const { authUser } = useAuth();
 
-    const onBoardingisCompleted: boolean =
-        authUser?.userDocument.onBoardingisCompleted;
+    if (!authUser) {
+        return <Navigate to="/" replace />;
+    }
 
-    const [listOfRacks, setListOfRacks] = useState<Rack[] | []>([]);
+    if (!authUser.userDocument.onBoardingisCompleted) {
+        return <Navigate to="/boarding" replace />;
+    }
 
-    useEffect(() => {
-        authUser &&
-            authUser.userDocument.racks.length > 0 &&
-            setListOfRacks(authUser.userDocument.racks);
-    }, [authUser]);
+    const listOfRacks: Rack[] = authUser.userDocument.racks ?? [];
 
-    return (
-        <>
-            {authUser !== null ? (
-                onBoardingisCompleted ? (
-                    <HomeRacksView numberRacks={listOfRacks.length} />
-                ) : (
-                    <Navigate to="/boarding" replace={true} />
-                )
-            ) : (
-                <Navigate to="/" replace={true} />
-            )}
-        </>
-    );
+    return <HomeRacksView numberRacks={listOfRacks.length} />;
 };
 
 export default HomeRacks;
