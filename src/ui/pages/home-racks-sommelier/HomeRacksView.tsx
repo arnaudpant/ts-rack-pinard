@@ -8,24 +8,24 @@ type Props = {
 };
 
 const HomeRacksView = ({ numberRacks }: Props) => {
-    const [modalShow, setModalShow] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleClick = () => {
-        setModalShow((v) => !v);
+    const toggleModal = () => {
+        setIsModalOpen((prev) => !prev);
     };
+
+     const RackComponent = numberRacks === 0 ? RacksFalse : RacksTrue;
 
     return (
         <>
-            {modalShow && <AddRackModal handleClick={handleClick} />}
-            {numberRacks === 0 ? (
-                <div className="flex-col items-center min-h-[calc(100vh-118px)]">
-                    <RacksFalse handleClick={handleClick} />
-                </div>
-            ) : (
-                <div className="flex-col items-center min-h-[calc(100vh-234px)]">
-                    <RacksTrue handleClick={handleClick} />
-                </div>
-            )}
+            {isModalOpen && <AddRackModal handleClick={toggleModal} />}
+            <div
+                className={`flex-col items-center min-h-[calc(100vh-${
+                    numberRacks === 0 ? "118" : "234"
+                }px)]`}
+            >
+                <RackComponent handleClick={toggleModal} />
+            </div>
         </>
     );
 };
