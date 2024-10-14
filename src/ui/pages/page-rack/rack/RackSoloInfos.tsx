@@ -13,38 +13,54 @@ type Props = {
     bottles: Bottle[];
 };
 
-const RackSoloInfos = ({ bottles }: Props) => {
-    const nbrCases = bottles.length;
-    const nbrBouteilles = bottles.filter(
-        (bottle) => bottle.type !== "vide"
-    ).length;
-    const nbrBouteillesVin = bottles.filter(
-        (bottle) => bottle.type === "vin"
-    ).length;
-    const nbrBouteillesChampagne = bottles.filter(
-        (bottle) => bottle.type === "champagne"
-    ).length;
-    const nbrBouteillesMousseux = bottles.filter(
-        (bottle) => bottle.type === "mousseux"
-    ).length;
-    const nbrBouteillesBiere = bottles.filter(
-        (bottle) => bottle.type === "biere"
-    ).length;
-    const nbrBouteillesCidre = bottles.filter(
-        (bottle) => bottle.type === "cidre"
-    ).length;
-    const nbrBouteillesDivers = bottles.filter(
-        (bottle) => bottle.type === "spiritueux"
-    ).length;
-    const nbrBouteillesRouge = bottles.filter(
-        (bottle) => bottle.couleur === "rouge"
-    ).length;
-    const nbrBouteillesBlanc = bottles.filter(
-        (bottle) => bottle.couleur === "blanc"
-    ).length;
-    const nbrBouteillesRose = bottles.filter(
-        (bottle) => bottle.couleur === "rose" && bottle.type === "vin"
-    ).length;
+type BottleCount = {
+    label: string;
+    count: number;
+    isBold?: boolean;
+};
+
+const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
+    const countBottles = (predicate: (bottle: Bottle) => boolean): number =>
+        bottles.filter(predicate).length;
+
+    const bottleCounts: BottleCount[] = [
+        {
+            label: "Nombre de bouteilles",
+            count: countBottles((b) => b.type !== "vide"),
+            isBold: true,
+        },
+        {
+            label: "Bouteilles de vin",
+            count: countBottles((b) => b.type === "vin"),
+        },
+        { label: "Rouge", count: countBottles((b) => b.couleur === "rouge") },
+        { label: "Blanc", count: countBottles((b) => b.couleur === "blanc") },
+        {
+            label: "Rosé",
+            count: countBottles(
+                (b) => b.couleur === "rose" && b.type === "vin"
+            ),
+        },
+        {
+            label: "Bouteilles de champagne",
+            count: countBottles((b) => b.type === "champagne"),
+        },
+        {
+            label: "Bouteilles de mousseux",
+            count: countBottles((b) => b.type === "mousseux"),
+        },
+        { label: "Bière", count: countBottles((b) => b.type === "biere") },
+        { label: "Cidre", count: countBottles((b) => b.type === "cidre") },
+        {
+            label: "Autres",
+            count: countBottles((b) => b.type === "spiritueux"),
+        },
+        { label: "Nombre de cases", count: bottles.length },
+        {
+            label: "Nombre de cases vides",
+            count: countBottles((b) => b.type === "vide"),
+        },
+    ];
 
     return (
         <>
@@ -63,66 +79,31 @@ const RackSoloInfos = ({ bottles }: Props) => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell className="font-bold text-vin600">
-                            Nombre de bouteilles
-                        </TableCell>
-                        <TableCell className="font-bold text-vin600">
-                            {nbrBouteilles}
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Bouteilles de vin</TableCell>
-                        <TableCell>{nbrBouteillesVin}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Rouge</TableCell>
-                        <TableCell>{nbrBouteillesRouge}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Blanc</TableCell>
-                        <TableCell>{nbrBouteillesBlanc}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Rosé</TableCell>
-                        <TableCell>{nbrBouteillesRose}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Bouteilles de champagne</TableCell>
-                        <TableCell>{nbrBouteillesChampagne}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Bouteilles de mousseux</TableCell>
-                        <TableCell>{nbrBouteillesMousseux}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Bière</TableCell>
-                        <TableCell>{nbrBouteillesBiere}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Cidre</TableCell>
-                        <TableCell>{nbrBouteillesCidre}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Autres</TableCell>
-                        <TableCell>{nbrBouteillesDivers}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">
-                            Nombre de cases
-                        </TableCell>
-                        <TableCell>{nbrCases}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell className="font-medium">
-                            Nombre de cases vides
-                        </TableCell>
-                        <TableCell>{nbrCases - nbrBouteilles}</TableCell>
-                    </TableRow>
+                    {bottleCounts.map(({ label, count, isBold }, index) => (
+                        <TableRow key={index}>
+                            <TableCell
+                                className={
+                                    isBold
+                                        ? "font-bold text-vin600"
+                                        : "font-medium"
+                                }
+                            >
+                                {label}
+                            </TableCell>
+                            <TableCell
+                                className={
+                                    isBold ? "font-bold text-vin600" : ""
+                                }
+                            >
+                                {count}
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </>
     );
 };
+
 
 export default RackSoloInfos;

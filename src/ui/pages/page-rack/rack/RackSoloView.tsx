@@ -9,88 +9,40 @@ type Props = {
     rack: Rack;
 };
 
-const RackSoloView = ({ rack }: Props) => {
+const RackSoloView: React.FC<Props> = ({ rack }) => {
     const [classGrid, setClassGrid] = useState<string>("");
-    const {deletedRack} = useUpdateRacks()
-
-    const navigate = useNavigate()
+    const { deletedRack } = useUpdateRacks();
+    const navigate = useNavigate();
 
     const deletedThisRack = (id: string) => {
-        deletedRack(id)
+        deletedRack(id);
         navigate("/home-racks");
-    }
+    };
 
     useEffect(() => {
-        switch (rack.columns) {
-            case 1:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-1 gap-1 w-full max-w-screen-md"
-                );
-                break;
+        const gridClasses = {
+            1: "grid-cols-1 max-w-screen-md",
+            2: "grid-cols-2 max-w-screen-md",
+            3: "grid-cols-3 max-w-screen-md",
+            4: "grid-cols-4 max-w-screen-md",
+            5: "grid-cols-5 max-w-screen-lg",
+            6: "grid-cols-6 max-w-screen-lg",
+            7: "grid-cols-7 max-w-screen-lg",
+            8: "grid-cols-8 max-w-screen-xl",
+            9: "grid-cols-9 max-w-screen-xl",
+            10: "grid-cols-10 max-w-screen-2xl",
+        };
 
-            case 2:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-2 gap-1 w-full max-w-screen-md"
-                );
-                break;
-
-            case 3:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-3 gap-1 w-full max-w-screen-md"
-                );
-                break;
-
-            case 4:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-4 gap-1 w-full max-w-screen-md"
-                );
-                break;
-
-            case 5:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-5 gap-1 w-full max-w-screen-lg"
-                );
-                break;
-
-            case 6:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-6 gap-1 w-full max-w-screen-lg"
-                );
-                break;
-
-            case 7:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-7 gap-1 w-full max-w-screen-lg"
-                );
-                break;
-
-            case 8:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-8 gap-1 w-full max-w-screen-xl"
-                );
-                break;
-
-            case 9:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-9 gap-1 w-full max-w-screen-xl"
-                );
-                break;
-
-            case 10:
-                setClassGrid(
-                    "bg-gris_fonce p-2 grid grid-cols-10 gap-1 w-full max-w-screen-2xl"
-                );
-                break;
-        }
-    }, [rack]);
+        const columnClass =
+            gridClasses[rack.columns as keyof typeof gridClasses] || "";
+        setClassGrid(`bg-gris_fonce p-2 grid gap-1 w-full ${columnClass}`);
+    }, [rack.columns]);
 
     return (
         <div className="flex flex-col items-center w-full px-2 pt-4 mb-10">
-            {/* AFFICHAGE RACK */}
             <div className="flex justify-center w-full">
-                {rack && classGrid !== "" && (
-                    // Cases
-                    <div className={`${classGrid}`}>
+                {classGrid && (
+                    <div className={classGrid}>
                         {rack.bottles.map((bottle: Bottle) => (
                             <BottlePinard
                                 bottle={bottle}
@@ -101,13 +53,11 @@ const RackSoloView = ({ rack }: Props) => {
                     </div>
                 )}
             </div>
-            {/* INFOS RACK */}
             <div>
                 {rack.bottles.length > 0 && (
                     <RackSoloInfos bottles={rack.bottles} />
                 )}
             </div>
-            {/* SUPPRESSION DU RACK */}
             <button
                 className="text-vin600 hover:bg-vin mt-10 hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full"
                 onClick={() => deletedThisRack(rack.idrack)}
@@ -117,5 +67,4 @@ const RackSoloView = ({ rack }: Props) => {
         </div>
     );
 };
-
 export default RackSoloView;

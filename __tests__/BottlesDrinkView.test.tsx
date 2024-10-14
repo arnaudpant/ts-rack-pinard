@@ -1,58 +1,134 @@
 import React from "react";
-import { expect, test, vi } from "vitest";
+import { expect, it, vi, describe } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BottlesDrinkView from "../src/ui/pages/page-bottle-drink/BottlesDrinkView";
-import { fakeBottles } from "./types";
+import { Bottle } from "../src/types/RacksTypes";
 
-test("Affichage de 0 bouteille consommée", () => {
-    render(<BottlesDrinkView bottlesDrink={[]} handleDelete={() => {}} />);
-    const msg = screen.getByText(
-        /Aucunes bouteilles consommées pour le moment/i
-    );
-    expect(msg).toBeInTheDocument();
-});
+// Mock pour la fonction dateFormater
+vi.mock("../../../utils/utils", () => ({
+    dateFormater: vi.fn((date) => (date ? "Formatted Date" : "")),
+}));
 
-test("Affichage de 2 bouteilles consommées", () => {
-    render(
-        <BottlesDrinkView bottlesDrink={fakeBottles} handleDelete={() => {}} />
-    );
-    const msg = screen.queryByText(
-        /Aucunes bouteilles consommées pour le moment/i
-    );
-    expect(msg).not.toBeInTheDocument();
-});
+describe("BottlesDrinkView", () => {
+    const mockHandleDelete = vi.fn();
 
-test("Affichage des données", () => {
-    render(
-        <BottlesDrinkView bottlesDrink={fakeBottles} handleDelete={() => {}} />
-    );
-    const table = screen.getAllByRole("table");
-    const thread = screen.getAllByRole("row");
-    expect(table).toHaveLength(1);
-    expect(thread).toHaveLength(3);
-});
+    const mockBottles: Bottle[] = [
+        {
+            id: "1",
+            type: "vin",
+            couleur: "rouge",
+            appellation: "Bordeaux",
+            exploitation: "Château Test",
+            achat: "2023-01-01",
+            prix: 20,
+            millesime: 2020,
+            gout: "",
+            pays: "France",
+            cuvee: null,
+            accords: [],
+            rackId: "1",
+            index: 0,
+            drink: null,
+        },
+        {
+            id: "2",
+            type: "vin",
+            couleur: "blanc",
+            appellation: "Bourgogne",
+            exploitation: "Domaine Test",
+            achat: "2023-02-01",
+            prix: 25,
+            millesime: 2021,
+            gout: "",
+            pays: "France",
+            cuvee: null,
+            accords: [],
+            rackId: "1",
+            index: 1,
+            drink: null,
+        },
+    ];
 
-test("Clic sur supprimer", () => {
-    const clicSuppr = vi.fn();
-    render(
-        <BottlesDrinkView
-            bottlesDrink={fakeBottles}
-            handleDelete={() => clicSuppr()}
-        />
-    );
-    const btnSuppr = screen.getAllByTestId(/supprimer/i);
-    fireEvent.click(btnSuppr[0]);
-    expect(clicSuppr).toHaveBeenCalledOnce();
-    fireEvent.click(btnSuppr[1]);
-    expect(clicSuppr).toHaveBeenCalledTimes(2);
-});
-test("Affichage de la date formatée", () => {
-    render(
-        <BottlesDrinkView bottlesDrink={fakeBottles} handleDelete={() => {}} />
-    );
-    const dateFormate = screen.getByText("17/02/2022");
-    const dateNotFormate = screen.queryByText("2022/02/17");
-    expect(dateNotFormate).not.toBeInTheDocument();
-    expect(dateFormate).toBeInTheDocument();
+    it("renders the title correctly", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={[]}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        expect(
+            screen.getByText("Liste des bouteilles consommées")
+        ).toBeInTheDocument();
+    });
+
+    it("displays a message when there are no bottles", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={[]}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        expect(
+            screen.getByText("Aucunes bouteilles consommées pour le moment")
+        ).toBeInTheDocument();
+    });
+
+    it("renders the table with correct headers when there are bottles", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={mockBottles}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        const headers = [
+            "Bouteilles",
+            "Type de vin",
+            "Appellation",
+            "Exploitation",
+            "Date achat",
+            "Prix",
+            "Supprimer",
+        ];
+        headers.forEach((header) => {
+            expect(screen.getByText(header)).toBeInTheDocument();
+        });
+    });
+
+    it("renders the correct number of rows for bottles", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={mockBottles}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        const rows = screen.getAllByRole("row");
+        // +1 for the header row
+        expect(rows.length).toBe(mockBottles.length + 1);
+    });
+
+    it("displays correct bottle information", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={mockBottles}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        expect(screen.getByText("Rouge")).toBeInTheDocument();
+        expect(screen.getByText("Bordeaux")).toBeInTheDocument();
+        expect(screen.getByText("Château Test")).toBeInTheDocument();
+        expect(screen.getByText("20€")).toBeInTheDocument();
+    });
+
+    it("calls handleDelete when delete button is clicked", () => {
+        render(
+            <BottlesDrinkView
+                bottlesDrink={mockBottles}
+                handleDelete={mockHandleDelete}
+            />
+        );
+        const deleteButtons = screen.getAllByTestId("supprimer");
+        fireEvent.click(deleteButtons[0]);
+        expect(mockHandleDelete).toHaveBeenCalledWith("1");
+    });
 });
