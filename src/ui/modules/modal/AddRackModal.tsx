@@ -1,6 +1,5 @@
 import { Bottle, Rack } from "../../../types/RacksTypes";
 import { useAuth } from "../../../context/AuthUserContext";
-import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { FirestoreUpdateDocument } from "../../../api/Firestore";
@@ -13,13 +12,11 @@ type FormValues = {
     rows: number;
 };
 
-type Props = {
-    handleClick: () => void;
-};
+
 
 const MAX_COLUMNS = 10;
 
-const AddRackModal = ({ handleClick }: Props) => {
+const AddRackPage = () => {
     const { authUser } = useAuth();
     const {
         register,
@@ -60,7 +57,7 @@ const AddRackModal = ({ handleClick }: Props) => {
         });
         if (error) {
             toast.error(error.message);
-            handleClick();
+            
             return;
         }
         toast.success("Rack vide ajouté", { autoClose: 2000 });
@@ -98,16 +95,14 @@ const AddRackModal = ({ handleClick }: Props) => {
             const racks = [...oldAndNewRacks, rackWithBottlesEmpty];
             addNewRackUserDocument(racks);
         }
-
-        // FERMETURE DU MODAL
-        handleClick();
+      
     };
 
-    return createPortal(
+    return (
         <div className="absolute w-72 bg-vin100 top-11 left-1/2 -translate-x-1/2  rounded-2xl flex flex-col items-center shadow-xl p-4">
             <div
                 className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
-                onClick={() => handleClick()}
+                onClick={() => {}}
             >
                 <X />
             </div>
@@ -183,9 +178,8 @@ const AddRackModal = ({ handleClick }: Props) => {
                     AJOUTER
                 </button>
             </form>
-        </div>,
-        document.body
+        </div>
     );
 };
 
-export default AddRackModal;
+export default AddRackPage;

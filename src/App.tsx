@@ -19,6 +19,7 @@ import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
 import UserData from "./ui/pages/user-infos/UserData";
 import BottlesDrink from "./ui/pages/page-bottle-drink/BottlesDrink";
 import CaveVirtuelle from "./ui/pages/cave-virtuelle/CaveVirtuelle";
+import AddRackPage from "./ui/modules/modal/AddRackModal";
 
 function App() {
     return (
@@ -38,9 +39,16 @@ function App() {
                         />
                         <Route path="/boarding" element={<Boarding />} />
                         <Route path="/home-racks" element={<HomeRacks />} />
+                        <Route path="/add-rack" element={<AddRackPage />} />
                         <Route path="/rack/:id" element={<RackId />} />
-                        <Route path="/bottles-drink" element={<BottlesDrink />} />
-                        <Route path="/cave-virtuelle" element={<CaveVirtuelle />} />
+                        <Route
+                            path="/bottles-drink"
+                            element={<BottlesDrink />}
+                        />
+                        <Route
+                            path="/cave-virtuelle"
+                            element={<CaveVirtuelle />}
+                        />
                         <Route path="/user-infos" element={<UserInfos />} />
                         <Route path="/user-data" element={<UserData />} />
                         <Route path="/politique" element={<Politique />} />
