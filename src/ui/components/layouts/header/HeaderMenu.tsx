@@ -10,8 +10,13 @@ import { firebaseSignOutUser } from "../../../../api/Authentification";
 import { Menu } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Avatar from "../../../../ui/design-syst/avatar/Avatar";
 
-const HeaderMenu = () => {
+type Props = {
+    scrAvatar: string;
+};
+
+const HeaderMenu = ({ scrAvatar }: Props) => {
     const navigate = useNavigate();
     const handleDisconnect = () => {
         firebaseSignOutUser();
@@ -28,6 +33,25 @@ const HeaderMenu = () => {
                     <Menu className="h-10 w-10" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
+                    <div className="my-4 flex justify-center" data-testid="avatar">
+                        {scrAvatar == "" ? (
+
+                                <Avatar
+                                    src="/avatar-default.png"
+                                    width="16"
+                                    height="16"
+                                />
+
+                        ) : (
+
+                                <Avatar
+                                    src={scrAvatar}
+                                    width="16"
+                                    height="16"
+                                />
+
+                        )}
+                    </div>
                     <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <Link to="/">

@@ -1,4 +1,3 @@
-import Avatar from "../../../design-syst/avatar/Avatar";
 import clsx from "clsx";
 import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -38,31 +37,12 @@ const HeaderView = ({
             {/* AVATAR */}
             <div className="absolute right-4 flex md:gap-4">
                 <div
-                    data-testid="avatar"
-                    className={clsx(
-                        !onBoardingisCompleted && `hidden`,
-                        "w-10 h-10"
-                    )}
-                >
-                    {scrAvatar == "" ? (
-                        <Avatar
-                            src="/avatar-default.png"
-                            width="10"
-                            height="10"
-                        />
-                    ) : (
-                        <div className="hidden md:block">
-                            <Avatar src={scrAvatar} width="10" height="10" />
-                        </div>
-                    )}
-                </div>
-                <div
                     className={clsx(
                         !onBoardingisCompleted && `hidden`,
                         "cursor-pointer w-10 h-10 flex justify-center"
                     )}
                 >
-                    <HeaderMenu />
+                    <HeaderMenu scrAvatar={scrAvatar} />
                 </div>
             </div>
         </header>
