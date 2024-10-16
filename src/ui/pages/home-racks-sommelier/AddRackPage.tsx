@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { FirestoreUpdateDocument } from "../../../api/Firestore";
 import { toast } from "react-toastify";
-import { X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 type FormValues = {
     rackName: string;
@@ -12,12 +12,11 @@ type FormValues = {
     rows: number;
 };
 
-
-
 const MAX_COLUMNS = 10;
 
 const AddRackPage = () => {
     const { authUser } = useAuth();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -34,20 +33,25 @@ const AddRackPage = () => {
 
     const bottleEmpty: Bottle = {
         id: "",
+        nom: null,
         millesime: null,
-        type: "vide",
-        couleur: "",
-        gout: "",
-        pays: null,
         appellation: null,
         exploitation: null,
-        cuvee: null,
+        cepage: null,
+        pays: null,
+        type: "vide",
+        couleur: null,
+        saveur: null,
+        corps: null,
+        potentiel: null,
+        status: null,
+        degre: null,
         accords: [],
         prix: null,
         achat: null,
         rackId: newRack.idrack,
         index: 0,
-        drink: null
+        drink: null,
     };
 
     const addNewRackUserDocument = async (racks: Rack[]) => {
@@ -57,10 +61,11 @@ const AddRackPage = () => {
         });
         if (error) {
             toast.error(error.message);
-            
+
             return;
         }
         toast.success("Rack vide ajouté", { autoClose: 2000 });
+        navigate("/");
     };
 
     const onSubmit = (data: FormValues) => {
@@ -95,19 +100,14 @@ const AddRackPage = () => {
             const racks = [...oldAndNewRacks, rackWithBottlesEmpty];
             addNewRackUserDocument(racks);
         }
-      
     };
 
     return (
-        <div className="absolute w-72 bg-vin100 top-11 left-1/2 -translate-x-1/2  rounded-2xl flex flex-col items-center shadow-xl p-4">
-            <div
-                className="absolute top-2 right-2 h-6 w-6 z-10 cursor-pointer"
-                onClick={() => {}}
-            >
-                <X />
-            </div>
-            <h2 className="text-xl my-4">Ajouter un rack</h2>
-            <p className="text-sm text-center p-2 text-fond">Reproduisez votre cave, casiers, rack ou autre</p>
+        <div className="flex flex-col items-center min-h-[calc(100vh-232px)] shadow-xl p-4 ">
+            <h2 className="text-2xl my-6">Ajouter un rack</h2>
+            <p className="text-sm text-center pb-6">
+                Reproduisez votre cave, casiers, rack ou autre
+            </p>
 
             <form
                 className="flex flex-col gap-2"
@@ -124,7 +124,7 @@ const AddRackPage = () => {
                         },
                     })}
                     placeholder="Donnez un nom au rack"
-                    className="p-2 rounded-md mb-2 bg-fond text-sm"
+                    className="p-2 rounded-md mb-4 bg-fond text-sm"
                 />
 
                 <label htmlFor="colonnes">
@@ -140,7 +140,7 @@ const AddRackPage = () => {
                         },
                     })}
                     placeholder="Nombre de colonnes"
-                    className="p-2 rounded-md mb-2 bg-fond text-sm"
+                    className="p-2 rounded-md mb-4 bg-fond text-sm"
                 />
                 {errors.columns && (
                     <p className="text-xs text-vin_rouge text-center">
@@ -159,7 +159,7 @@ const AddRackPage = () => {
                         },
                     })}
                     placeholder="Nombre de rangées"
-                    className="p-2 rounded-md mb-2 bg-fond text-sm"
+                    className="p-2 rounded-md mb-6 bg-fond text-sm"
                 />
                 {errors.rows && (
                     <p className="text-xs text-vin_rouge text-center">
@@ -177,6 +177,12 @@ const AddRackPage = () => {
                 >
                     AJOUTER
                 </button>
+                <Link
+                    to="/"
+                    className="px-4 py-1 bg-vin/30 rounded-full mt-2 mb-6 text-vin hover:bg-vin600/80 hover:text-fond text-center"
+                >
+                    ANNULER
+                </Link>
             </form>
         </div>
     );

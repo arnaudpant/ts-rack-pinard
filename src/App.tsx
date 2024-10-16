@@ -19,7 +19,7 @@ import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";
 import UserData from "./ui/pages/user-infos/UserData";
 import BottlesDrink from "./ui/pages/page-bottle-drink/BottlesDrink";
 import CaveVirtuelle from "./ui/pages/cave-virtuelle/CaveVirtuelle";
-import AddRackPage from "./ui/modules/modal/AddRackModal";
+import AddRackPage from "./ui/pages/home-racks-sommelier/AddRackPage";
 
 function App() {
     return (

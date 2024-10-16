@@ -1,5 +1,6 @@
 import RacksTrue from "./RacksTrue";
 import RacksFalse from "./RacksFalse";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -8,9 +9,10 @@ type Props = {
 
 const HomeRacksView = ({ numberRacks }: Props) => {
 
-
-    const toggleModal = () => {
-        
+    const navigate = useNavigate()
+    
+    const handleAddRack = () => {
+        navigate("/add-rack");
     };
 
     const RackComponent = numberRacks === 0 ? RacksFalse : RacksTrue;
@@ -22,7 +24,7 @@ const HomeRacksView = ({ numberRacks }: Props) => {
                     numberRacks === 0 ? "118" : "234"
                 }px)]`}
             >
-                <RackComponent handleClick={toggleModal} />
+                <RackComponent handleClick={handleAddRack} />
             </div>
         </>
     );
