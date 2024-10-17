@@ -52,8 +52,8 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
         { label: "Bière", count: countBottles((b) => b.type === "biere") },
         { label: "Cidre", count: countBottles((b) => b.type === "cidre") },
         {
-            label: "Autres",
-            count: countBottles((b) => b.type === "spiritueux"),
+            label: "Apéritif",
+            count: countBottles((b) => b.type === "aperitif"),
         },
         { label: "Nombre de cases", count: bottles.length },
         {

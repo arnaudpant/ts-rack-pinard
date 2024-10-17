@@ -19,7 +19,7 @@ const HeaderView = ({
 
     return (
         <header className="relative flex items-center justify-center h-16 bg-vin text-fond ">
-            <h1 className="text-2xl md:text-3xl py-2">RACKS A VIN 🍾</h1>
+            <h1 className="text-2xl md:text-3xl py-2">RACKS A PINARD 🍾</h1>
             {/* BTN HOME */}
             <div className="absolute top-4 left-4">
                 <div

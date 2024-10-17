@@ -104,7 +104,7 @@ const AddRackPage = () => {
 
     return (
         <div className="flex flex-col items-center min-h-[calc(100vh-232px)] shadow-xl p-4 ">
-            <h2 className="text-2xl my-6">Ajouter un rack</h2>
+            <h2 className="text-2xl text-vin my-6">Ajouter un rack</h2>
             <p className="text-sm text-center pb-6">
                 Reproduisez votre cave, casiers, rack ou autre
             </p>

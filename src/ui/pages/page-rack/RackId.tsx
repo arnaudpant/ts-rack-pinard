@@ -13,7 +13,7 @@ const RackId: React.FC = () => {
     );
 
     if (!rack) {
-        return <div>Rack non trouvé</div>;
+        return <p className="py-6 px-2 text-xl text-vin400">Rack non trouvé</p>;
     }
 
     return (

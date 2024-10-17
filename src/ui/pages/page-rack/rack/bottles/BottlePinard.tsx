@@ -11,26 +11,32 @@ type Props = {
 };
 
 const colorMap = {
-    rouge: "#d63031",
-    blanc: "#d4d408",
+    rouge: "#AC1E44",
+    blanc: "#0070C0",
     rose: "#F8C3CD",
-    mousseux: "#d4d408",
-    champagne: "#ffff00",
-    biere: "#3c40c6",
-    cidre: "#3c40c6",
-    spiritueux: "#3a3a3a",
+    mousseux: "#00A651",
+    petillant: "#00A651",
+    crement: "#00A651",
+    champagne: "#FFD700",
+    biere: "#FFFFFF",
+    cidre: "#8FBC8F",
+    aperitif: "FFA500",
+    digestif: "FFA500",
     default: "#3a3a3a",
 };
 
 const bottleColorMap = {
-    blanc: "text-bouteille_blanc",
-    mousseux: "text-bouteille_champagne",
-    champagne: "text-bouteille_champagne",
-    rose: "text-bouteille_rose",
-    biere: "text-bouteille_biere",
-    cidre: "text-bouteille",
-    spiritueux: "text-bouteille_biere",
-    default: "text-bouteille",
+    blanc: "#E1CE9A",
+    rose: "#FFB6C1",
+    mousseux: "#E1CE9A",
+    petillant: "#E1CE9A",
+    crement: "#E1CE9A",
+    champagne: "#E1CE9A",
+    biere: "#C7CF00",
+    cidre: "#8B6C42",
+    aperitif: "#AC1E44",
+    digestif: "#AC1E44",
+    default: "#824348",
 };
 
 const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
