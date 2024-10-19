@@ -6,10 +6,10 @@ export interface Bottle {
     exploitation: string | null,
     cepage: string | null,
     pays: string | null,
-    type: "vin" | "champagne" | "mousseux" | "petillant" | "crement" | "cidre" | "aperitif" | "digestif" | "biere" | "vide",
+    type: "vin" | "champagne" | "vin effervescent" | "cidre" | "aperitif" | "digestif" | "biere" | "vide",
     couleur: "rouge" | "blanc" | "rose" | "blonde" | "brune" | "ambree" | "blanche" | null,
-    saveur: "sec" | "demi-sec" | "sucre" | "doux" | "brut" | null,
-    corps: 'leger' | "moyen" | "corse" | null,
+    saveur: "sec" | "demi-sec" | "sucre" | "doux" | "brut" | "fruite" | "floral" |null,
+    corps: 'leger' | "moyen" | "corse" | "plein" |null,
     potentiel: "court" | "moyen" | "long" | null,
     status: "boire" | "garder" | "maturation" | null,
     degre: number | null,
@@ -21,24 +21,10 @@ export interface Bottle {
     drink: string | number | null
 }
 
-type AccordsVinRouge = "boeuf" | "agneau" | "canard" | "porc" | " charcuterie" | "fromage dur" | "lasagnes" | "ratatouille" | "champignon" | "coq" | "bourguignon" | "cassoulet" | "pizza" | "pates bolognaise" | "chili" | "fromage bleu"
+type AccordsVinRouge = "boeuf" | "agneau" | "canard" | "porc" | " charcuterie" | "fromage dur" | "lasagnes" | "ratatouille" | "champignon" | "coq" | "bourguignon" | "cassoulet" | "pizza" | "pates bolognaise" | "chili" | "fromage bleu" | "Filet mignon" | "Osso buco"
 type AccordsVinBlanc = "poisson" | "fruits de mer" | "poulet" | "sushi" | "salade cesar" | "asperges" | "fromage chevre" | "moules" | "quiche" | "volaille" | "huitres" | "fondue fromage" | "choucroute"
 type AccordsVinRose = "salade" | "poisson" | "tapas" | "paella" | " tomates farcies" | "melon" | "pizza" | "barbecue" | "sushi" | "saumon" | "legumes grilles" | "bouillabaisse"
 
-
-/**
- * 
-Type : rouge, blanc, rosé, mousseux, pétillants, Champagne, Crements, Whisky, vodka, rhum, gin
-Couleur: rouge blanc rose | Blonde, ambrée, brune,
-Cépages: (Merlot, Cabernet Sauvignon, Chardonnay) N'est pas lié à une zone géographique spécifique
-Millesime:
-Aromes: Fruités, floraux, boisés, épicés, autres
-Saveurs: Sec, demi-sec, moelleux, doux, Brut, demi-sec
-Corps : Léger, moyen, corsé
-Potentiel de garde : Court, moyen ou long terme
-Teneur en alcool:
-
- */
 
 export interface Rack {
     idrack: string,

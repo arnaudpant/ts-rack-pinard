@@ -1,9 +1,9 @@
 import { Bottle } from "../../../../../types/RacksTypes";
 import { PlusCircle, Circle } from "lucide-react";
 import clsx from "clsx";
-import ModalBottle from "../modal/ModalBottle";
-import ModalAddBottle from "../../../../modules/modal/ModalAddBottle";
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import ModalBottle from "../modal/ModalBottle";
 
 type Props = {
     bottle: Bottle;
@@ -40,9 +40,11 @@ const bottleColorMap = {
 };
 
 const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
-    const [modalShow, setModalShow] = useState(false);
+    const [modalBottle, setModalBottle] = useState<boolean>(false);
 
-    const handleClick = () => setModalShow((prev) => !prev);
+    const handleClick = () => {
+        bottle.type !== "vide" && setModalBottle((prev) => !prev);
+    };
 
     const getColorBouchon = () =>
         colorMap[bottle.couleur as keyof typeof colorMap] ||
@@ -64,16 +66,19 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
     return (
         <>
             <div
-                className="flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris cursor-pointer"
+                className="flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
                 onClick={handleClick}
             >
                 {bottle.type === "vide" ? (
-                    <div
+                    <Link
+                        to={`/add-bottle/:bottle`}
+                        state={bottle}
                         className="bg-gris w-full rounded-full flex justify-center items-center"
-                        data-testid="case-empty"
                     >
-                        <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
-                    </div>
+
+                            <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
+                        
+                    </Link>
                 ) : (
                     <div className="bg-gris w-full rounded-full flex justify-center items-center">
                         <Circle
@@ -91,12 +96,9 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
                     {bottle.appellation}
                 </p>
             </div>
-            {modalShow &&
-                (bottle.type === "vide" ? (
-                    <ModalAddBottle bottle={bottle} handleClick={handleClick} />
-                ) : (
-                    <ModalBottle bottle={bottle} handleClick={handleClick} />
-                ))}
+            {modalBottle && (
+                <ModalBottle bottle={bottle} handleClick={handleClick} />
+            )}
         </>
     );
 };

@@ -20,6 +20,7 @@ import UserData from "./ui/pages/user-infos/UserData";
 import BottlesDrink from "./ui/pages/page-bottle-drink/BottlesDrink";
 import CaveVirtuelle from "./ui/pages/cave-virtuelle/CaveVirtuelle";
 import AddRackPage from "./ui/pages/home-racks-sommelier/AddRackPage";
+import AddNewBottle from "./ui/pages/page-rack/rack/bottles/AddNewBottle";
 
 function App() {
     return (
@@ -41,6 +42,14 @@ function App() {
                         <Route path="/home-racks" element={<HomeRacks />} />
                         <Route path="/add-rack" element={<AddRackPage />} />
                         <Route path="/rack/:id" element={<RackId />} />
+                        <Route
+                            path="/add-bottle/:bottle"
+                            element={<AddNewBottle />}
+                        />
+                        {/* <Route
+                            path="/bottle-info/:bottle"
+                            element={<AddBottle />}
+                        /> */}
                         <Route
                             path="/bottles-drink"
                             element={<BottlesDrink />}
