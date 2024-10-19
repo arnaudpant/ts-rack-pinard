@@ -46,7 +46,7 @@ const AddRackPage = () => {
         potentiel: null,
         status: null,
         degre: null,
-        accords: [],
+        accords: null,
         prix: null,
         achat: null,
         rackId: newRack.idrack,

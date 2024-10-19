@@ -89,20 +89,25 @@ const useUpdateRacks = () => {
         const deleted: boolean = true;
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
+            nom: null,
             millesime: null,
-            type: "vide",
-            couleur: "",
-            gout: "",
-            pays: null,
             appellation: null,
             exploitation: null,
-            cuvee: null,
-            accords: [],
+            cepage: null,
+            pays: null,
+            type: "vide",
+            couleur: null,
+            saveur: null,
+            corps: null,
+            potentiel: null,
+            status: null,
+            degre: null,
+            accords: null,
             prix: null,
             achat: null,
             rackId: bottleEmpty.rackId,
             index: bottleEmpty.index,
-            drink: "",
+            drink: null,
         };
         /** 1. Filtre rack modifié */
         const rackTarget = authUser.userDocument.racks.filter(

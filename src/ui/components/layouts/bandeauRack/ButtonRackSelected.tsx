@@ -7,6 +7,8 @@ type Props = {
 
 const ButtonRackSelected = ({ rack }: Props) => {
 
+    
+
     return (
         <button className="py-2">
             <NavLink
