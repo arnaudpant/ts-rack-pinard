@@ -2,8 +2,6 @@ import { Bottle } from "../../../../../types/RacksTypes";
 import { PlusCircle, Circle } from "lucide-react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import ModalBottle from "../modal/ModalBottle";
 
 type Props = {
     bottle: Bottle;
@@ -36,11 +34,6 @@ const bottleColorMap = {
 };
 
 const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
-    const [modalBottle, setModalBottle] = useState<boolean>(false);
-
-    const handleClick = () => {
-        bottle.type !== "vide" && setModalBottle((prev) => !prev);
-    };
 
     const getColorBouchon = () =>
         colorMap[bottle.couleur as keyof typeof colorMap] ||
@@ -63,7 +56,6 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
         <>
             <div
                 className="flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
-                onClick={handleClick}
             >
                 {bottle.type === "vide" ? (
                     <Link
@@ -71,12 +63,14 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
                         state={bottle}
                         className="bg-gris w-full rounded-full flex justify-center items-center"
                     >
-
-                            <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
-                        
+                        <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
                     </Link>
                 ) : (
-                    <div className="bg-gris w-full rounded-full flex justify-center items-center">
+                    <Link
+                        to={`/bottle-info/:bottle`}
+                        state={bottle}
+                        className="bg-gris w-full rounded-full flex justify-center items-center"
+                    >
                         <Circle
                             className={clsx(
                                 `w-3/4 h-3/4 ${getCouleurBouteille()}`
@@ -86,15 +80,12 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
                             strokeWidth={4}
                             fill={getColorBouchon()}
                         />
-                    </div>
+                    </Link>
                 )}
                 <p className={textClass} data-testid="bottle">
                     {bottle.appellation}
                 </p>
             </div>
-            {modalBottle && (
-                <ModalBottle bottle={bottle} handleClick={handleClick} />
-            )}
         </>
     );
 };

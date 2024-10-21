@@ -21,6 +21,8 @@ import BottlesDrink from "./ui/pages/page-bottle-drink/BottlesDrink";
 import CaveVirtuelle from "./ui/pages/cave-virtuelle/CaveVirtuelle";
 import AddRackPage from "./ui/pages/home-racks-sommelier/AddRackPage";
 import AddNewBottle from "./ui/pages/page-rack/rack/bottles/AddNewBottle";
+import InfosBottle from "./ui/pages/page-bootle-info/InfosBottle";
+import ModifBottle from "./ui/pages/page-rack/rack/bottles/ModifBottle";
 
 function App() {
     return (
@@ -46,10 +48,14 @@ function App() {
                             path="/add-bottle/:bottle"
                             element={<AddNewBottle />}
                         />
-                        {/* <Route
+                        <Route
                             path="/bottle-info/:bottle"
-                            element={<AddBottle />}
-                        /> */}
+                            element={<InfosBottle />}
+                        />
+                        <Route
+                            path="/bottle-modif/:bottle"
+                            element={<ModifBottle />}
+                        />
                         <Route
                             path="/bottles-drink"
                             element={<BottlesDrink />}

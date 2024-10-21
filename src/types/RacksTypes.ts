@@ -1,6 +1,6 @@
 export interface Bottle {
     id: string,
-    nom: string | null,
+    nom: string,
     millesime: number | null,
     appellation: string | null, // Désigne l'origine géographique du vin Chablis, Bordeaux
     exploitation: string | null,
@@ -11,7 +11,7 @@ export interface Bottle {
     saveur: "sec" | "demi-sec" | "sucre" | "doux" | "brut" | "fruite" | "floral" |null,
     corps: 'leger' | "moyen" | "corse" | "plein" |null,
     potentiel: "court" | "moyen" | "long" | null,
-    status: "boire" | "garder" | "maturation" | null,
+    status: "A boire" | "A garder" | "A maturation" | null,
     degre: number | null,
     accords: string | null,
     prix: number | null,

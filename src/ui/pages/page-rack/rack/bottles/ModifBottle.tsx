@@ -1,14 +1,13 @@
 import { useForm } from "react-hook-form";
 import { Bottle } from "../../../../../types/RacksTypes";
 import useUpdateRacks from "../../../../../hooks/useUpdateRacks";
-import clsx from "clsx";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "../../../../../components/ui/input";
 
-const AddNewBottle = () => {
+const ModifBottle = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const bottleEmpty = location.state as Bottle;
+    const bottleToModif = location.state as Bottle;
     const { updateRacks } = useUpdateRacks();
 
     const {
@@ -19,7 +18,7 @@ const AddNewBottle = () => {
 
     const onSubmit = (data: Bottle) => {
         const newBootle: Bottle = {
-            ...bottleEmpty,
+            ...bottleToModif,
             nom: data.nom,
             millesime: data.millesime,
             appellation: data.appellation,
@@ -39,9 +38,10 @@ const AddNewBottle = () => {
             drink: null,
         };
         updateRacks(newBootle);
-        navigate(`/rack/${newBootle.rackId}`, { state: bottleEmpty.rackId });
+        navigate(`/rack/${bottleToModif.rackId}`, {
+            state: bottleToModif.rackId,
+        });
     };
-    console.log(bottleEmpty);
 
     return (
         <div className="flex justify-center text-center py-4">
@@ -54,7 +54,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Nom de la bouteille *</p>
                     <Input
                         {...register("nom", { required: true })}
-                        
+                        defaultValue={bottleToModif.nom}
                         className="w-full p-1 rounded"
                     />
                     {errors.type && <span>Le nom est requis</span>}
@@ -65,6 +65,7 @@ const AddNewBottle = () => {
                     <Input
                         type="number"
                         {...register("millesime")}
+                        defaultValue={bottleToModif.millesime ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -73,6 +74,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Appellation (Bordeaux ...)</p>
                     <Input
                         {...register("appellation", { required: true })}
+                        defaultValue={bottleToModif.appellation ?? ""}
                         className="w-full p-1 rounded"
                     />
                     {errors.couleur && <span>Ce champ est requis</span>}
@@ -82,6 +84,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Nom exploitation</p>
                     <Input
                         {...register("exploitation")}
+                        defaultValue={bottleToModif.exploitation ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -90,6 +93,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Cépage</p>
                     <Input
                         {...register("cepage")}
+                        defaultValue={bottleToModif.cepage ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -98,6 +102,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Pays</p>
                     <Input
                         {...register("pays")}
+                        defaultValue={bottleToModif.pays ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -106,6 +111,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Type de boisson *</p>
                     <select
                         {...register("type", { required: true })}
+                        defaultValue={bottleToModif.type ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -124,6 +130,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Couleur du vin ou bière *</p>
                     <select
                         {...register("couleur")}
+                        defaultValue={bottleToModif.couleur ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -141,6 +148,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Goût du vin ou cidre</p>
                     <select
                         {...register("saveur")}
+                        defaultValue={bottleToModif.saveur ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -158,6 +166,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Corps</p>
                     <select
                         {...register("corps")}
+                        defaultValue={bottleToModif.corps ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -172,6 +181,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Potentiel</p>
                     <select
                         {...register("potentiel")}
+                        defaultValue={bottleToModif.potentiel ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -185,6 +195,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Status</p>
                     <select
                         {...register("status")}
+                        defaultValue={bottleToModif.status ?? ""}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
                     >
                         <option value=""></option>
@@ -198,6 +209,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Degré d'alcool</p>
                     <Input
                         type="decimal"
+                        defaultValue={bottleToModif.degre ?? ""}
                         {...register("degre")}
                         className="w-full p-1 rounded"
                     />
@@ -207,6 +219,7 @@ const AddNewBottle = () => {
                     <p className="pb-1 text-sm">Accords</p>
                     <Input
                         {...register("accords")}
+                        defaultValue={bottleToModif.accords ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -216,6 +229,7 @@ const AddNewBottle = () => {
                     <Input
                         type="decimal"
                         {...register("prix")}
+                        defaultValue={bottleToModif.prix ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
@@ -225,27 +239,21 @@ const AddNewBottle = () => {
                     <Input
                         type="date"
                         {...register("achat")}
+                        defaultValue={bottleToModif.achat ?? ""}
                         className="w-full p-1 rounded"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    disabled={bottleEmpty.rackId === "314"}
-                    className={clsx(
-                        bottleEmpty.rackId === "314" && "cursor-not-allowed",
-                        "w-full bg-vin text-fond rounded-full py-2 mt-4"
-                    )}
+                    disabled={bottleToModif.rackId === "314"}
+                    className="w-full bg-vin text-fond rounded-full py-2 mt-4"
                 >
-                    Ajouter la bouteille
+                    Modifier la bouteille
                 </button>
                 <NavLink
-                    to={clsx(
-                        bottleEmpty.rackId === "314"
-                            ? "/demonstration"
-                            : `/rack/${bottleEmpty.rackId}`
-                    )}
-                    state={bottleEmpty.rackId}
+                    to={`/rack/${bottleToModif.rackId}`}
+                    state={bottleToModif.rackId}
                     className="px-4 py-1 bg-vin/30 rounded-full mt-2 mb-6 text-vin hover:bg-vin600/80 hover:text-fond text-center"
                 >
                     ANNULER
@@ -257,4 +265,4 @@ const AddNewBottle = () => {
     );
 };
 
-export default AddNewBottle;
+export default ModifBottle;
