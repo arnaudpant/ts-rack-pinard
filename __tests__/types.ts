@@ -22,6 +22,7 @@ export const fakeBottles: Bottle[] = [
         rackId: "314",
         index: 3,
         drink: "",
+        favoris: false
     },
     {
         id: "fake-bottle-b",
@@ -44,6 +45,7 @@ export const fakeBottles: Bottle[] = [
         rackId: "314",
         index: 4,
         drink: "",
+        favoris: false
     },
 ];
 
@@ -67,7 +69,8 @@ export const fakeCaseEmpty: Bottle = {
     achat: null,
     rackId: "314",
     index: 2,
-    drink: null
+    drink: null,
+    favoris: false
 };
 
 export const fakeBottle: Bottle = {
@@ -90,7 +93,8 @@ export const fakeBottle: Bottle = {
     achat: "2022-02-17",
     rackId: "314",
     index: 3,
-    drink: null
+    drink: null,
+    favoris: false
 };
 
 export const rackTest = {

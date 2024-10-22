@@ -18,7 +18,8 @@ export interface Bottle {
     achat: string | null,
     rackId: string,
     index: number,
-    drink: string | number | null
+    drink: string | number | null,
+    favoris: boolean
 }
 
 // type AccordsVinRouge = "boeuf" | "agneau" | "canard" | "porc" | " charcuterie" | "fromage dur" | "lasagnes" | "ratatouille" | "champignon" | "coq" | "bourguignon" | "cassoulet" | "pizza" | "pates bolognaise" | "chili" | "fromage bleu" | "Filet mignon" | "Osso buco"

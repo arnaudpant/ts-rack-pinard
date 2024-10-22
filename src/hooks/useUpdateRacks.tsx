@@ -6,7 +6,7 @@ import { Bottle, Rack } from "../types/RacksTypes";
 const useUpdateRacks = () => {
     const { authUser } = useAuth();
 
-    const updateRacks = (newBootle: Bottle) => {
+    const updateRacks = (newBootle: Bottle, toggle:boolean = false) => {
         /** 1. Filtre rack modifié */
         const rackTarget = authUser.userDocument.racks.filter(
             (rack) => rack.idrack === newBootle.rackId
@@ -27,8 +27,26 @@ const useUpdateRacks = () => {
         const listNewracks = [...listOldRacks, rackTarget];
 
         /** Envoi dans Firestore */
-        addNewBottleInrack(listNewracks);
+        toggle
+            ? toggleBottleInFavoris(listNewracks)
+            : addNewBottleInrack(listNewracks);
+        
     };
+
+    /**
+     * PAGE INFO BOUTEILLE
+     */
+    const toggleBottleInFavoris = async (racks: Rack[]) => {
+        const { error } = await FirestoreUpdateDocument("users", authUser.uid, {
+            ...authUser.userDocument,
+            racks,
+        });
+        if (error) {
+            toast.error(error.message, { autoClose: 3000 });
+            return;
+        }
+    };
+
 
     /**
      * PAGE CONTAINER A VERRE
@@ -89,7 +107,7 @@ const useUpdateRacks = () => {
         const deleted: boolean = true;
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
-            nom: null,
+            nom: "",
             millesime: null,
             appellation: null,
             exploitation: null,
@@ -108,6 +126,7 @@ const useUpdateRacks = () => {
             rackId: bottleEmpty.rackId,
             index: bottleEmpty.index,
             drink: null,
+            favoris: false,
         };
         /** 1. Filtre rack modifié */
         const rackTarget = authUser.userDocument.racks.filter(

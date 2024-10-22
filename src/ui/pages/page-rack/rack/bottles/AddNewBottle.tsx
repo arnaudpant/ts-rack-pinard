@@ -37,11 +37,11 @@ const AddNewBottle = () => {
             prix: data.prix,
             achat: data.achat,
             drink: null,
+            favoris: false,
         };
         updateRacks(newBootle);
         navigate(`/rack/${newBootle.rackId}`, { state: bottleEmpty.rackId });
     };
-    console.log(bottleEmpty);
 
     return (
         <div className="flex justify-center text-center py-4">

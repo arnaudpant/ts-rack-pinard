@@ -1,14 +1,19 @@
 import { Bottle } from "../../../types/RacksTypes";
-import { Pen, Trash2, Undo2, Wine } from "lucide-react";
+import { Heart, HeartOff, Pen, Trash2, Undo2, Wine } from "lucide-react";
 import useUpdateRacks from "../../../hooks/useUpdateRacks";
 import clsx from "clsx";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const InfosBottle = () => {
-    const { deleteBottle, consommeBottle } = useUpdateRacks();
-    const navigate = useNavigate()
     const location = useLocation();
     const bottleInfos = location.state as Bottle;
+    const { deleteBottle, consommeBottle } = useUpdateRacks();
+    const { updateRacks } = useUpdateRacks();
+    const navigate = useNavigate();
+    const [bottleInFavoris, setBottleInFavoris] = useState<boolean>(
+        bottleInfos.favoris
+    );
 
     const handleDeleteBottle = (bottle: Bottle) => {
         deleteBottle(bottle);
@@ -19,6 +24,22 @@ const InfosBottle = () => {
         consommeBottle(bottle);
         deleteBottle(bottle);
         navigate(`/rack/${bottleInfos.rackId}`, { state: bottleInfos.rackId });
+    };
+
+    const handleAddRemoveFavoris = () => {
+        setBottleInFavoris((prev) => !prev);
+    };
+
+    useEffect(() => {
+        bottleInFavoris !== bottleInfos.favoris && sendFavorisToFirebase();
+    }, [bottleInFavoris]);
+
+    const sendFavorisToFirebase = () => {
+        const bottleWithfavorisInfos: Bottle = {
+            ...bottleInfos,
+            favoris: bottleInFavoris,
+        };
+        updateRacks(bottleWithfavorisInfos, true);
     };
 
     return (
@@ -77,16 +98,35 @@ const InfosBottle = () => {
                     )}
                 </div>
                 {/* PARTIE C */}
-                <div className="flex flex-col">
+                <div className="flex flex-col justify-between">
                     {bottleInfos.status && (
                         <p className="text-sm pb-4">{bottleInfos.status}</p>
                     )}
-                    <p className="text-sm font-semibold">A consommer avec:</p>
                     {bottleInfos.accords && (
-                        <p className="text-sm text-bouteille pb-2">
-                            {bottleInfos.accords}
-                        </p>
+                        <>
+                            <p className="text-sm font-semibold">
+                                A consommer avec:
+                            </p>
+                            <p className="text-sm text-bouteille pb-4">
+                                {bottleInfos.accords}
+                            </p>
+                        </>
                     )}
+                    <div
+                        className="cursor-pointer"
+                        onClick={() => handleAddRemoveFavoris()}
+                    >
+                        {bottleInFavoris === false ? (
+                            <HeartOff width={32} height={32} color="#914159" />
+                        ) : (
+                            <Heart
+                                width={32}
+                                height={32}
+                                fill="#914159"
+                                color="#914159"
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
 

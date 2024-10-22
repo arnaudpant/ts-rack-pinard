@@ -33,7 +33,7 @@ const AddRackPage = () => {
 
     const bottleEmpty: Bottle = {
         id: "",
-        nom: null,
+        nom: "",
         millesime: null,
         appellation: null,
         exploitation: null,
@@ -52,6 +52,7 @@ const AddRackPage = () => {
         rackId: newRack.idrack,
         index: 0,
         drink: null,
+        favoris: false,
     };
 
     const addNewRackUserDocument = async (racks: Rack[]) => {

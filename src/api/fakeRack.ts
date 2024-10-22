@@ -26,7 +26,8 @@ export const fakeRack: Rack = {
             "achat": "2022-02-17",
             "drink": null,
             "rackId": "314",
-            "index": 0
+            "index": 0,
+            "favoris": false
         },
         {
             "id": "jfdjdhdhjj",
@@ -48,7 +49,8 @@ export const fakeRack: Rack = {
             "achat": "2022-02-17",
             "drink": null,
             "rackId": "314",
-            "index": 1
+            "index": 1,
+            "favoris": false
         },
         {
             "id": "latqudbncghc",
@@ -70,7 +72,8 @@ export const fakeRack: Rack = {
             "achat": "2021-09-19",
             "drink": null,
             "rackId": "314",
-            "index": 2
+            "index": 2,
+            "favoris": false
         },
         {
             "id": "kjhyrtey",
@@ -92,7 +95,8 @@ export const fakeRack: Rack = {
             "achat": "2021-09-19",
             "drink": null,
             "rackId": "314",
-            "index": 3
+            "index": 3,
+            "favoris": false
         },
         {
             "id": "qwerty",
@@ -114,7 +118,8 @@ export const fakeRack: Rack = {
             "achat": "2021-09-19",
             "drink": null,
             "rackId": "314",
-            "index": 4
+            "index": 4,
+            "favoris": false
         },
         {
             "id": "poiuyter",
@@ -137,6 +142,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 5,
+            "favoris": false
         },
         {
             "id": "poiuytererre",
@@ -159,6 +165,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 6,
+            "favoris": false
         },
         {
             "id": "poiuytereze",
@@ -181,6 +188,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 7,
+            "favoris": true
         },
         {
             "id": "hjetbvxf",
@@ -203,6 +211,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 8,
+            "favoris": false
         },
         {
             "id": "qazwsxedc",
@@ -225,6 +234,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 9,
+            "favoris": true
         },
         {
             "id": "rfvtgb",
@@ -247,6 +257,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 10,
+            "favoris": false
         },
         {
             "id": "yhnujmtt",
@@ -269,6 +280,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 12,
+            "favoris": false
         }
     ]
 }

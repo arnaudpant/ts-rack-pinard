@@ -33,7 +33,7 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
             millesime: data.millesime,
             appellation: data.appellation,
             exploitation: data.exploitation,
-            accords: [],
+            accords: "",
             rackId: "favoris",
             index: 1,
             cuvee: null,
@@ -41,6 +41,7 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
             prix: null,
             achat: null,
             drink: "",
+            favoris: false,
         };
         addFavorisBottle(newBootleForLater);
         handleClickModal();

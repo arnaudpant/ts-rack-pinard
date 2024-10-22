@@ -55,11 +55,14 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
     return (
         <>
             <div
-                className="flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
+                className={clsx(
+                    bottle.favoris ? "bg-vin50" : "bg-gris",
+                    "flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
+                )}
             >
                 {bottle.type === "vide" ? (
                     <Link
-                        to={`/add-bottle/:bottle`}
+                        to={`/add-bottle/${bottle.id}`}
                         state={bottle}
                         className="bg-gris w-full rounded-full flex justify-center items-center"
                     >
@@ -67,9 +70,12 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
                     </Link>
                 ) : (
                     <Link
-                        to={`/bottle-info/:bottle`}
+                        to={`/bottle-info/${bottle.id}`}
                         state={bottle}
-                        className="bg-gris w-full rounded-full flex justify-center items-center"
+                        className={clsx(
+                            bottle.favoris ? "bg-vin50" : "bg-gris",
+                            " w-full rounded-full flex justify-center items-center"
+                        )}
                     >
                         <Circle
                             className={clsx(
