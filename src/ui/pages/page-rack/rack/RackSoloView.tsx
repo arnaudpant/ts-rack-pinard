@@ -53,11 +53,11 @@ const RackSoloView: React.FC<Props> = ({ rack }) => {
                     </div>
                 )}
             </div>
-            <div>
+
                 {rack.bottles.length > 0 && (
                     <RackSoloInfos bottles={rack.bottles} />
                 )}
-            </div>
+ 
             <button
                 className="text-vin600 hover:bg-vin mt-10 hover:text-fond px-4 py-1 border-2 border-vin hover:border-vin300 rounded-full"
                 onClick={() => deletedThisRack(rack.idrack)}

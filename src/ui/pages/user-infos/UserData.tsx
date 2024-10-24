@@ -1,21 +1,17 @@
 import { useAuth } from "../../../context/AuthUserContext";
-import { useEffect, useState } from "react";
 import { Bottle } from "@/types/RacksTypes";
 import UserDataView from "./UserDataView";
 
 const UserData = () => {
     const { authUser } = useAuth();
-    const [fullBottles, setFullBottles] = useState<Bottle[]>([]);
+    const fullBottles: Bottle[] = authUser
+        ? authUser.userDocument.racks.flatMap((rack) => rack.bottles)
+        : [];
 
-    useEffect(() => {
-        let racksMap: Bottle[];
-        if (authUser) {
-            racksMap = authUser.userDocument.racks
-                .map((rack) => rack.bottles)
-                .flatMap((bottle) => bottle);
-            setFullBottles(racksMap);
-        }
-    }, [authUser]);
+    // Retourner null ou un composant de chargement si l'utilisateur n'est pas authentifié
+    if (!authUser) {
+        throw new Error("Utilisateur non authentifié : authUser est requis.");
+    }
 
     return <UserDataView fullBottles={fullBottles} />;
 };

@@ -29,9 +29,11 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
             count: countBottles((b) => b.type !== "vide"),
             isBold: true,
         },
+
         {
             label: "Bouteilles de vin",
             count: countBottles((b) => b.type === "vin"),
+            isBold: true,
         },
         { label: "Rouge", count: countBottles((b) => b.couleur === "rouge") },
         { label: "Blanc", count: countBottles((b) => b.couleur === "blanc") },
@@ -44,26 +46,44 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
         {
             label: "Bouteilles de champagne",
             count: countBottles((b) => b.type === "champagne"),
+            isBold: true,
         },
         {
-            label: "Bouteilles de mousseux",
-            count: countBottles((b) => b.type === "vin effervescent"),
+            label: "Bouteilles de pétillant",
+            count: countBottles((b) => b.type === "effervescent"),
+            isBold: true,
         },
-        { label: "Bière", count: countBottles((b) => b.type === "biere") },
-        { label: "Cidre", count: countBottles((b) => b.type === "cidre") },
         {
             label: "Apéritif",
             count: countBottles((b) => b.type === "aperitif"),
+            isBold: true,
         },
-        { label: "Nombre de cases", count: bottles.length },
         {
-            label: "Nombre de cases vides",
-            count: countBottles((b) => b.type === "vide"),
+            label: "Digestif",
+            count: countBottles((b) => b.type === "digestif"),
+            isBold: true,
+        },
+        {
+            label: "Bière",
+            count: countBottles((b) => b.type === "biere"),
+            isBold: true,
+        },
+        { label: "Blonde", count: countBottles((b) => b.couleur === "blonde") },
+        { label: "Brune", count: countBottles((b) => b.couleur === "brune") },
+        { label: "Ambrée", count: countBottles((b) => b.couleur === "ambree") },
+        {
+            label: "Blanche",
+            count: countBottles((b) => b.couleur === "blanche"),
+        },
+        {
+            label: "Cidre",
+            count: countBottles((b) => b.type === "cidre"),
+            isBold: true,
         },
     ];
 
     return (
-        <>
+        <div>
             <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                 Informations
             </h2>
@@ -74,7 +94,7 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
                 </TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[200px]">Bouteilles</TableHead>
+                        <TableHead className="">Bouteilles</TableHead>
                         <TableHead>Nombre</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -92,7 +112,9 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
                             </TableCell>
                             <TableCell
                                 className={
-                                    isBold ? "font-bold text-vin600" : ""
+                                    isBold
+                                        ? "font-bold text-vin600 text-center"
+                                        : "text-center"
                                 }
                             >
                                 {count}
@@ -101,9 +123,8 @@ const RackSoloInfos: React.FC<Props> = ({ bottles }) => {
                     ))}
                 </TableBody>
             </Table>
-        </>
+        </div>
     );
 };
-
 
 export default RackSoloInfos;
