@@ -19,6 +19,7 @@ export interface Bottle {
     rackId: string,
     index: number,
     drink: string | number | null,
+    drinkDate?: string | null,
     favoris: boolean
 }
 

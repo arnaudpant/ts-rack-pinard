@@ -18,9 +18,10 @@ type Props = {
 const tableHeaders = [
     "Bouteilles",
     "Type de vin",
+    "Couleur",
     "Appellation",
-    "Exploitation",
     "Date achat",
+    "Date consommation",
     "Prix",
     "Supprimer",
 ];
@@ -40,11 +41,18 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
         <TableBody>
             {bottlesDrink.map((bottle: Bottle) => (
                 <TableRow key={bottle.id}>
-                    <TableCell className="font-medium">{bottle.type}</TableCell>
+                    <TableCell className="font-medium">{bottle.nom}</TableCell>
+                    <TableCell>{bottle.type}</TableCell>
                     <TableCell>{bottle.couleur}</TableCell>
                     <TableCell>{bottle.appellation}</TableCell>
-                    <TableCell>{bottle.exploitation}</TableCell>
-                    <TableCell>{dateFormater(bottle.achat)}</TableCell>
+                    <TableCell>
+                        {bottle.achat ? dateFormater(bottle.achat) : ""}
+                    </TableCell>
+
+                    <TableCell>
+                        {bottle.drinkDate ? bottle.drinkDate : ""}
+                    </TableCell>
+
                     <TableCell>{bottle.prix}€</TableCell>
                     <TableCell
                         className="cursor-pointer"
@@ -59,7 +67,7 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
     );
 
     return (
-        <div className="container mx-auto p-4 min-h-[calc(100vh-234px)]">
+        <div className="container mx-auto p-4 min-h-[calc(100vh-232px)]">
             <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                 Liste des bouteilles consommées
             </h2>

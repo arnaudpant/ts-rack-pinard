@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { FirestoreUpdateDocument } from "../api/Firestore";
 import { useAuth } from "../context/AuthUserContext";
 import { Bottle, Rack } from "../types/RacksTypes";
+import { getDateTimestamp } from "../utils/utils";
 
 const useUpdateRacks = () => {
     const { authUser } = useAuth();
@@ -104,7 +105,8 @@ const useUpdateRacks = () => {
 
     /** =================== */
     const deleteBottle = (bottleEmpty: Bottle) => {
-        const deleted: boolean = true;
+        const dateConsomation = getDateTimestamp()
+        const deleted = true
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
             nom: "",
@@ -127,6 +129,7 @@ const useUpdateRacks = () => {
             index: bottleEmpty.index,
             drink: null,
             favoris: false,
+            drinkDate: dateConsomation,
         };
         /** 1. Filtre rack modifié */
         const rackTarget = authUser.userDocument.racks.filter(
