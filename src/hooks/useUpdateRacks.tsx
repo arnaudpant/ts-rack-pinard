@@ -106,7 +106,7 @@ const useUpdateRacks = () => {
     /** =================== */
     const deleteBottle = (bottleEmpty: Bottle) => {
         const dateConsomation = getDateTimestamp()
-        const deleted = true
+        const deleted: boolean = true
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
             nom: "",
