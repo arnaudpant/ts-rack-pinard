@@ -14,7 +14,7 @@ const Footer = () => {
                 </Link>
             </div>
             <div className="text-xs text-vin100">
-                <p>Version 2.2</p>
+                <p>Version 2.5 | Oct 24</p>
                 <p>&copy; {yearFooter} Rack a pinard. Tous droits réservés.</p>
             </div>
         </footer>
