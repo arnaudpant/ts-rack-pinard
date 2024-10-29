@@ -60,8 +60,8 @@ const useUpdateRacks = () => {
         const bottlesIndex = bottlesDrinkList.length;
 
         /** 3. Mise a jour de la case avec bouteille */
+        oldBootle.drinkDate = getDateTimestamp();
         bottlesDrinkList[bottlesIndex] = oldBootle;
-        bottlesDrinkList[bottlesIndex].drink = getDateTimestamp();
 
         /** Envoi dans Firestore */
         addOldBottleInrackConsomme(bottlesDrinkList);
