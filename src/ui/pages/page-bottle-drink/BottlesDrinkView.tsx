@@ -50,7 +50,7 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
                     </TableCell>
 
                     <TableCell>
-                        {bottle.drinkDate ? bottle.drinkDate : "RAS"}
+                        {bottle.drinkDate ? bottle.drinkDate : null}
                     </TableCell>
 
                     <TableCell>{bottle.prix}€</TableCell>
