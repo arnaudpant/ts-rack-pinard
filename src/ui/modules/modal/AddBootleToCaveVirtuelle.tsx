@@ -27,20 +27,25 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
     const onSubmit = (data: Bottle) => {
         const newBootleForLater: Bottle = {
             id: nanoid(),
-            type: data.type,
-            couleur: data.couleur,
-            gout: "",
+            nom: data.nom,
             millesime: data.millesime,
             appellation: data.appellation,
             exploitation: data.exploitation,
-            accords: "",
-            rackId: "favoris",
-            index: 1,
-            cuvee: null,
+            cepage: null,
             pays: null,
+            type: data.type,
+            couleur: data.couleur,
+            saveur: null,
+            corps: null,
+            potentiel: null,
+            status: null,
+            degre: null,
+            accords: null,
             prix: null,
             achat: null,
-            drink: "",
+            rackId: "favoris",
+            index: 1,
+            drink: null,
             favoris: false,
         };
         addFavorisBottle(newBootleForLater);
@@ -62,6 +67,16 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className="w-full text-left">
+                        <p className="text-fond pb-1 text-sm">
+                            Nom de la bouteille
+                        </p>
+                        <input
+                            {...register("nom", { required: true })}
+                            className="w-full p-1 rounded"
+                        />
+                        {errors.couleur && <span>Ce champ est requis</span>}
+                    </div>
+                    <div className="w-full text-left">
                         <p className="text-fond pb-1 text-sm">Type de vin *</p>
                         <select
                             {...register("type", { required: true })}
@@ -70,10 +85,11 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
                             <option value=""></option>
                             <option value="vin">Vin</option>
                             <option value="champagne">Champagne</option>
-                            <option value="mousseux">Mousseux</option>
+                            <option value="effervescent">Pétillant</option>
                             <option value="cidre">Cidre</option>
                             <option value="biere">Bière</option>
-                            <option value="spiritueux">spiritueux</option>
+                            <option value="aperitif">Apéritif</option>
+                            <option value="digestif">Digestif</option>
                         </select>
                         {errors.type && <span>Type de vin est requis</span>}
                     </div>
@@ -94,7 +110,6 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
                             <option value="brune">Brune</option>
                             <option value="ambree">Ambrée</option>
                             <option value="blanche">Blanche</option>
-                            <option value="pétillant">Pétillant</option>
                         </select>
                         {errors.couleur && <span>Ce champ est requis</span>}
                     </div>
@@ -110,7 +125,7 @@ const AddBootleToCaveVirtuelle = ({ handleClickModal }: Props) => {
 
                     <div className="w-full text-left">
                         <p className="text-fond pb-1 text-sm">
-                            Appellation (Bordeaux ...)
+                            Appellation
                         </p>
                         <input
                             {...register("appellation", { required: true })}
