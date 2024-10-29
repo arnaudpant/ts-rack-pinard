@@ -27,7 +27,7 @@ const InfosBottle = () => {
     };
 
     const handleAddRemoveFavoris = () => {
-        setBottleInFavoris((prev) => !prev);
+        bottleInfos.rackId !== "314" && setBottleInFavoris((prev) => !prev);
     };
 
     useEffect(() => {
@@ -113,7 +113,11 @@ const InfosBottle = () => {
                         </>
                     )}
                     <div
-                        className="cursor-pointer"
+                        className={clsx(
+                            bottleInfos.rackId === "314" &&
+                                "cursor-not-allowed",
+                            "cursor-pointer"
+                        )}
                         onClick={() => handleAddRemoveFavoris()}
                     >
                         {bottleInFavoris === false ? (
@@ -161,7 +165,11 @@ const InfosBottle = () => {
                                 : `/bottle-modif/${bottleInfos.id}`
                         )}
                         state={bottleInfos}
-                        className="flex justify-center gap-2 w-40 px-4 py-2 bg-vin50 hover:bg-vin50/80 text-vin800 rounded-full shadow-md"
+                        className={clsx(
+                            bottleInfos.rackId === "314" &&
+                                "cursor-not-allowed",
+                            "flex justify-center gap-2 w-40 px-4 py-2 bg-vin50 hover:bg-vin50/80 text-vin800 rounded-full shadow-md"
+                        )}
                     >
                         Modifier <Pen />
                     </Link>

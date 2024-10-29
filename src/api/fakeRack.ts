@@ -188,7 +188,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 7,
-            "favoris": true
+            "favoris": false
         },
         {
             "id": "hjetbvxf",
@@ -234,7 +234,7 @@ export const fakeRack: Rack = {
             "drink": null,
             "rackId": "314",
             "index": 9,
-            "favoris": true
+            "favoris": false
         },
         {
             "id": "rfvtgb",
