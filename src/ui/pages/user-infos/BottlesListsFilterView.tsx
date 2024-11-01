@@ -20,6 +20,7 @@ const BottlesListsFilterView = ({
                         <TableHead>Bouteilles</TableHead>
                         <TableHead className="text-center">Type</TableHead>
                         <TableHead className="text-center">Couleur</TableHead>
+                        <TableHead className="text-center">Saveur</TableHead>
                         <TableHead className="text-center">Nombre</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -36,6 +37,9 @@ const BottlesListsFilterView = ({
                                 </TableCell>
                                 <TableCell className="text-center">
                                     {bottle.couleur}
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottle.saveur}
                                 </TableCell>
                                 <TableCell className="text-center">
                                     {bottle.count}

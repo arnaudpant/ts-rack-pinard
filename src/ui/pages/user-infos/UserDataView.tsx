@@ -7,6 +7,7 @@ import {
     TableHeader,
     TableRow,
 } from "../../../components/ui/table";
+import { Separator } from "../../../components/ui/separator";
 
 type Props = {
     fullBottles: Bottle[];
@@ -72,7 +73,7 @@ const UserDataView = ({ fullBottles }: Props) => {
         <div className="min-h-[calc(100vh-232px)] container flex flex-col">
             <h2 className="text-3xl text-center py-8">Mon espace</h2>
             {/* Cave entiere */}
-            <div className="max-w-sm mx-auto mb-12">
+            <div className="max-w-sm mx-auto mb-8">
                 <h3 className="text-vin py-2 text-xl">Vos stocks complets</h3>
                 <Table>
                     <TableHeader>
@@ -92,7 +93,6 @@ const UserDataView = ({ fullBottles }: Props) => {
                                 {fullBottles.length - emptyBottles}
                             </TableCell>
                         </TableRow>
-
                         <TableRow>
                             <TableCell className="font-bold text-vin600">
                                 Nombre de bouteilles de vin
@@ -144,8 +144,9 @@ const UserDataView = ({ fullBottles }: Props) => {
                     </TableBody>
                 </Table>
             </div>
+            <Separator />
             {/* Détails par catégories de bouteilles */}
-            <div className="flex flex-wrap items-start justify-center lg:justify-around gap-8 mb-10">
+            <div className="flex flex-wrap items-start justify-center lg:justify-around gap-8 mb-10 mt-8">
                 {/* Bouteilles de vin */}
                 <div className="flex flex-col">
                     <h3 className="text-vin py-2 text-xl">Vin</h3>

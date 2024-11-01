@@ -13,7 +13,5 @@ export const getDateTimestamp = () => {
         month: '2-digit',
         year: '2-digit'
     });
-
-    console.log(formattedDate)
     return formattedDate
 }

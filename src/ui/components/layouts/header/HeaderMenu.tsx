@@ -48,7 +48,7 @@ const HeaderMenu = ({ scrAvatar }: Props) => {
                 <DropdownMenuSeparator />
                 {listMenunavigation.map((menuNavigation) => (
                     <Link to={menuNavigation.link}>
-                        <DropdownMenuItem className="cursor-pointer pr-10">
+                        <DropdownMenuItem className="cursor-pointer pr-10 py-2">
                             {menuNavigation.name}
                         </DropdownMenuItem>
                     </Link>
