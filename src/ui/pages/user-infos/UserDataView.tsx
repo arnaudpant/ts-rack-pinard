@@ -2,7 +2,6 @@ import { Bottle } from "@/types/RacksTypes";
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -56,17 +55,26 @@ const UserDataView = ({ fullBottles }: Props) => {
     const bottlesAGarder = fullBottles.filter(
         (bottle) => bottle.status === "A garder"
     ).length;
+    const biereBlonde = fullBottles.filter(
+        (bottle) => bottle.couleur === "blonde"
+    ).length;
+    const biereBrune = fullBottles.filter(
+        (bottle) => bottle.couleur === "brune"
+    ).length;
+    const biereBlanche = fullBottles.filter(
+        (bottle) => bottle.couleur === "blanche"
+    ).length;
+    const biereAmbree = fullBottles.filter(
+        (bottle) => bottle.couleur === "ambree"
+    ).length;
 
     return (
-        <div className="min-h-[calc(100vh-232px)] container">
-            <h2 className="text-3xl text-center pt-5 pb-2">Mon espace</h2>
-            <div className="mx-auto p-4">
-                <h3 className="text-vin pl-4 text-xl">Vos stocks</h3>
-                <div>
+        <div className="min-h-[calc(100vh-232px)] container flex flex-col">
+            <h2 className="text-3xl text-center py-8">Mon espace</h2>
+                {/* Cave entiere */}
+                <div className="max-w-sm mx-auto mb-12">
+                    <h3 className="text-vin py-2 text-xl">Vos stocks complets</h3>
                     <Table>
-                        <TableCaption className="pb-10">
-                            Données concernant vos bouteilles de vin
-                        </TableCaption>
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Types</TableHead>
@@ -78,7 +86,7 @@ const UserDataView = ({ fullBottles }: Props) => {
                         <TableBody>
                             <TableRow>
                                 <TableCell className="font-bold text-vin600">
-                                    Nombre de bouteilles
+                                    Nombre de bouteilles dans vos racks
                                 </TableCell>
                                 <TableCell className="font-bold text-vin600 text-center">
                                     {fullBottles.length - emptyBottles}
@@ -94,42 +102,6 @@ const UserDataView = ({ fullBottles }: Props) => {
                                 </TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Bouteilles de rouge</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesRouge}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Bouteilles de blanc</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesBlanc}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Bouteilles de rosé</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesRose}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Bouteilles a boire</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesABoire}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Bouteilles a maturation</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesAMaturation}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Bouteilles a garder</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesAGarder}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
                                 <TableCell className="font-bold text-vin600">
                                     Bouteilles de champagne
                                 </TableCell>
@@ -138,14 +110,8 @@ const UserDataView = ({ fullBottles }: Props) => {
                                 </TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Bouteilles de pétillant</TableCell>
-                                <TableCell className="text-center">
-                                    {bottlesEffervescent}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
                                 <TableCell className="font-bold text-vin600">
-                                    Bière
+                                    Bouteilles de bière
                                 </TableCell>
                                 <TableCell className="font-bold text-vin600 text-center">
                                     {bottlesBiere}
@@ -153,7 +119,7 @@ const UserDataView = ({ fullBottles }: Props) => {
                             </TableRow>
                             <TableRow>
                                 <TableCell className="font-bold text-vin600">
-                                    Apéritif
+                                    Bouteilles d'apéritif
                                 </TableCell>
                                 <TableCell className="font-bold text-vin600 text-center">
                                     {bottlesAperitif}
@@ -161,7 +127,7 @@ const UserDataView = ({ fullBottles }: Props) => {
                             </TableRow>
                             <TableRow>
                                 <TableCell className="font-bold text-vin600">
-                                    Digestif
+                                    Bouteilles de digestif
                                 </TableCell>
                                 <TableCell className="font-bold text-vin600 text-center">
                                     {bottlesDigestif}
@@ -169,10 +135,155 @@ const UserDataView = ({ fullBottles }: Props) => {
                             </TableRow>
                             <TableRow>
                                 <TableCell className="font-bold text-vin600">
-                                    Cidre
+                                    Bouteilles de cidre
                                 </TableCell>
                                 <TableCell className="font-bold text-vin600 text-center">
                                     {bottlesCidre}
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+            <div className="flex flex-wrap items-start justify-center lg:justify-around gap-8 mb-10">
+                {/* Bouteilles de vin */}
+                <div className="flex flex-col">
+                    <h3 className="text-vin py-2 text-xl">Vin</h3>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Types</TableHead>
+                                <TableHead className="text-center">
+                                    Nombre
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles de vin rouge
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesRouge}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles de vin blanc
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesBlanc}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles de rosé
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesRose}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles à boire
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesABoire}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles à maturation
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesAMaturation}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles à faire vieillir
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesAGarder}
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+                {/* Bouteilles champagne */}
+                <div className="flex flex-col">
+                    <h3 className="text-vin py-2 text-xl">Vin à bulles</h3>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Types</TableHead>
+                                <TableHead className="text-center">
+                                    Nombre
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bouteilles de champagne
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesChampagne}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Mousseux, crément, pétillant
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {bottlesEffervescent}
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+                {/* Bouteilles bieres */}
+                <div className="flex flex-col">
+                    <h3 className="text-vin py-2 text-xl">Bières</h3>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Types</TableHead>
+                                <TableHead className="text-center">
+                                    Nombre
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bières blondes
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {biereBlonde}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bières brunes
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {biereBrune}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bières blanches
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {biereBlanche}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="">
+                                    Bières ambrées
+                                </TableCell>
+                                <TableCell className="text-center">
+                                    {biereAmbree}
                                 </TableCell>
                             </TableRow>
                         </TableBody>
