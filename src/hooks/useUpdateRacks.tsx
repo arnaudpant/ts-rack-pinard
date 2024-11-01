@@ -78,7 +78,7 @@ const useUpdateRacks = () => {
     /**
      * PAGE CAVE VIRTUELLE
      */
-    const addFavorisBottle = (favBootle: Bottle) => {
+    const addBottleForBuyLater = (favBootle: Bottle) => {
         /** 1. Filtre rack bouteilles cosnommées */
         const bottlesFavoriList: Bottle[] =
             authUser.userDocument.bottlesFavoris;
@@ -248,7 +248,7 @@ const useUpdateRacks = () => {
         deletedBottleDrink,
         deletedBottleFavoris,
         consommeBottle,
-        addFavorisBottle,
+        addBottleForBuyLater,
     };
 };
 

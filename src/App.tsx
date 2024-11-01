@@ -23,6 +23,7 @@ import AddRackPage from "./ui/pages/home-racks-sommelier/AddRackPage";
 import AddNewBottle from "./ui/pages/page-rack/rack/bottles/AddNewBottle";
 import InfosBottle from "./ui/pages/page-bootle-info/InfosBottle";
 import ModifBottle from "./ui/pages/page-rack/rack/bottles/ModifBottle";
+import AddBootleForBuyLater from "./ui/pages/buy-later/AddBootleForBuyLater";
 
 function App() {
     return (
@@ -63,6 +64,10 @@ function App() {
                         <Route
                             path="/cave-virtuelle"
                             element={<CaveVirtuelle />}
+                        />
+                        <Route
+                            path="/buy-later"
+                            element={<AddBootleForBuyLater />}
                         />
                         <Route path="/user-infos" element={<UserInfos />} />
                         <Route path="/user-data" element={<UserData />} />

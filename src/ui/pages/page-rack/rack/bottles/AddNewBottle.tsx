@@ -121,7 +121,7 @@ const AddNewBottle = () => {
                 </div>
                 {/* COULEUR */}
                 <div className="w-full text-left">
-                    <p className="pb-1 text-sm">Couleur du vin ou bière *</p>
+                    <p className="pb-1 text-sm">Couleur du vin ou bière</p>
                     <select
                         {...register("couleur")}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"

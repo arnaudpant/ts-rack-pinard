@@ -8,8 +8,7 @@ import {
     TableRow,
 } from "../../../components/ui/table";
 import { Trash2 } from "lucide-react";
-import { useState } from "react";
-import AddBootleToCaveVirtuelle from "../../../ui/modules/modal/AddBootleToCaveVirtuelle";
+import { Link } from "react-router-dom";
 
 type Props = {
     bottlesForLater: Bottle[];
@@ -17,20 +16,18 @@ type Props = {
 };
 
 const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
-    const [modalShow, setModalShow] = useState(false);
 
-    const handleClickModal = () => {
-        setModalShow((v) => !v);
-    };
+
+
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-234px)]">
+        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-232px)]">
             <div className="py-4">
-                <button
+                <Link
+                    to="/buy-later"
                     className="text-fond bg-vin hover:bg-fond hover:text-vin px-4 py-1 border-2 border-vin hover:border-vin rounded-full"
-                    onClick={handleClickModal}
                 >
                     Ajouter une bouteille
-                </button>
+                </Link>
             </div>
             <h2 className="text-2xl pt-5 pb-4 text-center text-vin">
                 Liste des bouteilles à sauvegarder
@@ -39,7 +36,8 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
                 <TableHeader>
                     <TableRow>
                         <TableHead>Bouteilles</TableHead>
-                        <TableHead>Type de vin</TableHead>
+                        <TableHead>Type</TableHead>
+                        <TableHead>Couleur</TableHead>
                         <TableHead>Appellation</TableHead>
                         <TableHead>Exploitation</TableHead>
                         <TableHead>Millésime</TableHead>
@@ -50,8 +48,9 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
                     {bottlesForLater.map((bottle: Bottle) => (
                         <TableRow key={bottle.id}>
                             <TableCell className="font-medium">
-                                {bottle.type}
+                                {bottle.nom}
                             </TableCell>
+                            <TableCell>{bottle.type}</TableCell>
                             <TableCell>{bottle.couleur}</TableCell>
                             <TableCell>{bottle.appellation}</TableCell>
                             <TableCell>{bottle.exploitation}</TableCell>
@@ -67,9 +66,6 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
                     ))}
                 </TableBody>
             </Table>
-            {modalShow && (
-                <AddBootleToCaveVirtuelle handleClickModal={handleClickModal} />
-            )}
         </div>
     );
 };
