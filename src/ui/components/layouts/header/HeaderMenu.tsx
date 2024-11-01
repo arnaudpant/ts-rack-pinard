@@ -11,6 +11,7 @@ import { Menu } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Avatar from "../../../../ui/design-syst/avatar/Avatar";
+import { listMenunavigation } from "../../../../api/navigation";
 
 type Props = {
     scrAvatar: string;
@@ -27,67 +28,39 @@ const HeaderMenu = ({ scrAvatar }: Props) => {
     };
 
     return (
-        <>
-            <DropdownMenu>
-                <DropdownMenuTrigger>
-                    <Menu className="h-10 w-10" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                    <div className="my-4 flex justify-center" data-testid="avatar">
-                        {scrAvatar == "" ? (
-
-                                <Avatar
-                                    src="/avatar-default.png"
-                                    width="16"
-                                    height="16"
-                                />
-
-                        ) : (
-
-                                <Avatar
-                                    src={scrAvatar}
-                                    width="16"
-                                    height="16"
-                                />
-
-                        )}
-                    </div>
-                    <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <Link to="/">
-                        <DropdownMenuItem className="cursor-pointer">
-                            Accueil
+        <DropdownMenu>
+            <DropdownMenuTrigger>
+                <Menu className="h-10 w-10" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                <div className="m-4 flex justify-center" data-testid="avatar">
+                    {scrAvatar == "" ? (
+                        <Avatar
+                            src="/avatar-default.png"
+                            width="16"
+                            height="16"
+                        />
+                    ) : (
+                        <Avatar src={scrAvatar} width="16" height="16" />
+                    )}
+                </div>
+                <DropdownMenuLabel className="text-center">Mon compte</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {listMenunavigation.map((menuNavigation) => (
+                    <Link to={menuNavigation.link}>
+                        <DropdownMenuItem className="cursor-pointer pr-10">
+                            {menuNavigation.name}
                         </DropdownMenuItem>
                     </Link>
-                    <Link to="/user-infos">
-                        <DropdownMenuItem className="cursor-pointer">
-                            Mon compte
-                        </DropdownMenuItem>
-                    </Link>
-                    <Link to="/user-data">
-                        <DropdownMenuItem className="cursor-pointer">
-                            Toutes mes bouteilles
-                        </DropdownMenuItem>
-                    </Link>
-                    <Link to="/bottles-drink">
-                        <DropdownMenuItem className="cursor-pointer">
-                            Container à verre
-                        </DropdownMenuItem>
-                    </Link>
-                    <Link to="/cave-virtuelle">
-                        <DropdownMenuItem className="cursor-pointer">
-                            Cave virtuelle
-                        </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem
-                        onClick={handleDisconnect}
-                        className="text-vin cursor-pointer"
-                    >
-                        Déconnexion
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </>
+                ))}
+                <DropdownMenuItem
+                    onClick={handleDisconnect}
+                    className="text-vin cursor-pointer pr-10"
+                >
+                    Déconnexion
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 };
 

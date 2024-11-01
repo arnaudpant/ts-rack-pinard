@@ -71,79 +71,80 @@ const UserDataView = ({ fullBottles }: Props) => {
     return (
         <div className="min-h-[calc(100vh-232px)] container flex flex-col">
             <h2 className="text-3xl text-center py-8">Mon espace</h2>
-                {/* Cave entiere */}
-                <div className="max-w-sm mx-auto mb-12">
-                    <h3 className="text-vin py-2 text-xl">Vos stocks complets</h3>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Types</TableHead>
-                                <TableHead className="text-center">
-                                    Nombre
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Nombre de bouteilles dans vos racks
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {fullBottles.length - emptyBottles}
-                                </TableCell>
-                            </TableRow>
+            {/* Cave entiere */}
+            <div className="max-w-sm mx-auto mb-12">
+                <h3 className="text-vin py-2 text-xl">Vos stocks complets</h3>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Types</TableHead>
+                            <TableHead className="text-center">
+                                Nombre
+                            </TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Nombre de bouteilles dans vos racks
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {fullBottles.length - emptyBottles}
+                            </TableCell>
+                        </TableRow>
 
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Nombre de bouteilles de vin
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesVin}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Bouteilles de champagne
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesChampagne}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Bouteilles de bière
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesBiere}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Bouteilles d'apéritif
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesAperitif}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Bouteilles de digestif
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesDigestif}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="font-bold text-vin600">
-                                    Bouteilles de cidre
-                                </TableCell>
-                                <TableCell className="font-bold text-vin600 text-center">
-                                    {bottlesCidre}
-                                </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </div>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Nombre de bouteilles de vin
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesVin}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Bouteilles de champagne
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesChampagne}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Bouteilles de bière
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesBiere}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Bouteilles d'apéritif
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesAperitif}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Bouteilles de digestif
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesDigestif}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-vin600">
+                                Bouteilles de cidre
+                            </TableCell>
+                            <TableCell className="font-bold text-vin600 text-center">
+                                {bottlesCidre}
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </div>
+            {/* Détails par catégories de bouteilles */}
             <div className="flex flex-wrap items-start justify-center lg:justify-around gap-8 mb-10">
                 {/* Bouteilles de vin */}
                 <div className="flex flex-col">

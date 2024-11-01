@@ -7,8 +7,6 @@ const UserData = () => {
     const fullBottles: Bottle[] = authUser
         ? authUser.userDocument.racks.flatMap((rack) => rack.bottles)
         : [];
-
-    // Retourner null ou un composant de chargement si l'utilisateur n'est pas authentifié
     if (!authUser) {
         throw new Error("Utilisateur non authentifié : authUser est requis.");
     }

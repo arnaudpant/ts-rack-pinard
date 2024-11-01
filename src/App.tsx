@@ -24,6 +24,7 @@ import AddNewBottle from "./ui/pages/page-rack/rack/bottles/AddNewBottle";
 import InfosBottle from "./ui/pages/page-bootle-info/InfosBottle";
 import ModifBottle from "./ui/pages/page-rack/rack/bottles/ModifBottle";
 import AddBootleForBuyLater from "./ui/pages/buy-later/AddBootleForBuyLater";
+import BottlesListsFilter from "./ui/pages/user-infos/BottlesListsFilter";
 
 function App() {
     return (
@@ -70,6 +71,10 @@ function App() {
                             element={<AddBootleForBuyLater />}
                         />
                         <Route path="/user-infos" element={<UserInfos />} />
+                        <Route
+                            path="/list-bouteilles"
+                            element={<BottlesListsFilter />}
+                        />
                         <Route path="/user-data" element={<UserData />} />
                         <Route path="/politique" element={<Politique />} />
                         <Route path="/cgu" element={<Cgu />} />
