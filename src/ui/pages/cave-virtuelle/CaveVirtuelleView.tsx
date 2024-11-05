@@ -20,7 +20,7 @@ const CaveVirtuelleView = ({ bottlesForLater, handleDelete }: Props) => {
 
 
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-232px)]">
+        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-272px)]">
             <div className="py-4">
                 <Link
                     to="/buy-later"

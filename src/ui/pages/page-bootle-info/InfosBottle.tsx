@@ -43,7 +43,7 @@ const InfosBottle = () => {
     };
 
     return (
-        <div className="container flex flex-col justify-start gap-8 min-h-[calc(100vh-232px)] pt-10 pb-4">
+        <div className="container flex flex-col justify-start gap-8 min-h-[calc(100vh-272px)] pt-10 pb-4">
             <div className="flex flex-wrap flex-col sm:flex-row justify-center gap-8">
                 {/* PARTIE A */}
                 <div className="pr-10">

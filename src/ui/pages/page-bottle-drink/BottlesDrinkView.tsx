@@ -67,7 +67,7 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
     );
 
     return (
-        <div className="container mx-auto p-4 min-h-[calc(100vh-232px)]">
+        <div className="container mx-auto p-4 min-h-[calc(100vh-272px)]">
             <h2 className="text-2xl pt-5 pb-2 text-center text-vin">
                 Liste des bouteilles consommées
             </h2>

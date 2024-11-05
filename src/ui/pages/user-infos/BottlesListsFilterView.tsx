@@ -12,7 +12,7 @@ const BottlesListsFilterView = ({
     uniqueBottles,
 }: uniqueBottlesType) => {
     return (
-        <div className="min-h-[calc(100vh-232px)] container flex flex-col">
+        <div className="min-h-[calc(100vh-272px)] container flex flex-col">
             <h2>Liste des Bouteilles</h2>
             <Table>
                 <TableHeader>

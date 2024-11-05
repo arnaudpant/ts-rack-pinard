@@ -4,14 +4,14 @@ import OnBoardingTabs from "../components/OnBoardingTabs";
 
 const WelcomeStep = ({ nextStep, isFirstStep, isFinalStep, getCurrentStep, stepList }: BaseCoomponentProps) => {
     return (
-        <div className="min-h-[calc(100vh-120px)]">
+        <div className="min-h-[calc(100vh-232px)]">
             <OnBoardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
 
-            <div className="relative  md:h-[calc(100vh-200px)] flex flex-col items-start md:flex-row">
+            <div className="relative  md:h-[calc(100vh-340px)] flex flex-col items-start md:flex-row">
                 <div className="md:w-2/3">
-                    <h1 className="text-2xl text-center md:text-5xl md:text-left pt-5 px-6">
+                    <h2 className="text-2xl text-center md:text-5xl md:text-left pt-5 px-6">
                         Bienvenue sur "Racks à Pinard"
-                    </h1>
+                    </h2>
                     <p className="px-6 pt-6 md:text-xl">
                         Marre d'acheter du vin et de perdre ton temps dans ta
                         cave pour retrouver LA bouteille que tu veux boire ?

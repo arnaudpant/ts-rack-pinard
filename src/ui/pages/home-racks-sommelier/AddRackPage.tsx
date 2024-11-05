@@ -1,16 +1,29 @@
 import { Bottle, Rack } from "../../../types/RacksTypes";
 import { useAuth } from "../../../context/AuthUserContext";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { FirestoreUpdateDocument } from "../../../api/Firestore";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormValues = {
-    rackName: string;
-    columns: number;
-    rows: number;
-};
+const FormSchema = z.object({
+    rackName: z.string().min(1, "Le nom du rack est requis"),
+    columns: z.preprocess(
+        (val) => Number(val),
+        z
+            .number()
+            .min(1, { message: "1 colonne minimum" })
+            .max(10, { message: "10 colonnes maximum" })
+    ),
+    rows: z.preprocess(
+        (val) => Number(val),
+        z.number().min(1, { message: "1 rangée minimum" })
+    ),
+});
+
+type FormValues = z.infer<typeof FormSchema>;
 
 const MAX_COLUMNS = 10;
 
@@ -21,13 +34,15 @@ const AddRackPage = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<FormValues>();
+    } = useForm<FormValues>({
+        resolver: zodResolver(FormSchema),
+    });
 
     const newRack: Rack = {
         idrack: uuidv4(),
         rackName: "",
-        columns: 0,
-        rows: 0,
+        columns: 1,
+        rows: 1,
         bottles: [],
     };
 
@@ -65,15 +80,16 @@ const AddRackPage = () => {
 
             return;
         }
-        toast.success("Rack vide ajouté", { autoClose: 2000 });
+        toast.success("Nouveau rack ajouté", { autoClose: 2000 });
         navigate("/");
     };
 
-    const onSubmit = (data: FormValues) => {
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
         if (data.columns > MAX_COLUMNS) {
             return;
         }
         const calculNumberOfBottle: number = data.columns * data.rows;
+
         // AJOUT X BOUTEILLES VIDES
         let arrBottlesVide: (typeof bottleEmpty)[] | [] = [];
         for (let i = 0; i < calculNumberOfBottle; i++) {
@@ -104,7 +120,7 @@ const AddRackPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-center min-h-[calc(100vh-232px)] shadow-xl p-4 ">
+        <div className="flex flex-col items-center min-h-[calc(100vh-272px)] shadow-xl p-4 ">
             <h2 className="text-2xl text-vin my-6">Ajouter un rack</h2>
             <p className="text-sm text-center pb-6">
                 Reproduisez votre cave, casiers, rack ou autre
@@ -114,59 +130,64 @@ const AddRackPage = () => {
                 className="flex flex-col gap-2"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <label htmlFor="rackName">Entrez un nom</label>
-                <input
-                    type="text"
-                    id="rackName"
-                    {...register("rackName", {
-                        required: {
-                            value: true,
-                            message: "Ce champ est requis",
-                        },
-                    })}
-                    placeholder="Donnez un nom au rack"
-                    className="p-2 rounded-md mb-4 bg-fond text-sm"
-                />
+                <div className="flex flex-col mb-4">
+                    <label htmlFor="rackName">Entrez un nom</label>
+                    <input
+                        type="text"
+                        id="rackName"
+                        {...register("rackName")}
+                        placeholder="Donnez un nom au rack"
+                        className="p-2 rounded-md bg-fond text-sm"
+                    />
+                    {errors.rackName && (
+                        <p className="text-xs text-vin_rouge text-center pt-1">
+                            {errors.rackName.message}
+                        </p>
+                    )}
+                </div>
+                <div className="flex flex-col mb-4">
+                    <label htmlFor="colonnes">
+                        Entrez le nombre de colonnes (max:10)
+                    </label>
+                    <input
+                        type="number"
+                        id="columns"
+                        {...register("columns", {
+                            required: {
+                                value: true,
+                                message: "Ce champ est requis",
+                            },
+                        })}
+                        placeholder="Nombre de colonnes"
+                        className="p-2 rounded-md bg-fond text-sm"
+                    />
+                    {errors.columns && (
+                        <p className="text-xs text-vin_rouge text-center pt-1">
+                            {errors.columns.message}
+                        </p>
+                    )}
+                </div>
 
-                <label htmlFor="colonnes">
-                    Entrez le nombre de colonnes (max:10)
-                </label>
-                <input
-                    type="number"
-                    id="columns"
-                    {...register("columns", {
-                        required: {
-                            value: true,
-                            message: "Ce champ est requis",
-                        },
-                    })}
-                    placeholder="Nombre de colonnes"
-                    className="p-2 rounded-md mb-4 bg-fond text-sm"
-                />
-                {errors.columns && (
-                    <p className="text-xs text-vin_rouge text-center">
-                        {errors.columns.message}
-                    </p>
-                )}
-
-                <label htmlFor="rangees">Entrez le nombre de rangées</label>
-                <input
-                    type="number"
-                    id="rows"
-                    {...register("rows", {
-                        required: {
-                            value: true,
-                            message: "Ce champ est requis",
-                        },
-                    })}
-                    placeholder="Nombre de rangées"
-                    className="p-2 rounded-md mb-6 bg-fond text-sm"
-                />
-                {errors.rows && (
-                    <p className="text-xs text-vin_rouge text-center">
-                        {errors.rows.message}
-                    </p>
-                )}
+                <div className="flex flex-col mb-6">
+                    <label htmlFor="rangees">Entrez le nombre de rangées</label>
+                    <input
+                        type="number"
+                        id="rows"
+                        {...register("rows", {
+                            required: {
+                                value: true,
+                                message: "Ce champ est requis",
+                            },
+                        })}
+                        placeholder="Nombre de rangées"
+                        className="p-2 rounded-md bg-fond text-sm"
+                    />
+                    {errors.rows && (
+                        <p className="text-xs text-vin_rouge text-center pt-1">
+                            {errors.rows.message}
+                        </p>
+                    )}
+                </div>
 
                 <div>
                     <img src="/info-rack.png" alt="informations racks" />

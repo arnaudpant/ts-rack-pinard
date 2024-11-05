@@ -80,7 +80,7 @@ const ValidationStep = () => {
                         }}
                     />
 
-                    <div className="relative min-h-[calc(100vh-120px)]">
+                    <div className="relative min-h-[calc(100vh-232px)]">
                         <div className="flex flex-col items-center pt-10">
                             <img
                                 src="/wine-bottle.svg"

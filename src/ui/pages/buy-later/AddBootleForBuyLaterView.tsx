@@ -15,7 +15,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
     } = useForm<Bottle>();
 
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-232px)]">
+        <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-272px)]">
             <form
                 className="flex flex-col gap-4 px-4 mt-3 w-[300px]"
                 onSubmit={handleSubmit(onSubmit)}
