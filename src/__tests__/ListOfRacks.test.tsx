@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ListOfRacks from "../src/ui/components/layouts/bandeauRack/ListOfRacks";
-import { authUserContext } from "../src/context/AuthUserContext";
+import ListOfRacks from "../ui/components/layouts/bandeauRack/ListOfRacks";
+import { authUserContext } from "../context/AuthUserContext";
 import React from "react";
 
 // Mock du composant ButtonRackSelected

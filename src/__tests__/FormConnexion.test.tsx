@@ -2,9 +2,9 @@ import React from "react";
 import { expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import FormConnexion from '../src/ui/pages/connexion/ConnexionView'
+import FormConnexion from "../ui/pages/connexion/ConnexionView";
 import { BrowserRouter } from "react-router-dom";
-import {FormsType} from '../src/types/Forms'
+import { FormsType } from "../types/Forms";
 
 const formType: FormsType = {
     errors: false,
@@ -16,14 +16,14 @@ const formType: FormsType = {
 };
 
 test("Test fomulaire connexion", async () => {
-    const onSubmit = vi.fn()
+    const onSubmit = vi.fn();
     render(
         <BrowserRouter>
             <FormConnexion />
         </BrowserRouter>
     );
-    const emailUser = "usertest@test.fr"
-    const passwordUser = "mypassword"
+    const emailUser = "usertest@test.fr";
+    const passwordUser = "mypassword";
 
     const emailWrite = screen.getByLabelText(/E-mail/i);
     const passwordWrite = screen.getByLabelText(/Mot de passe/i);
@@ -33,8 +33,6 @@ test("Test fomulaire connexion", async () => {
     expect(passwordWrite).toBeInTheDocument();
     expect(btnSubmit).toBeInTheDocument();
 
-
     fireEvent.change(emailWrite, { target: { value: emailUser } });
     fireEvent.change(passwordWrite, { target: { value: passwordUser } });
-
 });

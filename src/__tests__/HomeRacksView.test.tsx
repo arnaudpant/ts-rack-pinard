@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import HomeRacksView from "../src/ui/pages/home-racks-sommelier/HomeRacksView";
+import HomeRacksView from "../ui/pages/home-racks-sommelier/HomeRacksView";
 import React from "react";
 
 // Mock des composants enfants

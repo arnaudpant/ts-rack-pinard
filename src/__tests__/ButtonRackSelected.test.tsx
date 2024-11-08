@@ -2,7 +2,7 @@ import React from "react";
 import { expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ButtonRackSelected from "../src/ui/components/layouts/bandeauRack/ButtonRackSelected";
+import ButtonRackSelected from "../ui/components/layouts/bandeauRack/ButtonRackSelected";
 import { BrowserRouter } from "react-router-dom";
 import { rackTest } from "./types";
 

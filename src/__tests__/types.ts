@@ -1,4 +1,4 @@
-import { Bottle } from "../src/types/RacksTypes";
+import { Bottle } from "../types/RacksTypes";
 
 export const fakeBottles: Bottle[] = [
     {

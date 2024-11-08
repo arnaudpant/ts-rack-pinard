@@ -2,8 +2,8 @@ import React from "react";
 import { expect, it, vi, describe } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import BottlesDrinkView from "../src/ui/pages/page-bottle-drink/BottlesDrinkView";
-import { Bottle } from "../src/types/RacksTypes";
+import BottlesDrinkView from "../ui/pages/page-bottle-drink/BottlesDrinkView";
+import { Bottle } from "../types/RacksTypes";
 
 // Mock pour la fonction dateFormater
 vi.mock("../../../utils/utils", () => ({

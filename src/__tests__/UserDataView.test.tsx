@@ -2,7 +2,7 @@ import React from "react";
 import { expect, test, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import UserDataView from "../src/ui/pages/user-infos/UserDataView";
+import UserDataView from "../ui/pages/user-infos/UserDataView";
 import { fakeBottles } from "./types";
 
 describe("Tests UserDataView avec 0 et 2 bouteilles", () => {

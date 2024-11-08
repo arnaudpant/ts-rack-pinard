@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import HomeRacks from "../src/ui/pages/home-racks-sommelier/HomeRacks";
-import { useAuth } from "../src/context/AuthUserContext";
-import HomeRacksView from "../src/ui/pages/home-racks-sommelier/HomeRacksView";
+import HomeRacks from "../ui/pages/home-racks-sommelier/HomeRacks";
+import { useAuth } from "../context/AuthUserContext";
+import HomeRacksView from "../ui/pages/home-racks-sommelier/HomeRacksView";
 import React from "react";
 
 // Mock des dépendances

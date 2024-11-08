@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import HeaderView from "../src/ui/components/layouts/header/HeaderView";
+import HeaderView from "../ui/components/layouts/header/HeaderView";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import React from "react";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import CaveVirtuelleView from "../src/ui/pages/cave-virtuelle/CaveVirtuelleView";
+import CaveVirtuelleView from "../ui/pages/cave-virtuelle/CaveVirtuelleView";
 import { fakeBottles } from "./types";
 
 test("Affichage de 0 bouteille", () => {

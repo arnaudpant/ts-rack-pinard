@@ -1,11 +1,9 @@
-import React from "react";
-import { expect, test} from "vitest";
-import { render,  screen } from "@testing-library/react";
+import { expect, test } from "vitest";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import BottlePinard from "../src/ui/pages/page-rack/rack/bottles/BottlePinard";
+import BottlePinard from "../ui/pages/page-rack/rack/bottles/BottlePinard";
 import { BrowserRouter } from "react-router-dom";
 import { fakeCaseEmpty, fakeBottle } from "./types";
-
 
 test("Rendu case vide", () => {
     render(
@@ -33,8 +31,8 @@ test("taille case < 6", () => {
             <BottlePinard bottle={fakeBottle} nbrColums={3} />
         </BrowserRouter>
     );
-    const bottle = screen.getByTestId(/bottle/i)
-    expect(bottle).toBeInTheDocument()
+    const bottle = screen.getByTestId(/bottle/i);
+    expect(bottle).toBeInTheDocument();
     expect(bottle).not.toHaveClass("hidden");
     expect(bottle).toHaveTextContent(/Bordeaux/i);
 });
