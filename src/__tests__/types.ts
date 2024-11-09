@@ -1,5 +1,6 @@
 import { Bottle } from "../types/RacksTypes";
 
+
 export const fakeBottles: Bottle[] = [
     {
         id: "fake-bottle-a",
@@ -104,3 +105,22 @@ export const rackTest = {
     rows: 4,
     bottles: [],
 };
+
+
+export const authUserfake = {
+    uid: "123",
+    email: "fake@test.fr",
+    displayName: "fake-user",
+    emailVerified: false,
+    photoURL: "https://maFakeAvatar.jpeg",
+    userDocument: {
+        photoURL: "https://maFakeAvatar.jpeg",
+        uid: "321",
+        email: "fake@test.fr",
+        onBoardingisCompleted: true,
+        login: "fake-user",
+        racks: [rackTest],
+        bottlesFavoris: [],
+        bottlesDrink: []
+    } 
+}

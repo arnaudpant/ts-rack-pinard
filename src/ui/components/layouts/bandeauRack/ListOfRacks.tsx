@@ -5,10 +5,6 @@ const ListOfRacks = () => {
     const { authUser } = useAuth();
     const listOfRacks = authUser?.userDocument.racks || [];
 
-    if (!authUser) {
-        return null; 
-    }
-
     return (
         <div className="flex flex-col items-center pt-5">
             <h1 className="text-xl md:text-2xl px-2 mb-4 text-center">
