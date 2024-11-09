@@ -16,14 +16,13 @@ vi.mock("react-router-dom", async () => {
 
 describe("HeaderView", () => {
     it("onBoardingisCompleted is true", async () => {
-        const onBoardingisCompleted = true;
 
         await waitFor(() => {
             render(
                 <AuthUserProvider>
                     <BrowserRouter>
                         <HeaderView
-                            onBoardingisCompleted={onBoardingisCompleted}
+                            onBoardingisCompleted={true}
                             scrAvatar={""}
                         />
                     </BrowserRouter>
@@ -36,14 +35,13 @@ describe("HeaderView", () => {
     });
 
     it("onBoardingisCompleted is false", async () => {
-        const onBoardingisCompleted = false;
 
         await waitFor(() => {
             render(
                 <AuthUserProvider>
                     <BrowserRouter>
                         <HeaderView
-                            onBoardingisCompleted={onBoardingisCompleted}
+                            onBoardingisCompleted={false}
                             scrAvatar={""}
                         />
                     </BrowserRouter>
