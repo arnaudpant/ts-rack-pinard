@@ -16,26 +16,34 @@ vi.mock("../ui/components/layouts/bandeauRack/ButtonRackSelected", () => ({
 }));
 
 describe("ListOfRacks", () => {
-    beforeEach(() => {
-        // Configuration du mock pour useAuth avant chaque test
+    it("renders the component with correct headings when authUser exists", async () => {
         (useAuth as any).mockReturnValue({
             authUser: authUserfake,
             authUserIsLoading: false,
         });
-    });
-
-    it("renders the component with correct headings when authUser exists", async () => {
         await waitFor(() => {
-            render(
-                <ListOfRacks />
-            );
+            render(<ListOfRacks />);
         });
 
         expect(
             screen.getByText(/La gestion de cave à vin simplifiée/)
         ).toBeInTheDocument();
         expect(screen.getByText(/Liste de vos racks:/)).toBeInTheDocument();
+    });
+    it("renders the component with correct headings when authUser is null", async () => {
+        (useAuth as any).mockReturnValue({
+            authUser: null,
+            authUserIsLoading: false,
+        });
+        await waitFor(() => {
+            render(<ListOfRacks />);
+        });
 
-        screen.debug();
+        expect(
+            screen.queryByText(/La gestion de cave à vin simplifiée/)
+        ).not.toBeInTheDocument();
+        expect(
+            screen.queryByText(/Liste de vos racks:/)
+        ).not.toBeInTheDocument();
     });
 });
