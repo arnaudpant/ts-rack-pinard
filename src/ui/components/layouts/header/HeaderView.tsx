@@ -3,19 +3,13 @@ import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import HeaderMenu from "./HeaderMenu";
 
-
 type Props = {
     onBoardingisCompleted: boolean;
     scrAvatar: string;
 };
 
-const HeaderView = ({
-    onBoardingisCompleted,
-    scrAvatar,
-}: Props) => {
-    const navigate = useNavigate()
-
-    
+const HeaderView = ({ onBoardingisCompleted, scrAvatar }: Props) => {
+    const navigate = useNavigate();
 
     return (
         <header className="relative flex items-center justify-center h-16 bg-vin text-fond ">
