@@ -16,9 +16,9 @@ Cette application répond à ces problèmes.
 ## Fonctionnalités:
 - Transformez vos casiers à bouteille, cave à vin, rack en racks visuel avec le même nombre de colonnes et de rangés que le vrai
 - Aperçu visuel de vos racks ou cave à vin, avec un code couleur selon le type de bouteille.
-- Visualisation des information de vos bouteilles: Type de vin, millesime, date d'achat, prix, etc...
+- Visualisation des information de vos bouteilles: Stocks, type de vin, millesime, date d'achat, prix, etc...
 - Ajout, suppression de bouteilles.
-- Ajout, suppression de racks
+- Ajout, suppression des racks
 - Historique des bouteilles consommées dans un container à verre.
 - Visualisation des stocks.
 - Cave virtuelle pour garder en mémoire les bouteilles que vous avez bu chez un ami par exemple et que vous voudrez acheter plus tard.
@@ -26,17 +26,15 @@ Cette application répond à ces problèmes.
 ## Technologies Utilisées 
 - React et typescript pour le front
 - Firebase pour le back et l'authentification
-- Tailwind et Shadcn pour le CSS et les composants
-- React-hook-form pour les formulaires
+- Tailwind et Shadcn pour le CSS
+- React-hook-form pour les formulaires + ZOD
 - Lucides pour les icones
 - Vitestjs, React Testing library, jest-dom, cypress (V3) pour les tests
-- react-error-boundary
 
 ## Autres API
 - clsx
 - react-canvas-confetti
 - react-toastify
-- uuid
 
 
 ## Déploiment continu
