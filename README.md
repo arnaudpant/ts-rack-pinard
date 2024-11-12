@@ -1,6 +1,6 @@
 # Application de gestion de cave à vin construite avec React, TypeScript et Firebase.
 
-Version actuelle: V2 (15 février 2024)
+Version actuelle: V2.6 (Novembre 2024)
 
 https://rack-a-pinard.web.app
 
