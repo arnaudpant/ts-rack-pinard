@@ -1,4 +1,4 @@
-import { Bottle } from "../types/RacksTypes";
+import { Bottle, Rack } from "../types/RacksTypes";
 
 
 export const fakeBottles: Bottle[] = [
@@ -98,12 +98,57 @@ export const fakeBottle: Bottle = {
     favoris: false
 };
 
-export const rackTest = {
+export const rackTest: Rack = {
     idrack: "testA",
     rackName: "Test A",
-    columns: 3,
-    rows: 4,
-    bottles: [],
+    columns: 2,
+    rows: 1,
+    bottles: [{
+        id: "fake-bottle",
+        nom: "Château Margaux",
+        millesime: 2015,
+        appellation: "Margaux AOC",
+        exploitation: "Château Margaux",
+        cepage: "Cabernet Sauvignon",
+        pays: "France",
+        type: "vin",
+        couleur: "rouge",
+        saveur: null,
+        corps: "plein",
+        potentiel: "moyen",
+        status: "A boire",
+        degre: 13.5,
+        accords: "agneau",
+        prix: 600,
+        achat: "2022-02-17",
+        rackId: "314",
+        index: 0,
+        drink: null,
+        favoris: false
+    },
+    {
+        id: "fake-empty",
+        nom: "",
+        millesime: null,
+        appellation: null,
+        exploitation: null,
+        cepage: null,
+        pays: null,
+        type: "vide",
+        couleur: null,
+        saveur: null,
+        corps: null,
+        potentiel: null,
+        status: null,
+        degre: null,
+        accords: null,
+        prix: null,
+        achat: null,
+        rackId: "314",
+        index: 1,
+        drink: null,
+        favoris: false
+    }],
 };
 
 
@@ -119,8 +164,14 @@ export const authUserfake = {
         email: "fake@test.fr",
         onBoardingisCompleted: true,
         login: "fake-user",
-        racks: [rackTest],
+        racks: [{
+            idrack: "testA",
+            rackName: "Test A",
+            columns: 3,
+            rows: 4,
+            bottles: fakeBottles,
+        }],
         bottlesFavoris: [],
         bottlesDrink: []
-    } 
+    }
 }

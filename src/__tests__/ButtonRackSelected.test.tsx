@@ -1,8 +1,11 @@
+import { expect } from "vitest";
+import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import { AuthUserProvider } from "../context/AuthUserContext";
 import { BrowserRouter } from "react-router-dom";
 import ButtonRackSelected from "../ui/components/layouts/bandeauRack/ButtonRackSelected";
 import { rackTest } from "./types";
+import "@testing-library/jest-dom";
 
 describe("ButtonRackSelected", () => {
     beforeEach(async () => {
@@ -10,7 +13,10 @@ describe("ButtonRackSelected", () => {
             render(
                 <AuthUserProvider>
                     <BrowserRouter>
-                        <ButtonRackSelected rack={rackTest} key={rackTest.idrack} />
+                        <ButtonRackSelected
+                            rack={rackTest}
+                            key={rackTest.idrack}
+                        />
                     </BrowserRouter>
                 </AuthUserProvider>
             );
@@ -18,9 +24,8 @@ describe("ButtonRackSelected", () => {
     });
 
     it("Rack name should be Test A", () => {
-        const button = screen.getByRole("button")
-        expect(button).toBeInTheDocument()
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
         expect(button).toHaveTextContent(`${rackTest.rackName}`);
     });
-
 });
