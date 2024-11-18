@@ -88,7 +88,7 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
                         />
                     </Link>
                 )}
-                <p className={textClass} data-testid="bottle">
+                <p className={textClass} data-testid="appellation-bouteille">
                     {bottle.appellation}
                 </p>
             </div>

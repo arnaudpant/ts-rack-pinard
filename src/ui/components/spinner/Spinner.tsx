@@ -3,7 +3,7 @@
 const Spinner = () => {
     return (
         <div className="h-screen w-full flex items-center justify-center">
-            <div className="animate-bounce" role="alert">
+            <div className="animate-bounce" role="alert" data-testid="spinner">
                 <svg width="100px" height="100px" viewBox="0 0 72 72">
                     <g id="color">
                         <path fill="#B1CC33" d="M37.7394,28.9024l10.1983-10.1983l5.2468,5.2468L42.9863,34.1492 c-1.1588,1.1588-1.8563,2.6718-1.9213,4.1683l-0.1273,2.9232c-0.1036,2.382-1.2137,4.7905-3.0584,6.6352L20.6714,65.0838 c-1.5429,1.5429-3.839,1.7482-5.1284,0.4588l-9.1968-9.1968c-1.2895-1.2895-1.084-3.5856,0.4588-5.1284l17.2079-17.2079 c1.8446-1.8446,4.2531-2.9548,6.6352-3.0584l2.9232-0.1273C35.0676,30.7587,36.5806,30.0612,37.7394,28.9024z" />

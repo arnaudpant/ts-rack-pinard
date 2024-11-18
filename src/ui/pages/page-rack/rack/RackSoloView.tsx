@@ -42,7 +42,7 @@ const RackSoloView: React.FC<Props> = ({ rack }) => {
         <div className="flex flex-col items-center w-full px-2 pt-4 mb-10">
             <div className="flex justify-center w-full">
                 {classGrid && (
-                    <div className={classGrid}>
+                    <div className={classGrid} data-testid="bottlesArr">
                         {rack.bottles.map((bottle: Bottle) => (
                             <BottlePinard
                                 bottle={bottle}

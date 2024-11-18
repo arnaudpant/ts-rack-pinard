@@ -11,9 +11,8 @@ const HomeView = () => {
     return (
         <div
             className="flex flex-col justify-center gap-4 pb-6"
-            data-testid="is-not-connected"
         >
-            <div className="flex justify-center gap-4 flex-wrap pb-2">
+            <div className="flex justify-center gap-4 flex-wrap pb-2" data-testid="btn-not-connected">
                 <Link
                     to="/inscription"
                     className="px-3 py-1 bg-vin text-fond rounded-lg shadow-sm hover:bg-vin100 hover:text-vin800"

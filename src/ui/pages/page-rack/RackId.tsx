@@ -24,7 +24,7 @@ const RackId: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-col justify-start items-center min-h-[calc(100vh-120px)]">
+        <div className="flex flex-col justify-start items-center min-h-[calc(100vh-120px)]" data-testid="rack-solo-view">
             {rack && <RackSoloView rack={rack} key={rack.idrack} />}
         </div>
     );
