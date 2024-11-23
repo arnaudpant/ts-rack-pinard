@@ -37,7 +37,12 @@ describe("RackSoloView", () => {
 
     it("renders the rack with correct grid class", async () => {
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <RackSoloView rack={rackTest} />
             </BrowserRouter>
         );
@@ -50,7 +55,12 @@ describe("RackSoloView", () => {
 
     it("renders bottle 1 correctly", () => {
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <RackSoloView rack={rackTest} />
             </BrowserRouter>
         );
@@ -60,7 +70,12 @@ describe("RackSoloView", () => {
 
     it("render 2 bottles correctly", () => {
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <RackSoloView rack={rackTest} />
             </BrowserRouter>
         );

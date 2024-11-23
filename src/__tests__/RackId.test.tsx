@@ -53,7 +53,12 @@ describe("RackId", () => {
         } as any);
 
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <RackId />
             </BrowserRouter>
         );
@@ -68,7 +73,12 @@ describe("RackId", () => {
         } as any);
 
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <RackId />
             </BrowserRouter>
         );

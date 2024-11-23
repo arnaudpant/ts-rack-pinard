@@ -20,7 +20,12 @@ describe("HeaderView", () => {
         await waitFor(() => {
             render(
                 <AuthUserProvider>
-                    <BrowserRouter>
+                    <BrowserRouter
+                        future={{
+                            v7_startTransition: true,
+                            v7_relativeSplatPath: true,
+                        }}
+                    >
                         <HeaderView
                             onBoardingisCompleted={true}
                             scrAvatar={""}
@@ -39,7 +44,12 @@ describe("HeaderView", () => {
         await waitFor(() => {
             render(
                 <AuthUserProvider>
-                    <BrowserRouter>
+                    <BrowserRouter
+                        future={{
+                            v7_startTransition: true,
+                            v7_relativeSplatPath: true,
+                        }}
+                    >
                         <HeaderView
                             onBoardingisCompleted={false}
                             scrAvatar={""}
@@ -56,7 +66,12 @@ describe("HeaderView", () => {
         await waitFor(() => {
             render(
                 <AuthUserProvider>
-                    <BrowserRouter>
+                    <BrowserRouter
+                        future={{
+                            v7_startTransition: true,
+                            v7_relativeSplatPath: true,
+                        }}
+                    >
                         <HeaderView
                             onBoardingisCompleted={true}
                             scrAvatar={""}

@@ -12,7 +12,12 @@ describe("ButtonRackSelected", () => {
         await waitFor(() => {
             render(
                 <AuthUserProvider>
-                    <BrowserRouter>
+                    <BrowserRouter
+                        future={{
+                            v7_startTransition: true,
+                            v7_relativeSplatPath: true,
+                        }}
+                    >
                         <ButtonRackSelected
                             rack={rackTest}
                             key={rackTest.idrack}

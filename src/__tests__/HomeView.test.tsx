@@ -43,7 +43,12 @@ describe("HomeView", () => {
         });
 
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <HomeView />
             </BrowserRouter>
         );
@@ -58,7 +63,12 @@ describe("HomeView", () => {
         vi.mocked(useAuth).mockReturnValue({ authUser: null } as any);
 
         render(
-            <BrowserRouter>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <HomeView />
             </BrowserRouter>
         );

@@ -8,7 +8,12 @@ describe("Footer", () => {
         await waitFor(() => {
             render(
                 <AuthUserProvider>
-                    <BrowserRouter>
+                    <BrowserRouter
+                        future={{
+                            v7_startTransition: true,
+                            v7_relativeSplatPath: true,
+                        }}
+                    >
                         <Footer />
                     </BrowserRouter>
                 </AuthUserProvider>

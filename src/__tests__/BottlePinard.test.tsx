@@ -1,19 +1,10 @@
 import BottlePinard from "../ui/pages/page-rack/rack/bottles/BottlePinard";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { vi, describe, it, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { fakeBottle, fakeCaseEmpty } from "./types";
 
-// Mock de react-router-dom
-vi.mock("react-router-dom", async () => {
-    const actual = await vi.importActual<typeof import("react-router-dom")>(
-        "react-router-dom"
-    );
-    return {
-        ...actual,
-        Navigate: vi.fn(() => null),
-    };
-});
+
 
 describe("BottlePinard", () => {
     it("Show bottle not empty", () => {
@@ -102,6 +93,5 @@ describe("BottlePinard", () => {
         );
 
         expect(screen.getByTestId(/circle-not-empty/i)).toHaveClass("#E1CE9A");
-        screen.debug();
     });
 });
