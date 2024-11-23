@@ -30,6 +30,8 @@ describe("ListOfRacks", () => {
         ).toBeInTheDocument();
         expect(screen.getByText(/Liste de vos racks:/)).toBeInTheDocument();
     });
+
+    
     it("renders the component with correct headings when authUser is null", async () => {
         (useAuth as any).mockReturnValue({
             authUser: null,

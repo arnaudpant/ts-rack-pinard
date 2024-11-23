@@ -1,7 +1,14 @@
-/** CONTEXT */
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthUserContext";
 import HomeView from "./HomeView";
 
 const Home = () => {
+
+    const { authUser } = useAuth();
+    if (authUser) {
+        return <Navigate to="/home-racks" replace />;
+    }
+    
     return (
         <div className="flex flex-col justify-around items-center gap-2 min-h-[calc(100vh-120px)]">
             <div className="container text-center text-xl italic pt-4">

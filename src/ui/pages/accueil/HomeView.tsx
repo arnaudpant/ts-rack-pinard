@@ -1,12 +1,6 @@
-import { useAuth } from "../../../context/AuthUserContext";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomeView = () => {
-    const { authUser } = useAuth();
-
-    if (authUser) {
-        return <Navigate to="/home-racks" replace />;
-    }
 
     return (
         <div

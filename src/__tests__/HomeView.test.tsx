@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { vi, describe, it, expect } from "vitest";
-import { BrowserRouter, Navigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useAuth } from "../context/AuthUserContext";
 import HomeView from "../ui/pages/accueil/HomeView";
-import { authUserfake } from "./types";
 
 // Mock du hook useAuth
 vi.mock("../context/AuthUserContext", () => ({
@@ -22,19 +21,6 @@ vi.mock("react-router-dom", async () => {
 });
 
 describe("HomeView", () => {
-    it("redirects to /home-racks when user is authenticated", () => {
-        (useAuth as any).mockReturnValue({
-            authUser: authUserfake,
-            authUserIsLoading: false,
-        });
-
-        render(<HomeView />);
-
-        expect(vi.mocked(Navigate)).toHaveBeenCalledWith(
-            { to: "/home-racks", replace: true },
-            {}
-        );
-    });
 
     it("renders login and registration links when user is not authenticated", () => {
         (useAuth as any).mockReturnValue({
