@@ -22,8 +22,8 @@ const HeaderMenu = ({ scrAvatar }: Props) => {
     const handleDisconnect = () => {
         firebaseSignOutUser();
         navigate("/");
-        toast.success("A bientôt dans vos racks à pinard", {
-            autoClose: 2000,
+        toast.success("A bientôt dans votre cave à vin", {
+            autoClose: 1500,
         });
     };
 
