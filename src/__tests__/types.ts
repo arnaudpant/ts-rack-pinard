@@ -83,7 +83,7 @@ export const fakeBottle: Bottle = {
     cepage: "Cabernet Sauvignon",
     pays: "France",
     type: "vin",
-    couleur: "rouge",
+    couleur: "blanc",
     saveur: null,
     corps: "plein",
     potentiel: "moyen",

@@ -53,46 +53,46 @@ const BottlePinard: React.FC<Props> = ({ bottle, nbrColums }) => {
     );
 
     return (
-        <>
-            <div
-                className={clsx(
-                    bottle.favoris ? "bg-vin50" : "bg-gris",
-                    "flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
-                )}
-            >
-                {bottle.type === "vide" ? (
-                    <Link
-                        to={`/add-bottle/${bottle.id}`}
-                        state={bottle}
-                        className="bg-gris w-full rounded-full flex justify-center items-center"
-                    >
-                        <PlusCircle className="w-3/4 h-3/4 text-bouteille" />
-                    </Link>
-                ) : (
-                    <Link
-                        to={`/bottle-info/${bottle.id}`}
-                        state={bottle}
-                        className={clsx(
-                            bottle.favoris ? "bg-vin50" : "bg-gris",
-                            " w-full rounded-full flex justify-center items-center"
-                        )}
-                    >
-                        <Circle
-                            className={clsx(
-                                `w-3/4 h-3/4 ${getCouleurBouteille()}`
-                            )}
-                            width={36}
-                            height={36}
-                            strokeWidth={4}
-                            fill={getColorBouchon()}
-                        />
-                    </Link>
-                )}
-                <p className={textClass} data-testid="appellation-bouteille">
-                    {bottle.appellation}
-                </p>
-            </div>
-        </>
+        <div
+            className={clsx(
+                bottle.favoris ? "bg-vin50" : "bg-gris",
+                "flex flex-col justify-center items-center min-h-[30px] rounded-lg bg-gris"
+            )}
+        >
+            {bottle.type === "vide" ? (
+                <Link
+                    to={`/add-bottle/${bottle.id}`}
+                    state={bottle}
+                    className="bg-gris w-full rounded-full flex justify-center items-center"
+                >
+                    <PlusCircle
+                        className="w-3/4 h-3/4 text-bouteille"
+                        data-testid="circle-empty"
+                    />
+                </Link>
+            ) : (
+                <Link
+                    to={`/bottle-info/${bottle.id}`}
+                    state={bottle}
+                    className={clsx(
+                        bottle.favoris ? "bg-vin50" : "bg-gris",
+                        " w-full rounded-full flex justify-center items-center"
+                    )}
+                >
+                    <Circle
+                        className={clsx(`w-3/4 h-3/4 ${getCouleurBouteille()}`)}
+                        width={36}
+                        height={36}
+                        strokeWidth={4}
+                        fill={getColorBouchon()}
+                        data-testid="circle-not-empty"
+                    />
+                </Link>
+            )}
+            <p className={textClass} data-testid="appellation-bouteille">
+                {bottle.appellation}
+            </p>
+        </div>
     );
 };
 
