@@ -4,7 +4,10 @@ import BoxConnexion from "./BoxConnexion";
 
 const ConnexionView = () => {
     return (
-        <div className="flex flex-col items-center min-h-[calc(100vh-120px)]">
+        <div
+            className="flex flex-col items-center min-h-[calc(100vh-120px)]"
+            data-testid="connexion-view"
+        >
             <h2 className="text-center text-xl py-4 px-1">
                 Connectez-vous pour gérer vos casiers à bouteilles
             </h2>
