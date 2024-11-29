@@ -20,7 +20,6 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-
 describe("Inscription", () => {
     it("navigate to home-racks si user connecté", () => {
         vi.mocked(useAuth).mockReturnValue({
@@ -64,9 +63,5 @@ describe("Inscription", () => {
         );
 
         expect(screen.getByTestId(/inscription-view/i)).toBeInTheDocument();
-
-        screen.debug()
     });
-
-
-})
+});
