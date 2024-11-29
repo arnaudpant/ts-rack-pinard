@@ -4,7 +4,10 @@ import BoxInscription from "./BoxInscription";
 
 const InscriptionView = () => {
     return (
-        <div className="flex flex-col items-center min-h-[calc(100vh-120px)]">
+        <div
+            className="flex flex-col items-center min-h-[calc(100vh-120px)]"
+            data-testid="inscription-view"
+        >
             <h2 className="text-center text-xl py-4 px-1">
                 Créez un compte pour pouvoir gérer vos casiers à bouteilles
             </h2>
