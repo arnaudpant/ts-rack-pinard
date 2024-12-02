@@ -25,6 +25,7 @@ import InfosBottle from "./ui/pages/page-bootle-info/InfosBottle";
 import ModifBottle from "./ui/pages/page-rack/rack/bottles/ModifBottle";
 import AddBootleForBuyLater from "./ui/pages/buy-later/AddBootleForBuyLater";
 import BottlesListsFilter from "./ui/pages/user-infos/BottlesListsFilter";
+import FavorisBottles from "./ui/pages/favoris/FavorisBottles";
 
 function App() {
     return (
@@ -69,6 +70,10 @@ function App() {
                         <Route
                             path="/buy-later"
                             element={<AddBootleForBuyLater />}
+                        />
+                        <Route
+                            path="/favoris-bottle"
+                            element={<FavorisBottles />}
                         />
                         <Route path="/user-infos" element={<UserInfos />} />
                         <Route

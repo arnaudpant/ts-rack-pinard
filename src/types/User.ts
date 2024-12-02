@@ -10,7 +10,6 @@ export interface UserInterface {
     displayName: string | null,
     emailVerified: boolean,
     photoURL: string | null,
-    // Données de la collection de la base de donnée
     userDocument?: UserDocument 
 }
 
@@ -24,5 +23,4 @@ export interface UserDocument {
     racks: Rack[],
     bottlesFavoris: Bottle[],
     bottlesDrink: Bottle[]
-    // Champs Ajouter un champ ds Firestore
 }

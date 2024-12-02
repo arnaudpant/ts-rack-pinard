@@ -20,11 +20,11 @@ export const listMenunavigation = [
         link: "/bottles-drink"
     },
     {
-        name: "Bouteilles à acheter",
+        name: "Futur achat",
         link: "/cave-virtuelle"
     },
     {
-        name: "Bouteilles préférées",
-        link: "/"
+        name: "Bouteilles favorites",
+        link: "/favoris-bottle"
     },
 ]
