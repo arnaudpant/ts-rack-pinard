@@ -7,7 +7,7 @@ import { getDateTimestamp } from "../utils/utils";
 const useUpdateRacks = () => {
     const { authUser } = useAuth();
 
-    const updateRacks = (newBootle: Bottle, toggle:boolean = false) => {
+    const updateRacks = (newBootle: Bottle, toggle: boolean = false) => {
         /** 1. Filtre rack modifié */
         const rackTarget = authUser.userDocument.racks.filter(
             (rack) => rack.idrack === newBootle.rackId
@@ -31,7 +31,6 @@ const useUpdateRacks = () => {
         toggle
             ? toggleBottleInFavoris(listNewracks)
             : addNewBottleInrack(listNewracks);
-        
     };
 
     /**
@@ -47,7 +46,6 @@ const useUpdateRacks = () => {
             return;
         }
     };
-
 
     /**
      * PAGE CONTAINER A VERRE
@@ -105,8 +103,8 @@ const useUpdateRacks = () => {
 
     /** =================== */
     const deleteBottle = (bottleEmpty: Bottle) => {
-        const dateConsomation = getDateTimestamp()
-        const deleted: boolean = true
+        const dateConsomation = getDateTimestamp();
+        const deleted: boolean = true;
         const caseEmpty: Bottle = {
             id: bottleEmpty.id,
             nom: "",
@@ -222,10 +220,10 @@ const useUpdateRacks = () => {
         }
         deleted === true
             ? toast.success("Bouteille supprimée de la liste", {
-                  autoClose: 2000,
+                  autoClose: 1700,
               })
             : toast.success("Bouteille sauvegardée avec succès", {
-                  autoClose: 2000,
+                  autoClose: 1700,
               });
     };
 
