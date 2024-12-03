@@ -56,15 +56,14 @@ const OnBoardingContainer = () => {
     }
 
     return (
-            <OnBoardingView
-                getCurrentStep={getCurrentStep}
-                nextStep={nextStep}
-                prevStep={prevStep}
-                isFirstStep={isFirstStep}
-                isFinalStep={isFinalStep}
-                stepList={stepList}
-            />
-
+        <OnBoardingView
+            getCurrentStep={getCurrentStep}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            isFirstStep={isFirstStep}
+            isFinalStep={isFinalStep}
+            stepList={stepList}
+        />
     );
 };
 

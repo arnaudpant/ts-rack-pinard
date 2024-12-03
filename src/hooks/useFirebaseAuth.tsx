@@ -1,26 +1,38 @@
-/** HOOKS */
 import { useEffect, useState } from "react";
-/** TYPE */
 import { UserDocument, UserInterface } from "@/types/User";
-/** FIREBASE */
 import { auth, db } from "../firebase/firebase.config";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
 
-/**
- *** HOOK UTILISE PAR LE CONTEXT ***
- */
-
 const useFirebaseAuth = () => {
-    /** 1 
-     * States pour données primaires de Firebase via l'authentification + collection via userDocument
+    const [authUser, setAuthUser] = useState<UserInterface | null>(null);
+    const [authUserIsLoading, setAuthUserIsLoading] = useState<boolean>(true);
+
+    /** 1 */
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, authSateChanged);
+        return () => unsubscribe();
+    }, []);
+
+    /**
+     * 2
+     * Function envoyée depuis useEffect via onAuthStateChanged de Firebase
+     * Si non connecté return
+     * Si connecté return infos primaires de user
      */
-    const [authUser, setAuthUser] = useState<UserInterface | null>(null)
-    const [authUserIsLoading, setAuthUserIsLoading] = useState<boolean>(true)
+    const authSateChanged = async (authState: UserInterface | User | null) => {
+        if (!authState) {
+            setAuthUser(null);
+            setAuthUserIsLoading(false);
+            return;
+        }
 
+        setAuthUserIsLoading(true);
+        const formatedUser = formatAuthUser(authState);
+        await getUserDocument(formatedUser);
+    };
 
-
-    /** 4
+    /** 3
      * Formatage des données primaires de user ou authState
      */
     const formatAuthUser = (user: UserInterface) => ({
@@ -29,88 +41,40 @@ const useFirebaseAuth = () => {
         email: user.email,
         displayName: user.displayName,
         emailVerified: user.emailVerified,
-        photoURL: user.photoURL
-    })
+        photoURL: user.photoURL,
+    });
 
-
-
-    /** 5
+    /** 4
      * Insertion des données de la base de donnée Firestore dans le user
      */
     const getUserDocument = async (user: UserInterface) => {
         // ici user = user formaté avec données primaires + userDocument
         if (auth.currentUser) {
             // Recuperation des données de Firestore
-            const documentRef = doc(db, "users", auth.currentUser.uid)
-            const compactUser = user
+            const documentRef = doc(db, "users", auth.currentUser.uid);
+            const compactUser = user;
             // Ecouteur onSnapshot pour recuperer en temps reel les modifs dans db firestore
             onSnapshot(documentRef, async (doc) => {
                 if (doc.exists()) {
-                    compactUser.userDocument = doc.data() as UserDocument
+                    compactUser.userDocument = doc.data() as UserDocument;
                 }
-                setAuthUser((prevAuthUser) => (
-                    { ...prevAuthUser, ...compactUser }
-                ))
+                setAuthUser((prevAuthUser) => ({
+                    ...prevAuthUser,
+                    ...compactUser,
+                }));
                 // Fin du chargement
-                setAuthUserIsLoading(false)
-            })
+                setAuthUserIsLoading(false);
+            });
         }
-    }
-
-
-
-    /**
-     * 3
-     * Function envoyée depuis useEffect via onAuthStateChanged de Firebase
-     * Si non connecté return
-     * Si connecté return infos primaires de user
-     */
-    const authSateChanged = async (authState: UserInterface | User | null) => {
-        // authState = user dans function de base de Firebase (auth, (user)=> {...})
-
-        /**
-         * USER IS NOT CONNECT:
-         * => user = null + Arret du loading ==> user non connecté
-         */
-        if (!authState) {
-            setAuthUser(null)
-            setAuthUserIsLoading(false)
-            return
-        }
-
-        /**
-         * USER IS CONNECT:
-         * user = true => loading = true ==> user non connecté
-         */
-        setAuthUserIsLoading(true)
-        // Formatage des données primaires récupérées:
-        const formatedUser = formatAuthUser(authState)
-        // Insertion des données de Firestore dans le user avec données primaires
-        await getUserDocument(formatedUser)
-    }
-
-
-
-
-    /** 2
-    * Ecouteur de Firebase pour user connecté ou non connecté
-    * De base ne return que les données primaires => formatage
-    */
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, authSateChanged)
-        // authSateChanged remplace la function de base qui return les données primaires du user connecté
-        // du type: (auth, (user)=> {...})
-        return () => unsubscribe()
-    }, [])
-
+    };
 
 
     /** RETURN DONNEES ENVOYEES ET UTILISEES PAR LE CONTEXT */
     return {
         authUser,
         authUserIsLoading,
-        getUserDocument
-    }
+        getUserDocument,
+    };
 };
 
 export default useFirebaseAuth;
