@@ -27,6 +27,13 @@ export default defineConfig(({ mode }) => {
           globals: true,
           environment: 'jsdom',
           setupFiles: ['./vitest.setup.ts']
+        },
+        css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern"
         }
+      }
+    }
   }
 })

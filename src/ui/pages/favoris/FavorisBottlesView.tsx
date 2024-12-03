@@ -25,7 +25,7 @@ const FavorisBottlesView = ({
                         <TableHead>Appellation</TableHead>
                         <TableHead>Exploitation</TableHead>
                         <TableHead>Millésime</TableHead>
-                        <TableHead>Supprimer</TableHead>
+                        <TableHead>Retirer</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
