@@ -1,6 +1,7 @@
-import { HeartOff } from "lucide-react";
+import { HeartOff, LayoutGrid } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../components/ui/table";
 import { Bottle } from "../../../types/RacksTypes";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     allBottlesFavorisList: Bottle[];
@@ -11,6 +12,7 @@ const FavorisBottlesView = ({
     allBottlesFavorisList,
     handleRemoveBottleFromFavorisList,
 }: Props) => {
+    const navigate = useNavigate();
     return (
         <div className="container mx-auto flex flex-col items-center p-4 min-h-[calc(100vh-272px)]">
             <h2 className="text-2xl pt-5 pb-4 text-center text-vin">
@@ -25,6 +27,7 @@ const FavorisBottlesView = ({
                         <TableHead>Appellation</TableHead>
                         <TableHead>Exploitation</TableHead>
                         <TableHead>Millésime</TableHead>
+                        <TableHead>Rack</TableHead>
                         <TableHead>Retirer</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -38,7 +41,17 @@ const FavorisBottlesView = ({
                             <TableCell>{bottle.couleur}</TableCell>
                             <TableCell>{bottle.appellation}</TableCell>
                             <TableCell>{bottle.exploitation}</TableCell>
-                            <TableCell>{bottle.millesime}</TableCell>
+                            <TableCell>{bottle.exploitation}</TableCell>
+                            <TableCell
+                                className="cursor-pointer"
+                                onClick={() =>
+                                    navigate(`/rack/${bottle.rackId}`, {
+                                        state: bottle.rackId,
+                                    })
+                                }
+                            >
+                                <LayoutGrid />
+                            </TableCell>
                             <TableCell
                                 className="cursor-pointer"
                                 onClick={() =>
