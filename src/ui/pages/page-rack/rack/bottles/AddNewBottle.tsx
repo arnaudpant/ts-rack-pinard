@@ -4,21 +4,31 @@ import useUpdateRacks from "../../../../../hooks/useUpdateRacks";
 import clsx from "clsx";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "../../../../../components/ui/input";
+import { useEffect, useState } from "react";
 
 const AddNewBottle = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const bottleEmpty = location.state as Bottle;
     const { updateRacks } = useUpdateRacks();
+    const [lastAddedBottle, setLastAddedBottle] = useState<Bottle | null>(null);
 
     const {
         handleSubmit,
         formState: { errors },
         register,
+        reset,
     } = useForm<Bottle>();
 
+    useEffect(() => {
+        const storedBottle = localStorage.getItem("lastAddedBottle");
+        if (storedBottle) {
+            setLastAddedBottle(JSON.parse(storedBottle));
+        }
+    }, []);
+
     const onSubmit = (data: Bottle) => {
-        const newBootle: Bottle = {
+        const newBottle: Bottle = {
             ...bottleEmpty,
             nom: data.nom,
             millesime: data.millesime,
@@ -39,8 +49,16 @@ const AddNewBottle = () => {
             drink: null,
             favoris: false,
         };
-        updateRacks(newBootle);
-        navigate(`/rack/${newBootle.rackId}`, { state: bottleEmpty.rackId });
+        updateRacks(newBottle);
+        setLastAddedBottle(newBottle);
+        localStorage.setItem("lastAddedBottle", JSON.stringify(newBottle));
+        navigate(`/rack/${newBottle.rackId}`, { state: bottleEmpty.rackId });
+    };
+
+    const duplicateLastBottle = () => {
+        if (lastAddedBottle) {
+            reset(lastAddedBottle);
+        }
     };
 
     return (
@@ -49,12 +67,22 @@ const AddNewBottle = () => {
                 className="flex flex-col gap-4 px-4 mt-3 w-[300px]"
                 onSubmit={handleSubmit(onSubmit)}
             >
+                <button
+                    type="button"
+                    onClick={duplicateLastBottle}
+                    disabled={!lastAddedBottle}
+                    className={clsx(
+                        "w-full bg-vin text-fond rounded-full py-2 mb-4",
+                        !lastAddedBottle && "opacity-50 cursor-not-allowed"
+                    )}
+                >
+                    Dupliquer la dernière bouteille
+                </button>
                 {/* NOM */}
                 <div className="w-full text-left">
                     <p className="pb-1 text-sm">Nom de la bouteille *</p>
                     <Input
                         {...register("nom", { required: true })}
-                        
                         className="w-full p-1 rounded"
                     />
                     {errors.type && <span>Le nom est requis</span>}
