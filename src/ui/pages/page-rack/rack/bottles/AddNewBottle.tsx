@@ -37,18 +37,21 @@ const AddNewBottle = () => {
             );
             const uniqueBottles = allBottles.filter(
                 (bottle, index, self) =>
+                    bottle.nom !== "" &&
                     index ===
-                    self.findIndex(
-                        (t) =>
-                            t.nom === bottle.nom &&
-                            t.appellation === bottle.appellation &&
-                            t.type === bottle.type &&
-                            t.couleur === bottle.couleur
-                    )
+                        self.findIndex(
+                            (t) =>
+                                t.nom === bottle.nom &&
+                                t.appellation === bottle.appellation &&
+                                t.type === bottle.type &&
+                                t.couleur === bottle.couleur
+                        )
             );
             setExistingBottles(uniqueBottles);
         }
     }, [authUser]);
+
+    console.log(existingBottles);
 
     const onSubmit = (data: Bottle) => {
         const newBottle: Bottle = {
