@@ -1,17 +1,20 @@
 import { useForm } from "react-hook-form";
-import { Bottle } from "../../../../../types/RacksTypes";
+import { Bottle, Rack } from "../../../../../types/RacksTypes";
 import useUpdateRacks from "../../../../../hooks/useUpdateRacks";
 import clsx from "clsx";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "../../../../../components/ui/input";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../../../context/AuthUserContext";
 
 const AddNewBottle = () => {
+    const { authUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const bottleEmpty = location.state as Bottle;
     const { updateRacks } = useUpdateRacks();
     const [lastAddedBottle, setLastAddedBottle] = useState<Bottle | null>(null);
+    const [existingBottles, setExistingBottles] = useState<Bottle[]>([]);
 
     const {
         handleSubmit,
@@ -26,6 +29,26 @@ const AddNewBottle = () => {
             setLastAddedBottle(JSON.parse(storedBottle));
         }
     }, []);
+
+    useEffect(() => {
+        if (authUser?.userDocument) {
+            const allBottles: Bottle[] = authUser.userDocument.racks.flatMap(
+                (rack: Rack) => rack.bottles
+            );
+            const uniqueBottles = allBottles.filter(
+                (bottle, index, self) =>
+                    index ===
+                    self.findIndex(
+                        (t) =>
+                            t.nom === bottle.nom &&
+                            t.appellation === bottle.appellation &&
+                            t.type === bottle.type &&
+                            t.couleur === bottle.couleur
+                    )
+            );
+            setExistingBottles(uniqueBottles);
+        }
+    }, [authUser]);
 
     const onSubmit = (data: Bottle) => {
         const newBottle: Bottle = {
@@ -61,12 +84,24 @@ const AddNewBottle = () => {
         }
     };
 
+    const handleExistingBottleSelect = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        const selectedBottle = existingBottles.find(
+            (bottle) => bottle.id === event.target.value
+        );
+        if (selectedBottle) {
+            reset(selectedBottle);
+        }
+    };
+
     return (
         <div className="flex justify-center text-center py-4">
             <form
                 className="flex flex-col gap-4 px-4 mt-3 w-[300px]"
                 onSubmit={handleSubmit(onSubmit)}
             >
+                {/* DUPLICATE */}
                 <button
                     type="button"
                     onClick={duplicateLastBottle}
@@ -78,6 +113,23 @@ const AddNewBottle = () => {
                 >
                     Dupliquer la dernière bouteille
                 </button>
+                {/* SELECT BOTTLE */}
+                <div className="w-full text-left mb-6">
+                    <p className="pb-1 text-sm">
+                        Sélectionner une bouteille existante
+                    </p>
+                    <select
+                        onChange={handleExistingBottleSelect}
+                        className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
+                    >
+                        <option value="">Sélectionner une bouteille</option>
+                        {existingBottles.map((bottle) => (
+                            <option key={bottle.id} value={bottle.id}>
+                                {`${bottle.nom}`}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 {/* NOM */}
                 <div className="w-full text-left">
                     <p className="pb-1 text-sm">Nom de la bouteille *</p>
