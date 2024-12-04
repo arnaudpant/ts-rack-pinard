@@ -51,8 +51,6 @@ const AddNewBottle = () => {
         }
     }, [authUser]);
 
-    console.log(existingBottles);
-
     const onSubmit = (data: Bottle) => {
         const newBottle: Bottle = {
             ...bottleEmpty,
