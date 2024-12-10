@@ -1,6 +1,4 @@
-/** ROOTER */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-/** PAGES */
 import Home from "./ui/pages/accueil/Home";
 import Connexion from "./ui/pages/connexion/Connexion";
 import Inscription from "./ui/pages/inscription/Inscription";
@@ -12,7 +10,6 @@ import UserInfos from "./ui/pages/user-infos/UserInfos";
 import RackId from "./ui/pages/page-rack/RackId";
 import Politique from "./ui/components/layouts/footer/politique/Politique";
 import Cgu from "./ui/components/layouts/footer/cgu/Cgu";
-/** COMPONENTS */
 import Layout from "./ui/components/layouts/Layout";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryComponent from "./error-boundary/ErrorBoundaryComponent";

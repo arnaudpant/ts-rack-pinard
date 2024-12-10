@@ -170,6 +170,13 @@ export const authUserfake = {
             columns: 3,
             rows: 4,
             bottles: fakeBottles,
+        },
+        {
+            idrack: "testB",
+            rackName: "Test B",
+            columns: 5,
+            rows: 6,
+            bottles: fakeBottles,
         }],
         bottlesFavoris: [],
         bottlesDrink: []
