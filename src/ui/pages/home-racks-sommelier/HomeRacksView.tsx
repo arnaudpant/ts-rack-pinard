@@ -20,6 +20,7 @@ const HomeRacksView = ({ numberRacks }: Props) => {
             className={`flex-col items-center min-h-[calc(100vh-${
                 numberRacks === 0 ? "232" : "272"
             }px)]`}
+            data-testid="rack-width"
         >
             <RackComponent handleClick={handleAddRack} />
         </div>
