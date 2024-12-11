@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
 import { fakeRack } from "../../../../../api/fakeRack";
 import { Rack } from "@/types/RacksTypes";
 import RackSoloView from "../RackSoloView";
 import { Link } from "react-router-dom";
 
 const Demonstration = () => {
-    const [dataDemoRacks, setDataDemoRacks] = useState<Rack | null>(null);
-
-    useEffect(() => {
-        setDataDemoRacks(fakeRack);
-    }, []);
+    const dataDemoRacks: Rack = fakeRack;
 
     return (
         <>
             <div className="pt-5 flex flex-col items-center">
-                    <h2 className="text-xl text-vin800 text-center pb-2">
-                        Rack de démonstration
-                    </h2>
+                <h2 className="text-xl text-vin800 text-center pb-2">
+                    Rack de démonstration
+                </h2>
                 <div className="py-2 px-4">
                     <div className="container mx-auto flex justify-center flex-wrap gap-2">
                         <Link
@@ -29,12 +24,7 @@ const Demonstration = () => {
                 </div>
             </div>
             <div className="flex flex-col justify-start items-center min-h-[calc(100vh-120px)]">
-                {dataDemoRacks && (
-                    <RackSoloView
-                        rack={dataDemoRacks}
-                        key={dataDemoRacks.idrack}
-                    />
-                )}
+                <RackSoloView rack={dataDemoRacks} key={dataDemoRacks.idrack} />
             </div>
         </>
     );

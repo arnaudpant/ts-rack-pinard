@@ -48,6 +48,29 @@ export const fakeBottles: Bottle[] = [
         drink: "",
         favoris: false
     },
+    {
+        id: "fake-empty",
+        nom: "",
+        millesime: null,
+        appellation: null,
+        exploitation: null,
+        cepage: null,
+        pays: null,
+        type: "vide",
+        couleur: null,
+        saveur: null,
+        corps: null,
+        potentiel: null,
+        status: null,
+        degre: null,
+        accords: null,
+        prix: null,
+        achat: null,
+        rackId: "314",
+        index: 2,
+        drink: null,
+        favoris: false
+    }
 ];
 
 export const fakeCaseEmpty: Bottle = {
