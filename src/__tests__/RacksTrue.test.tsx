@@ -1,17 +1,11 @@
-import RacksFalse from "../ui/pages/home-racks-sommelier/RacksFalse";
+import RacksTrue from "../ui/pages/home-racks-sommelier/RacksTrue";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 
-describe("RackFalse", () => {
+describe("RackTrue", () => {
     it("Appelle HandleClick lorsque le bouton est clique", () => {
         const mockHandleClick = vi.fn();
-        render(<RacksFalse handleClick={mockHandleClick} />);
-
-        expect(
-            screen.getByText(
-                "Il semblerait que vous n'ayez pas encore de racks à pinard"
-            )
-        ).toBeInTheDocument();
+        render(<RacksTrue handleClick={mockHandleClick} />);
 
         fireEvent.click(screen.getByText("AJOUTER UN RACK"));
         expect(mockHandleClick).toHaveBeenCalledTimes(1);

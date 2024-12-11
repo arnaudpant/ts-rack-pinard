@@ -12,7 +12,7 @@ const RacksTrue = ({ handleClick }: Props) => {
                     className="text-vin600 bg-vin/30 hover:bg-vin/80 hover:text-fond px-4 py-1 rounded-full shadow-sm"
                     onClick={() => handleClick()}
                 >
-                    Ajouter un rack
+                    AJOUTER UN RACK
                 </button>
             </div>
             <div className="h-[calc(100vh-336px)] w-full bg-sommelier bg-no-repeat bg-bottom bg-contain"></div>
