@@ -122,10 +122,15 @@ const AddNewBottle = () => {
                     <select
                         onChange={handleExistingBottleSelect}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
+                        data-testid="select-bottle"
                     >
                         <option value="">Sélectionner une bouteille</option>
                         {existingBottles.map((bottle) => (
-                            <option key={bottle.id} value={bottle.id}>
+                            <option
+                                key={bottle.id}
+                                value={bottle.id}
+                                data-testid="select-option"
+                            >
                                 {`${bottle.nom}`}
                             </option>
                         ))}
@@ -137,6 +142,7 @@ const AddNewBottle = () => {
                     <Input
                         {...register("nom", { required: true })}
                         className="w-full p-1 rounded"
+                        data-testid="name-bottle"
                     />
                     {errors.type && <span>Le nom est requis</span>}
                 </div>
