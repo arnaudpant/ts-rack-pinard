@@ -121,6 +121,30 @@ export const fakeBottle: Bottle = {
     favoris: false
 };
 
+export const fakeBottleTwo: Bottle = {
+    id: "fake-bottle",
+    nom: "Château Lepape",
+    millesime: 2011,
+    appellation: "Lepape AOC",
+    exploitation: "Jean Moulin",
+    cepage: "Sauvignon",
+    pays: "France",
+    type: "vin",
+    couleur: "rouge",
+    saveur: "floral",
+    corps: "moyen",
+    potentiel: "long",
+    status: "A boire",
+    degre: 11,
+    accords: "boeuf",
+    prix: 600,
+    achat: "2022-02-17",
+    rackId: "125",
+    index: 1,
+    drink: null,
+    favoris: true
+};
+
 export const rackTest: Rack = {
     idrack: "testA",
     rackName: "Test A",

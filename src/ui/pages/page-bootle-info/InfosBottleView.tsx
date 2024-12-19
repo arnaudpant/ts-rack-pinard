@@ -131,6 +131,7 @@ const InfosBottleView = ({
                         )}
                         onClick={() => handleDeleteBottle()}
                         disabled={bottleInfos.rackId === "314"}
+                        data-testid="btn-delete"
                     >
                         Supprimer <Trash2 />
                     </button>
