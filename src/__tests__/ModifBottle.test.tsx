@@ -71,9 +71,9 @@ describe("ModifBottle", () => {
         fireEvent.change(screen.getByTestId("name-bottle"), {
             target: { value: "New Wine Name" },
         });
-         fireEvent.change(screen.getByTestId("appellation-bottle"), {
-             target: { value: "piquette AOC" },
-         });
+        fireEvent.change(screen.getByTestId("appellation-bottle"), {
+            target: { value: "piquette AOC" },
+        });
 
         fireEvent.click(screen.getByText("Modifier la bouteille"));
 

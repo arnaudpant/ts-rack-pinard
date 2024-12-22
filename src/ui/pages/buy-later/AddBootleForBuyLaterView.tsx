@@ -25,6 +25,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                     <Input
                         {...register("nom", { required: true })}
                         className="w-full p-1 rounded"
+                        data-testid="bottle-name"
                     />
                     {errors.couleur && <span>Ce champ est requis</span>}
                 </div>
@@ -33,6 +34,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                     <select
                         {...register("type", { required: true })}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
+                        data-testid="bottle-type"
                     >
                         <option value=""></option>
                         <option value="vin">Vin</option>
@@ -51,6 +53,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                     <select
                         {...register("couleur", { required: true })}
                         className="w-full p-1 rounded border border-bouteille_biere/20 h-10"
+                        data-testid="bottle-color"
                     >
                         <option value=""></option>
                         <option value="rouge">Rouge</option>
@@ -70,6 +73,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                         type="number"
                         {...register("millesime")}
                         className="w-full p-1 rounded"
+                        data-testid="bottle-millesime"
                     />
                 </div>
 
@@ -78,6 +82,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                     <Input
                         {...register("appellation", { required: true })}
                         className="w-full p-1 rounded"
+                        data-testid="bottle-appellation"
                     />
                     {errors.couleur && <span>Ce champ est requis</span>}
                 </div>
@@ -87,6 +92,7 @@ const AddBootleForBuyLaterView = ({onSubmit} : Props) => {
                     <Input
                         {...register("exploitation")}
                         className="w-full p-1 rounded"
+                        data-testid="bottle-exploitation"
                     />
                 </div>
 
