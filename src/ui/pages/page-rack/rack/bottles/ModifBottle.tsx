@@ -56,6 +56,7 @@ const ModifBottle = () => {
                         {...register("nom", { required: true })}
                         defaultValue={bottleToModif.nom}
                         className="w-full p-1 rounded"
+                        data-testid="name-bottle"
                     />
                     {errors.type && <span>Le nom est requis</span>}
                 </div>
@@ -67,6 +68,7 @@ const ModifBottle = () => {
                         {...register("millesime")}
                         defaultValue={bottleToModif.millesime ?? ""}
                         className="w-full p-1 rounded"
+                        data-testid="millesime-bottle"
                     />
                 </div>
                 {/* APPELATION */}
@@ -76,6 +78,7 @@ const ModifBottle = () => {
                         {...register("appellation", { required: true })}
                         defaultValue={bottleToModif.appellation ?? ""}
                         className="w-full p-1 rounded"
+                        data-testid="appellation-bottle"
                     />
                     {errors.couleur && <span>Ce champ est requis</span>}
                 </div>
