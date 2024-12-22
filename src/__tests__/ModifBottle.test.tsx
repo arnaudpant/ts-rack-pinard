@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
-import { fakeBottle, fakeBottleTwo } from "./types";
+import { fakeBottleTwo } from "./types";
 import ModifBottle from "../ui/pages/page-rack/rack/bottles/ModifBottle";
 
 // Mocks
@@ -90,29 +90,4 @@ describe("ModifBottle", () => {
             });
         });
     });
-
-    // it("désactive le bouton de soumission pour le rack de démonstration", () => {
-    //     vi.mocked(useLocation).mockReturnValue({
-    //         state: { ...mockBottle, rackId: "314" },
-    //     });
-
-    //     render(
-    //         <BrowserRouter>
-    //             <ModifBottle />
-    //         </BrowserRouter>
-    //     );
-
-    //     expect(screen.getByText("Modifier la bouteille")).toBeDisabled();
-    // });
-
-    // it("affiche le lien d'annulation avec le bon état", () => {
-    //     render(
-    //         <BrowserRouter>
-    //             <ModifBottle />
-    //         </BrowserRouter>
-    //     );
-
-    //     const cancelLink = screen.getByText("ANNULER");
-    //     expect(cancelLink).toHaveAttribute("href", "/rack/rack1");
-    // });
 });

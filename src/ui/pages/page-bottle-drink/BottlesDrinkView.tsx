@@ -30,8 +30,8 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
     const renderTableHeader = () => (
         <TableHeader>
             <TableRow>
-                {tableHeaders.map((header, index) => (
-                    <TableHead key={index}>{header}</TableHead>
+                {tableHeaders.map((header) => (
+                    <TableHead key={header}>{header}</TableHead>
                 ))}
             </TableRow>
         </TableHeader>
@@ -84,6 +84,5 @@ const BottlesDrinkView: React.FC<Props> = ({ bottlesDrink, handleDelete }) => {
         </div>
     );
 };
-
 
 export default BottlesDrinkView;
