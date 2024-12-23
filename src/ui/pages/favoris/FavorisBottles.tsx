@@ -12,7 +12,6 @@ const FavorisBottles = () => {
     const allBottlesFavorisList: Bottle[] = [...authUser.userDocument.racks.flatMap((rack) => rack.bottles).filter((bottle) => bottle.favoris)]
 
     const handleRemoveBottleFromFavorisList = (bottle: Bottle) => {
-
         const BottlesFavorisDeleted: Bottle = {
             ...bottle,
             favoris: false,
