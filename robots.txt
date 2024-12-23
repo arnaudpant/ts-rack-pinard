@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rack-a-pinard.web.app/sitemap.xml
