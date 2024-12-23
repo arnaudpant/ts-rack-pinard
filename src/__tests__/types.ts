@@ -23,7 +23,7 @@ export const fakeBottles: Bottle[] = [
         rackId: "314",
         index: 3,
         drink: "",
-        favoris: false
+        favoris: true
     },
     {
         id: "fake-bottle-b",
