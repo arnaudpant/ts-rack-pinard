@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className="flex flex-col justify-around items-center gap-2 min-h-[calc(100vh-120px)]">
             <div className="container text-center text-xl italic pt-4">
-                <h1 className="text-2xl md:text-3xl px-2 md:mb-8">
+                <h1 className="text-2xl md:text-3xl px-2 md:mb-8" data-testid="cypress-title-home">
                     La gestion de cave à vin simplifiée: votre collection à
                     portée de main !
                 </h1>

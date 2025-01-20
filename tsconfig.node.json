@@ -5,7 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom", "cypress"],
   },
   "include": ["vite.config.ts"]
 }
