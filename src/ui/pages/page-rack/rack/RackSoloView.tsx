@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import useUpdateRacks from "../../../../hooks/useUpdateRacks";
 import { useNavigate } from "react-router-dom";
 import { Bottle, Rack } from "@/types/RacksTypes";
@@ -19,7 +19,7 @@ const RackSoloView: React.FC<Props> = ({ rack }) => {
         navigate("/home-racks");
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const gridClasses = {
             1: "grid-cols-1 max-w-screen-md",
             2: "grid-cols-2 max-w-screen-md",

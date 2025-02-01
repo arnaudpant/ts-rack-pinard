@@ -42,7 +42,7 @@ const useUpdateRacks = () => {
             racks,
         });
         if (error) {
-            toast.error(error.message, { autoClose: 3000 });
+            toast.error(error.message, { autoClose: 2000 });
             return;
         }
     };
@@ -162,11 +162,11 @@ const useUpdateRacks = () => {
             return;
         }
         deleted === true
-            ? toast.success("Bouteille supprimée de votre rack", {
-                  autoClose: 2000,
+            ? toast.success("Une bouteille en moins", {
+                  autoClose: 1500,
               })
-            : toast.success("Bouteille ajoutée à votre rack", {
-                  autoClose: 2000,
+            : toast.success("Bouteille ajoutée", {
+                  autoClose: 1500,
               });
     };
 
@@ -182,13 +182,13 @@ const useUpdateRacks = () => {
         if (error) {
             toast.error(
                 "Une erreur est survenue a la suppression de votre rack",
-                { autoClose: 3000 }
+                { autoClose: 2000 }
             );
             return;
         }
 
-        toast.success("Rack supprimé de votre liste", {
-            autoClose: 2000,
+        toast.success("Rack supprimé", {
+            autoClose: 1500,
         });
     };
 
@@ -201,8 +201,8 @@ const useUpdateRacks = () => {
             toast.error(error.message, { autoClose: 3000 });
             return;
         }
-        toast.success("Bouteille supprimée de votre container", {
-            autoClose: 2000,
+        toast.success("Bouteille supprimée", {
+            autoClose: 1500,
         });
     };
 
@@ -219,10 +219,10 @@ const useUpdateRacks = () => {
             return;
         }
         deleted === true
-            ? toast.success("Bouteille supprimée de la liste", {
+            ? toast.success("Bouteille supprimée", {
                   autoClose: 1700,
               })
-            : toast.success("Bouteille sauvegardée avec succès", {
+            : toast.success("Bouteille sauvegardée", {
                   autoClose: 1700,
               });
     };

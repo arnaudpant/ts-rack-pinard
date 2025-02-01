@@ -5,12 +5,9 @@ import ReactDOM from 'react-dom/client'
 import 'react-toastify/dist/ReactToastify.css';
 import './index.scss'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
     <AuthUserProvider>
-      <ToastContainer
-        position="top-center"
-        transition={Flip}
-      />
-      <App />
+        <ToastContainer position="bottom-right" transition={Flip} />
+        <App />
     </AuthUserProvider>
-)
+);
